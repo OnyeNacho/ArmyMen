@@ -1,0 +1,227 @@
+// ALPINE SCENARIO 3 Mission 6 The Gauntlet
+
+PAD greentrack 0
+
+PAD winpad 14  GREEN HALFTRACK > 0
+PAD startpad 14
+PAD tanguy 70
+
+PAD medicaltentpad 9 GREEN SARGE > 0
+PAD medicaltentpad1 9 GREEN UNIT > 0
+
+PAD deploysarge 10
+
+PAD tohalftrack 22
+
+PAD middleofcamp 35
+PAD middleofcamp2 36
+PAD firingrange 37
+
+PAD tank1path1 41
+PAD tank1path2 42
+PAD tank1path3 43
+PAD tank1path4 44
+PAD tank1path5 45
+
+PAD tank2path1 51
+PAD tank2path2 52
+PAD tank2path3 53
+PAD tank2path4 54
+PAD tank2path5 55
+
+PAD half1path1 61
+PAD half1path2 62
+PAD half1path3 63
+PAD half1path4 64
+PAD half1path5 65
+
+PAD half2path1 71
+PAD half2path2 72
+PAD half2path3 73
+PAD half2path4 74
+PAD half2path5 75
+
+PAD greentankpad 80
+
+PAD halfcross 8		GREEN HALFTRACK > 0
+
+	// ** UNIT DISPERSEMENT ** //
+
+
+
+
+
+	// ** GAME TERMINATION CONDITIONS ** //
+
+// green wins if sarge reaches goal
+IF on_winpad THEN
+	TRIGGER dontend,
+	SETAICONTROL truck,
+	ORDER truck GOTO greentrack INMODE IGNORE THEN TRIGGER delayeddeploy,
+	TRIGGER endcampalarm
+
+
+
+IF delayeddeploy THEN
+	TRIGGERDELAY 1 breakdowntruck,
+	INVULNERABLESARGE,
+	TRIGGERDELAY 3 greenwins
+	
+// tan wins if sarge gets killed
+IF killed_GreenSarge BUTNOT dontend THEN
+	TRIGGER endcampalarm,
+	TRIGGERDELAY 2 tanwins
+
+IF killed_truck BUTNOT dontend THEN
+	TRIGGER endcampalarm,
+	TRIGGERDELAY 2 tanwins
+
+//MUSIC
+IF addtension THEN
+	AUDIO HIGHINTENSITY
+
+IF reducetension THEN
+	AUDIO LOWINTENSITY
+
+
+
+	// ** GAME EVENTS ** //
+
+IF startup THEN
+	TRIGGER timetoheal,
+	TRIGGERDELAY 45 sendhalftrack,
+	TRIGGER endlooping,
+	TRIGGERDELAY 1 campalarm,
+	TRIGGER reducetension,
+	TRIGGERDELAY 15 endcampalarm,
+	SETAICONTROL GreenMortar1,
+	SETAICONTROL GreenRifle2,
+	SETAICONTROL GreenRifle3,
+	SETAICONTROL GreenRifle4,
+	SETAICONTROL GreenRifle5,
+	SETAICONTROL GreenRifle6,
+	SETAICONTROL GreenRifle7,
+	ORDER TanTank103 GOTO tank1path1 SLOW INMODE ATTACK THEN ATMODE DEFEND,
+	ORDER GreenRifle2 GOTO TanRifle109 INMODE ATTACK THEN ATMODE ATTACK,
+	ORDER GreenRifle3 GOTO TanRifle111 INMODE ATTACK THEN ATMODE ATTACK,
+	ORDER GreenRifle4 GOTO TanRifle110 INMODE ATTACK THEN ATMODE ATTACK,
+	ORDER GreenRifle5 GOTO TanRifle109 INMODE ATTACK THEN ATMODE ATTACK,
+	ORDER GreenRifle6 GOTO TanRifle111 INMODE ATTACK THEN ATMODE ATTACK,
+	ORDER GreenRifle7 GOTO TanRifle110 INMODE ATTACK THEN ATMODE ATTACK,
+	TRIGGER setai
+
+
+IF setai THEN
+	TRIGGERDELAY 1 sendtantank1,
+	TRIGGERDELAY 4 sendtanhalf1,
+	TRIGGERDELAY 8 sendtanhalf2
+
+
+IF sendtantank1 THEN SEQUENTIAL
+	ORDER TanTank1 GOTO tank1path2 SLOW INMODE RETURNFIRE THEN ATMODE ATTACK TRIGGER sendtantank1,
+	ORDER TanTank1 GOTO tank1path3 SLOW INMODE ATTACK THEN ATMODE ATTACK TRIGGER sendtantank1,
+	ORDER TanTank1 GOTO tank1path4 SLOW INMODE ATTACK THEN ATMODE ATTACK TRIGGER sendtantank1,
+	ORDER TanTank1 GOTO tank1path5 SLOW INMODE ATTACK THEN ATMODE ATTACK
+
+
+IF sendtanhalf1 THEN SEQUENTIAL
+	ORDER TanHalftrack1 GOTO half1path2 SLOW INMODE RETURNFIRE THEN ATMODE RETURNFIRE TRIGGER sendtanhalf1,
+	ORDER TanHalftrack1 GOTO half1path3 SLOW INMODE RETURNFIRE THEN ATMODE RETURNFIRE TRIGGER sendtanhalf1,
+	ORDER TanHalftrack1 GOTO half1path4 SLOW INMODE RETURNFIRE THEN ATMODE RETURNFIRE TRIGGER sendtanhalf1,
+	ORDER TanHalftrack1 GOTO half1path5 SLOW INMODE RETURNFIRE THEN ATMODE RETURNFIRE TRIGGER deptanhalfsold1
+
+IF sendtanhalf2 THEN SEQUENTIAL
+	ORDER TanHalftrack2 GOTO half2path2 SLOW INMODE RETURNFIRE THEN ATMODE RETURNFIRE TRIGGER sendtanhalf2,
+	ORDER TanHalftrack2 GOTO half2path3 SLOW INMODE RETURNFIRE THEN ATMODE RETURNFIRE TRIGGER sendtanhalf2,
+	ORDER TanHalftrack2 GOTO half2path4 SLOW INMODE RETURNFIRE THEN ATMODE RETURNFIRE TRIGGER sendtanhalf2,
+	ORDER TanHalftrack2 GOTO half2path5 SLOW INMODE RETURNFIRE THEN ATMODE RETURNFIRE TRIGGER deptanhalfsold2
+
+
+IF sendhalftrack THEN
+	ORDER TanHalftrack6 GOTO tohalftrack SLOW INMODE ATTACK THEN ATMODE ATTACK
+
+
+
+
+IF deptanhalfsold1 THEN
+	DEPLOY TanRifle106 ATMODE ATTACK,
+	DEPLOY TanRifle105 ATMODE ATTACK,
+	ORDER TanRifle106 GOTO middleofcamp INMODE ATTACK THEN ATMODE ATTACK,
+	ORDER TanRifle105 GOTO middleofcamp2 INMODE ATTACK THEN ATMODE ATTACK
+
+IF deptanhalfsold2 THEN
+	DEPLOY TanRifle107 ATMODE ATTACK,
+	DEPLOY TanRifle108 ATMODE ATTACK
+
+IF killed_TanMortar103 THEN
+	REMOVEOBJECT mort21,
+	PLACEOBJECT mort21 TanMortar103
+
+IF killed_TanBazooka107 THEN
+	REMOVEOBJECT baz21,
+	PLACEOBJECT baz21 TanBazooka107
+
+IF killed_TanFlamer103 THEN
+	REMOVEOBJECT flame21,
+	PLACEOBJECT flame21 TanFlamer103
+
+IF killed_TanGrenadier107 THEN
+	REMOVEOBJECT gren21,
+	PLACEOBJECT gren21 TanGrenadier107
+
+IF killed_TanGrenadier102 THEN
+	REMOVEOBJECT gren22,
+	PLACEOBJECT gren22 TanGrenadier102
+
+IF killed_TanBazooka105 THEN
+	REMOVEOBJECT baz22,
+	PLACEOBJECT baz22 TanBazooka105
+
+// enable mash tents
+IF startup THEN
+	TRIGGER setupgreen,
+	TRIGGERDELAY 0.1 setmash
+
+IF setupgreen THEN
+	TRIGGER gsmedtime
+
+IF setmash THEN 
+	TRIGGER greenmashready
+
+IF on_medicaltentpad AFTER off_medicaltentpad AND gsmedtime AFTER NULL AND startup AFTER killed_greenmash THEN
+	HEAL ME	10,
+	TRIGGERDELAY 1.5 gsmedtime
+
+
+IF on_medicaltentpad1 BUTNOT killed_greenmash THEN
+	HEAL ME 100
+
+
+
+
+
+IF killed_TanMortar104 THEN
+	REMOVEOBJECT placemort,
+	PLACEOBJECT placemort TanMortar104
+
+IF killed_TanRifle111 THEN
+	REMOVEOBJECT recon2,
+	PLACEOBJECT recon2 TanRifle111
+
+IF killed_TanRifle109 THEN
+	REMOVEOBJECT fullhealth34,
+	PLACEOBJECT fullhealth34 TanRifle109
+
+
+IF 1 OF on_halfcross THEN
+	TRIGGER addtension,
+	TRIGGERDELAY 1 trucksmoking
+
+
+IF trucksmoking THEN
+	EXPLODE truck 132,
+	PLAYSTREAM DESTROYED_SCRIPT,
+	TRIGGERDELAY 0.8 trucksmoking
+
+IF breakdowntruck THEN
+	EXPLODE truck 135

@@ -1,0 +1,569 @@
+To Do:
+** Look for Bounds Checker Violations.
+-- If selection is made by dragging a box (or using alt-s) and the
+   select tool is selected twice more to unselect the area, the
+   outline of the selection doesn't get erased until you scroll
+   or refresh the map [from Alan]
+-- If a tilegroup is selected in one layer and you press the arrow
+   buttons on the layer bar, the layer changes but the layer bar
+   is not updated [from Alan]
+-- Shift Key should constrain object/group movement in X or Y direction.
+   If you hold the Shift key and drag your selection up or down, it will 
+   constrain to Y axis, if you hold the Shift key and move your 
+   selection left or right you will be constrained to the Y axis. 
+   This is directly from photoshop. [from Nick]
+-- Zoom zoom in and out; 25% 50% 100% 200% and 300% options
+   would make map making much easier. [from Nick & MMoore] 
+-- If tileset can't be found, try loading tileset from map directory
+   before saying it can't be found. [Alan]
+-- There is currently no way to reset a map's ObjectSet/ScenarioSet to NULL.
+-- The Object "cycle" commands should not take effect until button up.
+-- Redo the new map dialog to include a user editable description (text string).
+-- Fix memory leak when cutting/pasting a group of tiles into one of the
+   map windows; it appears to be related to creating a temporary group.
+-- From DavidB, allow user to change the tileset bitmap data (via
+   the tileset properties panel) without effecting groups or 
+   tileattributes. This will maintain the old indices and attributes
+   while using the tile data from the new bitmap.  
+-- Add Background color property for each map instead of defaulting to white.
+   If the user turns off base tile layers or if there are no tiles present
+   and they are viewing the attribute layers with one of the greyscale options,
+   any attributes displayed in white will blend in the map background color.
+-- The bulk of CMapEditorDoc::ResizeMap() and CMapEditorDoc::OnEditCrop()
+   are the same; unify this to avoid future errors.
+-- TileLayer should respond to ID_EDIT_ATTRIBUTES when tiles are selected.
+-- Give the user a way to change the default value assigned to a 
+   tileset attribute and maybe if the user removes a tile's explicitly
+   set attribute value, the tileset should store "NO_ATTRIBUTE" for
+   the tile's attribute and always return the *current* default value
+   whenever the tile's attribute value is retrieved.
+-- Can we use WM_NCMOUSEMOVE messages to turn off the preview
+   without having to capture the mouse?
+-- Add Select All/None operators for the doorway list in CDoorwayView 
+-- Modify Doorway layer to support "Routes" when Bruce is ready.
+-- Add a "Create" method to all map layer types so the layers dialog
+   can just call the pRuntimeClass->Create(CMap *pMap) and have it do the 
+   right thing.
+-- Make the scenario hash key type\player\object instead of 
+   player\type\object so we can determine whether or
+   not the object is deployable more quickly.  Add backward
+   compatibility hack for old scenarios.
+-- Enable the "units" and "resources" directory name preferences.
+-- Add Function to delete player from scenario set.  It should delete all
+   occurrences of this player from all scenarios in all open maps.
+-- Make LayerBar descendant of CToolBar instead of CDialogBar so
+   buttons do not take focus and so we can incorporate better looking
+   images for the buttons.
+-- It would be nice if tile groups preserved their map attributes (which may
+   be user defined) instead of just using the tile attributes as defined in the
+   tileset, yes?
+-- Paint overlay tiles using the direct mask transparency method instead
+   of the color table method. This is the same method used by the objectset
+   and should work on an 8-bit display so long as the data is drawn off-screen.
+   *** TBD: but for some reason this doesn't work with some tileset bitmap widths;
+   It doesn't work for 384 but appears to work for 256 and 1024 
+   (see problem.map, problem.tls)
+-- Add replace operator for tile, attribute and overlay layers; 
+   takes all selected items replaces with current item; already implemented
+   for the object layer.
+-- Add fill operator (for attribute and tile layers)
+-- Edit/View palette operator for Jordan
+-- Add a flag to TileAttribute to say if this attribute is transferrable
+   so user will be able to control which attributes get copied into the
+   map with the "place with attributes" option is selected.
+-- Add Edit>Find operator for TileSetView 
+   to select all tiles with a given attribute value
+-- add check boxes to selectively modify tile attribute values.
+-- Move the army men export functions into a game.dll so Nicky,Andrew, & GenePool
+   can edit/change the export code if they need to.
+-- TBD: what is the difference between using the OFN_EXPLORER flag and
+   not using the OFN_EXPLORER flag?
+-- From David, can't export second tile layer -- can't reproduce
+-- activating a view doesn't always realize the palette correctly
+-- Cut/copy large amounts of data from the map will cause the CArchive to 
+   issue an assertion violation in its flush routine; it only seems to happen
+   in the debug version of the mapeditor.
+-- when you change from one tilelayer to another the temporary group 
+   does not preview or allow you to paste?
+-- Change the item preview box to display the group in proportion.
+-- Don't lose the undo list when layer is deactivated, instead use a global
+   undo limit for the number of undos per level.
+-- Overview does not render the overlay/transparency colors correctly
+   It seems like it might be bug in the device driver; does NOT happen
+   in 256 color display modes. Note: the current workaround is to render
+   off-screen (double-buffer) but this is way too slow.
+-- When base tiles aren't drawn, the overview window will leave trails
+   when the group preview is displayed because there are no tiles being
+   rendered.  The only ways to fix this is to have the overview area
+   call InvalidateRect(rect,TRUE) in it's OnUpdate procedure (but this
+   causes too much flicker when moving the groupPreview around) OR to 
+   finally get the double-buffering to work for the overview area.
+-- Overlay should not display transparent areas of group preview!
+-- Fix copy group from one map to another (Jordan found lock up)
+-- From Jordon, pasting a group from one tileset to the next may
+   change its transparency color even if I copied the palette.
+   Should I copy the transparency color as well?
+-- Modify the CColorButton class to render its border and to
+   indicate when it has focus.  Is there an easier way to do this?
+-- Add layer handlers for ID_EDIT_CLEAR, ID_EDIT_CLEAR_ALL
+-- What are the cview handlers for ID_NEXT_PANE, ID_PREV_PANE and how do I 
+   activate them?
+-- Give the user an option to find duplicates but ignore any tile
+   that has a transparent color in it.
+-- Optimize for update of tileset windows when removing tiles,groups,category items
+-- Add Import option -- imports a bmp as a tileset then
+   creates a map with the appropriate number of tiles; from a UI standpoint
+   this is a little more obvious than creating new map with a blank tileset
+   name, and being prompted for the tileset/bitmap info.
+-- Add zoom option for Duplicate List
+-- Number tiles in the TileSetView across not down
+-- Tileset should display nTilesWide (where nTilesWide is 
+   determined by the tileset bitmap)
+-- Allow the user to replace a tile/group/category by pasting
+   over an existing selection.
+-- Allow the user to 'paste' or drag/drop a bitmap into the
+   tileSet window.  This should automatically carve the bitmap
+   into tiles and add them to the tileSet. 
+-- Get registry to bring up the new map/tileset
+   window when there is no data in the initial map/tileset document
+   (ie when it is created via the standard file>new menu option)
+-- Add find duplicate support for bitmaps other than 8 bit per pixel
+-- Fix loading and use of 24-bit and hi-color tilesets
+-- Give the user a way to select empty tile locations.
+-- Add Help
+
+					Implementation Notes:
+					---------------------
+MapLayers:
+----------
+A MapLayer consists of: 
+1> a tool window that can be installed (CTileSetView, CObjectSetView, etc...)
+2> a way of selecting / deselecting items
+3> a way of placing the active item
+4> a way to draw itself
+5> a way to preview the active item
+6> a way to create a new layer from an existing layer and selection region
+
+Any # of layers can be visible at one time but only one will be editable
+at any given time. Thus a map will contain a linked list of layers.  All
+maps will have at least a base tileset layer.
+
+Object Layer:
+-------------
+An ObjectLayer is like a TileLayer in that selecting an item in the ObjectSet
+will create a preview of the active item, moving the mouse around in the map
+window will move the preview over the map, using the left mouse button will
+place an instance of the item in the ObjectLayer. { Note: since capturing mouse
+input prevents keyboard processing, the object layer does NOT have an active
+preview; instead, the user simple places and object and uses the left/right
+mouse button to drag the object once it is placed.  This was done so the
+arrow keys could be used to tweak the object position while it is selected.}
+
+When the select tool is active, using the left mouse button will select
+one or more objects. Unlike the TileLayer, when one or more objects are
+selected, the user will be able to drag the selection with the left mouse
+button.  The user will also be able to use the up/down/right/left arrow
+keys to nudge the object position.  The + and - will move the object 
+forward and backward respectively. While Ctrl+ and Ctrl- will move the 
+object to the top or bottom of the object list respectively.
+
+Unlike the tileLayer, the ObjectLayer will not respond to the cloneTool.
+
+By default, the object transparency color is located in the upper-left pixel
+of the object bitmap.  At some point we might want to have an option to
+override this behavior.
+  
+An ObjectSet, like a TileSet, is simply a named collection of images.  Unlike
+a TileSet, however, the images in an ObjectSet reside in different files.  The user
+specifies a path to the directory structure containing the object .BMPs.  The program
+will walk the directory structure, creating an object "category" for each subdirectory
+it encounters (one-level deep), and creating an object for each bmp in each subdirectory,
+
+Like the TileSetView, the ObjectSetView will display a global list of all the objects,
+and a tab for each of the object categories.
+
+When the user is editing an ObjectLayer, the ObjectSetView will be installed in the
+MapFrame; when the user is editing a Tile or Overlay Layer, the TileSetView will
+be installed in the MapFrame.
+ 
+Animated Objects:
+-----------------
+In addition to supporting static objects (.BMP), the ObjectSet and ObjectLayer
+will support animated objects (.AXR).  When the ObjectSet is loaded, the MapEditor
+will create a CMapObject for each .BMP file it encounters and a CAnimMapObject
+for each .AXR file it encounters.  This way the user will be able to manipulate
+animated objects in much the same way as they manipulate static objects.
+
+In addition to the object's tileset properties, the property sheet for an
+animated object will contain: a list of sequences, the active sequence, 
+and a checkbox to indicate whether or not the object should animate.
+
+The new tile/group categories implementation:
+---------------------------------------------
+For now a tileset only needs to know if the current item is a tile or a group.
+The view needs to know if it is displaying tiles (and tile categories) or
+groups (and group categories).
+
+The view should also keep track of the user's current category. 0 means
+no category (display the full set of tiles or groups), > 0 = index+1 of the
+tile or group category to display.
+
+For this to work, the user needs a dialog to create, remove. rename, reorder
+their tile/group categories. It will no longer be possible for the user to
+see a visual overview of their categories. I will no longer provide a 
+"Categories" view. The user will just use the tabs in the tileset window
+or the categories/groups dialog to see/modify the category names.
+
+We might not need the "New Category" dialog; Instead let the user hit the
+New button in the "categories..." dialog, auto-fill the name gadget with 
+a unique category name, auto-select the name gadget and new category item
+so the user can modify the name if they want to.
+
+The user will no longer be able to cut/paste whole categories by using the
+"Categories" view.  Instead, the user will have to select all the group/tiles in 
+a source category, cut & paste them into specified destination category.  If the
+destination category does not exist, the user will have to create it first.
+
+I should be able to generalize the category implementation and provide:
+-- a CTileCategory class which consists of a name and a set of 
+   indices (tile,group,object,etc..) Note: I probably shouldn't rename
+   this class to CCategory because of backward compatibility problems
+   with the serialization.
+-- a dialog that takes a title string id (ie: "Tile Categories", 
+   "Group Categories", etc) and a linked list or array of CTileCategory
+   (a linked list would probably be easiest). The dialog would act very
+   much like the layers dialog.  Unlike the layers dialog, this will
+   not be a 'live' dialog  -- the user will not see the changes in their
+   categories until after the dialog exits, thus the dialog will contain
+   OK and CANCEL buttons.
+-- just like with tiles, pasting a group into a group category will add
+   the group to the global array of groups then add the group index to
+   the selected category.  This way a group can belong to multiple 
+   categories.
+
+Tile Attribute Notes:
+---------------------
+This is really gross and complicated, partially because I don't want to code
+myself into a corner.
+
+The MapEditor will provide tile attribute layer(s). The user will be able to see 
+and/or edit the attribute layer(s) so as to fine tune the actual values. 
+I say "layer(s)" because presumably an attribute can be anything from one bit
+to MAX_ATTRIBUTE bits long and, for simplicity, the MapEditor will let the user 
+see/edit the map attributes a single attribute at a time, is this ok?  
+
+>> Yes.  For starters, it is sufficient to give the user a way of creating
+>> a list of default attributes: attribute-name, number of bits, default value
+>> The map editor will then create all the necessary attribute layers on startup.
+
+Each tile in the tileset will be associated with a set of default atttribute values. These
+values will be stored in the tileset so when the user cuts/copies data from one tileset to
+another, the default values will be copied as well. The MapEditor will provide a GUI to 
+allow the user to define/edit these default attribute values. 
+
+>> New tiles will inherit the default attribute values.
+
+The MapEditor will also provide an global option to allow the user to place a tiles' attributes
+in the map's attribute layer when they place the tile in the map.  This option will extend
+to the cut/copy paste operators as well, so if the user cuts/copies a region from one portion
+of the map to another portion of the same map (or different map),  the attribute layer will 
+be cut/copied as well.  
+
+The MapEditor may also need to provide some method of describing how the attributes from 
+the various levels combine in the attribute layer when the 'place attributes' option is 
+active.  
+
+>> It is sufficient to say that attributes in a higher layer override the attributes
+>> in any lower level so when you place an tile in an overlay, its attributes override
+>> the values in the attribute layer but, placing a tile in the base layer will not
+>> effect the attribute layer if the overlay layer is visible? exists?
+
+** This is not implemented yet (8/30/96)
+
+In the TileSetView listCtrl, let the user right click on a tile to bring up the
+properties/attribute-editor for that tile. 
+ 
++==============+========+
+| Attribute    | Value  |
++--------------+--------+
+| name1        | value1 |
+| name2        | value2 |
+| ...          |        |
+
+For now, attributes can have from 1 to 15 bits (I reserve 1 bit for selection)
+
+To adjust the number of bits for a given named attribute means:
+1> providing an attribute layer properties panel and warning the user
+   that this is a highly destructive action and requires that all maps
+   using this attribute and all tilesets using this attribute be open
+   for this to work!
+2> notifying all open maps that the named attribute has the new # of bits;
+   any map containing this attribute would have to ensure that all
+   values for this attribute were in the correct range. 
+3> notifying all open tilesets that the named attribute has a new # of bits;
+   any tileset containing this attribute would have to ensure that
+   all values for this attribute were in the correct range.
+
+If a value is out of range, the value will just be set to the max value.
+Note: as a safety precaution, when we load a map we should check that it's
+attribute #bits match its tileset.  If they don't match, ask the user which
+one is correct. 
+
+If a tileset contains attributes that the map doesn't have,
+create new attribute layers. For each tile/overlay layer, set 
+the map's attribute value to the default value for that tile (in
+order from back to front)
+
+If the map has attributes that the tileset doesn't have, 
+add default attributes for each tile. 
+
+To add an attribute set to a tileset, copy one tile from source
+tileset to destination tileset.  If the attributes don't exist in the
+destination tileset, ask the user if the want to add them. If they
+say yes, the attributes are added and all tiles are set to the
+default values except for the tile that was pasted -- it maintains the
+values that were cut/copied.  If the destination tileset has
+other attributes, the pasted tile takes on the default values 
+for those atrributes. If the tilesets have conflicting
+attributes (same name, different # of bits or default values),
+signal an error.
+
+
+Scenario Notes:
+---------------
+A map may contains any number of scenario layers.  A scenario consists a name
+and a set of objects that the user may allocate or place onto the map for each 
+player/enemy.  To define a scenario the user must provide:
+1> a directory containing a folder for each player/enemy type
+2> each of these folders may contain a directory of deployable "units"
+   and a folder of non-deployable "resources"  -- these folder names 
+   will be a user preference
+3> a set of .bmp files to be used for each object/resource.
+
+A sample directory structure might look like:
+
+							  [Scenario]
+		   +----------------------+-----------------------------+
+       [Player]                [Enemy1]                     [Enemy2]
+	+---------+               +-------+                     +-------+
+  [units][resources]       [units][resources]            [units][resources]
+  x.bmp      a.bmp          x.bmp    a.bmp               x.bmp      a.bmp
+  y.bmp      b.bmp          y.bmp    b.bmp               q.bmp      c.bmp
+                                     c.bmp        
+
+The user will be able to create one or more scenarios for the same map by
+setting the scenario directory for the map and creating one or more "scenario"
+layers. 
+
+When the user creates a new scenario layer, the tool window/view for the
+scenario will consist of: a tab to select player/enemy type, a scrolling
+list of all the deployable units with an editable area for the total number
+and a non-editable area showing the number currently deplyed,
+and a scrolling list of all the non-deployable resources with an editable
+area for the total number of be allocated.
+
+It is up to the artists to provide different graphic images for each
+player/enemy unit/resource so the map-makers will be able to visually
+distinguish between the items on the map. The mapEditor will, however,
+keep track of the object id (playerEnemy-type/unitResource-type/bmp) like 
+it does for the objects in the objectset so when a user right clicks a 
+scenario object the correct item will be highlighted.
+
+
+Dib/Palette/Transparency Notes:
+-------------------------------
+There appears to be a problem with stretchblt (or anisotropic views) and
+transparency -- the colors come out wrong on an index-based (ie 8-bit) display.
+It might be that StretchBlt is using directly the system palette and
+not the dib palette -- why it works with BitBlit is beyond me.
+
+One way around this is to do the drawing off-screen
+full size (using bitblt) then use StretchBlt to blit the final/composited 
+image to the screen.  This works but can be very slow.
+
+Another way around this MIGHT be: to remap the objects to the system palette
+that will be used when they are displayed.  We can do this for the object layer
+because we don't have to save out the dibs/bmps for the objects after we load them
+so we can muck with the bits all we want.  If the artists change the palette
+used to display the objects, we might want to reload all the objects from disk
+so we will get the best possible mapping from the original object data to the
+new palette.  Of course, if the user loads two maps with different tilesets (and
+palettes) and the same object set, we're screwed because there is only one
+instead of the object set in memory at a given time -- I guess we can live with 
+this limitation.
+
+Note: we can't take this approach with the tileset because we have to save out
+the tileset dib for the game and if we remap the colors to the system palette we
+may lose data....
+
+
+The ArmyMen "Doorway" Layer:
+-----------------------------
+This is a game specific layer that whose "toolview" will contain a button that
+will invoke game specific code to compute AI doorways.  When the button is pressed,
+the layer will send the following information to the game dll
+    An array M x N values based on one or more of the attribute layers
+	A boolean flag saying whether to compute all values or to update values
+	An array some number of "doorways" (left,center,right points) to be filled in by the dll
+	A reference to the number of elements allocated for the answer array
+    TBD:  a scrath MxN integer array for use by the AI code.
+
+The "GetDoors" function will then compute and return the number of doorways.
+If the number of doorways that could be computed is larger than the number allocated,
+the GetDoors function will return 0 if normal, or number of doorways that would have
+been returned if not hit limit so the "doorway" layer can resize the array and try
+again.
+
+Once the "GetDoors" function returns, the map layer will display the lines connecting
+the left,right,center of each doorway by highlighting the tile locations. David assures
+me that doorways will not overlap and if they do just draw them in the order that I get 
+them.
+
+The "doorway" layer will also need controls for setting the color used to display 
+the left, right and center points of the doorway as well as the path inbetween.
+We may also want to have options to toggle on/off the path inbetween as well as
+have a scrolling list of doorways that the user can display or hide at will. It depends
+how fancy we want to get with this.
+
+I really should seperate this functionality into a seperate dll because not 
+all games will want this functionality or they may want to handle it differently.
+I need to think about this....
+
+Object Attribute Notes:
+-----------------------
+Since objects are just .bmp files in a directory, any attributes associated
+with an object must be stored in the maps to which the objects are attached. 
+This provides the flexibility that different map instances of an object may
+have different attributes BUT is very wasteful if in fact all instances of
+an object are to have the SAME attribute values.
+
+When an object is placed on the map, it will inherit the attribute values
+associated with the map location of the object's hot-spot -- assuming,
+of course, that the object's hot-spot represents a valid map location.
+If the map does NOT contain attribute layers but the tileset does, the
+object will inherit the attribute values of the top-most tile associated
+with the map location of the object's hot-spot.
+
+If the user right-clicks (?) on a map object, an object menu will appear
+with the following options: move, cut, copy, properties.  Selecting the
+"properties" option will allow the user to view/edit/reset the object 
+properties.  
+
+Implementation Choices: <sigh>
+----------------------
+1> store a linked-list or array of attribute-value pairs per object instance;
+   this is much too wasteful: too much overhead per object even if object does
+   not override any of its attributes:
+       sizeof(CArray<short,short>) = 20, 
+       sizeof(CTypedPtrList<CPtrList,void *>)=28
+	   or the old fashioned way:
+	     short count + array of attribute-value shorts
+   Furthermore it complicates adding/deleting attribute layers.
+   Requires searching for attribute-match when you want to render an 
+   attribute layer.
+2> store a table mapping a object instance to value in each attribute layer;
+   this would be simple to implement, would not duplicate attribute information,
+   and would not really impact instance creation/deletion too much but is
+   still fairly wasteful: (table + (pointer and value) per instance) per attribute.
+   and it complicates serialization because you can't serialize pointers directly;
+   you have to convert the pointers to a serializable id on load/store.  
+3> store an array of object attribute values in each attribute layer.
+   this complicates object creation and deletion as well as cropping 
+   the map. It wastes (an array + (a value) per instance) per attribute
+   + an object count + an index per instance (for easy access). This is
+   pretty efficient if every object is likely to have its own distinct 
+   set of attribute values.
+
+If, however, we only need to store an attribute value for an instance if
+the value is explicitly changed, the second approach might be more pratical.
+According to Nicky, 99% of the time the default/inherited value is just fine.
+
+Grr. Of course, there is the added problem that the attribute layer does not have
+object layering information (ie: what is in-front of what) so if we want the
+attribute layer to display the object attributes with the top-most object's
+attribute taking priority over lower object attributes we have to do a sort
+of mark&sweep approach to drawing the attribute layer.  Again this isn't 
+too bad if not too many objects have their own attributes but it still
+means walking all the object lists before rendering each attribute layer
+and somehow keeping track of which attribute layer locations have been
+filled in by the object attributes.  
+
+DirectDraw Notes:
+-----------------
+All DIBs become DirectDraw off-screen surfaces.  When you load a DIB you
+must convert it to the primary surface format so that we can blit to the
+primary surface when we need to.  For this to work on an 8-bit display, we
+need to know what palette we will use to display the data.  For tilesets
+(and maps) this is easy, the data will be displayed with the tileset palette.
+For objectsets, we will also be displaying the data with the tileset palette
+and since we do NOT allow objectsets to be viewed without an associated map,
+we know we will always have a tileset palette.
+
+However, objectsets can be shared between maps and maps can use different
+tilesets and thus different palettes.  Oh well, too bad. When we load in the
+objects we will have to convert them to the whatever palette is in effect
+when it is loaded.  The user can always "Revert" the objectset to force
+it to reload. 
+
+Yuk. If we want the user to be able to change the palette at any time,
+not only do we have to change the palette we have to reconvert the dibs
+because we can't count on windows to do the right thing, can we?
+
+Furthermore, since the user can add tiles to the tileset, we have to keep
+the dib and the surface around because we don't necessarily want to save 
+the remapped tileset data, do we?  If the user happens to be in a true color 
+or hi-color mode, we will have lost critical index information. According to
+David Bunch, adding/deleting tiles from the tileset is an infrequent enough
+operation that we could just load the file add/remove tiles and write out
+a temporary file (so we don't make the changes permanent until the user
+actually saves the tileset).
+
+Notes on Cut/Copy/Paste under NT
+--------------------------------
+Under NT I was experiencing a heap corruption problem after
+cutting or copying data to the clipboard, pasting it in the map, then
+cutting or copying additional data.  This appears to be a bug the
+NT Clipboard code; the following steps will cause the NT heap to be
+corrupted:
+
+    // create a shared memory archive
+	CSharedFile	memFile;
+	CArchive ar(&memFile, CArchive::store|CArchive::bNoFlushOnDelete);
+
+	DoCutCopyPaste(ar, FALSE);
+	ar.Flush();
+
+	HGLOBAL hData = memFile.Detach();
+
+
+	if (OpenClipboard(hWnd))
+	{
+	     EmptyClipboard(); 
+		 ::SetClipboardData(g_nTileSetFormat, hData);
+		 CloseClipboard();
+	}
+	 
+The call to EmptyClipboard() causes your hData pointer to be deallocated
+if your process was the last clipboard owner.  The subsequent call to
+SetClipboardData() places a zero length file on the clipboard which,
+if not handled correctly, can corrupt the stack.
+
+To work around this problem, I modified the code to create the
+shared memory archive after the call to EmptyClipboard().  Of 
+course this means that the serialization code must be enclosed
+in a TRY/CATCH so the clipboard can be closed if there is 
+an error during the serialization.
+
+Furthermore, when pasting data using the CSharedFile, we have
+to created and destroyed the archive as follows:
+
+HANDLE hData = ::GetClipboardData(g_nTileSetFormat);
+if (hData != NULL)
+{
+	CSharedFile memFile.SetHandle(hData,FALSE);
+	CArchive ar(&memFile, CArchive::load|CArchive::bNoFlushOnDelete);
+	...do the load...
+	memFile.Detach(); // before the CSharedFile destructor is called.
+}
+
+What a pain.

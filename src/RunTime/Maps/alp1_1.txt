@@ -1,0 +1,259 @@
+		// ALPINE Mission 2 Title Besiege One to Save the Other
+
+// pads 0-1 defined in mission 1
+
+PAD camppath1 41	GreenRifle201 > 0
+PAD camppath2 40	GreenRifle201 > 0
+PAD camppath3 42	GreenRifle201 > 0
+PAD bridgepath1 43	GreenRifle201 > 0
+PAD bridgepath2 43	GreenRifle201 > 0
+PAD loggingcamp 34	GREEN SARGE > 0
+PAD sargeincamp 0	GREEN SARGE > 0
+PAD guard 12		//deploys tan troops pinning down green npc
+PAD sargeintent 23 	GREEN SARGE > 0
+PAD medicaltentpad 23 	GREEN SARGE > 0 // used for win conditions
+PAD medicaltentpad1 23	GreenRifle201 > 0	// used for win conditions
+PAD medicaltentpad2 23	GreenRifle202 > 0	// used for win conditions
+PAD guard2 30	//deploys tan troops pinning down green npc
+PAD campcenter1 24	GreenRifle201 > 0
+PAD stonecircle 31
+PAD trail1 32
+PAD rescue 33		GREEN SARGE > 0
+PAD killpinned 51
+PAD regenerate1 61
+PAD regenerate2 62
+PAD southbridge 10 	GREEN SARGE > 0
+PAD closingonpin1 30	GREEN SARGE > 0
+PAD closingonpin2 34	GREEN SARGE > 0
+PAD newdest 67
+PAD tripjeep 35		GREEN SARGE > 0
+
+PAD closetocamp1 22	GreenRifle201 > 0
+PAD closetocamp2 10	GreenRifle201 > 0
+
+
+PAD sargehome 99	GREEN SARGE > 0
+
+
+
+	// ** UNIT DISPERSEMENT ** //
+//8 Total
+//TanRifle201, TanRifle202, TanRifle203, undeployed surrounding trapped green men, 1 trooper each
+//TanRifle204, TanRifle205 undeployed north of logging camp, 1 trooper each
+//TanRifle206 undeployed southwest corner, 1 trooper
+//GreenRifle201, GreenRifle202 deployed in rock cluster
+
+
+IF startup THEN 
+	TRIGGER reducetension,
+	TRIGGER endlooping,
+	SETAICONTROL GreenRifle201,
+	DEPLOY TanRifle206 ATMODE DEFEND,
+	TRIGGER timetohealtest,
+	ORDER GreenRifle201 GOTO GreenRifle201 INMODE DEFEND THEN ATMODE DEFEND,
+	HEAL GreenJeep1 -50,
+	ORDER TanBazooka4 GOTO TanBazooka4 INMODE IGNORE THEN ATMODE KNEELFIRE
+
+
+
+	// ** GAME TERMINATION CONDITIONS ** //
+
+
+// Lose if sarge dies.
+IF killed_GreenSarge THEN 
+	TRIGGERDELAY 2 tanwins
+
+// Lose if both npc green units die before medicalwin happens.
+IF ALLOF killed_GreenRifle201 BUTNOT medicalwin THEN
+	TRIGGERDELAY 2 tanwins
+	
+
+// Lose if medical tent destroyed by foe at any time.
+IF killed_greenmash THEN 
+	TRIGGERDELAY 2 tanwins
+
+
+
+//Music
+IF addtension THEN
+	AUDIO HIGHINTENSITY
+
+IF reducetension THEN
+	AUDIO LOWINTENSITY
+
+
+
+
+
+	// ** GAME EVENTS ** //
+
+//medicalwin
+IF 1 OF heal1 THEN
+	TRIGGERDELAY 3 medicalwin
+
+IF medicalwin THEN
+	INVULNERABLESARGE,
+	SETUSERCONTROL GreenRifle201,
+	TRIGGERDELAY 1 greenwins
+
+
+//Heal units if sarge is in the tent with the units
+IF on_sargeintent AFTER off_sargeintent AND healing1 AFTER NULL THEN
+	TRIGGER heal1
+
+IF on_sargehome AFTER off_sargehome AND healing1 AFTER NULL THEN
+	TRIGGER heal1
+
+
+IF healing1 BUTNOT on_sargeintent THEN
+	TRIGGERDELAY 10 gotomedtentfool
+
+IF gotomedtentfool THEN
+	TRIGGERDELAY 15 gotomedtentfool,
+	PLAYSTREAM SARGE_GETTOMED
+
+//heal1, heal2
+
+IF heal1 THEN
+	HEAL GreenRifle201 100
+
+//triggers deployment of tan units guarding pinned down green troops
+IF 1 OF on_guard THEN
+	TRIGGER Guard1
+
+IF 1 OF on_guard2 THEN
+	TRIGGER Guard2
+
+IF Guard1 BUTNOT Guard2 THEN
+	DEPLOY TanRifle201 ATMODE DEFEND,
+	DEPLOY TanRifle202 ATMODE DEFEND,
+	DEPLOY TanRifle203 ATMODE DEFEND
+
+IF Guard2 BUTNOT Guard1 THEN
+	DEPLOY TanRifle201 ATMODE DEFEND,
+	DEPLOY TanRifle202 ATMODE DEFEND,
+	DEPLOY TanRifle203 ATMODE DEFEND
+ 
+
+
+
+
+// Tan206 marches to medicaltent
+IF TIMEABSOLUTE 10 THEN
+	ORDER TanRifle206 GOTO greenmash INMODE RETURNFIRE THEN ATMODE ATTACK
+
+ 
+//Tan204  and Tan205 marches to loggingcamp
+IF TIMEABSOLUTE 20 THEN
+	DEPLOY TanRifle204 ATMODE ATTACK,
+	DEPLOY TanRifle205 ATMODE ATTACK,
+	ORDER TanRifle204 GOTO loggingcamp INMODE ATTACK THEN ATMODE ATTACK,
+	ORDER TanRifle205 GOTO loggingcamp INMODE ATTACK THEN ATMODE ATTACK
+
+IF TIMEABSOLUTE 180 THEN
+	TRIGGER makevulnerable2
+
+
+// If Sarge is in the vicinity alert the enemy units and go pinned troops
+IF 1 OF on_rescue THEN
+	TRIGGER makevulnerable2,
+	DEPLOY TanRifle202 ATMODE ATTACK,
+	DEPLOY TanRifle108 ATMODE ATTACK,
+	DEPLOY TanRifle311 ATMODE ATTACK,
+	DEPLOY TanRifle312 ATMODE ATTACK,
+	ORDER TanRifle311 GOTO GreenRifle201 INMODE ATTACK THEN ATMODE ATTACK,
+	ORDER TanRifle312 GOTO GreenSarge INMODE ATTACK THEN ATMODE ATTACK,
+	ORDER TanRifle108 GOTO GreenSarge INMODE ATTACK THEN ATMODE ATTACK,
+	TRIGGER gounit2,
+	TRIGGER addtension,
+	TRIGGER backtomedtent1,
+	SETUSERCONTROL GreenRifle201
+
+IF gounit2 THEN SEQUENTIAL
+	ORDER GreenRifle201 GOTO bridgepath2 INMODE IGNORE THEN ATMODE DEFEND TRIGGER gounit2,
+	ORDER GreenRifle201 GOTO newdest INMODE IGNORE THEN ATMODE DEFEND
+
+IF hit_GreenRifle201 BUTNOT makevulnerable2 THEN
+	TRIGGER pinnedrand,
+	HEAL GreenRifle201 75
+
+IF ONEOF on_closetocamp1 on_closetocamp2 THEN
+	SETAICONTROL GreenRifle201,
+	ORDER GreenRifle201 GOTO newdest INMODE IGNORE THEN ATMODE DEFEND TRIGGER healing1
+
+
+
+
+
+// enable mash tents
+IF startup THEN
+	TRIGGER setupgreen,
+	TRIGGERDELAY 0.1 setmash
+
+IF setupgreen THEN
+	TRIGGER gsmedtime
+
+IF setmash THEN 
+	TRIGGER greenmashready
+
+IF on_medicaltentpad AFTER off_medicaltentpad AND gsmedtime AFTER NULL AND startup AFTER killed_greenmash THEN
+	HEAL ME	10,
+	TRIGGERDELAY 1.5 gsmedtime
+
+
+IF on_medicaltentpad1 BUTNOT killed_greenmash THEN
+	HEAL ME 100
+
+
+
+
+
+
+
+// keeping the pressure on sarge to get to the pinned down soldiers
+IF killed_TanRifle205 THEN
+	TRIGGERDELAY 40 resurrect2
+
+IF resurrect2 BUTNOT gounit1 THEN
+	RESURRECT TanRifle205 regenerate2,
+	ORDER TanRifle205 GOTO TanRifle205 INMODE ATTACK THEN ATMODE ATTACK
+
+IF killed_TanRifle204 THEN
+	TRIGGERDELAY 40 resurrect1
+
+IF resurrect1 BUTNOT gounit1 THEN
+	RESURRECT TanRifle204 regenerate1,
+	ORDER TanRifle204 GOTO TanRifle204 INMODE ATTACK THEN ATMODE ATTACK
+
+
+IF TIMEABSOLUTE 180 THEN
+	DEPLOY TanFlamer1 ATMODE ATTACK,
+	TRIGGER addtension,
+	TRIGGERDELAY 15 reducetension,
+	ORDER TanFlamer1 GOTO killpinned INMODE ATTACK THEN ATMODE ATTACK
+
+
+IF on_southbridge THEN
+	DEPLOY TanGrenadier4 ATMODE ATTACK
+
+
+IF 1 OF on_closingonpin1 on_closingonpin2 THEN
+	DEPLOY TanRifle33 ATMODE ATTACK,
+	ORDER TanRifle33 GOTO GreenSarge INMODE ATTACK THEN ATMODE ATTACK
+
+
+IF killed_TanGrenadier6 THEN
+	REMOVEOBJECT para1,
+	PLACEOBJECT para1 TanGrenadier6
+
+IF killed_TanBazooka16 THEN
+	REMOVEOBJECT baz1,
+	PLACEOBJECT baz1 TanBazooka16
+
+
+IF 1 OF on_tripjeep THEN
+	DEPLOY TanFlamer269 ATMODE ATTACK
+
+
+IF startup THEN TRIGGER nesstest // see bw before removing this line!
+

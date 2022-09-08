@@ -1,0 +1,504 @@
+
+// see mheader_1.txt for how to make multiplayer scripts
+// Only the host will execute TRIGGER commands.
+
+	// multiple player capture the flag mission (capture each players flag at least once)
+
+// THIS NEXT IF IS ESSENTIAL. It tells the system that this is a capture game, meaning enforce rules about
+// the flag always being on a trafficable tile (eg drop on a bridge and destroy bridge is not fatal).
+IF startup THEN TRIGGER	3DOCaptureGame
+
+
+// where flags must be brought to
+PAD GreenPad 13  GREEN SARGE > 0	// where green must bring enemy flag
+PAD TanPad 12   TAN SARGE > 0		// where tan must bring enemy flag
+PAD BluePad 14   BLUE SARGE > 0		// where blue must bring enemy flag
+PAD GrayPad 15   GRAY SARGE > 0		// where gray must bring enemy flag
+// where dead sarges resurrect
+PAD GreenLive1 50	
+PAD GreenLive2 51	
+PAD GreenLive3 52	
+PAD TanLive1 60
+PAD TanLive2 61
+PAD TanLive3 62
+PAD BlueLive1 70
+PAD BlueLive2 71
+PAD BlueLive3 72
+PAD GrayLive1 80
+PAD GrayLive2 81
+PAD GrayLive3 82
+
+// resurrect any dead sarges randomly in their camp
+IF killed_GreenSarge THEN TRIGGERDELAY 3 resgreen
+IF killed_TanSarge THEN TRIGGERDELAY 3 restan
+IF killed_BlueSarge THEN TRIGGERDELAY 3 resblue
+IF killed_GraySarge THEN TRIGGERDELAY 3 resgray
+
+IF resgreen THEN RANDOM
+	RESURRECT ME GreenLive1,
+	RESURRECT ME GreenLive2,
+	RESURRECT ME GreenLive3
+IF restan THEN RANDOM
+	RESURRECT ME TanLive1,
+	RESURRECT ME TanLive2,
+	RESURRECT ME TanLive3
+IF resblue THEN RANDOM
+	RESURRECT ME BlueLive1,
+	RESURRECT ME BlueLive2,
+	RESURRECT ME BlueLive3
+IF resgray THEN RANDOM
+	RESURRECT ME GrayLive1,
+	RESURRECT ME GrayLive2,
+	RESURRECT ME GrayLive3
+	
+
+
+// place and mark flags of players who are playing past setup phase
+IF startup BUTNOT nogreen THEN
+	REMOVEOBJECT greenflag1,
+	PLACEOBJECT greenflag1 gflagbase,   
+	MAKESTRATEGIC greenflag1
+IF startup BUTNOT notan THEN
+	REMOVEOBJECT tanflag1,
+	PLACEOBJECT tanflag1 tflagbase,   
+	MAKESTRATEGIC tanflag1
+IF startup BUTNOT noblue THEN
+	REMOVEOBJECT blueflag1,
+	PLACEOBJECT blueflag1 bflagbase,
+	MAKESTRATEGIC blueflag1
+IF startup BUTNOT nogray THEN
+	REMOVEOBJECT grayflag1,
+	PLACEOBJECT grayflag1 grflagbase,   
+	MAKESTRATEGIC grayflag1
+
+// cancel flags of any player leaving the game
+IF ONEOF greennotplaying greenleftearly THEN TRIGGERDELAY 1 greengone
+IF greengone BUTNOT keepai THEN
+	REMOVEOBJECT greenflag1,
+	TRIGGER nogreen,
+	TRIGGER grayhasgreen,
+	TRIGGER bluehasgreen,
+	TRIGGER tanhasgreen
+IF ONEOF tannotplaying tanleftearly THEN TRIGGERDELAY 1 tangone
+IF tangone BUTNOT keepai THEN
+	REMOVEOBJECT tanflag1,
+	TRIGGER notan,
+	TRIGGER grayhastan,
+	TRIGGER bluehastan,
+	TRIGGER greenhastan
+IF ONEOF bluenotplaying blueleftearly THEN TRIGGERDELAY 1 bluegone
+IF bluegone BUTNOT keepai THEN
+	REMOVEOBJECT blueflag1,
+	TRIGGER noblue,
+	TRIGGER greenhasblue,
+	TRIGGER tanhasblue,
+	TRIGGER grayhasblue
+IF ONEOF graynotplaying grayleftearly THEN TRIGGERDELAY 1 graygone
+IF graygone BUTNOT keepai THEN
+	REMOVEOBJECT grayflag1,
+	TRIGGER nogray,
+	TRIGGER greenhasgray,
+	TRIGGER bluehasgray,
+	TRIGGER tanhasgray
+
+
+// these events happen when flag of a color was last dropped or started dropped
+IF startup THEN   // initialize nobody has a flag events 
+	TRIGGER NoGreenFlag,
+	TRIGGER NoTanFlag,
+	TRIGGER NoBlueFlag,
+	TRIGGER NoGrayFlag
+
+IF drop_GreenSarge_TANFLAG THEN
+	TRIGGER NoTanFlag
+IF drop_GreenSarge_BLUEFLAG THEN
+	TRIGGER NoBlueFlag
+IF drop_GreenSarge_GRAYFLAG THEN
+	TRIGGER NoGrayFlag
+
+IF drop_TanSarge_GREENFLAG THEN
+		TRIGGER NoGreenFlag
+IF drop_TanSarge_BLUEFLAG THEN
+	TRIGGER NoBlueFlag
+IF drop_TanSarge_GRAYFLAG THEN
+	TRIGGER NoGrayFlag
+
+IF drop_BlueSarge_GREENFLAG THEN
+	TRIGGER NoGreenFlag
+IF drop_BlueSarge_TANFLAG THEN
+	TRIGGER NoTanFlag
+IF drop_BlueSarge_GRAYFLAG THEN
+	TRIGGER NoGrayFlag
+
+IF drop_GraySarge_GREENFLAG THEN
+	TRIGGER NoGreenFlag
+IF drop_GraySarge_TANFLAG THEN
+	TRIGGER NoTanFlag
+IF drop_GraySarge_BLUEFLAG THEN
+	TRIGGER NoBlueFlag
+
+// here is where a flag has been successfully capture by a player
+
+IF get_GreenSarge_TANFLAG AFTER NoTanFlag AND on_GreenPad AFTER off_GreenPad THEN 
+	REMOVEOBJECT tanflag1,
+	PLACEOBJECT tanflag1 tflagbase, 
+	SHOWMESSAGE "Green captured a tan flag",
+	TRIGGER greenhastan
+
+IF get_GreenSarge_BLUEFLAG AFTER NoBlueFlag AND on_GreenPad AFTER off_GreenPad THEN 
+	REMOVEOBJECT blueflag1,
+	PLACEOBJECT blueflag1 bflagbase, 
+	SHOWMESSAGE "Green captured a blue flag",
+	TRIGGER greenhasblue
+
+IF get_GreenSarge_GRAYFLAG AFTER NoGrayFlag AND on_GreenPad AFTER off_GreenPad THEN 
+	REMOVEOBJECT grayflag1,
+	PLACEOBJECT grayflag1 grflagbase,  
+	SHOWMESSAGE "Green captured a gray flag",
+	TRIGGER greenhasgray
+
+
+IF get_TanSarge_GREENFLAG AFTER NoGreenFlag AND on_TanPad AFTER off_TanPad THEN 
+	REMOVEOBJECT greenflag1,
+	PLACEOBJECT greenflag1 gflagbase, 
+	SHOWMESSAGE "Tan captured a green flag",
+	TRIGGER tanhasgreen
+
+IF get_TanSarge_BLUEFLAG AFTER NoBlueFlag AND on_TanPad AFTER off_TanPad THEN 
+	REMOVEOBJECT blueflag1,
+	PLACEOBJECT blueflag1 bflagbase, 
+	SHOWMESSAGE "Tan captured a blue flag",
+	TRIGGER tanhasblue
+IF get_TanSarge_GRAYFLAG AFTER NoGrayFlag AND on_TanPad AFTER off_TanPad THEN 
+	REMOVEOBJECT grayflag1,
+	PLACEOBJECT grayflag1 grflagbase, 
+	SHOWMESSAGE "Tan captured a gray flag",
+	TRIGGER tanhasgray
+
+IF get_BlueSarge_GREENFLAG AFTER NoGreenFlag AND on_BluePad AFTER off_BluePad THEN 
+	REMOVEOBJECT greenflag1,
+	PLACEOBJECT greenflag1 gflagbase, 
+	SHOWMESSAGE "Blue captured a green flag",
+	TRIGGER bluehasgreen
+IF get_BlueSarge_TANFLAG AFTER NoTanFlag AND on_BluePad AFTER off_BluePad THEN 
+	REMOVEOBJECT tanflag1,
+	PLACEOBJECT tanflag1 tflagbase, 
+	SHOWMESSAGE "Blue captured a tan flag",	
+	TRIGGER bluehastan
+IF get_BlueSarge_GRAYFLAG AFTER NoGrayFlag AND on_BluePad AFTER off_BluePad THEN 
+	REMOVEOBJECT grayflag1,
+	PLACEOBJECT grayflag1 grflagbase,  
+	SHOWMESSAGE "Blue captured a gray flag",
+	TRIGGER bluehasgray
+
+IF get_GraySarge_GREENFLAG AFTER NoGreenFlag AND on_GrayPad AFTER off_GrayPad THEN 
+	REMOVEOBJECT greenflag1,
+	PLACEOBJECT greenflag1 gflagbase,  
+	SHOWMESSAGE "Gray captured a green flag",
+	TRIGGER grayhasgreen
+IF get_GraySarge_TANFLAG AFTER NoTanFlag AND on_GrayPad AFTER off_GrayPad THEN 
+	REMOVEOBJECT tanflag1,
+	PLACEOBJECT tanflag1 tflagbase,  
+	SHOWMESSAGE "Gray captured a tan flag",
+	TRIGGER grayhastan
+IF get_GraySarge_BLUEFLAG AFTER NoBlueFlag AND on_GrayPad AFTER off_GrayPad THEN 
+	REMOVEOBJECT blueflag1,
+	PLACEOBJECT blueflag1 bflagbase,   
+	SHOWMESSAGE "Gray captured a blue flag",
+	TRIGGER grayhasblue
+
+
+// THIS IS ESSENTIAL TO NOTIFY gamecore to update screen display of flags
+IF ALLOF   greenhastan THEN NOTIFY GREEN TAN 1
+IF ALLOF   greenhasblue THEN NOTIFY GREEN BLUE 1
+IF ALLOF   greenhasgray THEN NOTIFY GREEN GRAY 1
+IF ALLOF   tanhasgreen THEN NOTIFY TAN GREEN 1
+IF ALLOF   tanhasblue THEN NOTIFY TAN BLUE 1
+IF ALLOF   tanhasgray THEN NOTIFY TAN GRAY 1
+IF ALLOF   bluehasgreen THEN NOTIFY BLUE GREEN 1
+IF ALLOF   bluehastan THEN NOTIFY BLUE TAN 1
+IF ALLOF   bluehasgray THEN NOTIFY BLUE GRAY 1
+IF ALLOF   grayhasgreen THEN NOTIFY GRAY GREEN 1
+IF ALLOF   grayhastan THEN NOTIFY GRAY TAN 1
+IF ALLOF   grayhasblue THEN NOTIFY GRAY BLUE 1
+
+// this triggers the standard multiplayer win after timedelay and lockout of others winning
+IF ALLOF  startup greenhastan greenhasblue greenhasgray THEN 
+	TRIGGER greenwon
+IF ALLOF  startup tanhasgreen tanhasblue tanhasgray THEN 
+	TRIGGER tanwon
+IF ALLOF  startup bluehastan bluehasgreen bluehasgray THEN 
+	TRIGGER bluewon
+IF ALLOF  startup grayhastan grayhasblue grayhasgreen THEN 
+	TRIGGER graywon
+
+
+
+
+//ai self playing code
+
+
+// if there is ai in the game, launch attacks
+IF startup THEN TRIGGERDELAY 10 considerattack
+IF ALLOF considerattack keepai THEN TRIGGER attackrandom
+
+IF attackrandom THEN RANDOM
+	TRIGGERDELAY 45 attack,
+	TRIGGERDELAY 55 attack,
+	TRIGGERDELAY 45 attack,
+	TRIGGERDELAY 65 attack,
+	TRIGGERDELAY 45 attack,
+	TRIGGERDELAY 75 attack
+
+// pick someone to attack. we must eventually attack all, we hope
+IF attack THEN RANDOM
+	TRIGGER assaultgreen,
+	TRIGGER assaulttan,
+	TRIGGER assaultblue,
+	TRIGGER assaultgray
+
+
+// restart a new attack every minute
+IF assaultgreen THEN 
+	TRIGGER pickattackergreen
+IF assaulttan THEN 
+	TRIGGER pickattackertan
+IF assaultblue THEN 
+	TRIGGER pickattackerblue
+IF assaultgray THEN 
+	TRIGGER pickattackergray
+
+// see which attacks to ignore in the future
+IF grayhuman THEN
+	TRIGGER graygottan,
+	TRIGGER graygotblue,
+	TRIGGER graygotgreen
+IF bluehuman THEN
+	TRIGGER bluegottan,
+	TRIGGER bluegotgray,
+	TRIGGER bluegotgreen
+IF tanhuman THEN 
+	TRIGGER tangotgreen,
+	TRIGGER tangotblue,
+	TRIGGER tangotgray
+IF greenhuman THEN
+	TRIGGER greengottan,
+	TRIGGER greengotblue,
+	TRIGGER greengotgray
+IF greenhastan THEN TRIGGER greengottan
+IF greenhasblue THEN TRIGGER greengotblue
+IF greenhasgray THEN TRIGGER greengotgray
+IF tanhasblue THEN TRIGGER tangotblue
+IF tanhasgray THEN TRIGGER tangotgray
+IF tanhasgreen THEN TRIGGER tangotgreen
+IF bluehasgreen THEN TRIGGER bluegotgreen
+IF bluehastan THEN TRIGGER bluegottan
+IF bluehasgray THEN TRIGGER bluegotgray
+IF grayhasgreen THEN TRIGGER graygotgreen
+IF grayhasblue THEN TRIGGER graygotblue
+IF grayhastan THEN TRIGGER graygottan
+IF ALLOF graygottan bluegottan greengottan THEN TRIGGER tandone
+IF ALLOF graygotblue greengotblue tangotblue THEN TRIGGER bluedone
+IF ALLOF bluegotgreen tangotgreen graygotgreen THEN TRIGGER greendone
+IF ALLOF bluegotgray tangotgray greengotgray THEN TRIGGER graydone
+
+
+// random ai army goes after target sarge
+// if you pick a human army, try again after brief interval to avoid recursive loop if random bad
+IF ALLOF pickattackergreen greendone THEN // find someone else to attack
+	SETTRIGGER greendone,
+	TRIGGERDELAY 1 attack
+IF pickattackergreen BUTNOT greendone THEN RANDOM
+	TRIGGER blue2green,
+	TRIGGER gray2green,
+	TRIGGER tan2green
+	// human cant be ordered to go attack
+IF ALLOF blue2green bluehuman THEN 
+	SETTRIGGER bluehuman,
+	TRIGGERDELAY 0.1  pickattackergreen
+IF ALLOF gray2green grayhuman THEN 
+	SETTRIGGER grayhuman,
+	TRIGGERDELAY 0.1  pickattackergreen
+IF ALLOF tan2green tanhuman THEN 
+	SETTRIGGER tanhuman,
+	TRIGGERDELAY 0.1  pickattackergreen
+// ai already has flag, try again
+IF ALLOF grayai gray2green grayhasgreen THEN
+	SETTRIGGER grayai,
+	SETTRIGGER grayhasgreen,
+	TRIGGERDELAY 0.1  pickattackergreen
+IF ALLOF blueai blue2green bluehasgreen THEN
+	SETTRIGGER blueai,
+	SETTRIGGER bluehasgreen,
+	TRIGGERDELAY 0.1  pickattackergreen
+IF ALLOF tanai tan2green tanhasgreen THEN
+	SETTRIGGER tanai,
+	SETTRIGGER tanhasgreen,
+	TRIGGERDELAY 0.1  pickattackergreen
+// ai can go for it
+IF ALLOF grayai gray2green BUTNOT grayhasgreen THEN
+	SETTRIGGER grayai,
+	TRIGGER attackrandom,
+	ORDER GraySarge GOTO greenflag1 INMODE ATTACK THEN TRIGGER grayhome, 
+	ORDER GRAY FOLLOW GraySarge INMODE ATTACK THEN ATMODE ATTACK
+IF ALLOF blueai blue2green BUTNOT bluehasgreen THEN
+	SETTRIGGER blueai,
+	TRIGGER attackrandom,
+	ORDER BlueSarge GOTO greenflag1 INMODE ATTACK THEN TRIGGER bluehome, 
+	ORDER BLUE FOLLOW BlueSarge INMODE ATTACK THEN ATMODE ATTACK
+IF ALLOF tanai tan2green BUTNOT tanhasgreen THEN
+	SETTRIGGER tanai,
+	TRIGGER attackrandom,
+	ORDER TanSarge GOTO greenflag1 INMODE ATTACK THEN TRIGGER tanhome, 
+	ORDER TAN FOLLOW TanSarge INMODE ATTACK THEN ATMODE ATTACK
+
+IF ALLOF pickattackertan tandone THEN
+	SETTRIGGER tandone,
+	TRIGGERDELAY 1 attack
+IF pickattackertan BUTNOT tandone THEN RANDOM
+	TRIGGER blue2tan,
+	TRIGGER gray2tan,
+	TRIGGER green2tan
+	// human cant be orders
+IF ALLOF blue2tan bluehuman THEN 
+	SETTRIGGER bluehuman,
+	TRIGGERDELAY 0.1  pickattackertan
+IF ALLOF gray2tan grayhuman THEN 
+	SETTRIGGER grayhuman,
+	TRIGGERDELAY 0.1  pickattackertan
+IF ALLOF green2tan greenhuman THEN 
+	SETTRIGGER greenhuman,
+	TRIGGERDELAY 0.1  pickattackertan
+// ai already has flag, try again
+IF ALLOF grayai gray2tan grayhastan THEN
+	SETTRIGGER grayai,
+	SETTRIGGER grayhastan,
+	TRIGGERDELAY 0.1  pickattackertan
+IF ALLOF blueai blue2tan bluehastan THEN
+	SETTRIGGER blueai,
+	SETTRIGGER bluehastan,
+	TRIGGERDELAY 0.1  pickattackertan
+IF ALLOF greenai green2tan greenhastan THEN
+	SETTRIGGER greenai,
+	SETTRIGGER greenhastan,
+	TRIGGERDELAY 0.1  pickattackertan
+// ai can go
+IF ALLOF grayai gray2tan BUTNOT grayhastan THEN
+	SETTRIGGER grayai,
+	TRIGGER attackrandom,
+	ORDER GraySarge GOTO tanflag1 INMODE ATTACK THEN TRIGGER grayhome, 
+	ORDER GRAY FOLLOW GraySarge INMODE ATTACK THEN ATMODE ATTACK
+IF ALLOF blueai blue2tan BUTNOT bluehastan THEN
+	SETTRIGGER blueai,
+	TRIGGER attackrandom,
+	ORDER BlueSarge GOTO tanflag1 INMODE ATTACK THEN TRIGGER bluehome, 
+	ORDER BLUE FOLLOW BlueSarge INMODE ATTACK THEN ATMODE ATTACK
+IF ALLOF greenai green2tan BUTNOT greenhastan THEN
+	SETTRIGGER greenai,
+	TRIGGER attackrandom,
+	ORDER GreenSarge GOTO tanflag1 INMODE ATTACK THEN TRIGGER greenhome, 
+	ORDER GREEN FOLLOW GreenSarge INMODE ATTACK THEN ATMODE ATTACK
+
+IF ALLOF pickattackerblue bluedone THEN
+	SETTRIGGER bluedone,
+	TRIGGERDELAY 1 attack
+IF pickattackerblue BUTNOT bluedone THEN RANDOM
+	TRIGGER tan2blue,
+	TRIGGER gray2blue,
+	TRIGGER green2blue
+	// human wont go
+IF ALLOF tan2blue tanhuman THEN 
+	SETTRIGGER tanhuman,
+	TRIGGERDELAY 0.1  pickattackerblue
+IF ALLOF gray2blue grayhuman THEN 
+	SETTRIGGER grayhuman,
+	TRIGGERDELAY 0.1  pickattackerblue
+IF ALLOF green2blue greenhuman THEN 
+	SETTRIGGER greenhuman,
+	TRIGGERDELAY 0.1  pickattackerblue
+	// ai already has flag, try again
+IF ALLOF grayai gray2blue grayhasblue THEN
+	SETTRIGGER grayai,
+	SETTRIGGER grayhasblue,
+	TRIGGERDELAY 0.1  pickattackerblue
+IF ALLOF tanai tan2blue tanhasblue THEN
+	SETTRIGGER tanai,
+	SETTRIGGER tanhasblue,
+	TRIGGERDELAY 0.1  pickattackerblue
+IF ALLOF greenai green2blue greenhasblue THEN
+	SETTRIGGER greenai,
+	SETTRIGGER greenhasblue,
+	TRIGGERDELAY 0.1  pickattackerblue
+// ai can go
+IF ALLOF tanai tan2blue BUTNOT tanhasblue THEN
+	SETTRIGGER tanai,
+	TRIGGER attackrandom,
+	ORDER TanSarge GOTO blueflag1 INMODE ATTACK THEN TRIGGER tanhome, 
+	ORDER TAN FOLLOW TanSarge INMODE ATTACK THEN ATMODE ATTACK
+IF ALLOF grayai gray2blue BUTNOT grayhasblue THEN
+	SETTRIGGER grayai,
+	TRIGGER attackrandom,
+	ORDER GraySarge GOTO blueflag1 INMODE ATTACK THEN TRIGGER grayhome, 
+	ORDER GRAY FOLLOW GraySarge INMODE ATTACK THEN ATMODE ATTACK
+IF ALLOF greenai green2blue BUTNOT greenhasblue THEN
+	SETTRIGGER greenai,
+	TRIGGER attackrandom,
+	ORDER GreenSarge GOTO blueflag1 INMODE ATTACK THEN TRIGGER greenhome, 
+	ORDER GREEN FOLLOW GreenSarge INMODE ATTACK THEN ATMODE ATTACK
+
+IF ALLOF pickattackergray graydone THEN
+	SETTRIGGER graydone,
+	TRIGGERDELAY 1 attack
+IF pickattackergray BUTNOT graydone THEN RANDOM
+	TRIGGER tan2gray,
+	TRIGGER blue2gray,
+	TRIGGER green2gray
+	// human wont go
+IF ALLOF tan2gray tanhuman THEN 
+	SETTRIGGER tanhuman,
+	TRIGGERDELAY 0.1  pickattackergray
+IF ALLOF blue2gray bluehuman THEN 
+	SETTRIGGER bluehuman,
+	TRIGGERDELAY 0.1  pickattackergray
+IF ALLOF green2gray greenhuman THEN 
+	SETTRIGGER greenhuman,
+	TRIGGERDELAY 0.1  pickattackergray
+		// ai already has flag, try again
+IF ALLOF blueai blue2gray bluehasgray THEN
+	SETTRIGGER blueai,
+	SETTRIGGER bluehasgray,
+	TRIGGERDELAY 0.1  pickattackergray
+IF ALLOF tanai tan2gray tanhasgray THEN
+	SETTRIGGER tanai,
+	SETTRIGGER tanhasgray,
+	TRIGGERDELAY 0.1  pickattackergray
+IF ALLOF greenai green2gray greenhasgray THEN
+	SETTRIGGER greenai,
+	SETTRIGGER greenhasgray,
+	TRIGGERDELAY 0.1  pickattackergray
+// ai can go
+IF ALLOF tanai tan2gray BUTNOT tanhasgray THEN
+	SETTRIGGER tanai,
+	TRIGGER attackrandom,
+	ORDER TanSarge GOTO grayflag1 INMODE ATTACK THEN TRIGGER tanhome, 
+	ORDER TAN FOLLOW TanSarge INMODE ATTACK THEN ATMODE ATTACK
+IF ALLOF blueai blue2gray BUTNOT bluehasgray THEN
+	SETTRIGGER blueai,
+	TRIGGER attackrandom,
+	ORDER BlueSarge GOTO grayflag1 INMODE ATTACK THEN TRIGGER bluehome, 
+	ORDER BLUE FOLLOW BlueSarge INMODE ATTACK THEN ATMODE ATTACK
+IF ALLOF greenai green2gray BUTNOT greenhasgray THEN
+	SETTRIGGER greenai,
+	TRIGGER attackrandom,
+	ORDER GreenSarge GOTO grayflag1 INMODE ATTACK THEN TRIGGER greenhome, 
+	ORDER GREEN FOLLOW GreenSarge INMODE ATTACK THEN ATMODE ATTACK
+
+
+IF greenhome THEN 	
+	ORDER GreenSarge GOTO gflagbase INMODE ATTACK THEN ATMODE ATTACK 
+IF tanhome THEN 	
+	ORDER TanSarge GOTO tflagbase INMODE ATTACK THEN ATMODE ATTACK 
+IF bluehome THEN 	
+	ORDER BlueSarge GOTO bflagbase INMODE ATTACK THEN ATMODE ATTACK 
+IF grayhome THEN 	
+	ORDER GraySarge GOTO grflagbase INMODE ATTACK THEN ATMODE ATTACK 

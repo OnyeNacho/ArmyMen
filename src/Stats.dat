@@ -1,0 +1,58 @@
+//========================================================================
+//	FILE:			$Workfile: Stats.dat $
+//
+//	DESCRIPTION:	ArmyMen Statistics default data.
+//
+//	AUTHOR:			Andrew J Burgess
+//
+//	CREATED:		Wednesday, October 29, 1997
+//
+//	REVISION:		$Header: $
+//
+//========================================================================
+//                 COPYRIGHT(C)1997 The 3DO Company
+//      Unathorized reproduction, adaptation, distribution,
+//      performance or display of this computer program or
+//      the associated audiovisual work is strictly prohibited.
+//                      All rights reserved.
+///========================================================================
+//  History
+//
+//  $Log: /ArmyMen/src/Stats.dat $
+//  
+//  $Nokeywords:$
+//========================================================================
+
+
+#ifndef __STATS_DAT__
+#define __STATS_DAT__
+
+//------------------------------------------------------------------------
+//				STATS DATA
+//------------------------------------------------------------------------
+
+STATS	STATemptyDataBlock =
+{
+	0,							// mission UID (see .CPN file)
+	0,							// Sarge Health at end of mission
+	0,							// number of units alive at end of mission
+	0,							// number of troopers killed
+	0,							// kills by Sarge
+	0,							// total kills by player army
+	0,							// player score for this mission
+	0,							// expected score for this mission
+	0							// player army destruction rating
+};
+
+char*	STATnameKey[ STAT_MAX_PLAYERS ] =
+{
+	"StatPlayer1",
+	"StatPlayer2",
+	"StatPlayer3",
+	"StatPlayer4"
+};
+
+#endif
+//========================================================================
+//							EOF
+//========================================================================

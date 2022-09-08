@@ -1,0 +1,400 @@
+OBJECT CLASS Explosives 12
+
+STATE static
+	EVENT GO (ticking, -)
+	BEGIN
+		0
+		0
+	END
+
+STATE ticking
+	EVENT DAMAGE (static, ExplosiveGoOff)
+	BEGIN
+		0 	TRIGGER ticksound
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		9 
+		9
+		9
+		9
+		9
+		9
+		9
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		8 
+		8
+		8
+		8
+		8
+		8
+		8
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		7
+		7
+		7
+		7
+		7
+		7
+		7
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		6 
+		6
+		6
+		6
+		6
+		6
+		6
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		5 
+		5
+		5
+		5
+		5
+		5
+		5
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		4 
+		4
+		4
+		4
+		4
+		4
+		4
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		3 
+		3
+		3
+		3
+		3
+		3
+		3
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		2 
+		2
+		2
+		2
+		2
+		2
+		2
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		1 
+		1
+		1
+		1
+		1
+		1
+		1
+		0
+		0
+		0
+		0
+		0
+		0
+		0 TRIGGER ExplosiveGoOff
+		0
+	END
+
+DAMAGETRIGGERS 99
+
+ENDOBJECT
+
+
+
+OBJECT CLASS Gate 320
+
+STATE closed
+	EVENT GO (opening, openeningsound1)
+	EVENT DAMAGE (destroyed, -)
+BEGIN
+	0
+END
+
+STATE opening
+	EVENT DAMAGE (destroyed, -)
+BEGIN
+	(0) 1
+	(1) 2
+	(2) 3
+	(3) 4 GOTO open
+END
+
+STATE open
+	EVENT DAMAGE (destroyed, -)
+	EVENT STOP (closing, closingsound1)
+BEGIN
+	4
+END
+
+STATE closing
+	EVENT DAMAGE (destroyed, -)
+	EVENT GO (opening, -)
+BEGIN
+	3
+	2
+	1
+	0 GOTO closed
+END
+
+STATE destroyed
+BEGIN
+	5
+END
+
+DAMAGETRIGGERS 1
+
+ENDOBJECT
+
+OBJECT CLASS Gate 321
+
+STATE closed
+	EVENT GO (opening, openeningsound1)
+	EVENT DAMAGE (destroyed, -)
+BEGIN
+	0
+END
+
+STATE opening
+	EVENT DAMAGE (destroyed, -)
+BEGIN
+	(0) 1
+	(1) 2
+	(2) 3
+	(3) 4 GOTO open
+END
+
+STATE open
+	EVENT DAMAGE (destroyed, -)
+	EVENT STOP (closing, closingsound1)
+BEGIN
+	4
+END
+
+STATE closing
+	EVENT DAMAGE (destroyed, -)
+	EVENT GO (opening, openeningsound1)
+BEGIN
+	3
+	2
+	1
+	0 GOTO closed
+END
+
+STATE destroyed
+BEGIN
+	5
+END
+
+DAMAGETRIGGERS 1
+
+ENDOBJECT
+	
+
+
+
+
+
+
+OBJECT CLASS Base 4
+
+STATE static
+	EVENT GO (transmitting, transmit)
+	EVENT DAMAGE (destroyed, towerdestroyed)
+BEGIN
+	0
+END
+
+STATE transmitting LOOP
+	EVENT STOP (static, transmitted)
+	EVENT DAMAGE (destroyed, towerdestroyed)
+BEGIN
+	2
+	2
+	3
+	3
+	0
+	0
+	2
+	2
+	0
+	0
+	3
+	3
+	0
+	0
+END
+
+STATE destroyed
+BEGIN
+	1
+END
+
+DAMAGETRIGGERS 1
+
+ENDOBJECT
+
+
+
+
+OBJECT CLASS Rock 155
+
+	STATE uncollapsed
+		EVENT GO (collapsing, gocollapse)
+		EVENT DAMAGE (collapsing, gocollapse)
+		BEGIN
+			0
+		END
+
+	STATE collapsing
+		BEGIN
+			0	TRIGGER BlowSmoke
+			0
+			0
+			1	TRIGGER BlowSmoke
+			1
+			1
+			2	TRIGGER BlowSmoke
+			2
+			2
+			3	TRIGGER BlowSmoke
+			3
+			3
+			4	TRIGGER BlowSmoke
+			4
+			4
+		END
+
+DAMAGETRIGGERS 1
+
+ENDOBJECT
+
+
+
+
+OBJECT CLASS Rock 165
+
+	STATE uncollapsed
+		EVENT GO (collapsing, gocollapse)
+		EVENT DAMAGE (collapsing, gocollapse)
+		BEGIN
+			0
+		END
+
+	STATE collapsing
+		BEGIN
+			0	TRIGGER BlowSmoke
+			0
+			0
+			1	TRIGGER BlowSmoke
+			1
+			1
+			2	TRIGGER BlowSmoke
+			2
+			2
+			3	TRIGGER BlowSmoke
+			3
+			3
+			4	TRIGGER BlowSmoke
+			4
+			4
+		END
+
+DAMAGETRIGGERS 1
+
+ENDOBJECT
+
+
+OBJECT CLASS Rock 175
+
+	STATE uncollapsed
+		EVENT GO (collapsing, gocollapse)
+		EVENT DAMAGE (collapsing, gocollapse)
+		BEGIN
+			0
+		END
+
+	STATE collapsing
+		BEGIN
+			0	TRIGGER BlowSmoke
+			0
+			0
+			1	TRIGGER BlowSmoke
+			1
+			1
+			2	TRIGGER BlowSmoke
+			2
+			2
+			3	TRIGGER BlowSmoke
+			3
+			3
+			4	TRIGGER BlowSmoke
+			4
+			4
+		END
+
+DAMAGETRIGGERS 1
+
+ENDOBJECT
+	

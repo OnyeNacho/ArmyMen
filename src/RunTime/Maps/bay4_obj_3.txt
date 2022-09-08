@@ -1,0 +1,553 @@
+OBJECT statueglow
+
+STATE noglow
+	EVENT startglow (glow, -)
+BEGIN
+	0
+END
+
+STATE glow
+BEGIN
+	1
+	1
+	2
+	2
+	3
+	3
+	2
+	2
+	1
+	1
+	2
+	2
+	3
+	3
+	2
+	2
+	1
+	1 GOTO noglow
+END
+ENDOBJECT
+
+
+OBJECT gateleft
+
+STATE closed
+	EVENT gogateleft (opening, -)
+BEGIN
+	0
+END
+
+STATE opening
+BEGIN
+	  1
+	  1
+	  2
+	  2  
+	  3
+	  3 
+	  4
+          4
+          5
+          5 GOTO open
+END
+
+STATE open
+	EVENT closegateleft (closing, -)
+BEGIN
+	5
+END
+
+STATE closing
+BEGIN
+	4
+	3
+	2
+	1
+	0 GOTO closed
+END 
+ENDOBJECT 
+ 
+
+OBJECT gateright
+
+STATE closed
+	EVENT gogateright (opening, -)
+BEGIN
+	0
+END
+
+STATE opening
+BEGIN
+	  1
+	  1
+	  2
+	  2  
+	  3
+	  3 
+	  4
+          4
+          5
+          5 GOTO open
+END
+
+
+STATE open
+	EVENT closegateright (closing, -)
+BEGIN
+	5
+END
+
+STATE closing
+BEGIN
+	4
+	3
+	2
+	1
+	0 GOTO closed
+END 
+ENDOBJECT 
+
+	
+
+
+
+
+OBJECT port
+
+STATE initial
+	EVENT goport (portglow, -)
+	BEGIN
+		0
+	END
+
+STATE portglow
+	BEGIN
+		1
+		2
+		3
+		4
+		5	
+		6	GOTO portglow
+	END
+ENDOBJECT
+
+
+
+OBJECT cryptr1
+
+STATE initial
+	EVENT gocryptr1 (zombietr1, -)
+	BEGIN	
+		0
+	END
+
+STATE zombietr1
+	BEGIN
+		1
+		1
+		2
+		2
+		3
+		3
+		4
+		4
+		5
+		5
+		6
+		6
+		7
+		7
+		8
+		8
+		9
+		9
+		10
+		10
+		11
+		11
+		12 	
+		12	
+		13	TRIGGER placeguytr1
+		13
+		14
+		14 	GOTO initial
+	END
+
+ENDOBJECT
+
+OBJECT cryptr2
+
+STATE initial
+	EVENT gocryptr2 (zombietr2, -)
+	BEGIN	
+		0
+	END
+
+STATE zombietr2
+	BEGIN
+		1
+		1
+		2
+		2
+		3
+		3
+		4
+		4
+		5
+		5
+		6
+		6
+		7
+		7
+		8
+		8
+		9
+		9
+		10
+		10
+		11
+		11
+		12 	
+		12     	
+		13	TRIGGER placeguytr2
+		13
+		14
+		14 	GOTO initial
+END
+
+ENDOBJECT
+
+OBJECT cryptr3
+
+STATE initial
+	EVENT gocryptr3 (zombietr3, -)
+	BEGIN	
+		0
+	END
+
+STATE zombietr3
+	BEGIN
+		1
+		1
+		2
+		2
+		3
+		3
+		4
+		4
+		5
+		5
+		6
+		6
+		7
+		7
+		8
+		8
+		9
+		9
+		10
+		10
+		11
+		11
+		12 	
+		12	
+		13	TRIGGER placeguytr3
+		13
+		14
+		14 	GOTO initial
+END
+
+ENDOBJECT
+
+OBJECT cryptb1
+
+STATE initial
+	EVENT gocryptb1 (zombietb1, -)
+	BEGIN	
+		0
+	END
+
+STATE zombietb1
+	BEGIN
+		1
+		1
+		2
+		2
+		3
+		3
+		4
+		4
+		5
+		5
+		6
+		6
+		7
+		7
+		8
+		8
+		9
+		9
+		10
+		10
+		11
+		11
+		12 	
+		12	
+		13	TRIGGER placeguytb1
+		13
+		14
+		14 	GOTO initial
+END
+
+ENDOBJECT
+
+OBJECT cryptf1
+
+STATE initial
+	EVENT gocryptf1 (zombietf1, -)
+	BEGIN	
+		0
+	END
+
+STATE zombietf1
+	BEGIN
+		1
+		1
+		2
+		2
+		3
+		3
+		4
+		4
+		5
+		5
+		6
+		6
+		7
+		7
+		8
+		8
+		9
+		9
+		10
+		10
+		11
+		11
+		12 	
+		12	
+		13	TRIGGER placeguytf1
+		13
+		14
+		14 	GOTO initial
+END
+
+ENDOBJECT
+
+OBJECT crypgr1
+
+STATE initial
+	EVENT gocrypgr1 (zombiegr1, -)
+	BEGIN	
+		0
+	END
+
+STATE zombiegr1
+	BEGIN
+		1
+		1
+		2
+		2
+		3
+		3
+		4
+		4
+		5
+		5
+		6
+		6
+		7
+		7
+		8
+		8
+		9
+		9
+		10
+		10
+		11
+		11
+		12 	
+		12	
+		13	TRIGGER placeguygr1
+		13
+		14
+		14 	GOTO initial
+END
+
+ENDOBJECT
+
+OBJECT crypgr2
+
+STATE initial
+	EVENT gocrypgr2 (zombiegr2, -)
+	BEGIN	
+		0
+	END
+STATE zombiegr2
+	BEGIN
+		1
+		1
+		2
+		2
+		3
+		3
+		4
+		4
+		5
+		5
+		6
+		6
+		7
+		7
+		8
+		8
+		9
+		9
+		10
+		10
+		11
+		11
+		12 	
+		12	
+		13	TRIGGER placeguygr2
+		13
+		14
+		14 	GOTO initial
+END
+
+ENDOBJECT
+
+OBJECT crypgr3
+
+STATE initial
+	EVENT gocrypgr3 (zombiegr3, -)
+	BEGIN	
+		0
+	END
+
+STATE zombiegr3
+	BEGIN
+		1
+		1
+		2
+		2
+		3
+		3
+		4
+		4
+		5
+		5
+		6
+		6
+		7
+		7
+		8
+		8
+		9
+		9
+		10
+		10
+		11
+		11
+		12 
+		12	 
+		13	TRIGGER placeguygr3
+		13
+		14
+		14 	GOTO initial
+END
+
+ENDOBJECT
+
+OBJECT crypgb1
+
+STATE initial
+	EVENT gocrypgb1 (zombiegb1, -)
+	BEGIN	
+		0
+	END
+
+STATE zombiegb1
+	BEGIN
+		1
+		1
+		2
+		2
+		3
+		3
+		4
+		4
+		5
+		5
+		6
+		6
+		7
+		7
+		8
+		8
+		9
+		9
+		10
+		10
+		11
+		11
+		12 	
+		12	
+		13	TRIGGER placeguygb1
+		13
+		14
+		14 	GOTO initial
+	END
+
+ENDOBJECT
+
+OBJECT crypgf1
+
+STATE initial
+	EVENT gocrypgf1 (zombiegf1, -)
+	BEGIN	
+		0
+	END
+STATE zombiegf1
+	BEGIN
+		1
+		1
+		2
+		2
+		3
+		3
+		4
+		4
+		5
+		5
+		6
+		6
+		7
+		7
+		8
+		8
+		9
+		9
+		10
+		10
+		11
+		11
+		12 	
+		12	
+		13	TRIGGER placeguygf1
+		13
+		14
+		14 	GOTO initial
+	END
+
+ENDOBJECT

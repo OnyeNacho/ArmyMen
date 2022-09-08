@@ -1,0 +1,27 @@
+	// multiple player last-man-standing mission
+
+// on startup, players not in game will get sarge undeployed
+IF greennotplaying THEN 
+	UNDEPLOY GreenSarge,
+	TRIGGER killed_GreenSarge
+IF bluenotplaying THEN 
+	UNDEPLOY BlueSarge,
+	TRIGGER killed_BlueSarge
+IF tannotplaying THEN 
+	UNDEPLOY TanSarge,
+	TRIGGER killed_TanSarge
+IF graynotplaying THEN 
+	UNDEPLOY GraySarge,
+	TRIGGER killed_GraySarge
+
+
+// last one standing wins
+
+IF ALLOF killed_GreenSarge killed_BlueSarge killed_GraySarge THEN
+	TRIGGER tanwins
+IF ALLOF killed_TanSarge killed_BlueSarge killed_GraySarge THEN
+	TRIGGER greenwins
+IF ALLOF killed_GreenSarge killed_TanSarge killed_GraySarge THEN
+	TRIGGER bliewins
+IF ALLOF killed_GreenSarge killed_BlueSarge killed_TanSarge THEN
+	TRIGGER Graywins

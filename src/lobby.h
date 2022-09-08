@@ -1,0 +1,23 @@
+/*==========================================================================
+ *
+ *  Copyright (C) 1995-1996 Microsoft Corporation. All Rights Reserved.
+ *
+ *  File:       lobby.h
+ *  Content:    lobby related routines include file
+ *
+ *
+ ***************************************************************************/
+#include <dplobby.h>
+
+/*
+ * Prototypes
+ */
+
+HRESULT DPLobbyCreate(void);
+HRESULT DPLobbyConnect(void);
+HRESULT DPLobbyGetConnectionSettings(void);
+HRESULT DPLobbyRelease(void);
+HRESULT DPLobbySetConnectionSettings(void);
+
+
+

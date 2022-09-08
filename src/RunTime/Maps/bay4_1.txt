@@ -1,0 +1,73 @@
+// Bayou SCENARIO 4 Mission 7  Bridge Over the River, Why?
+
+PAD win 10 cargo > 0
+PAD t1 11 TanTank1 > 0
+PAD t2 12 TanTank1 > 0
+PAD in 51 joe2 > 0
+	
+
+	// ** GAME TERMINATION CONDITIONS ** //
+
+// If sarge dies you lose.
+IF killed_GreenSarge killed_cargo THEN
+	TRIGGERDELAY 2 tanwins
+
+// If you destroy all foes and get to safe pad then greenwins
+IF finish THEN
+	TRIGGER greenwins
+
+
+	// **Startup** //
+IF startup THEN 
+	ORDER TanRifle1 GOTO TanRifle1 INMODE IGNORE THEN ATMODE DEFEND,
+	ORDER TanRifle2 GOTO TanRifle2 INMODE IGNORE THEN ATMODE DEFEND,
+	ORDER TanGrenadier1 GOTO TanGrenadier1 INMODE IGNORE THEN ATMODE DEFEND,
+	ORDER TanMortar1 GOTO TanMortar1 INMODE IGNORE THEN ATMODE DEFEND,
+	ORDER TanMortar2 GOTO TanMortar2 INMODE IGNORE THEN ATMODE DEFEND,
+	ORDER TanTank1 GOTO t1 INMODE ATTACK THEN ATMODE ATTACK TRIGGER madet1,
+	ORDER TanRifle3 GOTO TanRifle3 INMODE IGNORE THEN ATMODE STANDFIRE,
+	ORDER TanRifle4 GOTO TanRifle4 INMODE IGNORE THEN ATMODE STANDFIRE,
+	ORDER TanRifle5 GOTO TanRifle5 INMODE IGNORE THEN ATMODE STANDFIRE,
+	SETUSERCONTROL cargo
+
+	// ** GAME EVENTS ** //
+
+IF ALLOF killed_TanRifle1 killed_TanRifle2 killed_TanGrenadier1 killed_TanMortar1 killed_TanMortar2 killed_TanTank1 THEN
+	TRIGGER alldead
+
+
+//IF INORDER alldead on_win THEN
+IF on_win THEN
+	TRIGGER finish 
+
+
+IF madet1 THEN 
+	ORDER TanTank1 GOTO t2 INMODE ATTACK THEN ATMODE ATTACK TRIGGER madet2
+
+IF madet2 THEN
+	ORDER TanTank1 GOTO t1 INMODE ATTACK THEN ATMODE ATTACK TRIGGER madet1
+
+IF killed_TanGrenadier1 THEN
+	REMOVEOBJECT med1,
+	PLACEOBJECT med1 ME
+
+IF killed_aagun THEN
+	TRIGGERDELAY 5 strike
+
+
+IF strike THEN
+	AIRSTRIKE (1938,1030),
+	TRIGGERDELAY 3 s2
+	
+IF s2 THEN 	
+	AIRSTRIKE (2019,1040),
+	TRIGGERDELAY 3 s3
+
+IF s3 THEN
+	AIRSTRIKE (2004,1206),
+	TRIGGERDELAY 3 s4
+
+IF s4 THEN	
+	AIRSTRIKE (2093,1377)
+
+

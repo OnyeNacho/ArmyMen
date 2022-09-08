@@ -1,0 +1,18 @@
+// Directions.txt - list of directions available for a sequence, in the drop-down list.
+
+0 "0"
+2 "22"
+4 "45"
+6 "67"
+8 "90"
+10 "112"
+12 "135"
+14 "157"
+16 "180"
+18 "202"
+20 "225"
+22 "247"
+24 "270"
+26 "292"
+28 "315"
+30 "337"

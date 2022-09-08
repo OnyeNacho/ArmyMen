@@ -1,0 +1,44 @@
+#=======================================================================
+#	BOOTCAMP.CPN file
+#
+#	Data format:
+#
+#	CAMPAIGN		ID  <Load>.BMP  <Scenario>.BMP
+#		TITLE		"NameString"
+#		MUSIC		AudioID									# see files sounds.h, streams.h, and voices.h
+#		VISIBILITY	0|1
+#	SCENARIO		ID
+#		TITLE		"NameString"
+#		AVI			<win>	<lose0>	<lose1>	<lose2>
+#		VISIBILITY	0|1
+#	MISSION			ID	<Briefing>.BMP
+#		TITLE		"NameString"
+#		MESSAGE		MissionStatementMusicID MissionStatementVoiceID
+#		MAPFILE		<filename>.AMM
+#		STRATMAP	<filename>.BMP
+#		MUSIC		LoIntensityAudioID HiIntensityAudioID	# see files sounds.h, streams.h, and voices.h
+#		VISIBILITY	0|1
+#
+#=======================================================================
+#
+#-----------------------------------------------------------------------
+#		BOO CAMP
+#-----------------------------------------------------------------------
+CAMPAIGN	20050	alp_load.bmp	alp_misn_select.bmp
+	TITLE			"Boot Camp"
+	MUSIC			REMAGEN
+	VISIBILITY		1					# VISIBLE
+SCENARIO	02050
+	TITLE			"Training"
+	AVI				none	losel	lose2	lose3
+	VISIBILITY		1					# VISIBLE
+MISSION		00050	bootcamp.bmp
+	TITLE			"Boot Camp"
+	MESSAGE			BOOT_CAMP_BRIEFING
+	MAPFILE			BootCamp
+	STRATMAP		Bootcamp.bmp
+	MUSIC			ALPINE1_MUSIC ALPINE2_MUSIC
+	VISIBILITY		5					# VISIBLE and NEXT
+#=======================================================================
+#						EOF
+#=======================================================================

@@ -1,0 +1,174 @@
+// ALPINE SCENARIO 2 Mission 4 Stop the Train
+
+
+
+
+	// ** PADS ** //
+
+
+PAD guard 30 	GREEN > 0 //Deploys TanRiflemen if green get's near
+PAD 202pad 31 
+PAD 203pad 32
+
+PAD trapped1 15 GREEN SARGE > 0
+
+PAD sargeisabadboy 99 GREEN SARGE > 0
+PAD sargeisabadboy2 98 GREEN SARGE > 0
+PAD sargeisabadboy3 97 GREEN SARGE > 0
+PAD sargeisabadboy4 7 GREEN SARGE > 0
+
+PAD medicaltentpad 23 GREEN SARGE > 0
+PAD medicaltentpad1 23 GREEN UNIT > 0
+
+	// ** UNIT DISPERSEMENT ** //
+//TanRifle201 undeployed to the west of train station, 1 trooper
+//Tan Rifle202, TanRifle203 undeployed south entrance of train station, 1 trooper each
+
+
+
+
+
+IF startup THEN
+	TRIGGER reducetension,
+	ORDER TanSpecial101 GOTO TanSpecial101 INMODE KNEELFIRE THEN ATMODE KNEELFIRE,
+	TRIGGER timetoheal,
+	TRIGGER endlooping
+
+	// ** GAME TERMINATION CONDITIONS ** //
+
+// if sarge dies, you lose
+IF killed_GreenSarge THEN
+	TRIGGERDELAY 2 tanwins
+
+//win if all Tan dead
+IF killed_TanSpecial101 THEN
+	REMOVEOBJECT key,
+	PLACEOBJECT key TanSpecial101
+
+
+
+IF get_GreenSarge_key THEN
+	INVULNERABLESARGE,
+	TRIGGERDELAY 2 greenwins
+
+//Music
+IF addtension THEN
+	AUDIO HIGHINTENSITY
+
+IF reducetension THEN
+	AUDIO LOWINTENSITY
+
+
+
+	// ** GAME EVENTS ** //
+
+
+
+//begins train process if Green wanders around for too long
+
+IF TIMEABSOLUTE 170 THEN 
+	TRIGGER testtrain
+
+
+
+
+IF bridgetest BUTNOT killed_supports1 THEN
+	TRIGGER addtension,
+	TRIGGER gotrain
+
+
+IF testtrain BUTNOT gotrain THEN
+	TRIGGER addtension,
+	TRIGGER gotrain
+
+
+//deploys tan troops if Train makes it to the station
+IF trainatstation THEN
+	DEPLOY TanRifle202 ATMODE ATTACK,
+	DEPLOY TanRifle203 ATMODE ATTACK,
+	ORDER TanRifle202 GOTO 202pad INMODE ATTACK THEN ATMODE DEFEND,
+	ORDER TanRifle203 GOTO 203pad INMODE ATTACK THEN ATMODE DEFEND
+
+//Deploys TanRifle201 if Green get's near
+IF 1 OF on_guard THEN
+	TRIGGER addtension,
+	DEPLOY TanRifle201 ATMODE ATTACK,
+	TRIGGERDELAY 2 bridgetest
+
+
+//Tests to see if Bridge is there, if it is, blow it up
+IF killed_supports1 BUTNOT trainatstation THEN
+	TRIGGER gotrain
+
+
+//Tests to see if train was sent before bridge was blown
+
+
+
+IF killed_cratestack1 THEN
+	REMOVEOBJECT porthealth2,
+	PLACEOBJECT porthealth2 cratestack1
+
+
+
+
+// enable mash tents
+IF startup THEN
+	TRIGGER setupgreen,
+	TRIGGERDELAY 0.1 setmash
+
+IF setupgreen THEN
+	TRIGGER gsmedtime
+
+IF setmash THEN 
+	TRIGGER greenmashready
+
+IF on_medicaltentpad AFTER off_medicaltentpad AND gsmedtime AFTER NULL AND startup AFTER killed_greenmash THEN
+	HEAL ME	10,
+	TRIGGERDELAY 1.5 gsmedtime
+
+
+IF on_medicaltentpad1 BUTNOT killed_greenmash THEN
+	HEAL ME 100
+
+
+
+
+// If sarge is trapped due to a mine collapse
+IF on_sargeisabadboy AFTER off_sargeisabadboy AND checktrapped1 AFTER NULL THEN
+	EXPLODE GreenSarge
+
+IF killed_mineshaft3 THEN
+	TRIGGER checktrapped1,
+	TRIGGER checktrapped3
+
+IF killed_mineshaft2 THEN
+	TRIGGER checktrapped3
+
+IF killed_mineshaft5 THEN
+	TRIGGER checktrapped2
+
+
+IF killed_startbridge THEN
+	TRIGGER checktrapped4
+
+IF on_sargeisabadboy4 AFTER off_sargeisabadboy4 AND checktrapped4 AFTER NULL THEN
+	TRIGGERDELAY 2 airstrikesarge
+
+
+IF on_sargeisabadboy2 AFTER off_sargeisabadboy2 AND checktrapped2 AFTER NULL THEN
+	TRIGGERDELAY 2 airstrikesarge
+
+IF on_trapped1 AFTER off_trapped1 AND checktrapped3 AFTER NULL THEN
+	TRIGGERDELAY 2 airstrikesarge
+
+IF on_sargeisabadboy3 AFTER off_sargeisabadboy3 AND killed_supports1 AFTER NULL THEN
+	TRIGGERDELAY 2 airstrikesarge
+
+IF ALLOF airstrikesarge BUTNOT killed_GreenSarge THEN
+	AIRSTRIKE GreenSarge,
+	TRIGGERDELAY 6 airstrikesarge
+
+
+
+

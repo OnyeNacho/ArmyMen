@@ -1,0 +1,605 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif\r\n"
+    "#include ""res\\ArmyMen.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_APPICON             ICON    DISCARDABLE     "res\\ArmyMen.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+    END
+    POPUP "Debug"
+    BEGIN
+        MENUITEM "Scripts Trace",               ID_SCRIPTDEBUG
+        MENUITEM "Draw Unit Routings",          ID_ROUTING
+        MENUITEM "Validate DataStructures",     ID_FAKEUNITS
+        MENUITEM "Trace Unit behavior",         ID_SINGLE
+        MENUITEM "Label forces",                ID_LABEL
+        MENUITEM "FULL CHEAT VIEW",             ID_BW1
+        MENUITEM "bw2",                         ID_BW2
+        MENUITEM "Immobilize foe troopers",     ID_BW3
+        MENUITEM "Show Objects near cursor",    ID_BW4
+        MENUITEM SEPARATOR
+        MENUITEM "Show Termp & Perm Untrafficable\tCtrl+U", ID_TEMPORARY
+        MENUITEM "Show PADS\tCtrl+P",           ID_PADS
+        MENUITEM "Show BITPADS\tCtrl+B",        ID_BITPADS
+        MENUITEM "Show ELEVATION",              ID_BW01
+        MENUITEM "Show VISIBILITY",             ID_BW02
+        MENUITEM "Clear map of marks\tCtrl+C",  ID_AVENUE
+        MENUITEM "Show Elevation Contours",     ID_CONTOUR
+        MENUITEM SEPARATOR
+        MENUITEM "Audio Diagnostics",           ID_AUDIO_DIAGNOSTIC
+        MENUITEM "No CD OK",                    ID_NO_CD_OK, CHECKED
+    END
+    POPUP "Options"
+    BEGIN
+        MENUITEM "Enable Random",               ID_RANDOM
+        MENUITEM "Run Windowed",                ID_RUN_WINDOWED, CHECKED
+        MENUITEM "Use Constant FrameTime",      ID_SET_FRAME_TIME, CHECKED
+        MENUITEM "Fog of War",                  ID_FOG, CHECKED
+    END
+    POPUP "Game"
+    BEGIN
+        MENUITEM "&About ArmyMen...",           ID_APP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_CHOOSEPROVIDER DIALOG DISCARDABLE  0, 0, 214, 169
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Choose Battle Connection"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDC_SERVICEPROVIDERS,10,42,192,98,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Please select a communication channel:",IDC_SP_TITLE,10,
+                    25,193,13
+    GROUPBOX        "",IDC_STATIC,5,6,204,141
+    PUSHBUTTON      "Cancel",IDCANCEL,161,150,50,14
+    DEFPUSHBUTTON   "Next >>",ID_NEXT,106,150,50,14
+    PUSHBUTTON      "<< Back",ID_BACK,52,150,50,14
+END
+
+IDD_JOINSESSION DIALOG DISCARDABLE  0, 0, 198, 193
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Select Battle"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Please select a battle:",IDC_JOIN_SESSION_TITLE,15,10,
+                    152,11
+    EDITTEXT        IDC_JOIN_PLAYERNAME,15,145,169,14,ES_AUTOHSCROLL
+    LTEXT           "Sarge Name",IDC_JOIN_PLAYER_TITLE,16,133,91,10
+    CONTROL         "Tree1",IDC_JOIN_SESSION,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_LINESATROOT | TVS_DISABLEDRAGDROP | 
+                    TVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,15,23,167,102
+    GROUPBOX        "",IDC_STATIC,4,0,189,166
+    PUSHBUTTON      "<< Back",ID_BACK,37,173,50,14
+    DEFPUSHBUTTON   "Next >>",ID_NEXT,90,173,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,143,173,50,14
+END
+
+IDD_HOSTSESSION DIALOG DISCARDABLE  0, 0, 219, 130
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Starting a War"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Battle Name",IDC_HOST_SESSION_TITLE,33,29,69,11
+    LTEXT           "Sarge Name",IDC_HOST_PLAYER_TITLE,34,67,76,12
+    EDITTEXT        IDC_HOST_SESSIONNAME,33,42,152,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_HOST_PLAYERNAME,33,82,152,13,ES_AUTOHSCROLL
+    LTEXT           "Battle Information",IDC_HOST_TITLE,15,14,142,12
+    GROUPBOX        "",IDC_STATIC,3,0,211,106
+    PUSHBUTTON      "<< Back",ID_BACK,58,112,50,14
+    DEFPUSHBUTTON   "Next >>",ID_NEXT,111,112,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,164,112,50,14
+END
+
+IDD_GAMESETUP DIALOG DISCARDABLE  0, 0, 208, 106
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Army Men to the Front!"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Start a War",IDC_HOSTSESSION,"Button",
+                    BS_AUTORADIOBUTTON,37,30,111,12
+    CONTROL         "Join the Fray",IDC_JOINSESSION,"Button",
+                    BS_AUTORADIOBUTTON,37,61,78,12
+    LTEXT           "Would you like to:",IDC_GAMESETUP_TITLE,12,15,117,12
+    LTEXT           "or",IDC_STATIC,37,45,26,8
+    GROUPBOX        "",IDC_STATIC,3,1,201,80
+    PUSHBUTTON      "<< Back",ID_BACK,47,86,50,14
+    DEFPUSHBUTTON   "Next >>",ID_NEXT,100,86,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,153,86,50,14
+END
+
+IDD_CONNECT_STATUS DIALOG DISCARDABLE  120, 110, 162, 31
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Duel Connection Status"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CTEXT           "Finding game...",IDC_DUEL_STATUSTEXT,7,7,141,16
+END
+
+IDD_AUDIO_DIAGNOSTIC DIALOG DISCARDABLE  0, 0, 184, 265
+STYLE WS_POPUP
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDC_AUDIO_LIST,12,66,117,187,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "",IDC_AUDIO_BOX,6,1,172,259
+    LTEXT           "Select an audio group",IDC_AUDIO_DIAG_TITLE,14,13,155,8
+    CONTROL         "Music",IDC_STREAM_GROUP,"Button",BS_AUTORADIOBUTTON,25,
+                    35,147,10
+    CONTROL         "Sfx sounds",IDC_SFX_GROUP,"Button",BS_AUTORADIOBUTTON,
+                    25,24,147,10
+    PUSHBUTTON      "PLAY",IDC_PLAY_AUDIO_BUTTON,134,67,39,14
+    PUSHBUTTON      "STOP",IDC_STOP_AUDIO_BUTTON,134,94,39,14
+    PUSHBUTTON      "EXIT",IDC_EXIT_AUDIO_BUTTON,133,120,39,14
+    CONTROL         "Voice",IDC_VOICE_GROUP,"Button",BS_AUTORADIOBUTTON,25,
+                    47,147,10
+END
+
+IDD_HOSTLOBBY DIALOG DISCARDABLE  0, 0, 268, 178
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "START GAME",IDOK,203,150,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,20,150,50,14
+    LISTBOX         IDC_LIST2,28,34,207,109,LBS_SORT | LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Host Waiting for Joining Players",IDC_STATIC,37,14,173,
+                    8
+END
+
+IDD_JOINLOBBY DIALOG DISCARDABLE  0, 0, 273, 165
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,205,134,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,19,138,50,14
+    LISTBOX         IDC_LIST1,29,33,219,89,LBS_SORT | LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Joining Player Waiting for Host to Start Game",
+                    IDC_STATIC,53,16,155,8
+END
+
+IDD_ERROR_BOX DIALOGEX 0, 0, 172, 76
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Error"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,15,45,50,14
+    CTEXT           "X",IDC_ERROR_STRING,5,5,160,10,SS_NOPREFIX,
+                    WS_EX_TRANSPARENT
+    DEFPUSHBUTTON   "Retry",ID_RETRY,105,45,50,14
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME,0,0,170,75
+END
+
+IDD_ERROR_BOX2 DIALOGEX 0, 0, 172, 76
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Error"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,60,45,50,14
+    CTEXT           "X",IDC_ERROR_STRING,5,5,160,10,SS_NOPREFIX,
+                    WS_EX_TRANSPARENT
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME,0,0,170,75
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 0,1,0,0
+ PRODUCTVERSION 0,1,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName", "The 3DO Company\0"
+            VALUE "FileDescription", "Army Men Game Program\0"
+            VALUE "FileVersion", "0, 1, 0, 0\0"
+            VALUE "InternalName", "Army Men\0"
+            VALUE "LegalCopyright", "Copyright © 1998 The 3DO Company\0"
+            VALUE "LegalTrademarks", "Army Men is a trademark of The 3DO Company\0"
+            VALUE "OriginalFilename", "ARMYMEN.EXE\0"
+            VALUE "ProductName", "Army Men\0"
+            VALUE "ProductVersion", "0, 1, 0, 0\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_CHOOSEPROVIDER, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 165
+    END
+
+    IDD_HOSTSESSION, DIALOG
+    BEGIN
+        RIGHTMARGIN, 218
+    END
+
+    IDD_CONNECT_STATUS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 148
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 24
+    END
+
+    IDD_AUDIO_DIAGNOSTIC, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 260
+    END
+
+    IDD_HOSTLOBBY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 261
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 171
+    END
+
+    IDD_JOINLOBBY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 266
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 158
+    END
+
+    IDD_ERROR_BOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 165
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 69
+    END
+
+    IDD_ERROR_BOX2, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 165
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 69
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_CLOSED_SESSION      BITMAP  DISCARDABLE     "res\\csession.bmp"
+IDB_PLAYER              BITMAP  DISCARDABLE     "res\\player.bmp"
+IDB_OPEN_SESSION        BITMAP  DISCARDABLE     "res\\osession.bmp"
+IDB_PLAYER2             BITMAP  DISCARDABLE     "res\\player2.bmp"
+IDB_PLAYER3             BITMAP  DISCARDABLE     "res\\player3.bmp"
+IDB_PLAYER4             BITMAP  DISCARDABLE     "res\\player4.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_DEFAULT             CURSOR  DISCARDABLE     "res\\default.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "ArmyMen\n\nArmyMe\n\n\nArmyMen.SaveGame\nArmyMe Document"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "ArmyMen"
+    AFX_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+    IDS_WIZARD_FONTNAME     "Times"
+    IDS_DPERR_CLSID         "ArmyMen Reequires Direct X 5 or later"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_DINPUT_ERROR_ED     "Enum keyboard devices failed"
+    IDS_DINPUT_ERROR_CD     "Create keyboard device failed"
+    IDS_DINPUT_ERROR_SP     "Set non-exclusive mode failed"
+    IDS_DINPUT_ERROR_A      "Keyboard acquire failed"
+    IDS_DPLAY_ERROR_CP      "Player create failed"
+    IDS_DPLAY_ERROR_IDC     "Direct Play object create failed"
+    IDS_DPLAY_ERROR_CP2     "Player create failed"
+    IDS_DPLAY_ERROR_JS      "Session join failed"
+    IDS_DPLAY_ERROR_CS      "Session create failed"
+    IDS_DDRAW_ERROR_CSBB    "Back buffer create failed"
+    IDS_DUEL_CLASSNAME      "DuelClass"
+    IDS_DUEL_MSG_UNKNOWN    "Unknown message"
+    IDS_DUEL_ERROR_TITLE    "Error Message"
+    IDS_DUEL_TITLE          "Duel"
+    IDS_STRING2             "Slave"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_SET_FRAME_TIME       "\ndebug using non-real time"
+    ID_TEMPORARY            "\ndistinguish untrafficable space"
+    ID_ENDCONNECT           "\n"
+    ID_STARTGAME            "\nEnd connect State and start game"
+    ID_AVENUE               "\nremove marks"
+    ID_COMMANDER            "\n enable multiplayer option"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_DDRAW_ERROR_DDC     "DirectDraw create failed"
+    IDS_DDRAW_ERROR_SCL     "SetCooperativeLevel failed"
+    IDS_DDRAW_ERROR_SDM     "SetDisplayMode failed"
+    IDS_DDRAW_ERROR_CSFB    "Front buffer creation failed"
+    IDS_DDRAW_ERROR_GAS     "Backbuffer couldn't be obtained"
+    IDS_DDRAW_ERROR_CC      "CreateClipper failed"
+    IDS_DDRAW_ERROR_SH      "Clipper SetHwnd failed"
+    IDS_DDRAW_ERROR_SC      "Clipper object couldn't be attached to the front buffer"
+    IDS_DDRAW_ERROR_CSS0    "Ship surface 0 creation failed"
+    IDS_DDRAW_ERROR_CSS1    "Ship surface 1 creation failed"
+    IDS_DDRAW_ERROR_CSS2    "Ship surface 2 creation failed"
+    IDS_DDRAW_ERROR_CSS3    "Ship surface 3 creation failed"
+    IDS_DDRAW_ERROR_CSN     "Number surface creation failed"
+    IDS_DDRAW_ERROR_RS      "Surfaces couldn't be restored"
+    IDS_DINPUT_ERROR_DIC    "DirectInputCreate failed"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_DDUTIL_ERROR_LI     "LoadImage failed. Handle is NULL."
+    IDS_DDUTIL_ERROR_DDCB   "DDCopyBitmap failed"
+    IDS_DDUTIL_ERROR_CCDC   "CreateCompatibleDC failed"
+    IDS_WIZARD_ERROR_GSG    "Session guid couldn't be obtained from the parent item"
+    IDS_DINPUT_ERROR_DF     "Set keyboard data format failed"
+    IDS_DPLAY_ERROR_IDC2    "DirectPlay object create failed"
+    IDS_DSOUND_LOADWAVES    "Could not load WAVE resource."
+    IDS_DSOUND_DUPBUF       "Could not duplicate a sound buffer for new ship"
+    IDS_DPLAY_ERROR_SL      "You have been disconnected from the session"
+    IDS_DPLAY_ERROR_GPLD    "Get player local data failed"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_DPLAY_ERROR_SPLD    "Set player local data failed"
+    IDS_DPLAY_ERROR_GPRD    "Get player remote data failed"
+    IDS_DPLAY_ERROR_SPRD    "Set player remote data failed"
+    IDS_DPLAY_ERROR_GSD     "Get session description failed"
+    IDS_DPLAY_ERROR_EP      "Enumerate players failed"
+    IDS_DPLAY_ERROR_ES      "Enumerate sessions failed"
+    IDS_DPLAY_ERROR_C       "DirectPlay Close failed"
+    IDS_DPLAY_ERROR_R       "DirectPlay Release failed"
+    IDS_DPLAY_ERROR_DP      "Destroy player failed"
+    IDS_DPLOBBY_ERROR_R     "DirectPlayLobby Release failed"
+    IDS_DPLOBBY_ERROR_GCS   "DirectPlayLobby GetConnectionSettings failed"
+    IDS_DPLOBBY_ERROR_SCS   "DirectPlayLobby SetConnectionSettings failed"
+    IDS_DPLOBBY_ERROR_C     "DirectPlayLobby Create failed"
+    IDS_DPLOBBY_ERROR_CONNECT "DirectPlayLobby Connect failed"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_DPERR_BUSY          "DPlay Send Failure: Busy"
+    IDS_DPERR_INVALIDOBJECT "DPlay Send Failure: Invalid Object"
+    IDS_DPERR_INVALIDPARAMS "DPlay Send Failure: Invalid Parameters"
+    IDS_DPERR_INVALIDPLAYER "DPlay Send Failure: Invalid Player"
+    IDS_DPERR_SENDTOOBIG    "DPlay Send Failure: Send Too Large"
+    IDS_DPERR_NOBUFFERS     "Connection Failure: Latency and/or packet loss too high for play"
+    IDS_DPERR_BUFFERTOOSMALL "DPlay Receive Failure: Buffer too small"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FAKEUNITS            "check validity of things (slows you down)"
+    ID_NICKY                "set nickyTest variable"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_RANDOM               "generate random starting seed"
+    ID_ABSOLUTE             "\nMake keypad absolute reference"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_ASSERT_UNTRAFFICABLE "Assert on Untrafficable Terrain"
+    ID_INVULNERABLE         "\n Green Sarge Can Not Be Killed"
+    ID_UNITBEHAVIOR         "\nshow units and trooper actions"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_LABEL                "draw labels on forces"
+    ID_BW1                  "\nSet std bruce debug"
+    ID_BW3                  "\nmake all enemies still"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif
+#include "res\ArmyMen.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

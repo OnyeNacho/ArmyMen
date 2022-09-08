@@ -1,0 +1,318 @@
+#=======================================================================
+#	SAMPLE .CPN file
+#
+#	Data format:
+#
+#	CAMPAIGN		ID  <Load>.BMP  <Scenario>.BMP
+#		TITLE		"NameString"
+#		MUSIC		AudioID									# see files sounds.h, streams.h, and voices.h
+#		VISIBILITY	0|1
+#	SCENARIO		ID
+#		TITLE		"NameString"
+#		AVI			<win>	<lose0>	<lose1>	<lose2>
+#		VISIBILITY	0|1
+#	MISSION			ID	<Briefing>.BMP
+#		TITLE		"NameString"
+#		MESSAGE		MissionStatementMusicID MissionStatementVoiceID
+#		MAPFILE		<filename>.AMM
+#		STRATMAP	<filename>.BMP
+#		MUSIC		LoIntensityAudioID HiIntensityAudioID	# see files sounds.h, streams.h, and voices.h
+#		VISIBILITY	0|1
+#
+#=======================================================================
+#
+#-----------------------------------------------------------------------
+#		DESERT
+#-----------------------------------------------------------------------
+CAMPAIGN	10001	des_load.bmp	des_misn_select.bmp
+	TITLE			"Desert"
+	MUSIC			DESERT1_MUSIC
+	VISIBILITY		1					# VISIBLE
+SCENARIO	01001
+	TITLE			"Cactus Flats"
+	AVI				none	lose1 lose2 lose3
+	VISIBILITY		1					# VISIBLE
+MISSION		00001	DS1M1.bmp
+	TITLE			"Weapon Run" #The Assassination Game
+	MESSAGE			DS1M1 DESERT1_1WIN DESERT1_1LOSE DESERT_DIE
+	MAPFILE			Desert1
+	STRATMAP		Desert1.bmp
+	MUSIC			DESERT1_MUSIC DESERT2_MUSIC
+	KEY				0
+	VISIBILITY		1					# VISIBLE
+MISSION		00002	DS1M2.bmp
+	TITLE			"Apprentice Assassin"
+	MESSAGE			DS1M2 DESERT_WIN DESERT1_2LOSE DESERT_DIE
+	MAPFILE			Desert1
+	STRATMAP		Desert1.bmp
+	MUSIC			DESERT1_MUSIC DESERT2_MUSIC
+	KEY				0
+	VISIBILITY		0					# Not Visible
+MISSION		00003	DS1M3.bmp
+	TITLE			"A Bridge Too Long"
+	MESSAGE			DS1M3 DESERT_WIN DESERT_LOSE DESERT_DIE
+	MAPFILE			Desert1
+	STRATMAP		Desert1.bmp
+	MUSIC			DESERT1_MUSIC DESERT2_MUSIC
+	KEY				1
+	VISIBILITY		0					# Not Visible
+SCENARIO	01002
+	TITLE			"Mesa Valley"
+	AVI				none	lose1 lose2 lose3
+	VISIBILITY		0					# Not Visible
+MISSION		00004	DS2M1.bmp
+	TITLE			"Follow the Leader"
+	MESSAGE			DS2M1 DESERT_WIN DESERT2_1LOSE DESERT_DIE
+	MAPFILE			Desert2
+	STRATMAP		Desert2.bmp
+	MUSIC			DESERT1_MUSIC DESERT2_MUSIC
+	KEY				1
+	VISIBILITY		0					# Not Visible
+MISSION		00005	DS2M2.bmp
+	TITLE			"Brute Force"
+	MESSAGE			DS2M2 DESERT2_2WIN DESERT2_2LOSE DESERT_DIE
+	MAPFILE			Desert2
+	STRATMAP		Desert2.bmp
+	MUSIC			DESERT1_MUSIC DESERT2_MUSIC
+	KEY				1
+	VISIBILITY		0					# Not Visible
+SCENARIO	01003
+	TITLE			"Casa Plastica"
+	AVI				none	lose1 lose2 lose3
+	VISIBILITY		0					# Not Visible
+MISSION		00006	DS3M1.bmp
+	TITLE			"Sarge's Heroes"
+	MESSAGE			DS3M1 DESERT_WIN DESERT3_1LOSE DESERT_DIE
+	MAPFILE			Desert3
+	STRATMAP		Desert3.bmp
+	MUSIC			DESERT1_MUSIC DESERT2_MUSIC
+	KEY				2
+	VISIBILITY		0					# Not Visible
+MISSION		00007	DS3M2.bmp
+	TITLE			"Break Out"
+	MESSAGE			DS3M2 DESERT_WIN DESERT3_2LOSE DESERT_DIE
+	MAPFILE			Desert3
+	STRATMAP		Desert3.bmp
+	MUSIC			DESERT1_MUSIC DESERT2_MUSIC
+	VISIBILITY		0					# Not Visible
+SCENARIO	01004
+	TITLE			"Winding Canyon"
+	AVI				none	lose1 lose2 lose3
+	VISIBILITY		0					# Not Visible
+MISSION		00008	DS4M1.bmp
+	TITLE			"Death Warmed Over"
+	MESSAGE			DS4M1 DESERT_WIN DESERT4_1LOSE DESERT_DIE
+	MAPFILE			Desert4
+	STRATMAP		Desert4.bmp
+	MUSIC			DESERT1_MUSIC DESERT2_MUSIC
+	KEY				2
+	VISIBILITY		0					# Not Visible
+MISSION		00009	DS4M2.bmp
+	TITLE			"Out of the Frying Pan"
+	MESSAGE			DS4M2 DESERT_WIN DESERT_LOSE DESERT_DIE
+	MAPFILE			Desert4
+	STRATMAP		Desert4.bmp
+	MUSIC			DESERT1_MUSIC DESERT2_MUSIC
+	KEY				2
+	VISIBILITY		0					# Not Visible
+#-----------------------------------------------------------------------
+#		ALPINE
+#-----------------------------------------------------------------------
+CAMPAIGN	10002	alp_load.bmp	alp_misn_select.bmp
+	TITLE			"Alpine"
+	MUSIC			ALPINE1_MUSIC
+	VISIBILITY		0					# Not Visible
+SCENARIO	01005
+	TITLE			"Logging Camp"
+	AVI				none	lose1 lose2 lose3
+	VISIBILITY		0					# Not Visible
+MISSION		00010	AS1M1.bmp
+	TITLE			"Out of the Mountain"
+	MESSAGE			AS1M1 ALPINE1_1WIN ALPINE1_1LOSE ALPINE_DIE
+	MAPFILE			Alpine1
+	STRATMAP		Alpine1.bmp
+	MUSIC			ALPINE1_MUSIC ALPINE2_MUSIC
+	KEY				2
+	VISIBILITY		0					# Not Visible
+MISSION		00011	AS1M2.bmp
+	TITLE			"Throw a Bone"
+	MESSAGE			AS1M2 ALPINE1_2WIN ALPINE1_2LOSE ALPINE_DIE
+	MAPFILE			Alpine1
+	STRATMAP		Alpine1.bmp
+	MUSIC			ALPINE1_MUSIC ALPINE2_MUSIC
+	KEY				2
+	VISIBILITY		0					# Not Visible
+SCENARIO	010060
+	TITLE			"Mining Camp"
+	AVI				none	lose1 lose2 lose3
+	VISIBILITY		0					# Not Visible
+MISSION		00012	AS2M1.bmp
+	TITLE			"Enemy Mines"
+	MESSAGE			AS2M1 ALPINE2_1WIN ALPINE2_1LOSE ALPINE_DIE
+	MAPFILE			Alpine2
+	STRATMAP		Alpine2.bmp
+	MUSIC			ALPINE1_MUSIC ALPINE2_MUSIC
+	KEY				2
+	VISIBILITY		0					# Not Visible
+MISSION		00013	AS2M2.bmp
+	TITLE			"Ghost Train"
+	MESSAGE			AS2M2 ALPINE2_2WIN ALPINE2_2LOSE ALPINE_DIE
+	MAPFILE			Alpine2
+	STRATMAP		Alpine2.bmp
+	MUSIC			ALPINE1_MUSIC ALPINE2_MUSIC
+	KEY				2
+	VISIBILITY		0					# Not Visible
+SCENARIO	01007
+	TITLE			"Winding River"
+	AVI				none	lose1 lose2 lose3
+	VISIBILITY		0					# Not Visible
+MISSION		00014	AS3M1.bmp
+	TITLE			"Flotsom and Jetsom"
+	MESSAGE			AS3M1 ALPINE3_1WIN ALPINE3_1LOSE ALPINE_DIE
+	MAPFILE			Alpine3
+	STRATMAP		Alpine3.bmp
+	MUSIC			ALPINE1_MUSIC ALPINE2_MUSIC
+	KEY				3
+	VISIBILITY		0					# Not Visible
+MISSION		00015	AS3M2.bmp
+	TITLE			"The Gauntlet"
+	MESSAGE			AS3M2 ALPINE3_2WIN ALPINE3_2LOSE ALPINE_DIE
+	MAPFILE			Alpine3
+	STRATMAP		Alpine3.bmp
+	MUSIC			ALPINE1_MUSIC ALPINE2_MUSIC
+	KEY				3
+	VISIBILITY		0					# Not Visible
+MISSION		00016	AS3M3.bmp
+	TITLE			"Roundabout"
+	MESSAGE			AS3M3 ALPINE_WIN ALPINE3_3LOSE ALPINE_DIE
+	MAPFILE			Alpine3
+	STRATMAP		Alpine3.bmp
+	MUSIC			ALPINE1_MUSIC ALPINE2_MUSIC
+	KEY				3
+	VISIBILITY		0					# Not Visible
+SCENARIO	01008
+	TITLE			"Prison Camp"
+	AVI				none	lose1 lose2 lose3
+	VISIBILITY		0					# Not Visible
+MISSION		00017	AS4M1.bmp
+	TITLE			"Great Escape"
+	MESSAGE			AS4M1 ALPINE4_1WIN ALPINE4_1LOSE ALPINE_DIE
+	MAPFILE			Alpine4
+	STRATMAP		Alpine4.bmp
+	MUSIC			ALPINE1_MUSIC ALPINE2_MUSIC
+	KEY				3
+	VISIBILITY		0					# Not Visible
+MISSION		00018	AS4M2.bmp
+	TITLE			"Last Chance Airways"
+	MESSAGE			AS4M2 ALPINE4_2WIN ALPINE4_2LOSE ALPINE_DIE
+	MAPFILE			Alpine4
+	STRATMAP		Alpine4.bmp
+	MUSIC			ALPINE1_MUSIC ALPINE2_MUSIC
+	KEY				3
+	VISIBILITY		0					# Not Visible
+#-----------------------------------------------------------------------
+#		BAYOU
+#-----------------------------------------------------------------------
+CAMPAIGN	10003	bay_load.bmp	bay_misn_select.bmp
+	TITLE			"Bayou"
+	MUSIC			BAYOU1_MUSIC
+	VISIBILITY		0					# Not Visible
+SCENARIO	01009
+	TITLE			"The Swamp"
+	AVI				none	lose1 lose2 lose3
+	VISIBILITY		0					# Not Visible
+MISSION		00019	BS1M1.bmp
+	TITLE			"Spywitness News"
+	MESSAGE			BS1M1 BAYOU1_1WIN BAYOU1_1LOSE BAYOU_DIE
+	MAPFILE			Bayou1
+	STRATMAP		Bayou1.bmp
+	MUSIC			BAYOU1_MUSIC BAYOU2_MUSIC
+	KEY				3
+	VISIBILITY		0					# Not Visible
+MISSION		00020	BS1M2.bmp
+	TITLE			"Melee a Trois"
+	MESSAGE			BS1M2 BAYOU1_2WIN BAYOU1_2LOSE BAYOU_DIE
+	MAPFILE			Bayou1
+	STRATMAP		Bayou1.bmp
+	MUSIC			BAYOU1 BAYOU2
+	KEY				3
+	VISIBILITY		0					# Not Visible
+SCENARIO	01010
+	TITLE			"Shanty Town"
+	AVI				none	lose1 lose2 lose3
+	VISIBILITY		0					# Not Visible
+MISSION		00021	BS2M1.bmp
+	TITLE			"Prisoner's Dilemma"
+	MESSAGE			BS2M1 BAYOU2_1WIN BAYOU2_1LOSE BAYOU_DIE
+	MAPFILE			Bayou2
+	STRATMAP		Bayou2.bmp
+	MUSIC			BAYOU1_MUSIC BAYOU2_MUSIC
+	KEY				3
+	VISIBILITY		0					# Not Visible
+MISSION		00022	BS2M2.bmp
+	TITLE			"Clean Sweep"
+	MESSAGE			BS2M2 BAYOU2_2WIN BAYOU2_2LOSE BAYOU_DIE
+	MAPFILE			Bayou2
+	STRATMAP		Bayou2.bmp
+	MUSIC			BAYOU1_MUSIC BAYOU2_MUSIC
+	KEY				3
+	VISIBILITY		0					# Not Visible
+SCENARIO	01011
+	TITLE			"Weapons Plant"
+	AVI				none	lose1 lose2 lose3
+	VISIBILITY		0					# Not Visible
+MISSION		00023	BS3M1.bmp
+	TITLE			"Beware the Air"
+	MESSAGE			BS3M1 BAYOU3_1WIN BAYOU3_1LOSE BAYOU_DIE
+	MAPFILE			Bayou3
+	STRATMAP		Bayou3.bmp
+	MUSIC			BAYOU1_MUSIC BAYOU2_MUSIC
+	KEY				4
+	VISIBILITY		0					# Not Visible
+MISSION		00024	BS3M2.bmp
+	TITLE			"Big Bang Theory"
+	MESSAGE			BS3M2 BAYOU3_2WIN BAYOU_LOSE BAYOU_DIE
+	MAPFILE			Bayou3
+	STRATMAP		Bayou3.bmp
+	MUSIC			BAYOU1_MUSIC BAYOU2_MUSIC
+	KEY				4
+	VISIBILITY		0					# Not Visible
+MISSION		00025	BS3M3.bmp
+	TITLE			"Escort for Hire"
+	MESSAGE			BS3M3 BAYOU3_3WIN BAYOU3_3LOSE BAYOU_DIE
+	MAPFILE			Bayou3
+	STRATMAP		Bayou3.bmp
+	MUSIC			BAYOU1_MUSIC BAYOU2_MUSIC
+	KEY				4
+	VISIBILITY		0					# Not Visible
+SCENARIO	01012
+	TITLE			"Bourbon Street"
+	AVI				final	lose1 lose2 lose3
+	VISIBILITY		0					# Not Visible
+MISSION		00026	BS4M1.bmp
+	TITLE			"Styx and Bones"
+	MESSAGE			BS4M1 BAYOU4_1WIN BAYOU4_1LOSE BAYOU_DIE
+	MAPFILE			Bayou4
+	STRATMAP		Bayou4.bmp
+	MUSIC			BAYOU1_MUSIC BAYOU3_MUSIC
+	KEY				4
+	VISIBILITY		0					# Not Visible
+MISSION		00027	BS4M2.bmp
+	TITLE			"City of the Damned"
+	MESSAGE			BS4M2 BAYOU4_2WIN BAYOU4_2LOSE BAYOU_DIE
+	MAPFILE			Bayou4
+	STRATMAP		Bayou4.bmp
+	MUSIC			BAYOU1_MUSIC BAYOU3_MUSIC
+	KEY				4
+	VISIBILITY		0					# Not Visible
+MISSION		00028	BS4M3.bmp
+	TITLE			"Resurrection"
+	MESSAGE			BS4M3 BAYOU_WIN BAYOU4_3LOSE BAYOU_DIE
+	MAPFILE			Bayou4
+	STRATMAP		Bayou4.bmp
+	MUSIC			BAYOU1_MUSIC BAYOU3_MUSIC
+	KEY				4
+	VISIBILITY		0					# Not Visible
+#=======================================================================
+#						EOF
+#=======================================================================

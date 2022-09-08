@@ -1,0 +1,1949 @@
+//========================================================================
+//	FILE:			$Workfile: ScreenBtn.dat $
+//
+//	DESCRIPTION:	ArmyMen ScreenBtn static data.
+//
+//	AUTHOR:			Andrew J Burgess
+//
+//	CREATED:		Wednesday, October 15, 1997
+//
+//	REVISION:		$Header:  $
+//
+//========================================================================
+//                 COPYRIGHT(C)1997 The 3DO Company
+//      Unathorized reproduction, adaptation, distribution,
+//      performance or display of this computer program or
+//      the associated audiovisual work is strictly prohibited.
+//                      All rights reserved.
+///========================================================================
+//  History
+//
+//  $Log: /ArmyMen/src/ScreenBtn.dat $
+//  
+//  $Nokeywords:$
+//========================================================================
+
+extern	char	OK_TextBtn[];
+extern	char	CANCEL_TextBtn[];
+extern	char	NEXT_TextBtn[];
+extern	char	BACK_TextBtn[];
+extern	char	FINISH_TextBtn[];
+extern	char	DELETE_TextBtn[];
+extern	char	MORE_TextBtn[];
+extern	char	APPLY_TextBtn[];
+
+extern	char	BOOTCAMP_TextBtn[];
+extern	char	ONEPLAYER_TextBtn[];
+extern	char	MULTIPLAYER_TextBtn[];
+extern	char	OPTIONS_TextBtn[];
+extern	char	QUIT_TextBtn[];
+
+extern	char	NEWPLAYER_TextBtn[];
+
+extern	char	AUDIO_TextBtn[];
+extern	char	CONTROLS_TextBtn[];
+extern	char	ABOUT_TextBtn[];
+extern	char	KEYPAD_TextBtn[];
+extern	char	KEYBOARD_TextBtn[];
+extern	char	CUSTOM_TextBtn[];
+extern	char	JOYSTICK_TextBtn[];
+extern	char	RESTOREkb_TextBtn[];
+extern	char	RESTOREkp_TextBtn[];
+extern	char	RESTOREjoy_TextBtn[];
+extern	char	ABORTMISSION_TextBtn[];
+extern	char	NO_TextBtn[];
+extern	char	YES_TextBtn[];
+extern	char	CONTINUE_TextBtn[];
+extern	char	PlayAgain_TextBtn[];
+
+extern	char	START_TextBtn[];
+extern	char	EXIT_TextBtn[];
+
+//------------------------------------------------------------------------
+
+extern	LONG	ScrnOnBootCamp( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnOnePlayer( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnMultiPlayer( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnOptions( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnQuit( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnConfigBack( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnJoystickConfigBack( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnApply( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnJoystickApply( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnCancel( HSCREENBTN hScreenBtn );
+
+extern	LONG	ScrnPlayerName( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnPlayerNameDelete( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnPlayerNameNext( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnCampaignMore( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnScenarioMore( HSCREENBTN hScreenBtn );
+
+extern	LONG	ScrnOnControlsOption( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnAboutOption( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnKeypadConfig( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnKeyBoardConfig( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnCustomConfig( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnJoystickConfig( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnAudioOption( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnRestoreKB( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnRestoreKP( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnRestoreJoystick( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnControls2Option( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnKeypad2Config( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnKeyBoard2Config( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnCustom2Config( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnJoystick2Config( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnAudio2Option( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnAbortMission( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnAbout2Option( HSCREENBTN hScreenBtn );
+
+extern	LONG	ScrnOnSfxOnOption( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnSfxOffOption( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnMusicOnOption( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnMusicOffOption( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnVoiceOnOption( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnVoiceOffOption( HSCREENBTN hScreenBtn );
+
+extern	LONG	ScrnSfxVolumeDn( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnSfxVolumeUp( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnMusicVolumeDn( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnMusicVolumeUp( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnVoiceVolumeDn( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnVoiceVolumeUp( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnSfxPlaySnd( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnMusicPlaySnd( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnVoicePlaySnd( HSCREENBTN hScreenBtn );
+
+extern	LONG	ScrnOnYesPlayAgain( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnNoPlayAgain( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnContinue( HSCREENBTN hScreenBtn );
+
+extern	LONG	ScrnOnRequestColor( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnStartMulti( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnOnExitMulti( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnSelectMultiMap( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnScrollUp( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnScrollDn( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnHostChat( HSCREENBTN hScreenBtn );
+extern	LONG	ScrnRemoteChat( HSCREENBTN hScreenBtn );
+
+//------------------------------------------------------------------------
+//		COLOR TABLES
+//------------------------------------------------------------------------
+SBTN_SCRN_COLORS	GreenArmyInterfaceColors =
+{
+//  TITLE       NULL state     FOCUS state  CLICKED state  DISABLED state  Already Played,  Edit Fill
+	SBTN_BLACK, SBTN_LT_GREEN, SBTN_WHITE,  SBTN_YELLOW,   SBTN_DK_GREEN,  SBTN_YELLOW,     SBTN_DK_GREEN
+};
+
+SBTN_SCRN_COLORS	TanArmyInterfaceColors =
+{
+//  TITLE       NULL state   FOCUS state  CLICKED state  DISABLED state  Already Played,  Edit Fill
+	SBTN_BLACK, SBTN_LT_TAN, SBTN_WHITE,  SBTN_YELLOW,   SBTN_DK_TAN,    SBTN_YELLOW,     SBTN_DK_TAN
+};
+
+SBTN_SCRN_COLORS	BlueArmyInterfaceColors =
+{
+//  TITLE       NULL state    FOCUS state  CLICKED state  DISABLED state  Already Played,  Edit Fill
+	SBTN_BLACK, SBTN_LT_BLUE, SBTN_WHITE,  SBTN_YELLOW,   SBTN_DK_BLUE,   SBTN_YELLOW,     SBTN_DK_BLUE
+};
+
+SBTN_SCRN_COLORS	GrayArmyInterfaceColors =
+{
+//  TITLE       NULL state    FOCUS state  CLICKED state  DISABLED state  Already Played,  Edit Fill
+	SBTN_BLACK, SBTN_LT_GREY, SBTN_WHITE,  SBTN_YELLOW,   SBTN_DK_GREY,   SBTN_YELLOW,     SBTN_DK_GREY
+};
+
+SBTN_SCRN_COLORS	MultiPlayerInterfaceColors =
+{
+//  TITLE       NULL state     FOCUS state  CLICKED state  DISABLED state  Already Played,  Edit Fill
+	SBTN_WHITE, SBTN_WHITE, SBTN_YELLOW, SBTN_RED,      SBTN_DK_GREY,   SBTN_YELLOW,     SBTN_LT_GREY
+};
+
+SBTN_SCRN_COLORS*	ArmyInterfaceColors[ LAST_COLOR_ARMY+1 ] =
+{
+	&GreenArmyInterfaceColors,
+	&TanArmyInterfaceColors,
+	&BlueArmyInterfaceColors,
+	&GrayArmyInterfaceColors,
+	&MultiPlayerInterfaceColors
+};
+
+char*				ArmyInterfacePaths[ LAST_COLOR_ARMY+1 ] =
+{
+	SCREEN_GREEN_PATH,				// Green Army Screen Directory Path
+	SCREEN_TAN_PATH,				// Tan Army Screen Directory Path
+	SCREEN_BLUE_PATH,				// Blue Army Screen Directory Path
+	SCREEN_GRAY_PATH,				// Grey Army Screen Directory Path
+	SCREEN_PATH						// Root Screen Directory Path
+};
+
+//------------------------------------------------------------------------
+//		text NULL ScreenBtn
+//------------------------------------------------------------------------
+SCREENBTNDEF	NULL_20_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_WHITE,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	NULL,									// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	NULL,
+	0
+};
+
+SCREENBTNDEF	NULL_20a_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_WHITE,								// screenBtn Text Background Color
+	{ SBTN_MAGENTA,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	NULL,									// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	NULL,
+	0
+};
+
+SCREENBTNDEF	NULL_14_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_14,							// screenBtn Font ID
+	SBTN_WHITE,								// screenBtn Text Background Color
+	{ SBTN_MAGENTA,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	NULL,									// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	NULL,
+	0
+};
+
+SCREENBTNDEF	Key_ScreenBtn =
+{
+	( SBTN_KEY_TYPE|SBTN_ALLOW_OFFSET|SBTN_INVISIBLE ),	// screenBtn Attributes
+	FONT_TIMES_14,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_GREEN,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 144,0 },								// screenBtn relative position
+	16,										// screenBtn EDIT max chars in box
+	NULL,									// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	NULL,
+	0
+};
+
+SCREENBTNDEF	FixedKey_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_ALLOW_OFFSET|SBTN_INVISIBLE|SBTN_PASSIVE ),	// screenBtn Attributes
+	FONT_TIMES_14,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_CYAN,SBTN_WHITE,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 90,0 },								// screenBtn relative position
+	16,										// screenBtn EDIT max chars in box
+	NULL,									// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	NULL,
+	0
+};
+
+SCREENBTNDEF	PassiveKey_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_ALLOW_OFFSET|SBTN_INVISIBLE|SBTN_PASSIVE ),	// screenBtn Attributes
+	FONT_TIMES_14,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_GREEN,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 144,0 },								// screenBtn relative position
+	16,										// screenBtn EDIT max chars in box
+	NULL,									// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	NULL,
+	0
+};
+
+SCREENBTNDEF	JoyBtn_ScreenBtn =
+{
+	( SBTN_KEY_TYPE|SBTN_ALLOW_OFFSET|SBTN_INVISIBLE ),	// screenBtn Attributes
+	FONT_TIMES_14,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_GREEN,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 144,0 },								// screenBtn relative position
+	16,										// screenBtn EDIT max chars in box
+	NULL,									// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	NULL,
+	0
+};
+
+//------------------------------------------------------------------------
+//		text OK ScreenBtn
+//------------------------------------------------------------------------
+SCREENBTNDEF	OK_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_SPCL_OK ),		// screenBtn Attributes
+	FONT_CARGO_14,							// screenBtn Font ID
+	SBTN_WHITE,								// screenBtn Text Background Color
+	{ SBTN_BLACK,SBTN_YELLOW,SBTN_WHITE,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	OK_TextBtn,								// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,64,32},							// screenBtn default area box
+	NULL,
+	0
+};
+
+//------------------------------------------------------------------------
+//		text CANCEL ScreenBtn
+//------------------------------------------------------------------------
+SCREENBTNDEF	CANCEL_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_SPCL_CANCEL ),	// screenBtn Attributes
+	FONT_CARGO_14,							// screenBtn Font ID
+	SBTN_WHITE,								// screenBtn Text Background Color
+	{ SBTN_BLACK,SBTN_YELLOW,SBTN_WHITE,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	CANCEL_TextBtn,							// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,64,32},							// screenBtn default area box
+	NULL,
+	0
+};
+
+//------------------------------------------------------------------------
+//		text NEXT ScreenBtn
+//------------------------------------------------------------------------
+SCREENBTNDEF	NEXT_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_SPCL_NEXT ),		// screenBtn Attributes
+	FONT_CARGO_14,							// screenBtn Font ID
+	SBTN_WHITE,								// screenBtn Text Background Color
+	{ SBTN_BLACK,SBTN_YELLOW,SBTN_WHITE,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	NEXT_TextBtn,							// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,64,32},							// screenBtn default area box
+	NULL,
+	0
+};
+
+//------------------------------------------------------------------------
+//		text BACK ScreenBtn
+//------------------------------------------------------------------------
+/*
+SCREENBTNDEF	BACK_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_SPCL_BACK ),		// screenBtn Attributes
+	FONT_CARGO_14,							// screenBtn Font ID
+	SBTN_WHITE,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	BACK_TextBtn,							// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,64,32},							// screenBtn default area box
+	NULL,
+	0
+};
+*/
+
+//------------------------------------------------------------------------
+//		text FINISH ScreenBtn
+//------------------------------------------------------------------------
+SCREENBTNDEF	FINISH_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_SPCL_FINISH ),	// screenBtn Attributes
+	FONT_CARGO_14,							// screenBtn Font ID
+	SBTN_WHITE,								// screenBtn Text Background Color
+	{ SBTN_BLACK,SBTN_YELLOW,SBTN_WHITE,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	FINISH_TextBtn,							// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,64,32},							// screenBtn default area box
+	NULL,
+	0
+};
+
+//------------------------------------------------------------------------
+//		text BOOT CAMP ScreenBtn
+//------------------------------------------------------------------------
+SCREENBTNDEF	BOOTCAMP_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_TEXT_HILITE|SBTN_TEXT_CENTER ),	// screenBtn Attributes
+//	( SBTN_TEXT_TYPE ),						// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_WHITE,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,70 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	BOOTCAMP_TextBtn,						// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnBootCamp,
+	0
+};
+
+//------------------------------------------------------------------------
+//		text ONE PLAYER ScreenBtn
+//------------------------------------------------------------------------
+SCREENBTNDEF	ONEPLAYER_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_TEXT_HILITE|SBTN_TEXT_CENTER ),	// screenBtn Attributes
+//	( SBTN_TEXT_TYPE ),						// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_WHITE,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,100 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	ONEPLAYER_TextBtn,						// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnOnePlayer,
+	0
+};
+
+//------------------------------------------------------------------------
+//		text MULTI-PLAYER ScreenBtn
+//------------------------------------------------------------------------
+SCREENBTNDEF	MULTIPLAYER_ScreenBtn =
+{
+//	( SBTN_TEXT_TYPE|SBTN_TEXT_HILITE|SBTN_TEXT_CENTER|SBTN_DISABLED ),	// screenBtn Attributes
+	( SBTN_TEXT_TYPE|SBTN_TEXT_HILITE|SBTN_TEXT_CENTER ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_WHITE,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,130 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	MULTIPLAYER_TextBtn,					// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnMultiPlayer,
+	0
+};
+
+//------------------------------------------------------------------------
+//		text OPTIONS ScreenBtn
+//------------------------------------------------------------------------
+SCREENBTNDEF	OPTIONS_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_TEXT_HILITE|SBTN_TEXT_CENTER ),	// screenBtn Attributes
+//	( SBTN_TEXT_TYPE ),						// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_WHITE,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,160 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	OPTIONS_TextBtn,						// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnOptions,
+	0
+};
+
+
+//------------------------------------------------------------------------
+//		text QUIT ScreenBtn
+//------------------------------------------------------------------------
+SCREENBTNDEF	QUIT_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,3 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	QUIT_TextBtn,							// screenBtn Text string
+	"BTN64wUp.bmp",							// screenBtn NULL state icon
+	"BTN64wUp.bmp",							// screenBtn FOCUSED state icon
+	"BTN64wDn.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,64,32},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnQuit,
+	0
+};
+
+//------------------------------------------------------------------------
+//		edit PLAYER_NAME_1 ScreenBtn
+//------------------------------------------------------------------------
+SCREENBTNDEF	PLAYER_NAME_1_ScreenBtn =
+{
+	( SBTN_EDIT_TYPE|SBTN_TEXT_CENTER|SBTN_TRANSPARENT ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_DK_CYAN,							// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_WHITE,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,70 },								// screenBtn relative position
+	SBTN_MAX_PLAYER_NAME_LEN,				// screenBtn EDIT max chars in box
+	NEWPLAYER_TextBtn,						// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnPlayerName,
+	0										// index 0
+};
+
+SCREENBTNDEF	PLAYER_NAME_2_ScreenBtn =
+{
+	( SBTN_EDIT_TYPE|SBTN_TEXT_CENTER ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_DK_CYAN,							// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_WHITE,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,110 },								// screenBtn relative position
+	SBTN_MAX_PLAYER_NAME_LEN,				// screenBtn EDIT max chars in box
+	NEWPLAYER_TextBtn,						// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnPlayerName,
+	1										// index 1
+};
+
+SCREENBTNDEF	PLAYER_NAME_3_ScreenBtn =
+{
+	( SBTN_EDIT_TYPE|SBTN_TEXT_CENTER ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_DK_CYAN,							// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_WHITE,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,150 },								// screenBtn relative position
+	SBTN_MAX_PLAYER_NAME_LEN,				// screenBtn EDIT max chars in box
+	NEWPLAYER_TextBtn,						// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnPlayerName,
+	2										// index 2
+};
+
+SCREENBTNDEF	PLAYER_NAME_4_ScreenBtn =
+{
+	( SBTN_EDIT_TYPE|SBTN_TEXT_CENTER ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_DK_CYAN,							// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_WHITE,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,190 },								// screenBtn relative position
+	SBTN_MAX_PLAYER_NAME_LEN,				// screenBtn EDIT max chars in box
+	NEWPLAYER_TextBtn,						// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnPlayerName,
+	3										// index 3
+};
+
+SCREENBTNDEF	BACK2_ScreenBtn =
+{
+//	( SBTN_ICON_TYPE|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 16,3 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	BACK_TextBtn,							// screenBtn Text string
+	"BTN64wUp.bmp",							// screenBtn NULL state icon
+	"BTN64wUp.bmp",							// screenBtn FOCUSED state icon
+	"BTN64wDn.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,64,32},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnBack,
+	SCRN_GAME_START_STATE
+};
+
+SCREENBTNDEF	DELETE_ScreenBtn =
+{
+//	( SBTN_ICON_TYPE|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 96,3 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	DELETE_TextBtn,							// screenBtn Text string
+	"BTN88wUp.bmp",							// screenBtn NULL state icon
+	"BTN88wUp.bmp",							// screenBtn FOCUSED state icon
+	"BTN88wDn.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,88,32},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnPlayerNameDelete,
+	0
+};
+
+SCREENBTNDEF	NEXT2_ScreenBtn =
+{
+//	( SBTN_ICON_TYPE|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 200,3 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	NEXT_TextBtn,							// screenBtn Text string
+	"BTN64wUp.bmp",							// screenBtn NULL state icon
+	"BTN64wUp.bmp",							// screenBtn FOCUSED state icon
+	"BTN64wDn.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,64,32},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnPlayerNameNext,
+	0
+};
+
+//------------------------------------------------------------------------
+//		text SELECT CAMPAIGN ScreenBtn
+//------------------------------------------------------------------------
+SCREENBTNDEF	CAMPAIGN_MORE_ScreenBtn =
+{
+//	( SBTN_TEXT_TYPE|SBTN_TEXT_HILITE|SBTN_INVISIBLE|SBTN_TEXT_CENTER|SBTN_MORE ),	// screenBtn Attributes
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET|SBTN_INVISIBLE),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_WHITE,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 60,3 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	MORE_TextBtn,							// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnCampaignMore,
+	0
+};
+
+SCREENBTNDEF	CAMPAIGN_BACK_ScreenBtn =
+{
+//	( SBTN_ICON_TYPE|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,3 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	BACK_TextBtn,							// screenBtn Text string
+	"BTN64wUp.bmp",							// screenBtn NULL state icon
+	"BTN64wUp.bmp",							// screenBtn FOCUSED state icon
+	"BTN64wDn.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,64,32},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnBack,
+	SCRN_SELECT_CALLSIGN_STATE
+};
+
+//------------------------------------------------------------------------
+//		text SELECT MISSION ScreenBtn
+//------------------------------------------------------------------------
+SCREENBTNDEF	MISSION_MORE_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_TEXT_HILITE|SBTN_INVISIBLE|SBTN_MORE ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_WHITE,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 120,6 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	MORE_TextBtn,							// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnScenarioMore,
+	0
+};
+
+SCREENBTNDEF	MISSION_BACK_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_TEXT_HILITE),		// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_WHITE,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 16,6 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	BACK_TextBtn,							// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnBack,
+	SCRN_SELECT_CAMPAIGN_STATE
+};
+
+SCREENBTNDEF	MISSION_CANCEL_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_TEXT_HILITE),		// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_WHITE,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 200,6 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	CANCEL_TextBtn,							// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnCancel,
+	0
+};
+
+SCREENBTNDEF	MISSION_CANCEL1_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_TEXT_HILITE),		// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_WHITE,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 200,6 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	CANCEL_TextBtn,							// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnCancel,
+	0
+};
+
+//------------------------------------------------------------------------
+//		OPTIONS ScreenBtns
+//------------------------------------------------------------------------
+SCREENBTNDEF	CONTROL_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,70 },								// screenBtn relative position
+	SBTN_MAX_PLAYER_NAME_LEN,				// screenBtn EDIT max chars in box
+	CONTROLS_TextBtn,						// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnControlsOption,
+	0										// index 0
+};
+
+SCREENBTNDEF	AUDIO_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,110 },								// screenBtn relative position
+	SBTN_MAX_PLAYER_NAME_LEN,				// screenBtn EDIT max chars in box
+	AUDIO_TextBtn,							// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnAudioOption,
+	1										// index 1
+};
+
+SCREENBTNDEF	ABOUT_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,150 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	ABOUT_TextBtn,							// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnAboutOption,
+	1										// index 1
+};
+
+SCREENBTNDEF	KEYPAD_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,70 },								// screenBtn relative position
+	SBTN_MAX_PLAYER_NAME_LEN,				// screenBtn EDIT max chars in box
+	KEYPAD_TextBtn,							// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnKeypadConfig,
+	0										// index 0
+};
+
+SCREENBTNDEF	KEYBOARD_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,110 },								// screenBtn relative position
+	SBTN_MAX_PLAYER_NAME_LEN,				// screenBtn EDIT max chars in box
+	KEYBOARD_TextBtn,						// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnKeyBoardConfig,
+	1										// index 1
+};
+
+SCREENBTNDEF	CUSTOM_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,150 },								// screenBtn relative position
+	SBTN_MAX_PLAYER_NAME_LEN,				// screenBtn EDIT max chars in box
+	CUSTOM_TextBtn,							// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnCustomConfig,
+	2										// index 2
+};
+
+SCREENBTNDEF	JOYSTICK_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,190 },								// screenBtn relative position
+	SBTN_MAX_PLAYER_NAME_LEN,				// screenBtn EDIT max chars in box
+	JOYSTICK_TextBtn,						// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnJoystickConfig,
+	3										// index 3
+};
+
+//------------------------------------------------------------------------
+//		PLAY OPTIONS ScreenBtns
+//------------------------------------------------------------------------
+SCREENBTNDEF	CONTROL2_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,60 },								// screenBtn relative position
+	SBTN_MAX_PLAYER_NAME_LEN,				// screenBtn EDIT max chars in box
+	CONTROLS_TextBtn,						// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnControls2Option,
+	0										// index 0
+};
+
+SCREENBTNDEF	AUDIO2_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,100 },								// screenBtn relative position
+	SBTN_MAX_PLAYER_NAME_LEN,				// screenBtn EDIT max chars in box
+	AUDIO_TextBtn,							// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnAudio2Option,
+	1										// index 1
+};
+
+SCREENBTNDEF	ABORTMISSION_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,140 },								// screenBtn relative position
+	SBTN_MAX_PLAYER_NAME_LEN,				// screenBtn EDIT max chars in box
+	ABORTMISSION_TextBtn,					// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnAbortMission,
+	2										// index 2
+};
+
+SCREENBTNDEF	ABOUT2_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,180 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	ABOUT_TextBtn,							// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnAbout2Option,
+	1										// index 1
+};
+
+SCREENBTNDEF	KEYPAD2_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,70 },								// screenBtn relative position
+	SBTN_MAX_PLAYER_NAME_LEN,				// screenBtn EDIT max chars in box
+	KEYPAD_TextBtn,							// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnKeypad2Config,
+	0										// index 0
+};
+
+SCREENBTNDEF	KEYBOARD2_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,110 },								// screenBtn relative position
+	SBTN_MAX_PLAYER_NAME_LEN,				// screenBtn EDIT max chars in box
+	KEYBOARD_TextBtn,						// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnKeyBoard2Config,
+	1										// index 1
+};
+
+SCREENBTNDEF	CUSTOM2_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,150 },								// screenBtn relative position
+	SBTN_MAX_PLAYER_NAME_LEN,				// screenBtn EDIT max chars in box
+	CUSTOM_TextBtn,							// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnCustom2Config,
+	2										// index 2
+};
+
+SCREENBTNDEF	JOYSTICK2_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,190 },								// screenBtn relative position
+	SBTN_MAX_PLAYER_NAME_LEN,				// screenBtn EDIT max chars in box
+	JOYSTICK_TextBtn,						// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,1,1},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnJoystick2Config,
+	3										// index 3
+};
+
+SCREENBTNDEF	APPLY_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_ICON_TRANS|SBTN_ICON_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 72,3 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	APPLY_TextBtn,							// screenBtn Text string
+	"BTN77wUp.bmp",							// screenBtn NULL state icon
+	"BTN77wUp.bmp",							// screenBtn FOCUSED state icon
+	"BTN77wDn.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,77,32},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnApply,
+	0
+};
+
+SCREENBTNDEF	APPLY2_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 72,3 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	APPLY_TextBtn,							// screenBtn Text string
+	"BTN77wUp.bmp",							// screenBtn NULL state icon
+	"BTN77wUp.bmp",							// screenBtn FOCUSED state icon
+	"BTN77wDn.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,77,32},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnJoystickApply,
+	0
+};
+
+SCREENBTNDEF	RESTOREkb_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_TIMES_14,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,8 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	RESTOREkb_TextBtn,						// screenBtn Text string
+	"BTN128wUp.bmp",						// screenBtn NULL state icon
+	"BTN128wUp.bmp",						// screenBtn FOCUSED state icon
+	"BTN128wDn.bmp",						// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,128,32},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnRestoreKB,
+	0										// index 0
+};
+
+SCREENBTNDEF	RESTOREkp_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_ICON_TRANS|SBTN_ICON_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_TIMES_14,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 132,8 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	RESTOREkp_TextBtn,						// screenBtn Text string
+	"BTN128wUp.bmp",						// screenBtn NULL state icon
+	"BTN128wUp.bmp",						// screenBtn FOCUSED state icon
+	"BTN128wDn.bmp",						// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,128,32},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnRestoreKP,
+	0										// index 0
+};
+
+SCREENBTNDEF	RESTOREjoy_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_TIMES_14,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,8 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	RESTOREjoy_TextBtn,						// screenBtn Text string
+	"BTN128wUp.bmp",						// screenBtn NULL state icon
+	"BTN128wUp.bmp",						// screenBtn FOCUSED state icon
+	"BTN128wDn.bmp",						// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,128,32},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnRestoreJoystick,
+	0										// index 0
+};
+
+//------------------------------------------------------------------------
+
+SCREENBTNDEF	BACK3_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,3 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	BACK_TextBtn,							// screenBtn Text string
+	"BTN64wUp.bmp",							// screenBtn NULL state icon
+	"BTN64wUp.bmp",							// screenBtn FOCUSED state icon
+	"BTN64wDn.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,64,32},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnBack,
+	SCRN_GAME_START_STATE
+};
+
+SCREENBTNDEF	BACK4_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,3 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	BACK_TextBtn,							// screenBtn Text string
+	"BTN64wUp.bmp",							// screenBtn NULL state icon
+	"BTN64wUp.bmp",							// screenBtn FOCUSED state icon
+	"BTN64wDn.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,64,32},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnBack,
+	SCRN_OPTIONS_STATE
+};
+
+SCREENBTNDEF	BACK5_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,3 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	BACK_TextBtn,							// screenBtn Text string
+	"BTN64wUp.bmp",							// screenBtn NULL state icon
+	"BTN64wUp.bmp",							// screenBtn FOCUSED state icon
+	"BTN64wDn.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,64,32},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnBack,
+	SCRN_PLAY_OPTIONS_STATE
+};
+
+SCREENBTNDEF	BACK6_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,3 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	BACK_TextBtn,							// screenBtn Text string
+	"BTN64wUp.bmp",							// screenBtn NULL state icon
+	"BTN64wUp.bmp",							// screenBtn FOCUSED state icon
+	"BTN64wDn.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,64,32},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnPlayBack,
+	SCRN_NULL_STATE
+};
+
+SCREENBTNDEF	BACK7_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,3 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	BACK_TextBtn,							// screenBtn Text string
+	"BTN64wUp.bmp",							// screenBtn NULL state icon
+	"BTN64wUp.bmp",							// screenBtn FOCUSED state icon
+	"BTN64wDn.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,64,32},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnBack,
+	SCRN_CONTROLS_STATE
+};
+
+SCREENBTNDEF	BACK8_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,3 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	BACK_TextBtn,							// screenBtn Text string
+	"BTN64wUp.bmp",							// screenBtn NULL state icon
+	"BTN64wUp.bmp",							// screenBtn FOCUSED state icon
+	"BTN64wDn.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,64,32},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnConfigBack,
+	SCRN_CONTROLS_STATE
+};
+
+SCREENBTNDEF	BACK9_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,3 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	BACK_TextBtn,							// screenBtn Text string
+	"BTN64wUp.bmp",							// screenBtn NULL state icon
+	"BTN64wUp.bmp",							// screenBtn FOCUSED state icon
+	"BTN64wDn.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,64,32},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnBack,
+	SCRN_AUDIO_STATE
+};
+
+SCREENBTNDEF	BACK10_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,3 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	BACK_TextBtn,							// screenBtn Text string
+	"BTN64wUp.bmp",							// screenBtn NULL state icon
+	"BTN64wUp.bmp",							// screenBtn FOCUSED state icon
+	"BTN64wDn.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,64,32},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnBack,
+	SCRN_PLAY_AUDIO_STATE
+};
+
+SCREENBTNDEF	BACK11_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,3 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	BACK_TextBtn,							// screenBtn Text string
+	"BTN64wUp.bmp",							// screenBtn NULL state icon
+	"BTN64wUp.bmp",							// screenBtn FOCUSED state icon
+	"BTN64wDn.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,64,32},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnConfigBack,
+	SCRN_PLAY_CONTROLS_STATE
+};
+
+SCREENBTNDEF	BACK12_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,3 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	BACK_TextBtn,							// screenBtn Text string
+	"BTN64wUp.bmp",							// screenBtn NULL state icon
+	"BTN64wUp.bmp",							// screenBtn FOCUSED state icon
+	"BTN64wDn.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,64,32},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnJoystickConfigBack,
+	SCRN_CONTROLS_STATE
+};
+
+SCREENBTNDEF	BACK13_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,3 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	BACK_TextBtn,							// screenBtn Text string
+	"BTN64wUp.bmp",							// screenBtn NULL state icon
+	"BTN64wUp.bmp",							// screenBtn FOCUSED state icon
+	"BTN64wDn.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,64,32},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnJoystickConfigBack,
+	SCRN_PLAY_CONTROLS_STATE
+};
+
+//------------------------------------------------------------------------
+
+SCREENBTNDEF	Bar_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_PASSIVE|SBTN_ALLOW_OFFSET ),		// screenBtn Attributes
+	0,										// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 133,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"slider.bmp",							// screenBtn NULL state icon
+	"slider.bmp",							// screenBtn FOCUSED state icon
+	"slider.bmp",							// screenBtn CLICKED state icon
+	"slider.bmp",							// screenBtn DISABLED state icon
+	{0,0,7,23},								// screenBtn default area box
+	NULL,
+	0
+};
+
+SCREENBTNDEF	SFX_ON_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS ),		// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 130,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"BtnOnN.bmp",							// screenBtn NULL state icon
+	"BtnOnF.bmp",							// screenBtn FOCUSED state icon
+	"BtnOnC.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,33,23},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnSfxOnOption,
+	0										// index 0
+};
+
+SCREENBTNDEF	SFX_OFF_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 170,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"BtnOffN.bmp",							// screenBtn NULL state icon
+	"BtnOffF.bmp",							// screenBtn FOCUSED state icon
+	"BtnOffC.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,33,23},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnSfxOffOption,
+	0										// index 0
+};
+
+SCREENBTNDEF	MUSIC_ON_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 130,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"BtnOnN.bmp",							// screenBtn NULL state icon
+	"BtnOnF.bmp",							// screenBtn FOCUSED state icon
+	"BtnOnC.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,33,23},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnMusicOnOption,
+	0										// index 0
+};
+
+SCREENBTNDEF	MUSIC_OFF_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS ),		// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 170,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"BtnOffN.bmp",							// screenBtn NULL state icon
+	"BtnOffF.bmp",							// screenBtn FOCUSED state icon
+	"BtnOffC.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,33,23},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnMusicOffOption,
+	0										// index 0
+};
+
+SCREENBTNDEF	VOICE_ON_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 130,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"BtnOnN.bmp",							// screenBtn NULL state icon
+	"BtnOnF.bmp",							// screenBtn FOCUSED state icon
+	"BtnOnC.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,33,23},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnVoiceOnOption,
+	0										// index 0
+};
+
+SCREENBTNDEF	VOICE_OFF_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 170,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"BtnOffN.bmp",							// screenBtn NULL state icon
+	"BtnOffF.bmp",							// screenBtn FOCUSED state icon
+	"BtnOffC.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,33,23},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnVoiceOffOption,
+	0										// index 0
+};
+
+SCREENBTNDEF	SfxDn_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS ),						// screenBtn Attributes
+	0,										// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"ScrollLeftN.bmp",						// screenBtn NULL state icon
+	"ScrollLeftF.bmp",						// screenBtn FOCUSED state icon
+	"ScrollLeftC.bmp",						// screenBtn CLICKED state icon
+	"ScrollLeftD.bmp",						// screenBtn DISABLED state icon
+	{0,0,33,23},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnSfxVolumeDn,
+	0
+};
+
+SCREENBTNDEF	SfxUp_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS ),						// screenBtn Attributes
+	0,										// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 140,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"ScrollRightN.bmp",						// screenBtn NULL state icon
+	"ScrollRightF.bmp",						// screenBtn FOCUSED state icon
+	"ScrollRightC.bmp",						// screenBtn CLICKED state icon
+	"ScrollRightD.bmp",						// screenBtn DISABLED state icon
+	{0,0,33,23},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnSfxVolumeUp,
+	0
+};
+
+SCREENBTNDEF	MusicDn_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS ),						// screenBtn Attributes
+	0,										// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"ScrollLeftN.bmp",						// screenBtn NULL state icon
+	"ScrollLeftF.bmp",						// screenBtn FOCUSED state icon
+	"ScrollLeftC.bmp",						// screenBtn CLICKED state icon
+	"ScrollLeftD.bmp",						// screenBtn DISABLED state icon
+	{0,0,33,23},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnMusicVolumeDn,
+	0
+};
+
+SCREENBTNDEF	VoiceBar_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_PASSIVE ),		// screenBtn Attributes
+	0,										// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 133,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"slider.bmp",							// screenBtn NULL state icon
+	"slider.bmp",							// screenBtn FOCUSED state icon
+	"slider.bmp",							// screenBtn CLICKED state icon
+	"slider.bmp",							// screenBtn DISABLED state icon
+	{0,0,7,23},								// screenBtn default area box
+	NULL,
+	0
+};
+
+SCREENBTNDEF	MusicUp_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS ),						// screenBtn Attributes
+	0,										// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 140,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"ScrollRightN.bmp",						// screenBtn NULL state icon
+	"ScrollRightF.bmp",						// screenBtn FOCUSED state icon
+	"ScrollRightC.bmp",						// screenBtn CLICKED state icon
+	"ScrollRightD.bmp",						// screenBtn DISABLED state icon
+	{0,0,33,23},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnMusicVolumeUp,
+	0
+};
+
+SCREENBTNDEF	VoiceDn_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS ),						// screenBtn Attributes
+	0,										// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"ScrollLeftN.bmp",						// screenBtn NULL state icon
+	"ScrollLeftF.bmp",						// screenBtn FOCUSED state icon
+	"ScrollLeftC.bmp",						// screenBtn CLICKED state icon
+	"ScrollLeftD.bmp",						// screenBtn DISABLED state icon
+	{0,0,33,23},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnVoiceVolumeDn,
+	0
+};
+
+SCREENBTNDEF	VoiceUp_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS ),						// screenBtn Attributes
+	0,										// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 140,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"ScrollRightN.bmp",						// screenBtn NULL state icon
+	"ScrollRightF.bmp",						// screenBtn FOCUSED state icon
+	"ScrollRightC.bmp",						// screenBtn CLICKED state icon
+	"ScrollRightD.bmp",						// screenBtn DISABLED state icon
+	{0,0,33,23},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnVoiceVolumeUp,
+	0
+};
+
+SCREENBTNDEF	SfxPlay_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS ),						// screenBtn Attributes
+	0,										// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"PlaySndN.bmp",							// screenBtn NULL state icon
+	"PlaySndF.bmp",							// screenBtn FOCUSED state icon
+	"PlaySndC.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,0,0},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnSfxPlaySnd,
+	0
+};
+
+SCREENBTNDEF	MusicPlay_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS ),						// screenBtn Attributes
+	0,										// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"PlaySndN.bmp",							// screenBtn NULL state icon
+	"PlaySndF.bmp",							// screenBtn FOCUSED state icon
+	"PlaySndC.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,0,0},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnMusicPlaySnd,
+	0
+};
+
+SCREENBTNDEF	VoicePlay_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS ),						// screenBtn Attributes
+	0,										// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"PlaySndN.bmp",							// screenBtn NULL state icon
+	"PlaySndF.bmp",							// screenBtn FOCUSED state icon
+	"PlaySndC.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,0,0},								// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnVoicePlaySnd,
+	0
+};
+
+//------------------------------------------------------------------------
+//		PLAYER MISSION LOSE ScreenBtns
+//------------------------------------------------------------------------
+
+SCREENBTNDEF	PlayAgain_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_TEXT_TYPE|SBTN_ALLOW_OFFSET|SBTN_NO_FOCUS ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_RED,SBTN_RED,SBTN_RED,SBTN_RED,SBTN_RED },// screenBtn Text Foreground Color
+//	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 75,20},								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	PlayAgain_TextBtn,						// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,64,32},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnYesPlayAgain,
+	0										// index 0
+};
+
+
+SCREENBTNDEF	YES_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 35,60 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	YES_TextBtn,							// screenBtn Text string
+	"BTN64wUp.bmp",							// screenBtn NULL state icon
+	"BTN64wDn.bmp",							// screenBtn FOCUSED state icon
+	"BTN64wDn.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,54,64,86},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnYesPlayAgain,
+	0										// index 0
+};
+
+SCREENBTNDEF	NO_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_TRANSPARENT,						// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 115,60 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	NO_TextBtn,								// screenBtn Text string
+	"BTN64wUp.bmp",							// screenBtn NULL state icon
+	"BTN64wDn.bmp",							// screenBtn FOCUSED state icon
+	"BTN64wDn.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,54,64,86},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnNoPlayAgain,
+	0										// index 0
+};
+
+SCREENBTNDEF	CONTINUE_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_TEXT_TYPE|SBTN_TEXT_CENTER|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_CARGO_20,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 200,6 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	CONTINUE_TextBtn,						// screenBtn Text string
+	"BTN128wUp.bmp",						// screenBtn NULL state icon
+	"BTN128wDn.bmp",						// screenBtn FOCUSED state icon
+	"BTN128wDn.bmp",						// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,128,32},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnContinueStats,
+	0										// index 0
+};
+
+//------------------------------------------------------------------------
+//		MULTI-PLAYER Campaign Select ScreenBtns
+//------------------------------------------------------------------------
+SCREENBTNDEF	GreenColor_ScreenBtn =
+{
+	( SBTN_ICON_TYPE ),						// screenBtn Attributes
+	0,										// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"BTNgreenUp.bmp",						// screenBtn NULL state icon
+	"BTNgreenUp.bmp",						// screenBtn FOCUSED state icon
+	"BTNgreenDn.bmp",						// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,32,25},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnRequestColor,
+	0										// color reference
+};
+
+SCREENBTNDEF	TanColor_ScreenBtn =
+{
+	( SBTN_ICON_TYPE ),						// screenBtn Attributes
+	0,										// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"BTNtanUp.bmp",							// screenBtn NULL state icon
+	"BTNtanUp.bmp",							// screenBtn FOCUSED state icon
+	"BTNtanDn.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,32,25},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnRequestColor,
+	1										// color reference
+};
+
+SCREENBTNDEF	BlueColor_ScreenBtn =
+{
+	( SBTN_ICON_TYPE ),						// screenBtn Attributes
+	0,										// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"BTNblueUp.bmp",						// screenBtn NULL state icon
+	"BTNblueUp.bmp",						// screenBtn FOCUSED state icon
+	"BTNblueDn.bmp",						// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,32,25},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnRequestColor,
+	2										// color reference
+};
+
+SCREENBTNDEF	GrayColor_ScreenBtn =
+{
+	( SBTN_ICON_TYPE ),						// screenBtn Attributes
+	0,										// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"BTNgreyUp.bmp",						// screenBtn NULL state icon
+	"BTNgreyUp.bmp",						// screenBtn FOCUSED state icon
+	"BTNgreyDn.bmp",						// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,32,25},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnRequestColor,
+	3										// color reference
+};
+
+SCREENBTNDEF	LED_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_PASSIVE ),		// screenBtn Attributes
+	0,										// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"none_selected.bmp",					// screenBtn NULL state icon
+	"none_selected.bmp",					// screenBtn FOCUSED state icon
+	"none_selected.bmp",					// screenBtn CLICKED state icon
+	"none_selected.bmp",					// screenBtn DISABLED state icon
+	{0,0,0,0},								// screenBtn default area box
+	NULL,
+	0
+};
+
+SCREENBTNDEF	StartBtn_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS ),						// screenBtn Attributes
+	0,										// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"stard_up.bmp",							// screenBtn NULL state icon
+	"stard_upF.bmp",						// screenBtn FOCUSED state icon
+	"stard_dn.bmp",							// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,210,20},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnStartMulti,
+	0
+};
+
+SCREENBTNDEF	ExitBtn_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS|SBTN_ALLOW_OFFSET ),						// screenBtn Attributes
+	0,										// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"ExitN.bmp",							// screenBtn NULL state icon
+	"ExitF.bmp",							// screenBtn FOCUSED state icon
+	"ExitC.bmp",							// screenBtn CLICKED state icon
+	"ExitN.bmp",							// screenBtn DISABLED state icon
+	{0,0,64,32},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnOnExitMulti,
+	0
+};
+
+SCREENBTNDEF	MultiMap_ScreenBtn =
+{
+	( SBTN_TEXT_TYPE|SBTN_ALLOW_OFFSET ),	// screenBtn Attributes
+	FONT_TIMES_18,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_YELLOW,SBTN_RED,SBTN_WHITE,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	NULL,									// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,216,18},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnSelectMultiMap,
+	0
+};
+
+SCREENBTNDEF	ScrollUp_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS ),						// screenBtn Attributes
+	0,										// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,0 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"ScrollUpN.bmp",						// screenBtn NULL state icon
+	"ScrollUpF.bmp",						// screenBtn FOCUS state icon
+	"ScrollUpC.bmp",						// screenBtn CLICKED state icon
+	"ScrollUpD.bmp",						// screenBtn DISABLED state icon
+	{0,0,21,37},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnScrollUp,
+	0
+};
+
+SCREENBTNDEF	ScrollDn_ScreenBtn =
+{
+	( SBTN_ICON_TYPE|SBTN_ICON_TRANS ),						// screenBtn Attributes
+	0,										// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_BLACK,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,28 },								// screenBtn relative position
+	0,										// screenBtn EDIT max chars in box
+	"\0",									// screenBtn Text string
+	"ScrollDnN.bmp",						// screenBtn NULL state icon
+	"ScrollDnF.bmp",						// screenBtn FOCUS state icon
+	"ScrollDnC.bmp",						// screenBtn CLICKED state icon
+	"ScrollDnD.bmp",						// screenBtn DISABLED state icon
+	{0,0,21,37},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnScrollDn,
+	0
+};
+
+SCREENBTNDEF	HostSend_ScreenBtn =
+{
+	( SBTN_CHAT_TYPE ),						// screenBtn Attributes
+	FONT_TIMES_18,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_WHITE,SBTN_WHITE,SBTN_WHITE,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,2 },								// screenBtn relative position
+	CHAT_MAX_LENGTH,						// screenBtn EDIT max chars in box
+	NULL,									// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,556,22},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnHostChat,
+	0										// index 0
+};
+
+SCREENBTNDEF	RemoteSend_ScreenBtn =
+{
+	( SBTN_CHAT_TYPE ),						// screenBtn Attributes
+	FONT_TIMES_18,							// screenBtn Font ID
+	SBTN_BLACK,								// screenBtn Text Background Color
+	{ SBTN_WHITE,SBTN_WHITE,SBTN_WHITE,SBTN_WHITE,SBTN_DK_GREY },	// screenBtn Text Foreground Color
+	{ 0,2 },								// screenBtn relative position
+	CHAT_MAX_LENGTH,						// screenBtn EDIT max chars in box
+	NULL,									// screenBtn Text string
+	"\0",									// screenBtn NULL state icon
+	"\0",									// screenBtn FOCUSED state icon
+	"\0",									// screenBtn CLICKED state icon
+	"\0",									// screenBtn DISABLED state icon
+	{0,0,556,22},							// screenBtn default area box
+	(LONG (*)(struct screenButton*))ScrnRemoteChat,
+	0										// index 0
+};
+
+
+//========================================================================
+//							EOF
+//========================================================================

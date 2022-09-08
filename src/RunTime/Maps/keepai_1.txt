@@ -1,0 +1,4 @@
+// This will cause all players who do not start 
+// to be replaced by ai controlled by the host machine
+
+IF startup THEN TRIGGER keepai

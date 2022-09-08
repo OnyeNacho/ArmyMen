@@ -1,0 +1,116 @@
+//Header file containing script for explosives
+
+// this junk if stops warning messages about unreferenced valid events 
+IF ALLOF junk ExplosiveGoOff blowhorn BlowSmoke trainloop endtrainloop trainslow THEN TRIGGER junk
+IF ALLOF junk trainwreck ticksound campalarm endcampalarm openeningsound1 closingsound1 THEN TRIGGER junk
+IF ALLOF junk prisonalarm endprisonalarm firingsquad chopperonway spindown spinup chopperloop THEN TRIGGER junk
+IF ALLOF junk tanwins greenwins graywins bluewins endlooping pinnedrand THEN TRIGGER junk
+IF ALLOF junk nessieup nesstest nessieup nesstest startup startup transmitted transmit THEN TRIGGER junk
+IF ALLOF junk bayou1 bayou1 templeup templeup THEN TRIGGER junk
+
+
+IF ExplosiveGoOff THEN
+	ENDSOUNDLOOP TICKING_LOOP, 
+	EXPLODE ME 130,
+	REMOVEOBJECT ME
+
+IF blowhorn THEN
+	PLAYSTREAM TRAIN_HORN
+
+IF BlowSmoke THEN 
+	EXPLODE ME 128
+
+IF trainloop THEN
+	PLAYSOUNDLOOP CHUGGA_LOOP
+
+IF endtrainloop THEN
+	ENDSOUNDLOOP CHUGGA_LOOP
+
+IF trainslow THEN
+	ENDSOUNDLOOP CHUGGA_LOOP,
+	PLAYSTREAM TRAIN_SCREECH	
+
+IF trainwreck THEN
+	ENDSOUNDLOOP CHUGGA_LOOP,
+	PLAYSTREAM TRAIN_WRECk
+
+IF ticksound THEN
+	PLAYSOUNDLOOP TICKING_LOOP
+
+
+IF campalarm THEN
+	PLAYSOUNDLOOP AIR_RAID_LOOP
+
+IF endcampalarm THEN
+	ENDSOUNDLOOP AIR_RAID_LOOP
+
+IF openeningsound1 THEN
+	PLAYSTREAM GATE_OPEN
+
+IF closingsound1 THEN
+	PLAYSTREAM GATE_CLOSE
+
+IF prisonalarm THEN
+	PLAYSOUNDLOOP ALARM_LOOP
+
+IF endprisonalarm THEN
+	PLAYSOUNDLOOP ALARM_LOOP
+
+IF firingsquad THEN RANDOM
+	PLAYSTREAM READY_AIM_FIRE,
+	PLAYSTREAM READY_AIM_FIRE2
+
+IF chopperonway THEN
+	PLAYSOUNDLOOP CHOPPER_LOOP
+
+IF spindown THEN
+	ENDSOUNDLOOP CHOPPER_LOOP,
+	PLAYSTREAM CHOPPER_SPIN_DOWN
+
+IF spinup THEN
+	PLAYSTREAM CHOPPER_SPIN_UP
+
+IF chopperloop THEN
+	PLAYSOUNDLOOP CHOPPER_LOOP	
+
+IF tanwins THEN
+	ENDSOUNDLOOP TICKING_LOOP,
+	ENDSOUNDLOOP CHUGGA_LOOP,
+	ENDSOUNDLOOP AIR_RAID_LOOP,
+	ENDSOUNDLOOP ALARM_LOOP,
+	ENDSOUNDLOOP CHOPPER_LOOP
+
+IF greenwins THEN
+	ENDSOUNDLOOP TICKING_LOOP,
+	ENDSOUNDLOOP CHUGGA_LOOP,
+	ENDSOUNDLOOP AIR_RAID_LOOP,
+	ENDSOUNDLOOP ALARM_LOOP,
+	ENDSOUNDLOOP CHOPPER_LOOP
+
+IF endlooping THEN
+	ENDSOUNDLOOP TICKING_LOOP,
+	ENDSOUNDLOOP CHUGGA_LOOP,
+	ENDSOUNDLOOP AIR_RAID_LOOP,
+	ENDSOUNDLOOP ALARM_LOOP,
+	ENDSOUNDLOOP CHOPPER_LOOP
+
+
+IF pinnedrand THEN RANDOM
+	PLAYSTREAM PINNED_DOWN,
+	PLAYSTREAM PINNED_DOWN2,
+	PLAYSTREAM IM_HIT,
+	PLAYSTREAM IM_HIT2,
+	PLAYSTREAM UUHH2
+
+IF radiochatter THEN
+	PLAYSTREAM ALPINE4_2SARGE
+
+IF backtomedtent1 THEN
+	PLAYSTREAM ALPINE1_1M
+
+
+
+
+
+
+

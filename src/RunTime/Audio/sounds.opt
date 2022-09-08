@@ -1,0 +1,371 @@
+#==========================================
+# Sample 3DO .OPT for building .SND files
+#
+# Author: Andrew J Burgess
+#
+# Date:   04/30/96
+#
+#     Copyright(c)1996, The 3DO Company
+#
+#===========================================
+SND_OUTPUT sounds
+SND_INUM 1000
+#===========================================
+# NEW Sound Effects
+#===========================================
+#
+#explosions
+#
+SND_FILE Sfx\weapons\baz_expl.wav
+SND_NAME BAZOOKA_EXPLODE
+SND_CNT  1
+SND_IDX  0
+#
+SND_FILE Sfx\weapons\mor_expl.wav
+SND_NAME MORTAR_EXPLODE
+SND_CNT  1
+SND_IDX  0
+#
+SND_FILE Sfx\weapons\gren_expl.wav
+SND_NAME GRENADE_EXPLODE
+SND_CNT  1
+SND_IDX  0
+#
+SND_FILE Sfx\weapons\mine_expl.wav
+SND_NAME MINE_EXPLODE
+SND_CNT  1
+SND_IDX  0
+#
+# Hit by Large cannon or bigger
+SND_FILE Sfx\explosions\expreg05.wav
+SND_NAME BIG_EXPLOSION
+SND_CNT  1
+SND_IDX  0
+# Barrel Exploding
+SND_FILE Sfx\explosions\expreg03.wav
+SND_NAME BARREL_EXPLODE
+SND_CNT  1
+SND_IDX  0
+# Bullet hitting rock
+SND_FILE Sfx\explosions\ricochet01.wav
+SND_NAME ROCK_HIT
+SND_CNT  1
+SND_IDX  0
+# Water explosion
+SND_FILE Sfx\explosions\Expwater01.wav
+SND_NAME WATER_EXPLODE
+SND_CNT  1
+SND_IDX  0
+# Bullet hitting all other terrain objects
+SND_FILE Sfx\explosions\bulldirt_hit03.wav
+SND_NAME BULLET_HIT_OBJECT
+SND_CNT  1
+SND_IDX  0
+# Object falling in water
+SND_FILE Sfx\explosions\object_fall_water03.wav
+SND_NAME WATER_HIT
+SND_CNT  1
+SND_IDX  0
+# Buildings and bridges destroyed
+SND_FILE Sfx\explosions\destroyed04b.wav
+SND_NAME DESTROYED
+SND_CNT  1
+SND_IDX  0
+#
+# Trooper/Sarge sounds
+# Bullet hitting soldier
+SND_FILE Sfx\soldier\bullplas_hit02.wav
+SND_NAME BULLET_HIT_TROOPER
+SND_CNT  1
+SND_IDX  0
+# Soldier Destroyed by being blownup
+SND_FILE Sfx\soldier\expreg04.wav
+SND_NAME EXPLODE_TROOPER
+SND_CNT  1
+SND_IDX  0
+# Plastic Pieces
+#SND_FILE Sfx\soldier\pp_fall1.wav
+#SND_NAME PIECES1
+#SND_CNT  1
+#SND_IDX  0
+#SND_FILE Sfx\soldier\pp_fall2.wav
+#SND_NAME PIECES2
+#SND_CNT  1
+#SND_IDX  0
+# Trooper being melted
+SND_FILE Sfx\Soldier\UnitBurn.wav
+SND_NAME FLAME_HIT_TROOPER
+SND_CNT  1
+SND_IDX  0
+# Sarge being hit
+SND_FILE Sfx\Soldier\UnitShot.01.22m.wav
+SND_NAME BULLET_HIT_SARGE
+SND_CNT  1
+SND_IDX  0
+# Sarge being squashed
+SND_FILE Sfx\Soldier\UnitSquash.02.22m.wav
+SND_NAME SQUASH_SARGE
+SND_CNT  1
+SND_IDX  0
+# Sarge being squashed
+SND_FILE Sfx\Soldier\SPLATTER.wav
+SND_NAME SQUASH_TROOPER
+SND_CNT  1
+SND_IDX  0
+# being hit
+SND_FILE Sfx\Soldier\sargedies2.wav
+SND_NAME HIT_TROOPER1
+SND_CNT  1
+SND_IDX  0
+# Sarge being hit
+SND_FILE Sfx\Soldier\sargehit1.wav
+SND_NAME HIT_TROOPER2
+SND_CNT  1
+SND_IDX  0
+#
+#
+# Vehicle sounds
+#
+SND_FILE Sfx\vehicles\h_impact.wav
+SND_NAME VEHICLE_HIGH_IMPACT
+SND_CNT  1
+SND_IDX  0
+SND_FILE Sfx\vehicles\l_impact.wav
+SND_NAME VEHICLE_LOW_IMPACT
+SND_CNT  1
+SND_IDX  0
+#
+SND_FILE Sfx\soldier\bullplas_hit02.wav
+SND_NAME BULLET_HIT_VEHICLE
+SND_CNT  1
+SND_IDX  0
+#
+SND_FILE Sfx\vehicles\CargoTruck_FullLoop.wav
+SND_NAME TRUCK_FULL_LOOP
+SND_CNT  1
+SND_IDX  0
+#
+SND_FILE Sfx\vehicles\HalfTrack_FullLoop.wav
+SND_NAME HT_FULL_LOOP
+SND_CNT  1
+SND_IDX  0
+#
+SND_FILE Sfx\vehicles\JEEPLOOP.wav
+SND_NAME JEEP_FULL_LOOP
+SND_CNT  1
+SND_IDX  0
+#
+SND_FILE Sfx\vehicles\tank_loop.wav
+SND_NAME TANK_FULL_LOOP
+SND_CNT  1
+SND_IDX  0
+#
+#
+#weapons
+#
+SND_FILE Sfx\weapons\flam_beg.wav
+SND_NAME FLAME_BEGIN
+SND_CNT  1
+SND_IDX  0
+SND_FILE Sfx\weapons\flam_loop.wav
+SND_NAME FLAME_LOOP
+SND_CNT  1
+SND_IDX  0
+SND_FILE Sfx\weapons\flam_end.wav
+SND_NAME FLAME_END
+SND_CNT  1
+SND_IDX  0
+#
+SND_FILE Sfx\weapons\hm_gun.wav
+SND_NAME HEAVY_MG
+SND_CNT  1
+SND_IDX  0
+#
+SND_FILE Sfx\weapons\lm_gun.wav
+SND_NAME LIGHT_MG
+SND_CNT  1
+SND_IDX  0
+#
+SND_FILE Sfx\weapons\mm_gun.wav
+SND_NAME MEDIUM_MG
+SND_CNT  1
+SND_IDX  0
+#
+SND_FILE Sfx\weapons\lg_can.wav
+SND_NAME CANNON
+SND_CNT  1
+SND_IDX  0
+#
+SND_FILE Sfx\weapons\baz_fire.wav
+SND_NAME BAZOOKA
+SND_CNT  1
+SND_IDX  0
+#
+SND_FILE Sfx\weapons\mor_shot.wav
+SND_NAME MORTAR
+SND_CNT  1
+SND_IDX  0
+SND_FILE Sfx\weapons\mor_whis.wav
+SND_NAME MORTAR_WHISTLE
+SND_CNT  1
+SND_IDX  0
+#
+SND_FILE Sfx\weapons\pull_pin.wav
+SND_NAME GRENADE
+SND_CNT  1
+SND_IDX  0
+#
+SND_FILE Sfx\weapons\rifle.wav
+SND_NAME RIFLE
+SND_CNT  1
+SND_IDX  0
+#
+#SND_FILE Sfx\weapons\aa_fire.wav
+#SND_NAME AA_GUN_SND
+#SND_CNT  1
+#SND_IDX  0
+#
+SND_FILE Sfx\weapons\tower_rifle.wav
+SND_NAME TOWER_GUN
+SND_CNT  1
+SND_IDX  0
+#
+# air support plane
+SND_FILE Sfx\Weapons\plane.wav
+SND_NAME PLANE_SOUND
+SND_CNT  1
+SND_IDX  0
+# weapon change
+SND_FILE Sfx\Weapons\LOAD.wav
+SND_NAME WEAPON_ACTIVATE
+SND_CNT  1
+SND_IDX  0
+#
+#
+# Foot Steps in dirt or sand
+SND_FILE Sfx\soldier\footstep_dirt01.wav
+SND_NAME STEPS
+SND_CNT  1
+SND_IDX  0
+# Foot Steps in swamp
+SND_FILE Sfx\soldier\footstep_swamp06.wav
+SND_NAME SWAMP_STEPS
+SND_CNT  1
+SND_IDX  0
+#
+# Environmental sounds
+# Desert
+SND_FILE Sfx\enviroment\destwind.wav
+SND_NAME DESERT_SOUND1
+SND_CNT  1
+SND_IDX  0
+SND_FILE Sfx\enviroment\vulture.wav
+SND_NAME DESERT_SOUND2
+SND_CNT  1
+SND_IDX  0
+# Bayou
+SND_FILE Sfx\enviroment\crickets01.wav
+SND_NAME BAYOU_SOUND1
+SND_CNT  1
+SND_IDX  0
+SND_FILE Sfx\enviroment\frog.wav
+SND_NAME BAYOU_SOUND2
+SND_CNT  1
+SND_IDX  0
+# Alpine
+SND_FILE Sfx\enviroment\birds.wav
+SND_NAME ALPINE_SOUND1
+SND_CNT  1
+SND_IDX  0
+SND_FILE Sfx\enviroment\flow_wat.wav
+SND_NAME ALPINE_SOUND2
+SND_CNT  1
+SND_IDX  0
+#
+#
+SND_FILE Sfx\ButtonSpringIn.wav
+SND_NAME BUTTONSPRINGIN
+SND_CNT  1
+SND_IDX  0
+#
+#
+# script sounds (looping)
+SND_FILE Voices\Scripts\ChopperLoop.wav
+SND_NAME CHOPPER_LOOP
+SND_CNT  1
+SND_IDX  0
+#
+SND_FILE Voices\Scripts\airraid.wav
+SND_NAME AIR_RAID_LOOP
+SND_CNT  1
+SND_IDX  0
+#
+SND_FILE Voices\Scripts\chugga.wav
+SND_NAME CHUGGA_LOOP
+SND_CNT  1
+SND_IDX  0
+#
+SND_FILE Voices\Scripts\TICKING.wav
+SND_NAME TICKING_LOOP
+SND_CNT  1
+SND_IDX  0
+#
+SND_FILE Voices\Scripts\alarm.wav
+SND_NAME ALARM_LOOP
+SND_CNT  1
+SND_IDX  0
+#
+SND_FILE Voices\sarge\loaded_already.wav
+SND_NAME SARGE_FULLY_LOADED
+SND_CNT  1
+SND_IDX  0
+
+SND_FILE Voices\Scripts\PORTAL.wav
+SND_NAME PORTAL
+SND_CNT  1
+SND_IDX  0
+
+SND_FILE Sfx\Deaths\trooper_cry01.wav
+SND_NAME TROOPER_DIE1
+SND_CNT  1
+SND_IDX  0
+
+SND_FILE Sfx\Deaths\trooper_cry02.wav
+SND_NAME TROOPER_DIE2
+SND_CNT  1
+SND_IDX  0
+
+SND_FILE Sfx\Deaths\trooper_cry03.wav
+SND_NAME TROOPER_DIE3
+SND_CNT  1
+SND_IDX  0
+
+SND_FILE Sfx\Deaths\trooper_cry04.wav
+SND_NAME TROOPER_DIE4
+SND_CNT  1
+SND_IDX  0
+
+SND_FILE Sfx\Deaths\trooper_die01.wav
+SND_NAME TROOPER_DIE5
+SND_CNT  1
+SND_IDX  0
+
+SND_FILE Sfx\Deaths\trooper_die02.wav
+SND_NAME TROOPER_DIE6
+SND_CNT  1
+SND_IDX  0
+
+SND_FILE Sfx\Deaths\trooper_die03.wav
+SND_NAME TROOPER_DIE7
+SND_CNT  1
+SND_IDX  0
+
+SND_FILE Sfx\Deaths\trooper_die04.wav
+SND_NAME TROOPER_DIE8
+SND_CNT  1
+SND_IDX  0
+
+#===========================================
+#===========================================
+# EOF
+#===========================================

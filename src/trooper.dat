@@ -1,0 +1,66 @@
+/////////////////////////////////////////////////////////////////////////////
+//	FILE:			$Workfile: trooper.dat $
+//
+//	DESCRIPTION:	tank animation data
+//
+//	AUTHOR:			Nicky Robinson
+//
+//	CREATED:		Wednesday, August 14, 1996
+//
+//	REVISION:		$Header: $
+//
+//	Copyright (C) 1996 The 3DO Company. All Rights Reserved.
+/////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////
+//  History
+//
+//  $Log: /ArmyMen/trooper.dat $
+// 
+//  $Nokeywords:$
+/////////////////////////////////////////////////////////////////////////////
+#include "explosions.h"
+
+
+typedef struct
+{
+	BOOL				bExplode;	// will cause an explosion
+	COMMAND_NUMBERS		eExplosion;	// explosion to use
+	EXPLOSIONPATTERN*	pPattern;	// explosion pattern to use
+} TROOP_EXPLOSION;
+
+TROOP_EXPLOSION	TrooperWillExplode[ ARMY_LAST_TROOPER ] =
+{
+	{ FALSE, INACTIVATE_COMMAND,                   NULL             },	// ARMY_RIFLE_MEN
+	{ TRUE,  EXPLOSION_SMOKE_S_COMMAND,		       &SmallExplosion  },	// ARMY_GRENADE_MEN
+	{ TRUE,  EXPLOSION_COMBUSTION_S_COMMAND,       &SmallExplosion  },	// ARMY_FLAME_MEN
+	{ TRUE,  EXPLOSION_FLASH_COMBUSTION_S_COMMAND, &SmallExplosion  },	// ARMY_BAZOOKA_MEN
+	{ FALSE, INACTIVATE_COMMAND,                   NULL             },	// ARMY_SWEEPER_MEN
+	{ TRUE,  EXPLOSION_FLASH_SMOKE_S_COMMAND,      &MediumExplosion },	// ARMY_MORTAR_MEN
+	{ FALSE, INACTIVATE_COMMAND,                   NULL             },	// ARMY_MINER_MEN
+	{ FALSE, INACTIVATE_COMMAND,                   NULL             }	// ARMY_SPECIAL_MEN
+};
+
+struct TFORM
+{
+	short x;		// x offet in pixels from leader
+	short y;		// y offet in pixels from leader
+	short who;		// which trooper to snake to if cant goto point
+} TFORM;
+
+#define FORMATION_TROOPER_MAX 4
+
+struct TFORMATION
+{
+    struct TFORM loc[FORMATION_TROOPER_MAX];
+};
+
+static TFORMATION TROOPPerfectFormations[ ] =
+{
+  // FORMATION_DIAMOND
+  {{ { -36, -36,0 }, {  36, 36,0 }, { 36, -36,0 }, { -36,36,0 }	}}
+};
+
+//===========================================================================
+//								EOF
+//===========================================================================

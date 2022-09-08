@@ -1,0 +1,308 @@
+// ALPINE SCENARIO 3 Mission 5 Way Down Upon The River
+
+PAD rescue 32 GREEN SARGE > 0 
+PAD deploytan 60
+
+
+PAD attruck 34 GREEN SARGE > 0
+
+PAD onbridgecent 20	GREEN > 0
+PAD triggergotan 23
+
+PAD tanonbridgecent 20	TAN > 0
+
+PAD sendtanhalf 21	TAN VEHICLE > 0
+PAD tohalftrack 22
+
+PAD middleofcamp 35
+PAD middleofcamp2 36
+PAD firingrange 37
+
+PAD tank1path1 41
+PAD tank1path2 42
+PAD tank1path3 43
+PAD tank1path4 44
+PAD tank1path5 45
+
+PAD tank2path1 51
+PAD tank2path2 52
+PAD tank2path3 53
+PAD tank2path4 54
+PAD tank2path5 55
+
+PAD half1path1 61
+PAD half1path2 62
+PAD half1path3 63
+PAD half1path4 64
+PAD half1path5 65
+
+PAD half2path1 71
+PAD half2path2 72
+PAD half2path3 73
+PAD half2path4 74
+PAD half2path5 75
+
+PAD medicaltentpad 9 GREEN SARGE > 0
+PAD medicaltentpad1 9 GREEN UNIT > 0
+
+PAD winpad 14  GREEN SARGE > 0
+PAD startpad 14
+PAD tanguy 70
+
+
+
+	// ** UNIT DISPERSEMENT ** //
+//4 TOTAL
+//GreenSarge deployed at southeast
+//GreenRfile1 deployed near Sarge, 2 troopers
+//GreenRfile2 deployed on eastside of river, 2 troopers
+//TanRifle1 undeployed on west end of exploding bridge, 1 trooper
+ 	
+	// ** GAME TERMINATION CONDITIONS ** //
+
+// Sarge wins when troops are rescued
+IF INORDER gotmen checkwin THEN
+	INVULNERABLESARGE,
+	TRIGGERDELAY 2 greenwins
+
+// Player always loses if the Sarge dies
+IF killed_GreenSarge THEN
+	TRIGGERDELAY 2 tanwins
+
+IF killed_truck THEN
+	PLAYSTREAM ALPINE3_1M3,
+	TRIGGERDELAY 4 tanwins
+
+
+//Music
+IF addtension THEN
+	AUDIO HIGHINTENSITY
+
+IF reducetension THEN
+	AUDIO LOWINTENSITY
+
+
+	// ** GAME EVENTS ** //
+
+IF startup THEN
+	UNDEPLOY TanTank2,
+	SETAICONTROL GreenRifle2,
+	TRIGGER reducetension,
+	SETAICONTROL GreenRifle3,
+	SETAICONTROL GreenRifle4,
+	SETAICONTROL GreenRifle5,
+	SETAICONTROL GreenRifle6,
+	SETAICONTROL GreenRifle7,
+	SETAICONTROL GreenMortar1,
+	SETAICONTROL truck,
+	TRIGGER endlooping,
+	TRIGGER timetoheal,
+	ORDER TanHalftrack1 GOTO TanHalftrack1 SLOW INMODE DEFEND THEN ATMODE DEFEND,
+	ORDER TanBazooka1 GOTO TanBazooka1 SLOW INMODE IGNORE THEN ATMODE STANDFIRE,
+	ORDER GreenRifle7 GOTO middleofcamp2 SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER round17,
+	ORDER GreenRifle6 GOTO middleofcamp SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER round16,
+	ORDER GreenRifle5 GOTO middleofcamp2 SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER round15,
+	ORDER GreenRifle4 GOTO medicaltentpad SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER round14,
+	ORDER GreenRifle3 GOTO middleofcamp SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER round13,
+	ORDER GreenRifle2 GOTO firingrange SLOW INMODE IGNORE THEN ATMODE STANDFIRE TRIGGER round12,
+	ORDER GreenMortar1 GOTO GreenMortar1 SLOW INMODE IGNORE THEN ATMODE KNEELFIRE
+
+
+
+//Going
+IF round17 THEN
+	ORDER GreenRifle7 GOTO firingrange SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER round27
+
+IF round16 THEN
+	ORDER GreenRifle6 GOTO middleofcamp2 SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER round26
+
+IF round15 THEN
+	ORDER GreenRifle5 GOTO middleofcamp SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER round25
+
+IF round14 THEN
+	ORDER GreenRifle4 GOTO firingrange SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER round24
+
+IF round13 THEN
+	ORDER GreenRifle3 GOTO medicaltentpad SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER round23
+
+IF round12 THEN
+	ORDER GreenRifle2 GOTO middleofcamp2 SLOW INMODE IGNORE THEN ATMODE STANDFIRE TRIGGER round22
+
+
+
+//Returning
+IF round27 THEN
+	ORDER GreenRifle7 GOTO middleofcamp2 SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER round17
+
+IF round26 THEN
+	ORDER GreenRifle6 GOTO middleofcamp SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER round16
+
+IF round25 THEN
+	ORDER GreenRifle5 GOTO middleofcamp2 SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER round15
+
+IF round24 THEN
+	ORDER GreenRifle4 GOTO medicaltentpad SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER round14
+
+IF round23 THEN
+	ORDER GreenRifle3 GOTO middleofcamp SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER round13
+
+IF round22 THEN
+	ORDER GreenRifle2 GOTO firingrange SLOW INMODE IGNORE THEN ATMODE STANDFIRE TRIGGER round12
+
+
+
+
+
+//if both parts of the bridge are destroyed, the
+//middle starts floating
+
+
+IF ALLOF bridgeleftdestroyed bridgerightdestroyed THEN
+	TRIGGER sidesdestroyed
+
+IF on_onbridgecent AFTER off_onbridgecent AND sidesdestroyed AFTER NULL THEN
+	TRIGGER sink
+
+IF on_tanonbridgecent AFTER off_tanonbridgecent AND sidesdestroyed AFTER NULL THEN
+	EXPLODE ME 144
+
+IF 1 OF on_onbridgecent THEN
+	DEPLOY TanGrenadier1 ATMODE ATTACK,
+	DEPLOY TanGrenadier2 ATMODE ATTACK
+
+IF 1 OF on_triggergotan THEN
+	DEPLOY TanGrenadier1 ATMODE ATTACK,
+	DEPLOY TanGrenadier2 ATMODE ATTACK
+
+
+
+IF ALLOF sidesdestroyed BUTNOT bridgecenterdestroyed THEN
+	TRIGGER floatbridge
+
+
+
+//deploys tan unit
+IF 1 OF on_deploytan THEN
+	TRIGGERDELAY 20 sendhalftrack,
+	TRIGGERDELAY 30 sendtanforces,
+	DEPLOY TanMortar1 ATMODE ATTACK,
+	DEPLOY TanRifle1 ATMODE ATTACK
+
+
+IF sendhalftrack THEN
+	ORDER TanTruck1 GOTO tohalftrack SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER deploytrucksold
+
+IF on_sendtanhalf THEN
+	REMOVEOBJECT halfdeploy,
+	PLACEOBJECT halfdeploy sendtanhalf
+
+IF deploytrucksold THEN
+	TRIGGERDELAY 3 deploytrucksold2
+
+IF ALLOF deploytrucksold2 BUTNOT killed_TanTruck1 THEN
+	DEPLOY TanRifle7 TanTruck1 ATMODE ATTACK
+
+IF killed_TanRifle7 THEN
+	REMOVEOBJECT fullhealth71,
+	PLACEOBJECT fullhealth71 TanRifle7
+
+IF sendtanforces THEN
+	TRIGGER addtension,
+	DEPLOY TanTank1 ATMODE IGNORE,
+	ORDER TanTank1 GOTO tank1path1 SLOW INMODE IGNORE THEN ATMODE DEFEND,
+	DEPLOY TanHalftrack1 ATMODE IGNORE,
+	ORDER TanHalftrack1 GOTO half1path1 SLOW INMODE IGNORE THEN ATMODE DEFEND,
+	DEPLOY TanHalftrack2 ATMODE IGNORE,
+	ORDER TanHalftrack2 GOTO half2path1 SLOW INMODE IGNORE THEN ATMODE DEFEND
+
+
+
+
+
+
+
+
+//rescue
+IF on_rescue THEN
+	TRIGGERDELAY 1 goinjured
+
+IF REPEAT 11 OF fullloop1 THEN
+	REMOVEOBJECT injuredleft
+
+
+IF REPEAT 13 OF fullloop3 THEN
+	REMOVEOBJECT injuredcot
+
+
+IF REPEAT 13 OF fullloop2 THEN
+	REMOVEOBJECT injuredright,
+	SETUSERCONTROL truck,
+	TRIGGERDELAY 1 gotmen
+
+IF REPEAT 8 OF fullloop3 THEN
+	TRIGGER bridgecleared
+
+IF ALLOF bridgecenterdestroyed BUTNOT bridgecleared THEN
+	PLAYSTREAM ALPINE3_1M2,
+	TRIGGERDELAY 3 tanwins
+
+
+IF stopdeploy THEN
+	DEPLOY GreenRifle62 injuredleft ATMODE STANDFIRE,
+	DEPLOY GreenRifle61 injuredright ATMODE STANDFIRE,
+	TRIGGERDELAY 0.2 destroyinjured,
+	TRIGGERDELAY 3 tanwins
+	
+IF 1 OF destroyinjured THEN
+	EXPLODE GreenRifle62 123,
+	EXPLODE GreenRifle61 123
+
+IF killed_TanRifle1 THEN
+	REMOVEOBJECT recon1,
+	PLACEOBJECT recon1 TanRifle1
+
+
+
+// Green Win Conditions
+IF ALLOF killed_TanRifle7 gotmen THEN
+	INVULNERABLESARGE,
+	TRIGGER greenwins
+
+IF ALLOF killed_TanTruck1 gotmen BUTNOT deploytrucksold THEN
+	INVULNERABLESARGE,
+	TRIGGER greenwins
+
+IF ALLOF gotmen BUTNOT sendhalftrack THEN
+	INVULNERABLESARGE,
+	TRIGGER greenwins
+
+IF killed_TanGrenadier1 THEN
+	REMOVEOBJECT gren1,
+	PLACEOBJECT gren1 TanGrenadier1
+
+
+// enable mash tents
+IF startup THEN
+	TRIGGER setupgreen,
+	TRIGGERDELAY 0.1 setmash
+
+IF setupgreen THEN
+	TRIGGER gsmedtime
+
+IF setmash THEN 
+	TRIGGER greenmashready
+
+IF on_medicaltentpad AFTER off_medicaltentpad AND gsmedtime AFTER NULL AND startup AFTER killed_greenmash THEN
+	HEAL ME	10,
+	TRIGGERDELAY 1.5 gsmedtime
+
+
+IF on_medicaltentpad1 BUTNOT killed_greenmash THEN
+	HEAL ME 100
+
+IF on_attruck BUTNOT floatbridge THEN
+	TRIGGER howthere
+
+IF howthere THEN
+	PLAYSTREAM ALPINE3_1SARGE
+

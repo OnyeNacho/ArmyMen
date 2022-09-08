@@ -1,0 +1,115 @@
+/////////////////////////////////////////////////////////////////////////////
+//	FILE:			$Workfile: Vehicle.dat $
+//
+//	DESCRIPTION:	Vehicle data
+//
+//	AUTHOR:			Andrew J Burgess
+//
+//	CREATED:		Thrusday, April 04, 1997
+//
+//	REVISION:		$Header: $
+//
+//	Copyright (C) 1996 The 3DO Company. All Rights Reserved.
+/////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////
+//  History
+//
+//  $Log: /ArmyMen/Vehicle.dat $
+// 
+//  $Nokeywords:$
+/////////////////////////////////////////////////////////////////////////////
+
+///========================================================================
+//							Vehicle Animation Command Data
+///========================================================================
+
+COMMAND	ht_command_array[] = {
+	{VMOVE_COMMAND, VMOVE_COMMAND, NULL},
+	{VSTOP_COMMAND, VSTOP_COMMAND, NULL},
+	{VROCK_FAST_COMMAND, VROCK_FAST_COMMAND, NULL},
+	{VDIE_COMMAND, VDEAD_COMMAND, NULL},
+	{VDEAD_COMMAND, INACTIVATE_COMMAND, NULL}
+};
+COMMAND_LIST ht_commands = {sizeof(ht_command_array)/sizeof(COMMAND), ht_command_array};
+
+COMMAND	t_command_array[] = {
+	{VMOVE_COMMAND, VMOVE_COMMAND, NULL},
+	{VSTOP_COMMAND, VSTOP_COMMAND, NULL},
+	{VROCK_FAST_COMMAND, VROCK_FAST_COMMAND, NULL},
+	{VDIE_COMMAND, VDEAD_COMMAND, NULL},
+	{VDEAD_COMMAND, INACTIVATE_COMMAND, NULL}
+};
+COMMAND_LIST t_commands = {sizeof(t_command_array)/sizeof(COMMAND), t_command_array};
+
+COMMAND	jeep_command_array[] = {
+	{VMOVE_COMMAND, VMOVE_COMMAND, NULL},
+	{VSTOP_COMMAND, VSTOP_COMMAND, NULL},
+	{VROCK_FAST_COMMAND, VROCK_FAST_COMMAND, NULL},
+	{VDIE_COMMAND, VDEAD_COMMAND, NULL},
+	{VDEAD_COMMAND, INACTIVATE_COMMAND, NULL}
+};
+COMMAND_LIST jeep_commands = {sizeof(jeep_command_array)/sizeof(COMMAND), jeep_command_array};
+
+COMMAND	tank_command_array[] = {
+	{VMOVE_COMMAND, VMOVE_COMMAND, NULL},
+	{VSTOP_COMMAND, VSTOP_COMMAND, NULL},
+	{VROCK_FAST_COMMAND, VROCK_FAST_COMMAND, NULL},
+	{VDIE_COMMAND, VDEAD_COMMAND, NULL},
+	{VDEAD_COMMAND, INACTIVATE_COMMAND, NULL}
+};
+COMMAND_LIST tank_commands = {sizeof(tank_command_array)/sizeof(COMMAND), tank_command_array};
+
+COMMAND	ht_turret_command_array[] = {
+	{VMOVE_COMMAND, VMOVE_COMMAND, NULL},
+	{VSTOP_COMMAND, VSTOP_COMMAND, NULL},
+};
+COMMAND_LIST ht_turret_commands = {sizeof(ht_turret_command_array)/sizeof(COMMAND), ht_turret_command_array};
+
+COMMAND	t_turret_command_array[] = {
+	{VMOVE_COMMAND, VMOVE_COMMAND, NULL},
+	{VSTOP_COMMAND, VSTOP_COMMAND, NULL},
+};
+COMMAND_LIST t_turret_commands = {sizeof(t_turret_command_array)/sizeof(COMMAND), t_turret_command_array};
+
+COMMAND	jeep_turret_command_array[] = {
+	{VMOVE_COMMAND, VMOVE_COMMAND, NULL},
+	{VSTOP_COMMAND, VSTOP_COMMAND, NULL},
+};
+COMMAND_LIST jeep_turret_commands = {sizeof(jeep_turret_command_array)/sizeof(COMMAND), jeep_turret_command_array};
+
+COMMAND	tank_turret_command_array[] = {
+	{VMOVE_COMMAND, VMOVE_COMMAND, NULL},
+	{VSTOP_COMMAND, VSTOP_COMMAND, NULL},
+};
+COMMAND_LIST tank_turret_commands = {sizeof(tank_turret_command_array)/sizeof(COMMAND), tank_turret_command_array};
+
+COMMAND_LIST* VehicleCommands[ARMY_LAST_VEHICLE] =
+{
+	NULL,			// ARMY_NO_VEHICLE
+	&jeep_commands,	// ARMY_JEEP 
+	&tank_commands,	// ARMY_TANK
+	&ht_commands,	// ARMY_HALFTRACK: 
+	&t_commands,	// ARMY_CONVOY: 
+};
+
+COMMAND_LIST* TurretCommands[ARMY_LAST_VEHICLE] =
+{
+	NULL,					// ARMY_NO_VEHICLE
+	&jeep_turret_commands,	// ARMY_JEEP 
+	&tank_turret_commands,	// ARMY_TANK
+	&ht_turret_commands,	// ARMY_HALFTRACK: 
+	&t_turret_commands,		// ARMY_CONVOY: 
+};
+
+COMMAND	missile_command_array[] = {
+	{MISSILE_COMMAND, MISSILE_COMMAND, NULL},
+	{MISSILE_SHADOW_COMMAND, MISSILE_SHADOW_COMMAND, NULL},
+	{GRENADE_COMMAND, GRENADE_COMMAND, NULL},
+	{GRENADE_SHADOW_COMMAND, GRENADE_SHADOW_COMMAND, NULL}
+};
+COMMAND_LIST missile_commands = {sizeof(missile_command_array)/sizeof(COMMAND), missile_command_array};
+
+//===========================================================================
+//								EOF
+//===========================================================================

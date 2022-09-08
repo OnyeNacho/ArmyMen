@@ -1,0 +1,787 @@
+//========================================================================
+//	FILE:			$Workfile: AiAccess.cpp $
+//
+//	DESCRIPTION:	Artificial Intelligence (AI) Commander access routines
+//
+//	AUTHOR:			Andrew J Burgess
+//
+//	CREATED:		Wednesday, February 12, 1997
+//
+//	REVISION:		$Header: /ArmyMen/src/AiAccess.cpp 59    3/26/98 2:39p Bwilcox $
+//
+//========================================================================
+//                 COPYRIGHT(C)1996,1997 The 3DO Company
+//      Unathorized reproduction, adaptation, distribution,
+//      performance or display of this computer program or
+//      the associated audiovisual work is strictly prohibited.
+//                      All rights reserved.
+///========================================================================
+///========================================================================
+//  History
+//
+//  $Log: /ArmyMen/src/AiAccess.cpp $
+//  
+//  59    3/26/98 2:39p Bwilcox
+//  vehicle in movement layer split into new layer
+//  
+//  58    3/25/98 12:40p Bwilcox
+//  
+//  57    3/25/98 12:30p Bwilcox
+//  fire better for vehicles against close targets
+//  
+//  56    3/22/98 1:14p Bwilcox
+//  if army of item not deployedl, aiitemfind returns null
+//  
+//  55    3/14/98 3:36p Bwilcox
+//  fixing vehicle fire status to aim from gun, not vehicle
+//  
+//  54    3/06/98 1:18p Phu
+//  fix masking for unique id
+//  
+//  53    3/06/98 11:56a Phu
+//  convert to 29 bit unique id mask
+//  
+//  52    3/02/98 12:23p Nrobinso
+//  fix tank aiming
+//  
+//  51    2/16/98 8:39p Phu
+//  don't assert if object doesn't have a weapon in AiObjectFiringRange --
+//  return a 0 instead
+//  
+//  50    2/16/98 8:35p Phu
+//  
+//  49    2/06/98 11:42a Phu
+//  husks
+//  
+//  48    1/29/98 5:50p Bwilcox
+//  unit names system changed
+//  
+//  47    12/24/97 4:52p Bwilcox
+//  removed DecodePoint
+//  
+//  46    12/21/97 8:23p Bwilcox
+//  removing use of elevation data
+//  
+//  45    12/18/97 6:03p Bwilcox
+//  converting epoint to spoint (not spoint*) notation
+//  
+//  44    12/15/97 4:12a Nrobinso
+//  mobe ammo functions to weapon
+//  
+//	...
+//  
+//  1     2/13/97 2:19p Aburgess
+//  AI Access routines for AI Commander
+//  
+//  $Nokeywords:$
+///========================================================================
+
+// Includes
+#include "stdafx.h"
+
+#include "Ai.h"
+#include "AiAccess.h"
+#include "MainFrm.h"
+#include "Army.h"
+#include "miscfile.h"
+#include "sarge.h"
+#include "Tad.h"
+#include "unit.h"
+#include "vehicle.h"
+#include "weapon.h"
+#include "item.h"
+#include "trooper.h"
+#include "husk.h"
+
+///========================================================================
+//							LOCAL DEFINES
+///========================================================================
+
+///========================================================================
+//							LOCAL DATA STRUCTURES
+///========================================================================
+
+///========================================================================
+//							LOCAL VARIABLES
+///========================================================================
+
+///========================================================================
+//							LOCAL PROTOTYPES
+///========================================================================
+int	AiDecodeObjType( UID nUniqueID );
+
+///========================================================================
+//	Function:		AiRequestUniqueID()
+//
+//	Description:
+//		Acquire a 24-bit unique ID given the input parameters for an AI object.
+//
+//	Input:			eArmy		Army that AI object belongs to.
+//					eObjType	Object type specifier
+//					eSubType1	Object sub type1 specifier
+//					eSubType2	Object sub type of sub type1 specifier
+//
+//			For example, a unique ID for a UNIT can be attained by sending
+//			the following values:
+//					eArmy     = ARMY_PLAYER
+//					eObjType  = ARMY_UNIT
+//					eSubType1 = ARMY_LIGHT_INFANTRY
+//					eSubType2 = unit index (0..n)
+//
+//	Ouput:			nUniqueID	a 24-bit unique ID for an AI object
+//
+///========================================================================
+
+UID	AiRequestUniqueID( int eArmy, int eObjType, int eSubType1, int eSubType2 )
+{
+	UID	nUniqueID;
+	nUniqueID  = ENCODE_ARMY(eArmy);
+	nUniqueID |= ENCODE_OBJ(eObjType);
+	nUniqueID |= ENCODE_SUB1(eSubType1);
+	nUniqueID |= ENCODE_SUB2(eSubType2);
+	return( nUniqueID );
+}
+
+///========================================================================
+//	Function:		AiDecodeUniqueID()
+//
+//	Description:
+//		Decode a 24-bit unique ID.
+//
+//	Input:			nUniqueID	the ID to decode
+//					eArmy		where to place the Army component.
+//					eObjType	where to place object type component
+//					eSubType1	where to place sub type1 component
+//					eSubType2	where to place sub type2 component
+//
+//	Ouput:			none
+//
+///========================================================================
+
+void	AiDecodeUniqueID( UID nUniqueID, int* eArmy, int* eObjType, int* eSubType1, int* eSubType2 )
+{
+	// verify the unique ID - only 24 bits in size
+	ASSERT( !(nUniqueID & (~AI_ID_29_BIT_MASK)) );
+
+	// disassemble the unique ID
+	*eArmy     = (int)EXTRACT_ARMY(nUniqueID);
+	*eObjType  = (int)OBJTYPE(nUniqueID);
+	*eSubType1 = SUB1TYPE(nUniqueID);
+	*eSubType2 = SUB2TYPE(nUniqueID);
+}
+
+///========================================================================
+//	Function:		AiDecodeObjType()
+//
+//	Description:
+//		extract the object type from the UniqueID.
+//
+//	Input:			nUniqueID	the ID to decode
+//
+//	Ouput:			none
+//
+///========================================================================
+
+int	AiDecodeObjType( UID nUniqueID )
+{
+	ASSERT( !(nUniqueID & (~AI_ID_29_BIT_MASK)) );
+    return   OBJTYPE(nUniqueID);
+}
+
+
+///========================================================================
+//	Function:		AiMyTargetObject()
+//
+//	Description:
+//		find the an objects target.
+//
+//
+//	Input:			pItem			object whose target we want
+//
+//	Ouput:			nFiringRange	the firing range of the unit
+//
+///========================================================================
+
+ITEM*	AiMyTargetObject( ITEM* pItem )
+{
+	ITEM*	pMyTarget;
+
+	ASSERT( pItem );
+
+	pMyTarget = TadMyTargetObject( (TAD*)(pItem->pTad) );
+
+	return( pMyTarget );
+}
+
+
+///========================================================================
+//	Function:		AiObjectFiringRange()
+//
+//	Description:
+//		find the firing range of any object.
+//
+//
+//	Input:			pAsset			Asset whose firing range we need
+//
+//	Ouput:			nFiringRange	the firing range of the unit
+//
+///========================================================================
+
+long	AiObjectFiringRange( ITEM* pItem )
+{
+	WEAPON_TYPE	eWeapon;
+
+	ASSERT( pItem );
+
+	if (ITEM_TYPE(pItem) == ARMY_UNIT)	
+		return UnitFiringRange((UNIT *) pItem);
+	else
+    {
+		if( !(pItem->pWeapon) )
+			return 0;
+        eWeapon = pItem->pWeapon->eWeapon;
+		return( WeaponMaxRange(eWeapon) );
+    }
+}
+
+
+///========================================================================
+//	Function:		AiItemFind()
+//	Description:	location item of this uid
+///========================================================================
+ITEM* AiItemFind( UID nUniqueID)
+{
+	ITEM*	pItem = NULL;
+
+	int eArmy = EXTRACT_ARMY(nUniqueID);
+	if (eArmy != ARMY_INDEPENDENT && Armies[eArmy].Status == 0) return NULL; // army not there
+
+	// verify the unique ID - only 24 bits in size
+	ASSERT( !(nUniqueID & (~AI_ID_29_BIT_MASK)) );
+
+	// now dispatch the location request
+	switch( OBJTYPE(nUniqueID) )
+	{
+	case ARMY_NULL_OBJ:
+		break;
+	case ARMY_TROOPER:
+		// locate the vehicle object
+		pItem = (ITEM *) TrooperFind( nUniqueID );
+		break;
+	case ARMY_UNIT:
+		// locate the vehicle object
+		pItem = (ITEM *) UnitFind( nUniqueID );
+		break;
+	case ARMY_VEHICLE:
+		// locate the vehicle object
+		pItem = (ITEM *) VehicleFind( nUniqueID );
+		break;
+	case ARMY_SARGE:
+		// locate the vehicle object
+		pItem = (ITEM *) SargeFind( nUniqueID );
+		break;
+	case ARMY_STRUCTURE:
+	case ARMY_OBSTACLE:
+	case ARMY_ASSET:
+		// locate the asset object
+		pItem = (ITEM *) ObjectFind( nUniqueID );
+		break;
+	case ARMY_HUSK:
+		pItem = (ITEM *)FindHuskItem( nUniqueID );
+		break;
+	}
+
+    return pItem;
+}
+
+///========================================================================
+//	Function:		AiPosition()
+//
+//	Description:
+//		Return the current position for an object.
+//
+//	Input:			nUniqueID	the unique ID for a vehicle
+//
+//	Ouput:			pPosition	pointer to object position data
+//
+///========================================================================
+
+SPOINT*	AiPosition( UID nUniqueID, BOOL bOldPos )
+{
+	ITEM*	pItem = NULL;
+	SPOINT*		pPosition = NULL;
+
+	// verify the unique ID - only 24 bits in size
+	ASSERT( !(nUniqueID & (~AI_ID_29_BIT_MASK)) );
+    pItem = AiItemFind(nUniqueID);
+
+	if ( pItem )	{
+		if ( bOldPos )
+			pPosition = &(pItem->oldPosition);
+		else
+			pPosition = &(pItem->position);
+	}
+
+	// now report the position
+	return( pPosition );
+}
+
+
+///========================================================================
+//	Function:		AiTargetPosition()
+//
+//	Description:
+//		Return the target position for the current attacker item.
+//
+//	Input:			nUniqueID	the unique ID for a vehicle
+//
+//	Ouput:			pPosition	pointer to object position data
+//
+///========================================================================
+
+SPOINT*	AiTargetPosition( UID nAttackerUniqueID, BOOL bOldPos )
+{
+	ITEM*	pItem       = NULL;
+	ITEM*	pTargetItem = NULL;
+	SPOINT*	pPosition   = NULL;
+
+	// verify the unique ID - only 24 bits in size
+	ASSERT( !(nAttackerUniqueID & (~AI_ID_29_BIT_MASK)) );
+
+    pItem = AiItemFind(nAttackerUniqueID);
+	if ( pItem )	{
+		// now locate the target
+		pTargetItem = TadMyTargetObject( (TAD*)(pItem->pTad) );
+		if ( pTargetItem )	{
+			if ( bOldPos )
+				pPosition = &(pTargetItem->oldPosition);
+			else
+				pPosition = &(pTargetItem->position);
+		}
+	}
+
+	// now report the position
+	return( pPosition );
+}
+
+
+///========================================================================
+//	Function:		AiClosing()
+//
+//	Description:
+//		return the delta distance between friend and foe.
+//
+//	Input:			nFriendUID	the unique ID of the friend object
+//					nFoeUID		the unique ID of the foe object
+//					bStationary	specifies treatment of friend positioning
+//
+//		bStationary, if TRUE, causes the delta distance calculation to be
+//		done using only the current friend position. If FALSE, the old position
+//		is used just in case chasing is involved.	
+//
+//	Ouput:			nClosing		The delta change in distance betweem friend
+//									and foe
+//
+///========================================================================
+
+LONG	AiClosing( UID nFriendUID, UID nFoeUID, BOOL bStationary )
+{
+	SPOINT*	pFriendPos;
+	SPOINT*	pFoePos;
+	SPOINT*	pFriendOldPos;
+	SPOINT*	pFoeOldPos;
+	LONG	nDeltaDistance = 0;
+	LONG	nDeltaOldDistance = 0;
+	LONG	nClosing = 0;
+
+	// acquire the Friend and the Foe positions
+	pFriendPos = AiPosition( nFriendUID, FALSE );
+	pFoePos    = AiPosition( nFoeUID, FALSE );
+
+	// acquire the old positions, see if the Friend is stationary
+	pFriendOldPos = pFriendPos;
+	if ( !bStationary )
+	{
+		// acquire the friend old position
+		pFriendOldPos = AiPosition( nFriendUID, TRUE );
+	}
+	pFoeOldPos = AiPosition( nFoeUID, TRUE );
+
+	// calculate delta distance (squared)
+	nDeltaDistance    = GetDistance( pFriendPos, pFoePos );
+	nDeltaOldDistance = GetDistance( pFriendOldPos, pFoeOldPos );
+	nClosing          = nDeltaDistance - nDeltaOldDistance;
+
+	return( nClosing );
+}
+
+///========================================================================
+//	Function:		AiInRange()
+//
+//	Description:
+//		See if foe is within friends firing range.
+//
+//	Input:			nFriendUID		friend object
+//					nFoeUID			foe object
+//
+//	Ouput:			none
+//
+///========================================================================
+
+BOOL	AiInRange( UID nFriendUID, UID nFoeUID )
+{
+	return( FALSE );
+}
+
+
+///========================================================================
+//	Function:		AiArmyLegion()
+//
+//	Description:
+//		Return the initial forces this army had.
+//
+//	Input:			nArmyID		friend object
+//
+//	Ouput:			none
+//
+///========================================================================
+
+int	AiArmyLegion( UID nArmyID )
+{
+	LEGION*	pLegion;
+	int		eArmy;
+	int		nForces;
+
+	// verify the army ID - only 24 bits in size
+	ASSERT( !(nArmyID & (~AI_ID_29_BIT_MASK)) );
+	ASSERT( !(nArmyID & AI_ID_ARMY_MASK) );
+
+	// get the army
+	eArmy = (int)EXTRACT_ARMY( nArmyID );
+
+	// get the army's legion
+	pLegion = ArmyGetLegion(eArmy);
+
+	// now get the number of units and vehicles
+#if 1
+	nForces = pLegion->nTotalUnits + pLegion->nNumberOfVehicles;
+#else
+	nForces = pLegion->nTotalUnits + 1;	// plus 1 for the number of vehicles
+#endif
+
+	return( nForces );
+}
+
+///========================================================================
+//	Function:		AiArmyForces()
+//
+//	Description:
+//		Return the current forces this army had.
+//
+//	Input:			nArmyID		friend object
+//
+//	Ouput:			none
+//
+///========================================================================
+
+int	AiArmyForces( UID nArmyID )
+{
+	LEGION*	pLegion;
+	int		eArmy;
+	int		nForces;
+
+	// verify the army ID - only 24 bits in size
+	ASSERT( !(nArmyID & (~AI_ID_29_BIT_MASK)) );
+	ASSERT( !(nArmyID & AI_ID_ARMY_MASK) );
+
+	// get the army
+	eArmy = (int)EXTRACT_ARMY( nArmyID );
+
+	// get the army's legion
+	pLegion = ArmyGetLegion(eArmy);
+
+	// now get the number of units and vehicles
+#if 0
+	nForces = pLegion->nTotalUnits + pLegion->nNumberOfVehicles;
+#else
+	nForces = pLegion->nTotalUnits + 1;	// plus 1 for the number of vehicles
+#endif
+
+	return( nForces );
+}
+
+int	AiVehicleAdjustedSpeed(VEHICLE*	pVehicle)
+{// raw speed adjusted by terrain slowdown
+
+    return pVehicle->velocity;
+}
+
+int	AiVehicleRawSpeed(VEHICLE*	pVehicle)
+{// raw speed ignoring terrain effects
+
+    return pVehicle->full_velocity;
+}
+
+int	AiVehicleMaxSpeed(VEHICLE*	pVehicle)
+{// best speed it could do ignoring terrain effects
+
+    return pVehicle->max_velocity;
+}
+
+///========================================================================
+//	Function:		AiVehicleMoveStatus()
+//	Description:	Return the current  move status of vehicle
+//	Ouput:			bfStatus	status bits
+//
+//	Status: if the target point is tot he left or right, the AI_VEHICLE_GO_LEFT_MASK
+//			or AI_VEHICLE_GO_RIGHT_MASK bits are set. If neither is set, the target 
+//			point is straight ahead. If both are set, the target is straight behind.
+//
+//
+///========================================================================
+
+LONG	AiVehicleMoveStatus(VEHICLE* pVehicle, SPOINT targetPoint )
+{
+	UID			bfStatus = AI_VEHICLE_CLEAR_MASK;
+	int			eFacing,
+				eDirection,
+				dir_diff;
+
+    // now determine the direction
+    eDirection = GetDirection(&(pVehicle->common.position), &targetPoint);
+	if ( eDirection == NULL_DIRECTION )	dir_diff = 0;
+	else
+	{
+		eFacing = ITEM_FACING(pVehicle);
+		dir_diff =  eFacing - eDirection;
+	}
+
+    // no change if close 
+    if (dir_diff == 1 || dir_diff == -1) return bfStatus;
+
+    if (dir_diff < GROSS_MOTOR && dir_diff > (-GROSS_MOTOR)){
+        bfStatus |= AI_VEHICLE_FINE_CONTROL_MASK;
+    }
+
+    if (dir_diff > 0 && dir_diff <= CIRCLE_UNITS/2)	{
+        bfStatus |= AI_VEHICLE_GO_RIGHT_MASK;
+    }
+
+    if (dir_diff >= CIRCLE_UNITS/2)	{
+        bfStatus |= AI_VEHICLE_GO_LEFT_MASK;
+    }
+
+    if (dir_diff < 0 && dir_diff >= -CIRCLE_UNITS/2)	{
+        bfStatus |= AI_VEHICLE_GO_LEFT_MASK;
+    }
+
+    if (dir_diff <= -CIRCLE_UNITS/2)	{
+        bfStatus |= AI_VEHICLE_GO_RIGHT_MASK;
+    }
+
+
+	return( bfStatus );
+}
+
+LONG	AiVehicleFireStatus(VEHICLE* pVehicle,SPOINT targetPoint)
+{
+	UID			bfStatus = 0;
+	int			eFacing, eDirection, dir_diff = 0;
+	BOOL		fine = FALSE;
+
+    if (targetPoint.x == 0) 
+		return 0; // no target
+
+    // now determine the direction to target FROM THE GUN
+    SPOINT turretPt;
+    VehicleFiringPosition(pVehicle,&turretPt);
+    eDirection = GetDirection(&turretPt, &targetPoint);
+	int dist;
+	dist = GetDistance(&turretPt,&targetPoint);
+	
+	if ( eDirection != NULL_DIRECTION )	
+	{
+		eFacing = pVehicle->gun_facing;
+		dir_diff = eDirection - eFacing;
+		dir_diff += CIRCLE_UNITS;
+		dir_diff = dir_diff % CIRCLE_UNITS;
+		if (dir_diff > CIRCLE_UNITS/2)
+			dir_diff -= CIRCLE_UNITS;
+	}
+
+    if ( dir_diff == 0)
+		return STRAIGHT_VEHICLE;
+
+    if ( dir_diff == 1 )
+	{
+		return VERYFINE_LEFT_VEHICLE;
+	}
+
+    if ( dir_diff == -1 ) 
+	{
+		return VERYFINE_RIGHT_VEHICLE;
+	}
+
+	// when someone is close, we have to be fine indeed to avoid overshoot
+	if (dist < 300 && dir_diff > 0 && dir_diff < 50)
+	{
+	     return VERYFINE_LEFT_VEHICLE;
+	}
+    else if (dist < 300 && dir_diff > -50 && dir_diff < 0)
+	{
+		return VERYFINE_RIGHT_VEHICLE;
+	}
+    else if (dist < 100 && dir_diff > 0 && dir_diff < 100)
+	{
+	     return VERYFINE_LEFT_VEHICLE;
+	}
+    else if (dist < 100 && dir_diff > -100 && dir_diff < 0)
+	{
+		return VERYFINE_RIGHT_VEHICLE;
+	}
+
+    if (dir_diff < GROSS_MOTOR && dir_diff > (-GROSS_MOTOR))
+		fine = TRUE;
+
+    if ( dir_diff > 0 )	{
+		if (fine)
+			return FINE_LEFT_VEHICLE;
+		else
+			return LEFT_VEHICLE;
+    }
+	else {
+		if (fine)
+			return FINE_RIGHT_VEHICLE;
+		else
+			return RIGHT_VEHICLE;
+    }
+}
+
+///========================================================================
+//	Function:		AiUnitGetOrders()
+//
+//	Description:
+//		Return the current orders for a unit.
+//
+//	Input:			nUniqueID	the unique ID for a unit
+//
+//	Ouput:			eOrders		current orders for a unit,
+//								ARMY_LAST_CMD if undefined
+//
+///========================================================================
+
+int	AiUnitGetOrders( UID nUniqueID )
+{
+	UNIT*	pUnit;
+	int		eOrders = UNIT_NO_ORDER;
+
+	// locate the Unit object
+	pUnit = UnitFind( nUniqueID );
+	if ( pUnit )
+		eOrders = pUnit->order;
+
+	return( eOrders );
+}
+
+///========================================================================
+//	Function:		AiVehicleDoTurn()
+//
+//	Description:
+//		Give vehicle a turn command (as if a single key press)
+//
+//	Input:			pVehicle		the vehicle 
+//					eTurnCommand	the VEHICLE_COMMAND_NUMBER to indicate left or right	
+//
+//	Ouput:			none
+//
+///========================================================================
+
+void	AiVehicleDoTurn(VEHICLE* pVehicle, int eTurnCommand )
+{
+    VehicleTurn(pVehicle, eTurnCommand);
+}
+
+///========================================================================
+//	Function:		AiVehicleDoAccelerate()
+//
+//	Description:
+//		Give vehicle a velocity command (as if a single key press): speed up,
+//		slow down or stop.
+//
+//	Input:			nUniqueID		the unique ID for a vehicle
+//					eAccelCommand	the VEHICLE_COMMAND_NUMBER to indicate acceleration change	
+//
+//	Ouput:			none
+//
+///========================================================================
+
+void	AiVehicleDoAccelerate(VEHICLE* pVehicle, int eAccelCommand )
+{
+    VehicleAccel(pVehicle, eAccelCommand);
+}
+
+
+///========================================================================
+//	Function:		AiVehicleDoTurnGun()
+//
+//	Description:
+//		Give vehicle gun turret a turn command (as if a single key press)
+//
+//	Input:			pVehicle		the  vehicle
+//					eTurnCommand	the VEHICLE_COMMAND_NUMBER to indicate left or right	
+//
+//	Ouput:			returns TRUE if able to turn (some guns have a limited turning arc)
+//
+///========================================================================
+
+BOOL	AiVehicleDoTurnGun(VEHICLE* pVehicle, int eTurnCommand )
+{
+    return VehicleTurnTurret(pVehicle, eTurnCommand, pVehicle->common.facing);
+}
+
+
+
+///========================================================================
+//	Function:		AiTrooperWeapon()
+//
+//	Description:
+//		return the weapon associated with a type of trooper.
+//
+//	Input:			nUniqueID	unit to apply deploy command to
+//
+//	Ouput:			none
+//
+///========================================================================
+
+WEAPON_TYPE	AiTrooperWeapon( TROOPER_TYPE eTrooper )
+{
+	return( (WEAPON_TYPE) AIinfo.troopTables[ eTrooper ].weapon );
+}
+
+///========================================================================
+//	Function:		AiUnitShortName()
+//
+//	Description:
+//		Retrieve the Unit short Name string
+//
+//	Input:			pUnit		the unit whose name we need 
+//
+//	Ouput:			pNameShort
+//
+///========================================================================
+
+char*	AiUnitShortName(UNIT* pUnit )
+{
+	AI_UTBL*	pUnitTable;
+	AI_COMP*	pComposition=NULL;
+    static char myname[200];
+
+	pUnitTable = &(AIinfo.unitTables[ ITEM_CLASS(pUnit) ]);
+	pComposition = &(pUnitTable->comp);
+    sprintf(myname,"%s%d",pComposition->pNameShort,pUnit->nCompID);
+	return myname;
+}
+
+//=======================================================================
+//								EOF
+//=======================================================================

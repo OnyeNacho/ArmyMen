@@ -1,0 +1,136 @@
+	// multiple player std header for ALL multiplayer missions
+
+
+////////////////////////////////////////////////////////////////////////
+//INSTRUCTIONS FOR BUILDING MULTIPLAYER SCRIPTS
+// 1. include this file in the .rul file to get proper support for leaving
+// 2. REMEMBER- Only the host triggers events, and sends that eventname
+//    to the clients to trigger them.
+//    HENCE - TRIGGER commands in scripts are only executed on the host
+////////////////////////////////////////////////////////////////////////
+
+
+// declaration events of who is or is not human at game startup
+
+// xxxai means he never started after setup as human
+IF ONEOF greenleftearly greennotplaying BUTNOT startup THEN TRIGGER greenai
+IF ONEOF tanleftearly tannotplaying BUTNOT startup THEN TRIGGER tanai
+IF ONEOF blueleftearly bluenotplaying BUTNOT startup THEN TRIGGER blueai
+IF ONEOF grayleftearly graynotplaying BUTNOT startup THEN TRIGGER grayai
+// xxxhuman means he did start as human
+IF startup BUTNOT greenai THEN TRIGGER greenhuman
+IF startup BUTNOT tanai THEN TRIGGER tanhuman
+IF startup BUTNOT blueai THEN TRIGGER bluehuman
+IF startup BUTNOT grayai THEN TRIGGER grayhuman
+
+
+// for alliances among the AI players
+IF ALLOF greenai tanai THEN
+	ALLY GREEN TAN,
+	ALLY TAN GREEN
+IF ALLOF greenai blueai THEN
+	ALLY GREEN BLUE,
+	ALLY BLUE GREEN
+IF ALLOF greenai grayai THEN
+	ALLY GREEN GRAY,
+	ALLY GRAY GREEN
+IF ALLOF tanai blueai THEN
+	ALLY TAN BLUE,
+	ALLY BLUE TAN
+IF ALLOF tanai grayai THEN
+	ALLY TAN GRAY,
+	ALLY GRAY TAN
+IF ALLOF blueai grayai THEN
+	ALLY BLUE GRAY,
+	ALLY GRAY BLUE
+
+// if all but one player not available during startup, deploy all other armies as ai automatically
+// otherwise it is up to a lower script to decide
+IF ALLOF greenai tanai blueai THEN  TRIGGER oneplayer
+IF ALLOF greenai tanai grayai THEN 	TRIGGER oneplayer
+IF ALLOF greenai grayai blueai THEN  TRIGGER oneplayer
+IF ALLOF grayai tanai blueai THEN 	TRIGGER oneplayer
+IF oneplayer THEN 
+	TRIGGER keepai,
+	SHOWMESSAGE "Welcome to multiplayer boot camp!"
+
+// if ai is running, deploy forces for ai players
+IF ALLOF keepai greenai THEN DEPLOY GREEN ATMODE ATTACK
+IF ALLOF keepai tanai THEN DEPLOY TAN ATMODE ATTACK
+IF ALLOF keepai blueai THEN DEPLOY BLUE ATMODE ATTACK
+IF ALLOF keepai grayai THEN DEPLOY GRAY ATMODE ATTACK
+
+IF ALLOF keepai startup THEN NOTIFY BLUE GREEN 2 // tell system to show all players in ui
+
+
+// if someone leaves during setup, tell user and prepare for undeploy or oneplayer
+// NOTE the keepai event will suppress removal of ai army
+IF  greenleftearly THEN  TRIGGERDELAY 1 greenexit
+IF greenexit BUTNOT  keepai THEN
+	SHOWMESSAGE "Green Army has left during setup",
+	TRIGGER greennotplaying
+IF tanleftearly THEN TRIGGERDELAY 1 tanexit
+IF tanexit BUTNOT  keepai THEN
+	SHOWMESSAGE "Tan Army has left during setup",
+	TRIGGER tannotplaying
+IF blueleftearly THEN TRIGGERDELAY 1 blueexit
+IF blueexit BUTNOT  keepai THEN
+	SHOWMESSAGE "Blue Army has left during setup",
+	TRIGGER bluenotplaying
+IF grayleftearly THEN TRIGGERDELAY 1 grayexit
+IF grayexit BUTNOT  keepai THEN
+	SHOWMESSAGE "Gray Army has left during setup",
+	TRIGGER graynotplaying
+
+// if player leaves after setup, tell user
+IF INORDER startup greennotplaying THEN SHOWMESSAGE "Green Army has left the game"
+IF INORDER startup tannotplaying THEN SHOWMESSAGE "Tan Army has left the game"
+IF INORDER startup bluenotplaying THEN SHOWMESSAGE "Blue Army has left the game"
+IF INORDER startup graynotplaying THEN SHOWMESSAGE "Gray Army has left the game"
+
+// when someone is not playing, remove him if not a oneplayer game
+IF greennotplaying THEN TRIGGERDELAY 0.1 greengone
+IF tannotplaying THEN TRIGGERDELAY 0.1 tangone
+IF bluenotplaying THEN TRIGGERDELAY 0.1 bluegone
+IF graynotplaying THEN TRIGGERDELAY 0.1 graygone
+
+// remove player from game and trigger an event that you did so.
+IF greengone BUTNOT keepai THEN 
+	TRIGGER nogreen,
+	UNDEPLOY GREEN
+IF tangone BUTNOT keepai THEN 
+	TRIGGER notan,
+	UNDEPLOY TAN
+IF bluegone BUTNOT keepai THEN 
+	TRIGGER noblue,
+	UNDEPLOY BLUE
+IF graygone BUTNOT keepai THEN 
+	TRIGGER nogray,
+	UNDEPLOY GRAY
+
+
+// handle generic winning
+
+// delay wins and do lockout (only the host will do the triggers)
+IF ONEOF graywon greenwon bluewon THEN TRIGGERDELAY 0.1 foetan
+IF ONEOF tanwon greenwon bluewon THEN TRIGGERDELAY 0.1 foegray
+IF ONEOF graywon greenwon tanwon THEN TRIGGERDELAY 0.1 foeblue
+IF ONEOF graywon tanwon bluewon THEN TRIGGERDELAY 0.1 foegreen
+
+IF greenwon  THEN TRIGGER greenwillwin
+IF tanwon  THEN TRIGGER tanwillwin
+IF bluewon  THEN TRIGGER bluewillwin
+IF graywon  THEN TRIGGER graywillwin
+
+IF tanwillwin BUTNOT foetan THEN
+    SHOWMESSAGE "Tan won",
+    TRIGGERDELAY 2 tanwins
+IF greenwillwin BUTNOT foegreen THEN
+    SHOWMESSAGE "Green won",
+    TRIGGERDELAY 2 greenwins
+IF bluewillwin BUTNOT foeblue THEN
+    SHOWMESSAGE "Blue won",
+    TRIGGERDELAY 2 bluewins
+IF graywillwin BUTNOT foegray THEN
+    SHOWMESSAGE "Gray won",
+    TRIGGERDELAY 2 graywins

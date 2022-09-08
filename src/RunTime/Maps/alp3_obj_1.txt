@@ -1,0 +1,532 @@
+OBJECT bridgeleft
+
+STATE uninjured
+	EVENT DAMAGE (injured1, -)
+	BEGIN
+		0
+	END
+
+STATE injured1
+	EVENT DAMAGE (injured2, bridgeleftdestroyed)
+	BEGIN
+		1
+	END
+
+STATE injured2
+	BEGIN
+		2
+	END
+
+DAMAGETRIGGERS 50 0
+
+ENDOBJECT
+
+
+
+
+OBJECT bridgeright
+
+STATE uninjured
+	EVENT DAMAGE (injured1, -)
+	BEGIN
+		0
+	END
+
+STATE injured1
+	EVENT DAMAGE (injured2, bridgerightdestroyed)
+	BEGIN
+		1
+	END
+
+STATE injured2
+	BEGIN
+		2
+	END
+
+DAMAGETRIGGERS 50 0
+
+ENDOBJECT
+
+
+
+
+OBJECT bridgecenter
+FRAMES
+
+0 0 (0,0)
+1 0 (0,0)
+2 1 (0,0)+
+3 1 (0,0)+
+4 2 (0,0)+
+5 2 (0,0)+
+6 3 (0,0)
+7 3 (4,5)
+8 4 (7,9)
+9 4 (7,17)
+10 5 (6,24)
+11 5 (6,36)
+12 6 (5,47)
+13 6 (7,59)
+14 7 (8,70)
+15 7 (4,81)
+16 8 (0,92)
+17 8 (-5,101)
+18 9 (-9,109)
+19 9 (-14,118)
+20 10 (-19,127)
+21 10 (-26,136)
+22 11 (-32,145)
+23 11 (-41,155)
+24 12 (-50,164)
+25 12 (-60,174)
+26 13 (-69,183)
+27 13 (-77,193)
+28 14 (-85,202)
+29 14 (-93,212)
+30 15 (-100,222)
+31 15 (-107,232)
+32 16 (-113,242)
+33 16 (-118,253)
+34 17 (-123,263)
+35 17 (-125,276)
+36 18 (-127,288)
+37 18 (-125,302)
+38 19 (-123,316)
+39 19 (-118,332)
+40 20 (-113,347)
+41 20 (-108,363)
+42 21 (-102,379)
+43 21 (-97,394)
+44 22 (-92,409)
+45 22 (-86,424)
+46 23 (-80,439)
+47 23 (-74,455)
+48 24 (-67,470)
+49 24 (-63,485)
+50 25 (-59,499)
+51 25 (-59,513)
+52 26 (-58,527)
+53 26 (-68,541)
+54 27 (-78,555)
+55 27 (-73,568)
+56 28 (-67,581)
+57 28 (-70,593)
+58 29 (-73,604)
+59 29 (-77,614)
+60 30 (-80,624)
+61 30 (-84,633)
+62 31 (-87,641)
+63 31 (-91,649)
+64 32 (-95,657)
+65 32 (-99,664)
+66 33 (-102,671)
+67 33 (-106,678)
+68 34 (-110,684)
+69 34 (-114,690)
+70 35 (-117,695)
+71 35 (-121,700)
+72 36 (-125,705)
+
+
+END
+
+STATE uninjured
+	EVENT DAMAGE (destroyed, bridgecenterdestroyed)
+	EVENT sink (destroyed, bridgecenterdestroyed)
+	EVENT floatbridge (floating, -)
+	BEGIN
+		0
+		1
+	END
+
+STATE destroyed
+	BEGIN
+		2
+		2
+		2
+		3
+		3
+		3
+		4
+		4
+		4
+		5
+		5
+		5
+	END
+
+STATE floating
+	EVENT DAMAGE (destroyed, bridgecenterdestroyed)
+	BEGIN
+		0
+		0
+		1
+		1
+		6
+		6
+		7
+		7
+		8
+		8
+		9
+		9
+		10
+		10
+		11
+		11
+		12
+		12
+		13
+		13
+		14
+		14
+		15
+		15
+		16
+		16
+		17
+		17
+		18
+		18
+		19
+		19
+		20
+		20
+		21
+		21
+		22
+		22
+		23
+		23
+		24
+		24
+		25
+		25
+		26
+		26
+		27
+		27
+		28
+		28
+		29
+		29
+		30
+		30
+		31
+		31
+		32
+		32
+		33
+		33
+		34
+		34
+		35
+		35
+		36
+		36
+		37
+		37
+		38
+		38
+		39
+		39
+		40
+		40
+		41
+		41
+		42
+		42
+		43
+		43
+		44
+		44
+		45
+		45
+		46
+		46
+		47
+		47
+		48
+		48
+		49
+		49
+		50
+		50
+		51
+		51
+		52
+		52
+		53
+		53
+		54
+		54
+		55
+		55
+		56
+		56
+		57
+		57
+		58
+		58
+		59
+		59
+		60
+		60
+		61
+		61
+		62
+		62
+		63
+		63
+		64
+		64
+		65
+		65
+		66
+		66
+		67
+		67
+		68
+		68
+		69
+		69
+		70
+		70
+		71
+		71
+		72
+		72
+		72
+
+	END
+
+DAMAGETRIGGERS 1
+
+ENDOBJECT
+
+
+
+OBJECT injuredleft
+FRAMES
+
+0 0 (0,0)
+1 1 (-6,0)+
+2 2 (-6,0)+
+3 3 (-6,0)+
+4 4 (-6,0)+
+5 5 (-6,0)+
+6 6 (-6,0)+
+7 7 (-6,0)+
+8 8 (-6,0)+
+9 8 (0,0)+
+10 9 (0,0)+
+
+
+END
+
+STATE notmoving1
+	EVENT DAMAGE (hurt12, stopdeploy)
+	EVENT goinjured (moving1, -)
+	BEGIN
+		9
+		9
+	END
+
+STATE moving1 LOOP
+	EVENT stopinjured (notmoving1, -)
+	EVENT stopdeploy (hurt1, -)
+	EVENT DAMAGE (hurt1, stopdeploy)
+	EVENT goneinjured (gone1, -)
+	EVENT bridgecenterdestroyed (hurt1, deploysoldier)
+	BEGIN
+		1
+		1
+		2
+		2
+		3
+		3
+		4
+		4
+		5
+		5
+		6
+		6
+		7
+		7	TRIGGER fullloop1
+		8
+		8
+	END
+
+
+STATE hurt1
+	EVENT returned (moving1, -)
+	BEGIN
+		10
+		10
+	END
+
+STATE hurt12
+	EVENT returned (notmoving1, -)
+	BEGIN
+		10
+		10
+	END
+
+STATE gone1
+	BEGIN
+		10
+	END
+
+DAMAGETRIGGERS 1
+
+ENDOBJECT
+
+
+
+
+OBJECT injuredright
+FRAMES
+
+0 0 (0,0)
+1 1 (-6,0)+
+2 2 (-6,0)+
+3 3 (-6,0)+
+4 4 (-6,0)+
+5 5 (-6,0)+
+6 6 (-6,0)+
+7 7 (-6,0)+
+8 8 (-6,0)+
+9 8 (0,0)+
+10 9 (0,0)+
+
+END
+
+STATE notmoving2
+	EVENT DAMAGE (hurt22, stopdeploy)
+	EVENT goinjured (moving2, -)
+	BEGIN
+		9
+	END
+
+STATE moving2 LOOP
+	EVENT stopinjured (notmoving2, -)
+	EVENT stopdeploy (hurt2, -)
+	EVENT DAMAGE (hurt2, stopdeploy)
+	EVENT goneinjured (gone2, -)
+	BEGIN
+		1
+		1
+		2
+		2
+		3
+		3
+		4
+		4
+		5
+		5
+		6
+		6
+		7
+		7
+		8	TRIGGER fullloop2
+		8
+	END
+
+
+STATE hurt2
+	EVENT returned (moving2, -)
+	BEGIN
+		10
+	END
+
+STATE hurt22
+	EVENT returned (notmoving2, -)
+	BEGIN
+		10
+	END
+
+STATE gone2
+	BEGIN
+		10
+	END
+
+DAMAGETRIGGERS 1
+
+ENDOBJECT
+
+
+
+OBJECT injuredcot
+FRAMES
+
+0 0 (0,0)
+1 1 (-6,0)+
+2 2 (-6,0)+
+3 3 (-6,0)+
+4 4 (-6,0)+
+5 5 (-6,0)+
+6 6 (-6,0)+
+7 7 (-6,0)+
+8 8 (-6,0)+
+9 8 (0,0)+
+10 9 (0,0)+
+
+
+END
+
+STATE notmoving3
+	EVENT DAMAGE (hurt32, stopdeploy)
+	EVENT goinjured (moving3, -)
+	BEGIN
+		9
+	END
+
+STATE moving3 LOOP
+	EVENT stopinjured (notmoving3, -)
+	EVENT stopdeploy (hurt3, -)
+	EVENT DAMAGE (hurt3, stopdeploy)
+	EVENT goneinjured (gone3, -)
+
+	BEGIN
+		1
+		1
+		2	TRIGGER fullloop3
+		2
+		3
+		3
+		4
+		4
+		5
+		5
+		6
+		6
+		7
+		7
+		8
+		8
+	END
+
+
+STATE hurt3
+	EVENT returned (moving3, -)
+	BEGIN
+		9
+	END
+
+STATE hurt32
+	EVENT returned (notmoving3, -)
+	BEGIN
+		9
+	END
+
+STATE gone3
+	BEGIN
+		9
+	END
+
+DAMAGETRIGGERS 1
+
+ENDOBJECT
+
+
+

@@ -1,0 +1,949 @@
+# 3DO BLDSND .OPT for building voice over .SND files
+#
+# Author: Nicky Robinson
+#
+# Date:   11/14/97
+#
+#     Copyright(c)1997, The 3DO Company
+#
+#===========================================
+SND_OUTPUT voices
+SND_TEXT_OUTPUT voices
+
+#===========================================
+# SARGE VOICE TRACKS
+#===========================================
+
+#-------------------------------------------
+# Sarge when on screen with spy first time
+#-------------------------------------------
+SND_FILE Voices\sarge\01.wav
+SND_INUM 4000
+SND_TEXT "There he is!"
+SND_NAME THERE_HE_IS
+
+SND_FILE Voices\sarge\02.wav
+SND_TEXT "Get him!"
+SND_NAME GET_HIM
+
+SND_FILE Voices\sarge\03.wav
+SND_TEXT "He's ours!"
+SND_NAME HES_OURS
+
+SND_FILE Voices\sarge\04.wav
+SND_TEXT "You're toast!"
+SND_NAME YOURE_TOAST
+
+SND_FILE Voices\sarge\05.wav
+SND_TEXT "Take that, tan scum!"
+SND_NAME TAN_SCUM
+
+SND_FILE Voices\sarge\06.wav
+SND_TEXT "Take that, gray scum!"
+SND_NAME GREY_SCUM
+
+#-------------------------------------------
+# Sarge Requesting Air Support
+#-------------------------------------------
+SND_FILE Voices\sarge\07.wav
+SND_TEXT "This is Sarge. Requesting paratrooper drop. Over."
+SND_NAME REQUEST_PARATROOPERS
+
+SND_FILE Voices\sarge\08.wav
+SND_TEXT "This is Sarge. Send me a paratroop drop. Over."
+SND_NAME SEND_PARATROOPERS
+
+SND_FILE Voices\sarge\09.wav
+SND_TEXT "This is Sarge. Requesting recon. Over."
+SND_NAME REQUEST_RECON
+
+SND_FILE Voices\sarge\10.wav
+SND_TEXT "Send me a recon. Over."
+SND_NAME SEND_RECON
+
+SND_FILE Voices\sarge\11.wav
+SND_TEXT "This is Sarge. Requesting an air strike. Over."
+SND_NAME REQUEST_AIR_STRIKE
+
+SND_FILE Voices\sarge\12.wav
+SND_TEXT "This is Sarge. I need an air strike. Over."
+SND_NAME NEED_AIR_STRIKE
+
+#-------------------------------------------
+# Sarge ordering squads
+#-------------------------------------------
+SND_FILE Voices\sarge\green_attack2.wav
+SND_TEXT "Green squad attack."
+SND_NAME GREEN_SQUAD_ATTACK
+
+SND_FILE Voices\sarge\green_attack.wav
+SND_TEXT "Green attack."
+SND_NAME GREEN_ATTACK
+
+SND_FILE Voices\sarge\tan_attack2.wav
+SND_TEXT "Tan squad attack."
+SND_NAME TAN_SQUAD_ATTACK
+
+SND_FILE Voices\sarge\tan_attack.wav
+SND_TEXT "Tan attack."
+SND_NAME TAN_ATTACK
+
+SND_FILE Voices\sarge\blue_attack2.wav
+SND_TEXT "Blue squad attack."
+SND_NAME BLUE_SQUAD_ATTACK
+
+SND_FILE Voices\sarge\blue_attack.wav
+SND_TEXT "Blue attack."
+SND_NAME BLUE_ATTACK
+
+SND_FILE Voices\sarge\grey_attack2.wav
+SND_TEXT "Gray squad attack."
+SND_NAME GREY_SQUAD_ATTACK
+
+SND_FILE Voices\sarge\grey_attack.wav
+SND_TEXT "Gray attack."
+SND_NAME GREY_ATTACK
+
+SND_FILE Voices\sarge\green_defend2.wav
+SND_TEXT "Green squad defend."
+SND_NAME GREEN_SQUAD_DEFEND
+
+SND_FILE Voices\sarge\green_defend.wav
+SND_TEXT "Green defend."
+SND_NAME GREEN_DEFEND
+
+SND_FILE Voices\sarge\tan_defend2.wav
+SND_TEXT "Tan squad defend."
+SND_NAME TAN_SQUAD_DEFEND
+
+SND_FILE Voices\sarge\tan_defend.wav
+SND_TEXT "Tan defend."
+SND_NAME TAN_DEFEND
+
+SND_FILE Voices\sarge\blue_defend2.wav
+SND_TEXT "Blue squad defend."
+SND_NAME BLUE_SQUAD_DEFEND
+
+SND_FILE Voices\sarge\blue_defend.wav
+SND_TEXT "Blue defend."
+SND_NAME BLUE_DEFEND
+
+SND_FILE Voices\sarge\grey_defend2.wav
+SND_TEXT "Gray squad defend."
+SND_NAME GREY_SQUAD_DEFEND
+
+SND_FILE Voices\sarge\grey_defend.wav
+SND_TEXT "Gray defend."
+SND_NAME GREY_DEFEND
+
+SND_FILE Voices\sarge\25.wav
+SND_TEXT "Get over here."
+SND_NAME GET_OVER_HERE
+
+SND_FILE Voices\sarge\26.wav
+SND_TEXT "Follow me."
+SND_NAME FOLLOW_ME
+
+#-------------------------------------------
+# Sarge running over weapon crate
+#-------------------------------------------
+#SND_FILE Voices\sarge\27.wav
+SND_FILE Voices\sarge\autorifle.wav
+SND_TEXT "Found auto rifle."
+SND_NAME SARGE_FOUND_AUTO_RIFLE
+
+SND_FILE Voices\sarge\first_aid.wav
+SND_TEXT "Found first aid kit."
+SND_NAME SARGE_FOUND_FIRST_AID
+
+SND_FILE Voices\sarge\bazooka.wav
+SND_TEXT "Found bazooka."
+SND_NAME SARGE_FOUND_BAZOOKA
+
+SND_FILE Voices\sarge\mines.wav
+SND_TEXT "Found mines."
+SND_NAME SARGE_FOUND_MINES
+
+SND_FILE Voices\sarge\grenades.wav
+SND_TEXT "Found grenades."
+SND_NAME SARGE_FOUND_GRENADES
+
+SND_FILE Voices\sarge\minesweeper.wav
+SND_TEXT "Found minesweeper."
+SND_NAME SARGE_FOUND_MINESWEEPER
+
+SND_FILE Voices\sarge\mortar.wav
+SND_TEXT "Found mortar."
+SND_NAME SARGE_FOUND_MORTARS
+
+SND_FILE Voices\sarge\note.wav
+SND_TEXT "Found a note."
+SND_NAME SARGE_FOUND_NOTE
+
+SND_FILE Voices\sarge\flamethrower.wav
+SND_TEXT "Found flame thrower."
+SND_NAME SARGE_FOUND_FLAMER
+
+SND_FILE Voices\sarge\flag.wav
+SND_TEXT "Found a flag."
+SND_NAME SARGE_FOUND_FLAG
+
+SND_FILE Voices\sarge\explosives.wav
+SND_TEXT "Found explosives."
+SND_NAME SARGE_FOUND_EXPLOSIVES
+
+SND_FILE Voices\sarge\green_flag.wav
+SND_TEXT "Found a green flag."
+SND_NAME SARGE_FOUND_GREEN_FLAG
+
+SND_FILE Voices\sarge\tan_flag.wav
+SND_TEXT "Found a tan flag."
+SND_NAME SARGE_FOUND_TAN_FLAG
+
+SND_FILE Voices\sarge\blue_flag.wav
+SND_TEXT "Found a blue flag."
+SND_NAME SARGE_FOUND_BLUE_FLAG
+
+SND_FILE Voices\sarge\grey_flag.wav
+SND_TEXT "Found a gray flag."
+SND_NAME SARGE_FOUND_GREY_FLAG
+
+SND_FILE Voices\sarge\key1.wav
+SND_TEXT "Found the first key."
+SND_NAME SARGE_FOUND_KEY1
+
+SND_FILE Voices\sarge\key2.wav
+SND_TEXT "Found the second key."
+SND_NAME SARGE_FOUND_KEY2
+
+SND_FILE Voices\sarge\key3.wav
+SND_TEXT "Found the third key."
+SND_NAME SARGE_FOUND_KEY3
+
+SND_FILE Voices\sarge\strike.wav
+SND_TEXT "Air strikes!"
+SND_NAME SARGE_FOUND_AIRSTRIKE
+
+SND_FILE Voices\sarge\para.wav
+SND_TEXT "Paratroopers!"
+SND_NAME SARGE_FOUND_PARATROOPERS
+
+SND_FILE Voices\sarge\recon.wav
+SND_TEXT "Recon!"
+SND_NAME SARGE_FOUND_RECON
+
+#-------------------------------------------
+# Misc
+#-------------------------------------------
+SND_FILE Voices\sarge\39.wav
+SND_TEXT "Load up the trucks, and make it quick!"
+SND_NAME LOAD_TRUCKS_QUICK
+
+SND_FILE Voices\sarge\40.wav
+SND_TEXT "Let's get out of here!"
+SND_NAME GET_OUT_OF_HERE
+
+SND_FILE Voices\sarge\41.wav
+SND_TEXT "Let's get out of this town!"
+SND_NAME GET_OUT_OF_TOWN
+
+SND_FILE Voices\sarge\42.wav
+SND_TEXT "Here's your plastic. Give me the information."
+SND_NAME PLASTIC_FOR_INFO
+
+#-------------------------------------------
+# units voices
+#-------------------------------------------
+SND_FILE Voices\squad1\01.wav
+SND_TEXT "We're pursuing an enemy rifle squad."
+SND_NAME PURSUING_RIFLE_SQUAD
+
+SND_FILE Voices\squad1\02.wav
+SND_TEXT "We've been spotted by an enemy rifle squad."
+SND_NAME SPOTTED_BY_RIFLE_SQUAD
+
+SND_FILE Voices\squad1\03.wav
+SND_TEXT "We're pursuing an enemy bazooka squad."
+SND_NAME PURSUING_BAZOOKA_SQUAD
+
+SND_FILE Voices\squad1\04.wav
+SND_TEXT "We've been spotted by an enemy bazooka squad."
+SND_NAME SPOTTED_BY_BAZOOKA_SQUAD
+
+SND_FILE Voices\squad1\05.wav
+SND_TEXT "We're pursuing an enemy flamer squad."
+SND_NAME PURSUING_FLAMER_SQUAD
+
+SND_FILE Voices\squad1\06.wav
+SND_TEXT "We've been spotted by an enemy flamer squad."
+SND_NAME SPOTTED_BY_FLAMER_SQUAD
+
+SND_FILE Voices\squad1\07.wav
+SND_TEXT "We're pursuing an enemy mortar squad."
+SND_NAME PURSUING_MORTAR_SQUAD
+
+SND_FILE Voices\squad1\08.wav
+SND_TEXT "We've been spotted by an enemy mortar squad."
+SND_NAME SPOTTED_BY_MORTAR_SQUAD
+
+SND_FILE Voices\squad1\09.wav
+SND_TEXT "We're pursuing an enemy spy."
+SND_NAME PURSUING_SPY
+
+SND_FILE Voices\squad1\10.wav
+SND_TEXT "We've been spotted by an enemy spy."
+SND_NAME SPOTTED_BY_SPY
+
+#-------------------------------------------
+# Engaging
+#-------------------------------------------
+SND_FILE Voices\squad1\11.wav
+SND_TEXT "We're attacking an enemy tank."
+SND_NAME ATTACKING_TANK
+
+SND_FILE Voices\squad1\12.wav
+SND_TEXT "We're being attacked by enemy tank."
+SND_NAME TANK_ATTACKING
+
+SND_FILE Voices\squad1\13.wav
+SND_TEXT "We're attacking an enemy jeep."
+SND_NAME ATTACKING_JEEP
+
+SND_FILE Voices\squad1\14.wav
+SND_TEXT "We're being attacked by enemy jeep."
+SND_NAME JEEP_ATTACKING
+
+SND_FILE Voices\squad1\15.wav
+SND_TEXT "We're attacking enemy paratroopers."
+SND_NAME ATTACKING_PARATROOPERS
+
+SND_FILE Voices\squad1\16.wav
+SND_TEXT "We're being attacked by paratroopers."
+SND_NAME PARATROOPERS_ATTACKING
+
+SND_FILE Voices\squad1\17.wav
+SND_TEXT "We're getting shelled."
+SND_NAME GETTING_SHELLED
+
+SND_FILE Voices\squad1\18.wav
+SND_TEXT "We've just been bombed."
+SND_NAME BEEN_BOMBED
+
+SND_FILE Voices\squad1\19.wav
+SND_TEXT "We're attacking an enemy rifle squad."
+SND_NAME ATTACKING_RIFLE_SQUAD
+
+SND_FILE Voices\squad1\20.wav
+SND_TEXT "We're being attacked by enemy rifle."
+SND_NAME RIFLE_SQUAD_ATTACKING
+
+SND_FILE Voices\squad1\21.wav
+SND_TEXT "We're attacking an enemy bazooka squad."
+SND_NAME ATTACKING_BAZOOKA_SQUAD
+
+SND_FILE Voices\squad1\22.wav
+SND_TEXT "We're being attacked by enemy bazookas."
+SND_NAME BAZOOKA_SQUAD_ATTACKING
+
+SND_FILE Voices\squad1\23.wav
+SND_TEXT "We're attacking an enemy flamer squad."
+SND_NAME ATTACKING_FLAMER_SQUAD
+
+SND_FILE Voices\squad1\24.wav
+SND_TEXT "We're being attacked by flamers."
+SND_NAME FLAMER_SQUAD_ATTACKING
+
+SND_FILE Voices\squad1\25.wav
+SND_TEXT "We're attacking an enemy mortar squad."
+SND_NAME ATTACKING_MORTAR_SQUAD
+
+SND_FILE Voices\squad1\26.wav
+SND_TEXT "We're being attacked by mortar."
+SND_NAME MORTAR_SQUAD_ATTACKING
+
+SND_FILE Voices\squad1\27.wav
+SND_TEXT "We're attacking an enemy spy."
+SND_NAME ATTACKING_SPY
+
+SND_FILE Voices\squad1\28.wav
+SND_TEXT "We're being attacked by a spy."
+SND_NAME SPY_ATTACKING
+
+#-------------------------------------------
+#Casualties
+#-------------------------------------------
+SND_FILE Voices\squad1\29.wav
+SND_TEXT "We've got a man down."
+SND_NAME MENDOWN
+
+SND_FILE Voices\squad1\30.wav
+SND_TEXT "We've got men down!"
+SND_NAME MENDOWN_2
+
+SND_FILE Voices\squad1\31.wav
+SND_TEXT "Sarge! We're taking heavy casualties."
+SND_NAME TAKING_HEAVY_CASUALTIES
+
+#-------------------------------------------
+# Bored
+#-------------------------------------------
+SND_FILE Voices\squad1\32.wav
+SND_TEXT "No one here, Sarge."
+SND_NAME NO_ONE_HERE
+
+SND_FILE Voices\squad1\33.wav
+SND_TEXT "All clear, Sarge."
+SND_NAME ALL_CLEAR_SARGE
+
+SND_FILE Voices\squad1\34.wav
+SND_TEXT "Waiting for orders."
+SND_NAME WAITING_FOR_ORDERS
+
+#-------------------------------------------
+# Misc
+#-------------------------------------------
+SND_FILE Voices\squad1\35.wav
+SND_TEXT "Ready! Aim! Fire!"
+SND_NAME READY_AIM_FIRE
+
+SND_FILE Voices\squad1\36.wav
+SND_TEXT "We're pinned down. There's no escape. Send help!"
+SND_NAME PINNED_DOWN
+
+SND_FILE Voices\squad1\37.wav
+SND_TEXT "Where did they come from?"
+SND_NAME WHERE_FROM
+
+SND_FILE Voices\squad1\38.wav
+SND_TEXT "We're done loading, Sarge."
+SND_NAME DONE_LOADING
+
+SND_FILE Voices\squad1\39.wav
+SND_TEXT "I'm hit, I'm hit!"
+SND_NAME IM_HIT
+
+#SND_FILE Voices\squad1\40.wav
+#SND_TEXT "uuhh!"
+#SND_NAME UUHH
+
+#SND_FILE Voices\squad1\41.wav
+#SND_TEXT "uhhhh!"
+#SND_NAME UHHHH
+
+SND_FILE Voices\squad1\42.wav
+SND_TEXT "Ready."
+SND_NAME SQUAD_READY
+
+SND_FILE Voices\squad1\43.wav
+SND_TEXT "Aim."
+SND_NAME SQUAD_AIM
+
+SND_FILE Voices\squad1\44.wav
+SND_TEXT "Fire."
+SND_NAME SQUAD_FIRE
+
+#===========================================
+# automatic voices
+#===========================================
+
+SND_FILE Voices\yessir.wav
+SND_TEXT "Yes, Sir!"
+SND_NAME YESSIR
+
+SND_FILE Voices\affirmative.wav
+SND_TEXT "Affirmative."
+SND_NAME AFFIRMATIVE
+
+SND_FILE Voices\onway.wav
+SND_TEXT "On our way, Sir."
+SND_NAME ONWAY
+
+SND_FILE Voices\approaching.wav
+SND_TEXT "Enemy approaching."
+SND_NAME APPROACHING
+
+SND_FILE Voices\destination.wav
+SND_TEXT "Reached destination."
+SND_NAME DESTINATION
+
+SND_FILE Voices\noparas.wav
+SND_TEXT "I'm sorry, commander. We couldn't find a safe spot to drop the paratroopers."
+SND_NAME NOPARAS
+
+SND_FILE Voices\aaguns.wav
+SND_TEXT "I'm sorry, commander. You must clear out enemy AA guns before calling for air support."
+SND_NAME AAGUNS
+
+SND_FILE Voices\noair.wav
+SND_TEXT "Air support not available."
+SND_NAME NOAIR
+
+SND_FILE Voices\Scripts\haltintruder.wav
+SND_TEXT "Halt, intruder!"
+SND_NAME HALT_INTRUDER
+
+SND_FILE Voices\Scripts\HALT.wav
+SND_TEXT "Halt!"
+SND_NAME HALT
+
+#Mission Briefs
+SND_FILE Voices\Commander\DS1M1.wav
+SND_TEXT "Cross the bridge into town. Proceed to the Tan munitions depot in sector B,2."
+SND_NAME DS1M1
+
+SND_FILE Voices\Commander\DS1M2.wav
+SND_TEXT "A Blue spy is being escorted to the Tan stronghold at sector A,2."
+SND_NAME DS1M2
+
+SND_FILE Voices\Commander\DS1M3.wav
+SND_TEXT "Proceed to the Sector F,3 across the Burgess Bridge. The Tan have captured a tank in sector A,5."
+SND_NAME DS1M3
+
+SND_FILE Voices\Commander\DS2M1.wav
+SND_TEXT "Rendezvous with a squad at sector A,1. March them to our camp at sector F,1."
+SND_NAME DS2M1
+
+SND_FILE Voices\Commander\DS2M2.wav
+SND_TEXT "The key is being held at the Tan fortress in sector E,5."
+SND_NAME DS2M2
+
+SND_FILE Voices\Commander\DS3M1.wav
+SND_TEXT "Rendezvous with a squad and a half track at sector A,6."
+SND_NAME DS3M1
+
+SND_FILE Voices\Commander\DS3M2.wav
+SND_TEXT "Blow a hole in the bank. Escort the truck back to the southwest entrance after loading."
+SND_NAME DS3M2
+
+SND_FILE Voices\Commander\DS4M1.wav
+SND_TEXT "Rendezvous with Blue forces at the bottom of the canyon. Exchange plastic for their information."
+SND_NAME DS4M1
+
+SND_FILE Voices\Commander\DS4M2.wav
+SND_TEXT "Link up with a helicopter at sector B,6 for extraction."
+SND_NAME DS4M2
+
+SND_FILE Voices\Commander\AS1M1.wav
+SND_TEXT "Soldiers are pinned down in sector B,1. Rescue and escort to the medical tent."
+SND_NAME AS1M1
+
+SND_FILE Voices\Commander\AS1M2.wav
+SND_TEXT "Dispose of the Tan truck near the Tan base at sector D,4."
+SND_NAME AS1M2
+
+SND_FILE Voices\Commander\AS2M1.wav
+SND_TEXT "Tan has the key near the mines in sector E,5. Eliminate any Blue courier."
+SND_NAME AS2M1
+
+SND_FILE Voices\Commander\AS2M2.wav
+SND_TEXT "Proceed to sector C,1 and stop the key from being loaded onto the train."
+SND_NAME AS2M2
+
+SND_FILE Voices\Commander\AS3M1.wav
+SND_TEXT "Rescue injured men stranded in sector F,5."
+SND_NAME AS3M1
+
+SND_FILE Voices\Commander\AS3M2.wav
+SND_TEXT "Get those men to the medical tent in sector B,1."
+SND_NAME AS3M2
+
+SND_FILE Voices\Commander\AS3M3.wav
+SND_TEXT "Take out the communications installation in sector A,6."
+SND_NAME AS3M3
+
+SND_FILE Voices\Commander\AS4M1.wav
+SND_TEXT "Free our soldiers from the prison camp in sector B,3."
+SND_NAME AS4M1
+
+SND_FILE Voices\Commander\AS4M2.wav
+SND_TEXT "Get to the airport in sector F,1. Radio for transportation."
+SND_NAME AS4M2
+
+SND_FILE Voices\Commander\BS1M1.wav
+SND_TEXT "Recover documents from Blue spy hiding out at the Tan base in sector A,1."
+SND_NAME BS1M1
+
+SND_FILE Voices\Commander\BS1M2.wav
+SND_TEXT "Take out the Gray base in sector F,6."
+SND_NAME BS1M2
+
+SND_FILE Voices\Commander\BS2M1.wav
+SND_TEXT "The key is at a Gray prison camp in sector F,6. Eliminate patrols one at a time."
+SND_NAME BS2M1
+
+SND_FILE Voices\Commander\BS2M2.wav
+SND_TEXT "The key is in the prison camp. Find a mine sweeper and get that key."
+SND_NAME BS2M2
+
+SND_FILE Voices\Commander\BS3M1.wav
+SND_TEXT "Rescue troops at C,4, then protect AA gun at B,2 until transportation arrives."
+SND_NAME BS3M1
+
+SND_FILE Voices\Commander\BS3M2.wav
+SND_TEXT "Eliminate the Tan tank group moving towards your sector."
+SND_NAME BS3M2
+
+SND_FILE Voices\Commander\BS3M3.wav
+SND_TEXT "Drive down the main road that exits at sector F,6."
+SND_NAME BS3M3
+
+SND_FILE Voices\Commander\BS4M1.wav
+SND_TEXT "Clear a path for a transport to make it through to sector A,2. Eliminate the AA gun to enable air support."
+SND_NAME BS4M1
+
+SND_FILE Voices\Commander\BS4M2.wav
+SND_TEXT "Make your way through the town to the gates of the cemetary at sector E,4."
+SND_NAME BS4M2
+
+SND_FILE Voices\Commander\BS4M3.wav
+SND_TEXT "You will know the portal when you see it. Use the keys to unlock it."
+SND_NAME BS4M3
+
+#Mission Win/Lose
+SND_FILE Voices\Commander\Desert1_1Lose.wav
+SND_NAME DESERT1_1LOSE
+
+SND_FILE Voices\Commander\Desert1_1Win.wav
+SND_NAME DESERT1_1WIN
+
+SND_FILE Voices\Commander\Desert1_2Lose.wav
+SND_NAME DESERT1_2LOSE
+
+SND_FILE Voices\Commander\Desert2_1Lose.wav
+SND_NAME DESERT2_1LOSE
+
+SND_FILE Voices\Commander\Desert2_2Lose.wav
+SND_NAME DESERT2_2LOSE
+
+SND_FILE Voices\Commander\Desert2_2Win.wav
+SND_NAME DESERT2_2WIN
+
+SND_FILE Voices\Commander\Desert3_1Lose.wav
+SND_NAME DESERT3_1LOSE
+
+SND_FILE Voices\Commander\Desert3_2Lose.wav
+SND_NAME DESERT3_2LOSE
+
+SND_FILE Voices\Commander\Desert4_1Lose.wav
+SND_NAME DESERT4_1LOSE
+
+SND_FILE Voices\Commander\DesertDie.wav
+SND_NAME DESERT_DIE
+
+SND_FILE Voices\Commander\DesertLose.wav
+SND_NAME DESERT_LOSE
+
+SND_FILE Voices\Commander\DesertWin.wav
+SND_NAME DESERT_WIN
+
+SND_FILE Voices\Commander\DesertMPDie.wav
+SND_NAME DESERT_MP_DIE
+
+SND_FILE Voices\Commander\DesertMPLose.wav
+SND_NAME DESERT_MP_LOSE
+
+SND_FILE Voices\Commander\DesertMPWin.wav
+SND_NAME DESERT_MP_WIN
+ 
+SND_FILE Voices\Commander\Alpine1_1Lose.wav
+SND_NAME ALPINE1_1LOSE
+
+SND_FILE Voices\Commander\Alpine1_1Win.wav
+SND_NAME ALPINE1_1WIN
+
+SND_FILE Voices\Commander\Alpine1_2Lose.wav
+SND_NAME ALPINE1_2LOSE
+
+SND_FILE Voices\Commander\Alpine1_2Win.wav
+SND_NAME ALPINE1_2WIN
+ 
+SND_FILE Voices\Commander\Alpine2_1Lose.wav
+SND_NAME ALPINE2_1LOSE
+
+SND_FILE Voices\Commander\Alpine2_1Win.wav
+SND_NAME ALPINE2_1WIN
+
+SND_FILE Voices\Commander\Alpine2_2Lose.wav
+SND_NAME ALPINE2_2LOSE
+
+SND_FILE Voices\Commander\Alpine2_2Win.wav
+SND_NAME ALPINE2_2WIN
+
+SND_FILE Voices\Commander\Alpine3_1Lose.wav
+SND_NAME ALPINE3_1LOSE
+
+SND_FILE Voices\Commander\Alpine3_1Win.wav
+SND_NAME ALPINE3_1WIN
+
+SND_FILE Voices\Commander\Alpine3_2Lose.wav
+SND_NAME ALPINE3_2LOSE
+
+SND_FILE Voices\Commander\Alpine3_2Win.wav
+SND_NAME ALPINE3_2WIN
+
+SND_FILE Voices\Commander\Alpine3_3Lose.wav
+SND_NAME ALPINE3_3LOSE
+
+SND_FILE Voices\Commander\Alpine3_3Win.wav
+SND_NAME ALPINE3_3WIN
+
+SND_FILE Voices\Commander\Alpine4_1Lose.wav
+SND_NAME ALPINE4_1LOSE
+
+SND_FILE Voices\Commander\Alpine4_1Win.wav
+SND_NAME ALPINE4_1WIN
+
+SND_FILE Voices\Commander\Alpine4_2Lose.wav
+SND_NAME ALPINE4_2LOSE
+
+SND_FILE Voices\Commander\Alpine4_2Win.wav
+SND_NAME ALPINE4_2WIN
+ 
+SND_FILE Voices\Commander\AlpineDie.wav
+SND_NAME ALPINE_DIE
+
+SND_FILE Voices\Commander\AlpineLose.wav
+SND_NAME ALPINE_LOSE
+
+SND_FILE Voices\Commander\AlpineWin.wav
+SND_NAME ALPINE_WIN
+
+SND_FILE Voices\Commander\AlpineMPDie.wav
+SND_NAME ALPINE_MP_DIE
+
+SND_FILE Voices\Commander\AlpineMPLose.wav
+SND_NAME ALPINE_MP_LOSE
+
+SND_FILE Voices\Commander\AlpineMPWin.wav
+SND_NAME ALPINE_MP_WIN
+
+SND_FILE Voices\Commander\Bayou1_1Lose.wav
+SND_NAME BAYOU1_1LOSE
+
+SND_FILE Voices\Commander\Bayou1_1Win.wav
+SND_NAME BAYOU1_1WIN
+
+SND_FILE Voices\Commander\Bayou1_2Lose.wav
+SND_NAME BAYOU1_2LOSE
+
+SND_FILE Voices\Commander\Bayou1_2Win.wav
+SND_NAME BAYOU1_2WIN
+ 
+SND_FILE Voices\Commander\Bayou2_1Lose.wav
+SND_NAME BAYOU2_1LOSE
+
+SND_FILE Voices\Commander\Bayou2_1Win.wav
+SND_NAME BAYOU2_1WIN
+
+SND_FILE Voices\Commander\Bayou2_2Lose.wav
+SND_NAME BAYOU2_2LOSE
+
+SND_FILE Voices\Commander\Bayou2_2Win.wav
+SND_NAME BAYOU2_2WIN
+
+SND_FILE Voices\Commander\Bayou3_1Lose.wav
+SND_NAME BAYOU3_1LOSE
+
+SND_FILE Voices\Commander\Bayou3_1Win.wav
+SND_NAME BAYOU3_1WIN
+
+SND_FILE Voices\Commander\Bayou3_2Lose.wav
+SND_NAME BAYOU3_2LOSE
+
+SND_FILE Voices\Commander\Bayou3_2Win.wav
+SND_NAME BAYOU3_2WIN
+
+SND_FILE Voices\Commander\Bayou3_3Lose.wav
+SND_NAME BAYOU3_3LOSE
+
+SND_FILE Voices\Commander\Bayou3_3Win.wav
+SND_NAME BAYOU3_3WIN
+
+SND_FILE Voices\Commander\Bayou4_1Lose.wav
+SND_NAME BAYOU4_1LOSE
+
+SND_FILE Voices\Commander\Bayou4_1Win.wav
+SND_NAME BAYOU4_1WIN
+
+SND_FILE Voices\Commander\Bayou4_2Lose.wav
+SND_NAME BAYOU4_2LOSE
+
+SND_FILE Voices\Commander\Bayou4_2Win.wav
+SND_NAME BAYOU4_2WIN
+ 
+SND_FILE Voices\Commander\Bayou4_3Lose.wav
+SND_NAME BAYOU4_3LOSE
+
+SND_FILE Voices\Commander\BayouDie.wav
+SND_NAME BAYOU_DIE
+
+SND_FILE Voices\Commander\BayouLose.wav
+SND_NAME BAYOU_LOSE
+
+SND_FILE Voices\Commander\BayouWin.wav
+SND_NAME BAYOU_WIN
+
+SND_FILE Voices\Commander\BayouMPDie.wav
+SND_NAME BAYOU_MP_DIE
+
+SND_FILE Voices\Commander\BayouMPLose.wav
+SND_NAME BAYOU_MP_LOSE
+
+SND_FILE Voices\Commander\BayouMPWin.wav
+SND_NAME BAYOU_MP_WIN
+
+#===========================================
+# automatic voices
+#===========================================
+
+SND_FILE Voices\Scripts\crate_load.wav
+SND_INUM 5000
+SND_NAME CRATE_LOAD
+
+SND_FILE Voices\Scripts\train_horn.wav
+SND_NAME TRAIN_HORN
+
+SND_FILE Voices\Scripts\gateclose.wav
+SND_NAME GATE_CLOSE
+
+SND_FILE Voices\Scripts\chopperspindown.wav
+SND_NAME CHOPPER_SPIN_DOWN
+
+SND_FILE Voices\Scripts\chopperspinup.wav
+SND_NAME CHOPPER_SPIN_UP
+
+SND_FILE Voices\Scripts\GATEOPEN.wav
+SND_NAME GATE_OPEN
+
+SND_FILE Voices\Scripts\trainscreech.wav
+SND_NAME TRAIN_SCREECH
+
+SND_FILE Voices\Scripts\trainwreck.wav
+SND_NAME TRAIN_WRECK
+
+SND_FILE Voices\Scripts\cemetary_close.wav
+SND_NAME CEMETARY_GATE_CLOSE
+
+SND_FILE Voices\Scripts\cemetary_gate_open.wav
+SND_NAME CEMETARY_GATE_OPEN
+
+SND_FILE Voices\Scripts\splash.wav
+SND_NAME SPLASH
+
+SND_FILE Sfx\lowhealth.wav
+SND_NAME SARGE_LOW_HEALTH
+
+# being healed
+SND_FILE Sfx\Soldier\AHHH.wav
+SND_NAME HEAL_SARGE
+
+# Buildings and bridges destroyed
+SND_FILE Sfx\explosions\destroyed04b.wav
+SND_NAME DESTROYED_SCRIPT
+
+# mid voices with bitmaps
+SND_FILE Voices\Commander\DS2M1B.wav
+SND_TEXT "Rendevous with a squad at sector A,5, and march them back to this camp."
+SND_NAME DS2M1B
+
+SND_FILE Voices\Commander\DS3M1B.wav
+SND_TEXT "Make sure these men arrive safely at the bank."
+SND_NAME DS3M1B
+
+SND_FILE Voices\Commander\DS3M2B.wav
+SND_TEXT "Exit from the town using the southwest gate."
+SND_NAME DS3M2B
+
+SND_FILE Voices\Commander\AS4M1_1.wav
+SND_TEXT "One of our guys was just executed!"
+SND_NAME AS4M1_1
+
+SND_FILE Voices\Commander\AS4M1_2.wav
+SND_TEXT "They just murdered another Green soldier!"
+SND_NAME AS4M1_2
+
+SND_FILE Voices\Commander\AS4M1_3.wav
+SND_TEXT "There is only one prisoner left!"
+SND_NAME AS4M1_3
+
+SND_FILE Voices\Commander\BS3M1MID.wav
+SND_TEXT "Relieve our squad pinned down at C,4 to aid in the defense of the AA gun."
+SND_NAME BS3M1MID
+
+SND_FILE Voices\Commander\D12MID.wav
+SND_TEXT "The blue courier is approaching."
+SND_NAME D12MID
+
+SND_FILE Voices\Commander\D31BAD.wav
+SND_TEXT "The halftrack is blocked!"
+SND_NAME D31BAD
+
+
+#Middle of mission voices
+SND_FILE Voices\Commander\BAYOU1_1M.wav
+SND_TEXT "You just missed him, Sarge.  Use your recons to keep track of him."
+SND_NAME BAYOU1_1M
+
+SND_FILE Voices\Commander\BAYOU3_1M.wav
+SND_TEXT "Intellegence reports 3 waves of Tan forces in your area. Protect that AA gun!"
+SND_NAME BAYOU3_1M
+
+SND_FILE Voices\Commander\BAYOU3_2M.wav
+SND_TEXT "Now get to the mansion porch and wait for the transport."
+SND_NAME BAYOU3_2M
+
+SND_FILE Voices\Commander\BAYOU4_1M.wav
+SND_TEXT "Now we can soften them up a bit for you."
+SND_NAME BAYOU4_1M
+
+SND_FILE Voices\Commander\DESERT1_2M.wav
+SND_TEXT "Get back to the munitions depot!"
+SND_NAME DESERT1_2M
+
+SND_FILE Voices\Commander\DESERT2_2M.wav
+SND_TEXT "Take the key back to camp."
+SND_NAME DESERT2_2M
+
+SND_FILE Voices\Commander\ALPINE1_1M.wav
+SND_TEXT "Now, get these guys back to the med tent!"
+SND_NAME ALPINE1_1M
+
+SND_FILE Voices\Commander\ALPINE2_1M.wav
+SND_TEXT "He’s getting away!"
+SND_NAME ALPINE2_1M
+
+SND_FILE Voices\Scripts\ALPINE3_1SARGE.wav
+SND_TEXT "I wonder how they got over there."
+SND_NAME ALPINE3_1SARGE
+
+SND_FILE Voices\Commander\ALPINE3_1M.wav
+SND_TEXT "Check on your men in the truck!"
+SND_NAME ALPINE3_1M
+
+SND_FILE Voices\Scripts\ALPINE4_2SARGE.wav
+SND_TEXT "Get us out of here!"
+SND_NAME ALPINE4_2SARGE
+
+SND_FILE Voices\Scripts\ALPINE1_1M2.wav
+SND_TEXT "How can you rescue those men if you can't get to them?"
+SND_NAME ALPINE1_1M2
+
+SND_FILE Voices\Scripts\ALPINE3_1M2.wav
+SND_TEXT "You need to use the bridge to resuce those men!"
+SND_NAME ALPINE3_1M2
+
+SND_FILE Voices\Scripts\ALPINE3_1M3.wav
+SND_TEXT "You need the halftrack to bring back those men!"
+SND_NAME ALPINE3_1M3
+
+SND_FILE Voices\Scripts\gotomed.wav
+SND_TEXT "Go to the medical tent to heal your soldiers."
+SND_NAME SARGE_GETTOMED
+
+SND_FILE Voices\Scripts\dontleave.wav
+SND_TEXT "You can't leave without your troops"
+SND_NAME SARGE_DONTLEAVE
+
+#===========================================
+# EOF
+#===========================================

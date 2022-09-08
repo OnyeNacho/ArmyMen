@@ -1,0 +1,347 @@
+
+//                                   
+// Desert Map 4 Mission 1            
+// DES4_1.TXT                        
+//                                   
+///////////////////////////////////////
+
+
+
+
+//PADS
+PAD SargeGoal	0	GreenSarge > 0
+PAD Path15		15	GreenHalftrack3	> 0
+PAD Path16		16	GreenHalftrack3	> 0
+PAD Path22		22	GreenHalftrack3	> 0
+PAD Path23		23	GreenHalftrack3	> 0
+PAD Path24		24	GreenHalftrack3	> 0
+PAD Path25		25	GreenHalftrack3	> 0
+PAD Path26		26	GreenHalftrack3	> 0
+PAD Path27		27	GreenHalftrack3	> 0
+PAD Path29		29	GreenHalftrack3	> 0
+PAD Path30		30	GreenHalftrack3	> 0
+PAD Path35		35	GreenHalftrack3	> 0
+PAD Path36		36	GreenHalftrack3	> 0
+PAD Path39		39	GreenHalftrack3	> 0
+PAD Path40		40	GreenHalftrack3	> 0
+PAD Path45		45	GreenHalftrack3	> 0
+PAD Path46		46	GreenHalftrack3	> 0
+PAD Path48		48	GreenHalftrack3	> 0
+PAD Path49		49	GreenHalftrack3	> 0
+PAD Path50		50	GreenHalftrack3	> 0
+PAD Path55		55	GreenHalftrack3	> 0
+
+PAD Drop1		61	TAN > 0
+PAD Drop2		62	TAN > 0
+PAD Drop3		63	TAN > 0
+
+
+PAD WaitTarget	52	GreenRifle1		> 0
+
+PAD Rendezvous	75	GreenSarge		> 0
+
+
+
+
+
+
+
+
+
+//ENDGAMES
+IF killed_GreenSarge THEN
+	TRIGGERDELAY 2 tanwins
+IF killed_GreenHalftrack3 THEN
+	TRIGGERDELAY 1 tanwins
+IF killed_BlueRifle6 THEN
+	TRIGGERDELAY 1 tanwins
+IF killed_BlueRifle5 THEN
+	TRIGGERDELAY 1 tanwins
+IF killed_BlueJeep1 THEN
+	TRIGGERDELAY 1 tanwins
+
+IF YouWin THEN			//truck and jeep leaving map
+	INVULNERABLESARGE,
+	TRIGGER greenwins
+
+
+
+
+
+//INIT
+IF startup THEN
+	VULNERABLESARGE,
+	ALLY BLUE GREEN,
+	ALLY TAN BLUE,
+	SETAICONTROL GreenHalftrack3,
+	SETAICONTROL BlueRifle5,
+	ORDER BlueRifle5 GOTO BlueRifle5 INMODE IGNORE THEN ATMODE IGNORE,
+	SETAICONTROL BlueRifle6,
+	ORDER BlueRifle6 GOTO BlueRifle6 INMODE IGNORE THEN ATMODE IGNORE,
+	SETAICONTROL TanRifle32,
+	ORDER TanRifle32 GOTO TanRifle32 INMODE ATTACK THEN ATMODE ATTACK,
+	DEPLOY TanTank8 ATMODE ATTACK,
+	DEPLOY TanMortar3 ATMODE NESTFIRE,
+	DEPLOY TanMortar4 ATMODE NESTFIRE,
+	DEPLOY TanRifle33 ATMODE STANDFIRE,
+	DEPLOY TanRifle34 ATMODE STANDFIRE,
+	DEPLOY TanRifle35 ATMODE ATTACK,
+	DEPLOY TanGrenadier7 ATMODE ATTACK,
+	DEPLOY TanGrenadier9 ATMODE ATTACK,
+	TRIGGERDELAY 1 ReadySteady
+
+
+
+//Game Events
+
+
+
+IF MadeIt THEN
+	TRIGGERDELAY 3 GetOut
+//don't let it die now
+IF ALLOF MadeIt hit_GreenHalftrack3 THEN
+	HEAL GreenHalftrack3 100
+IF GetOut THEN
+	HEAL GreenHalftrack3 100,
+	DEPLOY GreenRifle1 GreenHalftrack3 ATMODE DEFEND,
+	SETAICONTROL GreenRifle1,
+	ORDER GreenRifle1 GOTO WaitTarget INMODE DEFEND THEN ATMODE DEFEND,
+	SETUSERCONTROL GreenRifle1,
+	TRIGGER GR1Waiting
+IF on_SargeGoal AFTER off_SargeGoal AND GR1Waiting AFTER NULL THEN
+	TRIGGER KnightRidder
+
+IF 1 OF KnightRidder THEN
+	PLAYSTREAM PLASTIC_FOR_INFO,
+	TRIGGERDELAY 3 Action
+IF Action THEN
+	SETAICONTROL BlueRifle5,
+	ORDER BlueRifle5 GOTO GreenHalftrack3 INMODE IGNORE THEN TRIGGER BlueAtTruck,
+	SETAICONTROL BlueRifle6,
+	REMOVEOBJECT BlueNote1,
+	PLACEOBJECT BlueNote1 BlueRifle6,
+	ORDER BlueRifle6 GOTO BlueJeep1 INMODE IGNORE THEN TRIGGER BlueAtJeep
+IF BlueAtTruck THEN
+	UNDEPLOY BlueRifle5,
+	TRIGGER BlueInTruck
+IF BlueAtJeep THEN
+	UNDEPLOY BlueRifle6,
+	TRIGGER BlueInJeep
+IF get_GreenSarge_BlueNote1 THEN
+	SHOWBMP "keynote1.BMP"
+
+IF ALLOF get_GreenSarge_BlueNote1 BlueInJeep BlueInTruck THEN
+	TRIGGERDELAY 0.2 GoJeep
+IF GoJeep THEN
+	SETAICONTROL BlueJeep1,
+	ORDER BlueJeep1 GOTO (3970, 2425) INMODE IGNORE THEN TRIGGER JeepOff,
+	TRIGGERDELAY 1 GoHalftrack
+IF GoHalftrack THEN
+	SETAICONTROL GreenHalftrack3,
+	ORDER GreenHalftrack3 GOTO (3970, 2550) INMODE IGNORE THEN TRIGGER TruckOff
+IF JeepOff THEN
+	UNDEPLOY BlueJeep1
+IF TruckOff THEN
+	UNDEPLOY GreenHalftrack3
+
+IF ALLOF GoJeep GoHalftrack THEN
+	TRIGGERDELAY 3 YouWin
+
+
+//ACTIVATE ROBOT PUNCH!
+IF TIMEABSOLUTE 8 THEN
+	DEPLOY TanTank5 ATMODE ATTACK,
+	TRIGGER GoTank5
+IF GoTank5 BUTNOT killed_WestGate THEN
+	SETAICONTROL TanTank5,
+	ORDER TanTank5 GOTO GreenHalftrack3 INMODE ATTACK THEN TRIGGER GoTank5
+//IF Arrive TT5 THEN
+//	TRIGGERDELAY 1 GoTank5
+
+IF Sixteen THEN
+	TRIGGERDELAY 10 Mob
+IF Mob THEN
+	DEPLOY TanRifle9 ATMODE ATTACK,
+	DEPLOY TanRifle10 ATMODE ATTACK,
+	DEPLOY TanRifle11 ATMODE ATTACK,
+	DEPLOY TanRifle14 ATMODE ATTACK,
+	TRIGGER GoRifle9,
+	TRIGGER GoRifle10,
+	TRIGGER GoRifle11,
+	TRIGGER GoRifle14
+IF GoRifle9 BUTNOT killed_WestGate THEN
+	SETAICONTROL TanRifle9,
+	ORDER TanRifle9 GOTO GreenHalftrack3 INMODE ATTACK THEN TRIGGER ArriveTR9
+IF ArriveTR9 THEN
+	TRIGGERDELAY 1 GoRifle9
+
+IF GoRifle10 BUTNOT killed_WestGate THEN
+	SETAICONTROL TanRifle10,
+	ORDER TanRifle10 GOTO GreenHalftrack3 INMODE ATTACK THEN TRIGGER ArriveTR10
+IF ArriveTR10 THEN
+	TRIGGERDELAY 1 GoRifle10
+IF GoRifle11 BUTNOT killed_WestGate THEN
+	SETAICONTROL TanRifle11,
+	ORDER TanRifle11 GOTO GreenHalftrack3 INMODE ATTACK THEN TRIGGER ArriveTR11
+IF ArriveTR11 THEN
+	TRIGGERDELAY 2 GoRifle11
+IF GoRifle14 BUTNOT killed_WestGate THEN
+	SETAICONTROL TanRifle14,
+	ORDER TanRifle14 GOTO GreenHalftrack3 INMODE ATTACK THEN TRIGGER ArriveTR14
+IF ArriveTR14 THEN
+	TRIGGERDELAY 2 GoRifle14
+
+
+
+
+
+IF Sixteen THEN	
+	DEPLOY TanGrenadier1 ATMODE ATTACK,
+	SETAICONTROL TanGrenadier1,
+	TRIGGERDELAY 10 GoGrenade1
+IF GoGrenade1 BUTNOT killed_WestGate THEN
+	ORDER TanGrenadier1 GOTO GreenHalftrack3 INMODE ATTACK THEN TRIGGER ArriveG1
+IF ArriveG1 THEN
+	TRIGGERDELAY 2 GoGrenade1
+
+IF Forty THEN
+	TRIGGER GoTank8
+IF GoTank8 THEN
+	SETAICONTROL TanTank8,
+	ORDER TanTank8 GOTO GreenHalftrack3 INMODE ATTACK THEN TRIGGER ArriveTT8
+IF ArriveTT8 THEN
+	TRIGGERDELAY 1 GoTank8
+
+
+//hiding! send early to meet on bridge
+IF TIMEABSOLUTE 20 THEN	
+	DEPLOY TanRifle12 ATMODE ATTACK,
+	DEPLOY TanRifle13 ATMODE ATTACK,
+	TRIGGER GoRifle12,
+	TRIGGER GoRifle13
+IF GoRifle12 THEN
+	SETAICONTROL TanRifle12,
+	ORDER TanRifle12 GOTO GreenHalftrack3 INMODE ATTACK THEN TRIGGER ArriveR12
+IF ArriveR12 THEN
+	TRIGGERDELAY 1 GoRifle12
+
+IF GoRifle13 THEN
+	SETAICONTROL TanRifle13,
+	ORDER TanRifle13 GOTO GreenHalftrack3 INMODE ATTACK THEN TRIGGER ArriveR13
+IF ALLOF ArriveR13 THEN
+	TRIGGERDELAY 1 GoRifle13
+
+
+//send tank early, meet up after first turn
+IF TwentyThree THEN
+	DEPLOY TanTank7 ATMODE ATTACK,
+	SETAICONTROL TanTank7,
+	TRIGGER GoGoTanTank7
+IF GoGoTanTank7 THEN
+	ORDER TanTank7 GOTO GreenHalftrack3 INMODE ATTACK THEN TRIGGER ArriveTT7
+IF ArriveTT7 THEN
+	TRIGGERDELAY 1 GoGoTanTank7
+
+IF TwentyThree THEN	
+	DEPLOY TanMortar1 ATMODE ATTACK,
+	SETAICONTROL TanMortar1,
+	TRIGGER GoMortar1
+IF GoMortar1 BUTNOT killed_WestGate THEN
+	ORDER TanMortar1 GOTO GreenHalftrack3 INMODE ATTACK THEN TRIGGER ArriveM1
+IF ArriveM1 THEN
+	TRIGGERDELAY 3 GoMortar1
+
+IF TwentySeven THEN	
+	AIRDROP Drop1 TAN,
+	TRIGGERDELAY 4.5 Drop2,
+	TRIGGERDELAY 9 Drop3
+
+IF Drop2 THEN
+	AIRDROP Drop2 TAN
+IF Drop3 THEN
+	AIRDROP Drop3 TAN
+
+IF TwentySeven THEN
+	DEPLOY TanTank6 ATMODE ATTACK,
+	SETAICONTROL TanTank6,
+	ORDER TanTank6 GOTO (1050, 910) INMODE ATTACK THEN ATMODE NESTFIRE
+
+//Halftrack path
+IF ReadySteady THEN
+	PLAYSTREAM GET_OUT_OF_HERE,
+	SETAICONTROL GreenHalftrack3,
+	TRIGGER Go
+
+
+
+
+// go to a pad. If you get near it, trigger next action
+// if the order finished without triggering next action, it means you are blocked. Retry
+// in 5 seconds
+
+IF Go THEN
+	ORDER GreenHalftrack3 GOTO Path15 SLOW INMODE DEFEND THEN TRIGGER DelayGo
+IF DelayGo THEN TRIGGERDELAY 5 Go
+IF on_Path16 THEN
+	TRIGGER Sixteen,
+	TRIGGER Path22Go
+
+IF Path22Go THEN
+	ORDER GreenHalftrack3 GOTO Path22 SLOW INMODE DEFEND THEN TRIGGER DelayPath22Go
+IF DelayPath22Go THEN
+	TRIGGERDELAY 5 Path22Go
+IF on_Path23 THEN
+	TRIGGER TwentyThree,
+	TRIGGER Path26Go
+
+IF Path26Go THEN
+	ORDER GreenHalftrack3 GOTO Path26 SLOW INMODE DEFEND THEN TRIGGER DelayPath26Go
+IF DelayPath26Go THEN
+	TRIGGERDELAY 5 Path26Go
+
+IF on_Path27 THEN
+	TRIGGER TwentySeven,
+	TRIGGER Path29Go
+
+IF Path29Go THEN
+	ORDER GreenHalftrack3 GOTO Path29 SLOW INMODE DEFEND THEN TRIGGER DelayPath29Go
+IF DelayPath29Go THEN TRIGGERDELAY 5 Path29Go
+
+IF on_Path30 THEN
+	TRIGGER Path35Go
+
+IF Path35Go THEN
+	ORDER GreenHalftrack3 GOTO Path35 SLOW INMODE DEFEND THEN TRIGGER DelayPath35Go
+IF DelayPath35Go THEN TRIGGERDELAY 5 Path35Go
+
+IF on_Path36 THEN
+	TRIGGER Path39Go
+
+IF Path39Go THEN
+	ORDER GreenHalftrack3 GOTO Path39 SLOW INMODE DEFEND THEN TRIGGER DelayPath39Go
+IF DelayPath39Go THEN TRIGGERDELAY 5 Path39Go
+
+IF on_Path40 THEN
+	TRIGGER Forty,
+	TRIGGER Path45Go
+
+IF Path45Go THEN
+	ORDER GreenHalftrack3 GOTO Path45 SLOW INMODE DEFEND THEN TRIGGER DelayPath45Go
+IF DelayPath45Go THEN TRIGGERDELAY 5 Path45Go
+
+IF on_Path46 THEN
+	TRIGGER Path48Go
+
+IF Path48Go THEN
+	ORDER GreenHalftrack3 GOTO Path48 SLOW INMODE DEFEND THEN TRIGGER DelayPath48Go
+IF DelayPath48Go THEN TRIGGERDELAY 5 Path48Go
+
+IF on_Path49 THEN
+	TRIGGER Path50Go
+
+IF Path50Go THEN
+	ORDER GreenHalftrack3 GOTO Path50 SLOW INMODE DEFEND THEN TRIGGER DelayPath50Go
+IF DelayPath50Go BUTNOT MadeIt THEN
+	TRIGGERDELAY 5 Path50Go
+
+IF on_Path55 THEN TRIGGER MadeIt

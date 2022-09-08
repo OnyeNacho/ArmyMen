@@ -1,0 +1,1288 @@
+MapEdit 4.13
+-----------
+-- fix bug in export of object attributes
+
+MapEdit 4.12
+-----------
+-- Fix export of vehicles to correspond to Armymen order.
+
+MapEdit 4.11
+-----------
+-- Special version that in finding tile duplicates, finds only tiles with exactly the tolerance,
+	instead of the tolerance or less.
+
+MapEdit 4.10
+-----------
+-- You are now allowed to move objects around between folders. The category is determined
+	by the folder name. However, the object numbers in a folder must still be unique.
+
+MapEdit 4.9
+-----------
+-- Fixed Export of trigger layer.
+-- Check for objects off map in export.
+
+MapEdit 4.8
+-----------
+-- Fixed Export to use new units. Existing maps will need to have their scenario data
+	changed to correspond to the new data in the Scenario folder.
+
+MapEdit 4.7
+-----------
+-- Fixed bug when trying to select/deselect an empty tile 
+   location (ie: in overlay layer).
+
+MapEdit 4.6
+-----------
+-- Program no longer brings up the "New" dialog on startup [from Alan]
+-- Added primitive Object>Animate command (doesn't pay attention to
+   sequence speed yet)
+-- Anim attributes panel now displays the list of available sequences
+   and lets you select which sequence you wish to employ.  Note: if
+   you select multiple objects, it will set the sequence of all objects
+   selected. 
+-- Overview window now displays near correct colors for axr objects 
+   if using 8-bit dib option.  Still does not render transparently.
+*- Added sample "Compute Layer" command [for Bruce]
+*- Modified TileSetView to not sort when displaying the full list of tiles
+   because full list is already sorted.
+*- Modified Attributes dialog/page to allow for empty list of attributes
+*- Now brings up the Object Attributes panel even if the map does not
+   contain any tile attributes. This way you can still modify the Animation
+   attributes of the selected objects.
+*- Modified the ObjectSetView to switch to the proper object category
+   when new item is selected instead of always going back to the 
+   full object list [from Alan]
+
+MapEdit 4.5
+-----------
+-- Added support for GenePool axr files.
+-- Generalized the attributes panel to allow for modified animation attributes
+-- Added command to flip animated objects.
+
+Notes:
+-----
+* Animation attributes panel is not yet implemented.  I need the
+  CSpriteSequence to load/save a sequence name so I can display it in the
+  sequence list.
+* The ObjectSetView will not display animated objects with the correct
+  colors because the axr file does not contain a palette to use so I
+  have no idea what colors to use for the data independent of the
+  tileset.
+* The Object>Flip command will current only flipped animated objects
+  even though I've generalized the CMapObject to allow all objects to
+  be flipped.
+* The Overview window will not display axr objects with the correct
+  colors or transparency because CSpriteCatalog does not implement
+  a StretchSprite() method.  This is coming in the next version.
+* I disabled the assembly version of RLEFastBltHFlipped() because it
+  seems to have an off by one bug; I'm not sure about this one yet.
+* The Object>Animate command is not yet implemented;  this should be
+  finished later today.
+* For now, the Map window will only display the correct colors and transparency
+  for the axr objects if the "Use 8-bit dib" option is checked. 
+
+MapEdit 4.4
+------------
+-- Fixed bug where empty tool view could be replaced by
+   wrong view when map properties where changed (ie:
+   empty ScenarioSetView would be replaced by ObjectSetView
+   when map objectset was changed).
+-- Fixed bug when using arrow keys to move selected object
+   after doing a cut.
+-- Fixed bug where opening a new map would not always 
+   bring up the new tileset dialog when the selected tileset 
+   path was empty.
+-- Fixed cut/copy/paste bugs under NT. Or rather, added
+   work around for NT Clipboard global memory manager. Anyway,
+   the new method should be safe under both win95 and NT.
+-- Added more robust cut/copy/paste error handling.
+-- Did some underlying work for the Animation support -- at
+   this point it should be fairly invisible to you.  Let me
+   know if you run into any problems using the ObjectSet
+   & ObjectLayer or the ScenarioSet & ScenarioLayers.
+
+
+MapEdit 4.3
+-----------
+-- Added ObjectSet/ScenarioSet cycle button to allow user to
+   cycle forward/backward through the objects in the current
+   category as they place objects down in the Object/Scenario
+   layers.
+
+Known Problems:
+---------------
+-- the ObjectSet/ScenarioSet cycle command takes effect as soon
+   as the object is placed (on button down); this might be a little
+   confusing if you place and drag the object.  It should really
+   happen on button up instead.
+
+
+MapEdit 4.2
+-----------
+-- Fixed bug where couldn't load scenario layer if scenario set data 
+   changed (ie: objects added-to/removed-from scenario set 
+   directories). To use, you must resave all your maps with scenario layers
+   using 4.2. Let me know if you have any problems.
+
+
+MapEdit 4.1
+-----------
+-- Fixed crashes under NT when using the dialog Browse buttons
+-- Fixed crash under NT when selecting palette to use or remap
+   tileset to.
+-- Clone tool now highlights the source tile as you place 
+   cloned tiles. This was if the source tile and the destination
+   tile are both in view you can see where your copying from.
+-- Fixed bug in TileLayer SelectAll operator where selection
+   count would be wrong if the layer contained empty tiles.
+-- Fixed serialization bug under NT.
+-- Fixed crash when you select all tiles in one of the tileset
+   views and bring up the attributes panel. Now automatically
+   fills the attributes panel with the attributes of the last
+   tile.
+-- Added tool-tips to the toolbar icons for toggle-grid, 
+   reposition-view and randomize functions.
+-- Added wait cursor for the tile layer randomize funciton.
+
+MapEdit 4.0
+-----------
+-- Added clipping code to my custom dib stretch blit code; this
+   fixes the problem where the overview window was not displaying
+   objects when using the offscreen-dib option and the 
+   entire overview window is being repainted (in strips).
+-- Fixed bug where the Activate Next/Previous layer commands 
+   would not wrap back to the beginning/end of list if all
+   next/previous layers were not visible.
+-- Modified the doorway layer ComputeRoute() function to
+   automatically compute the doorways if they haven't already
+   been computed.
+-- Fixed bug in group preview when using offscreen-dib option;
+   for some reason the masking code doesn't work with an offscreen
+   dib so I have to actually draw the tiles into the offscreen-dib
+   instead of using a seperate group bitmap.  This has the
+   disadvantage that it might be too slow for large groups but
+   has the advantage that the preview for a group in the overlay
+   layer will render transparent tile areas correctly. Note:
+   I still use the group bitmap when not using the offscreen-dib
+   option because it is significantly faster.
+
+MapEdit 3.9
+-----------
+-- The remap objects function now refreshes all the associated maps.
+-- Added map background color property 
+-- Added map description property (and ArmyMen export thereof)
+-- Includes Bruce's latest doorway code.
+
+
+MapEdit 3.8
+-----------
+-- Fixed bugs introduced by the new off-screen dib modifications:
+   1> Fixed bug in the display of group preview when not 
+      using off-screen dib option.
+   2> Fixed overview update when painting with and without 
+      the off-screen dib option.
+   3> Fixed bug cursor flash when painting 
+-- Added control for repositioning the map view; click on the
+   View>Reposition option, or click on the little hand icon, or
+   press the space bar to initiate the mode.  While the mode is
+   active the cursor turns into a little hand.  If you drag the
+   hand in a scrollable window, the view will shift in the direction
+   you drag.  If you drag the hand in the overview window, you
+   will set the main view of the map (not the overview) to the
+   position you selected.
+-- Added custom remap code for 8-bit per pixel bitmaps; 
+   The Remap Objects function will now ONLY remap the 8-bit per pixel
+   objects.
+
+MapEdit 3.7
+-----------
+-- Added ArmyMen Option page for specifying the names of the ArmyMen triggers.
+-- Modified the "Arrange Layers" Dialog to display the 
+   layer name and layer description in two seperate fields so
+   the user can now edit the layer name in place.  
+        To rename a layer: click on the name once to select it (give it focus)
+		click on it again to begin editing.
+		Do NOT double-click.
+-- If you rename a map attribute layer and the tileset contains an
+   attribute with the same name, the MapEditor will now rename the
+   tileset attribute as well. 
+-- Modified the bitmap export routine to only use the custom dib drawing
+   routines if the "Use Offscreen DIBs" option is selected.  Remember,
+   the rendering using the offscreen dibs will ONLY be correct if
+   your tileset and all your objects are 8-bit and share the same palette.
+
+Known Problems:
+---------------
+-- Using the up, down, or delete options in the layers dialog removes
+   the highlight around the selected item.  
+
+MapEdit 3.6
+-----------
+-- Includes Bruces new routing adjustments
+-- Modified the sample object sort according to Nicky's new spec.
+-- Added extra wait cursor when changing tileset bitmap
+-- Fixed bug when changing tileset bitmap to smaller bitmap (thanks Jordan).
+-- Fixed bug in the "Remove Duplicates" option where tiles were being
+   removed/replaced but the tile attributes were not.
+-- The "Use Palete" option under the tileset menu now works;
+   again this option does not do any image remapping it -- it
+   just copies the palette entries from the selected palette
+   into the tileset palette.
+-- Fixed some of the round-off errors when dragging objects
+   around in the overview window.
+-- Removed the "Draw Overview OffScreen" option; full overview is
+   now always rendered off-screen and in the background so you should
+   be able to move the scroll bars, paint etc, while the overview
+   is being rendered; Note: there might be a slight delay if you
+   are not using the new "Use OffScreen DIBs" option.
+-- Added the "Use OffScreen DIBs" option; if selected, the MapEditor
+   will render *ALL* views of the map into an off-screen 8-bit per
+   pixel dib.  This code is approximately 3 times faster than the 
+   GDI drawing routines when scaling is involved and handles 
+   transparency correctly.  Unfortuantely you should only use this 
+   option IF your tileset and ALL of your objects are 8-bit per pixel
+   BMPs and if they all share the same palette. My custom DIB drawing 
+   routines DO NOT DO any palette remapping.  Note Also: if you use this
+   option, the AttributeLayer and DoorwayLayer will only render
+   in the color you select IF the tileset palette you are using
+   has a sufficiently close matching color.  
+
+Known Problems
+--------------
+-- rendering offscreen may be too slow on some systems so you might
+   see a delay before the scroll bars and/or painting actions actually
+   occur. This should be better than prior versions where rendering
+   the overview blocked all input but let me know if this is still
+   intolerable. 
+-- the overview window doesn't always get repainted correctly if
+   you display the list of layers using the layerbar while the
+   overview window is repainting itself in the background.  
+
+MapEdit 3.5
+-----------
+-- Added sample object sort routine as debugging aide for Nicky.
+-- Includes Bruce's first attempt at route planning.
+
+MapEdit 3.4
+-----------
+-- Added "Show Object Attributes" option to the attribute layer 
+   to let you turn on/off the display of the object attributes. 
+   If you turn on this option, the EXPLICITLY SET object attributes will
+   replace the attribute value in the attribute layer location
+   under the object's hot-spot. Explicit object attributes will
+   be underlined so you can tell them apart from the other attribute
+   values. Furthermore, if this option is checked for the 'Movement' 
+   and 'Type' attribute layers, any explicitly defined movement and
+   type object attributes will be passed to the doorway computation code.
+-- The TileSet properties panel now lets you specify a new bitmap to
+   load for the tile image data. This is a highly destructive operation
+   and if the bitmap is smaller than the current tileset bitmap, it may
+   adversely affect un-opened maps.  This function DOES NOT do any kind
+   of image comparisons, it just divides up the bitmap into tiles.  It
+   will not affect your tile attributes, groups, or categories (unless
+   the bitmap you provide is actually smaller than the original bitmap,
+   and then it will only remove the tiles that no longer present in the 
+   bitmap). 
+-- Expanded the doorway layer:
+   > replaced the "Compute" button with a row of icons 
+     for the various doorway functions.
+   > added functions to compute and display a route
+   > added functions to set and display route start/end points
+     Note: select a map tile then click on the appropriate 
+	 set route state/end button.
+   > added functions to clear the doorway layer.
+   > fixed crash bug when computing doorways for map whose width
+     is unequal to its height
+-- Fixed bug in the randomize feature where empty tile locations would
+   get replaced with random tiles without updating the selection count.
+-- Fixed bug in update of attribute layer after cutting/replacing a
+   selection whose width was unequal to its height.
+-- Expanded the random operator: 
+   > if you have a group selected, it will choose tiles from the
+     current group
+   > if you have a tile in a category selected, it will choose tiles from the 
+     current category at random.
+   > otherwise it will choose tiles from the entire tileset at random.
+
+Known Problems:
+---------------
+-- If you grow a map (or cut an area of a map) the new tile locations 
+   are empty and there is currently no way to select the empty area.  
+   If you want to replace all the empty tiles with random tiles 
+   without effecting the existing tiles, the only way to do it is to 
+   select one tile then select the random option.  This will limit 
+   the randomization function to that one tile + all the empty tiles.
+
+MapEdit 3.3
+-----------
+-- When copying tile data from one tileset to another, now asks you
+   if you want to copy the image data as well. Answer YES if you want
+   to add tiles to your tileset. Answer NO if you just want to use
+   the current image data.  
+-- New doorway code
+   > Fixes problems with large maps
+   > Now requires that there also be a 4-bit "Type" attribute layer
+
+
+MapEdit 3.2
+-----------
+-- You can now crop/resize a map with a Doorway layer.
+-- Added support for ObjectAttributes:
+   To Use:
+     If you select one or more objects and select the 
+	 Edit>Attributes (Ctrl+W) menu item an attributes 
+	 dialog will popup.  The values initially 
+	 displayed in the dialog are those of the last object 
+	 selected.  A little check-mark will appear next to 
+	 each attribute that has been explicitly set.  If no
+	 check-mark is present, the value you see is the value 
+	 stored in the attribute layer under the object's hot-spot; 
+	 this is the object's default attribute value.  If you
+	 modify an attribute value, the check-mark will 
+	 automatically appear.  You can toggle the check-mark 
+	 on/off by double-clicking on the attribute name.
+-- Generalized the Attribute Support:
+   1. The dialog that pops up to show you the object 
+      attributes is the same type of dialog that pops up
+	  to show you the tile attributes, so the tile attributes
+	  dialog will also have the little check-boxes.  If
+      you toggle the check-mark off the attribute will 
+	  be reset to the default value assigned to that attribute
+	  when the attribute was added to the tileset.
+   2. Moved the "Attributes" item out of the TileSet menu
+      and into the Edit menu so it can be used by both tiles,
+	  objects,etc...
+
+Known Problems:
+---------------
+-- If you save out a map with attribute layers from 
+   version 3.2, you cannot load it back into prior versions 
+   of the MapEditor; you will crash or get an assertion 
+   violation instead of getting a message -- sorry.  
+   This has been fixed for future releases.
+-- There is currently no way to modify the default value 
+   stored for an attribute in a given tileset.
+-- There is currently no way to view object attributes in the
+   attribute layer; this will be in the next release.
+
+
+MapEdit 3.1
+-----------
+-- Added a "randomize" operation for the tile layer. This operation will place
+   random tiles from the current tile group into the active tile layer.
+   If an area of the tile layer is currently selected, the randomize
+   operation will be restricted to the selected tiles.  If there are
+   no currently selected tiles in the active tile layer, the randomize
+   operation is unrestricted and will place random tiles over the 
+   entire tile layer. 
+	   To use:
+	   1> activate a tile or overlay layer 
+	   2> [optional] select an area of tiles in the tile layer you wish to randomize
+	   3> [optional] turn on the "with attributes" option if you wish to simultaneously 
+		  modify your attribute layers.
+	   4> select a tile group (from the tileset window)
+	   5> click on the randomize icon on the toolbar (it looks like a airbrush)
+		  or select the Edit>Randomize item from the menu
+-- Added arrow-key options to increment/decrement selected tile numbers
+   up or right to increment by 1; hold down control to set the increment amount
+   down or left to decrement by 1; hold down control to set the decrement amount
+-- Fixed AttributeView TileLayers control so it will display all the
+   tile and/or overlay layers.
+-- Fixed bug where AttributeView would reset the current/default values to
+   0 when it was first displayed.
+-- Added Doorway layer for Bruce.
+-- Holding down the ALT key while selecting a layer (other than the active layer)
+   from the LayerBar "Activate Layer" List now toggles the visibility of the 
+   selected layer without changing the active layer.
+-- Modified the scenario layer to select the appropriate
+   player tab and list item when you select a scenario object from the map.
+-- Fixed bug where adding/removing player directory from scenario set
+   or inserting/removing units/resource bmps from a player directory 
+   would cause old ScenarioLayer object ids to remap improperly.
+-- Centralized the code to choose a color and to create default layer names
+-- Fixed bug where adding new layer didn't always activate it or tell 
+   the map that is was modified.
+
+
+Known Problems:
+---------------
+-- Doorway code seems to have a problem with David's alpineBig.map; Is map too big?
+-- You will get an unsupported operation error if you try to resize a map
+   that has a doorway layer. Delete the doorway layer before trying to resize
+   the map. 
+-- Resizing the map loses the AttributeLayer color options.
+
+
+MapEdit 3.0
+------------
+-- Added support for Scenario layers; 
+   To define a scenario the user must provide:
+   1> a directory containing a folder for each player/enemy type
+   2> each of these folders may contain a directory of deployable "units"
+      and a folder of non-deployable "resources"  
+   3> a set of .bmp files to be used for each object/resource.
+
+   A sample directory structure might look like:
+
+								  [Scenario]
+			   +----------------------+-----------------------------+
+		   [Player]                [Enemy1]                     [Enemy2]
+		+---------+               +-------+                     +-------+
+	  [units][resources]       [units][resources]            [units][resources]
+	  x.bmp      a.bmp          x.bmp    a.bmp               v.bmp      a.bmp
+	  y.bmp      b.bmp          y.bmp    b.bmp               q.bmp      c.bmp
+										 c.bmp        
+
+   The user can create one or more scenarios for the same map by
+   setting the scenario directory for the map and creating one or 
+   more "scenario" layers. 
+
+   When the user creates a new scenario layer, the tool window/view for the
+   scenario will consist of: a tab to select player/enemy type, a scrolling
+   list of all the deployable units with an editable area for the total number
+   and a non-editable area showing the number currently deplyed,
+   and a scrolling list of all the non-deployable resources with an editable
+   area for the total number of be allocated.
+
+   It is up to the artists to provide different graphic images for each
+   player/enemy unit/resource so the map-makers will be able to visually
+   distinguish between the items on the map. The mapEditor will, however,
+   keep track of the object id (playerEnemy-type/unitResource-type/bmp) like 
+   it does for the objects in the objectset so when a user right clicks a 
+   scenario object the correct item will be highlighted. 
+-- Fixed bug where selecting a new active layer WITHOUT hiding
+   the current layer would NOT de-activate the old active layer
+   so objects/tiles would still appear to be selected. 
+-- Added a "Select All" operator to the ObjectLayer
+-- Object layer now displays the number of objects selected in the
+   windows status bar whenever you select/deselect objects.
+-- Modified code to NOT add files that are opened by the
+   map (tileset, objectset, scenarioset) to the the 
+   most-recently-used file list; this should make it easier
+   for you to see the maps and tilesets you explicitly opened.
+-- Fixed bug where deactivating an object layer before closing
+   the Replace dilaog would cause subsequent calls to the Replace
+   operator to NOT bring up the dialog.
+-- Holding down the ALT key while selecting a layer from the
+   ActiveLayer ComboBox in the LayerBar will now hide the selected layer
+   (if it is not the active layer) instead of activating it.
+-- Fixed bug where deleting an object bmp from an ObjectSet or ScenarioSet
+   directory then using the File>Revert menu option would not update the list 
+   of available objects or the current item correctly.
+-- Fixed crash after getting file error when writing iff file.
+
+ArmyMen Specific Changes and Notes:
+-----------------------------------
+-- Modified the ArmyMen Map Export function to NOT write out the
+   object locations relative to their hot-spots. This will now be
+   handled by the game on load.
+-- When exporting an ArmyMen map, I had to remove the
+   restriction that the ObjectLayer be the top-most layer because
+   artists may want to view their scenario and or attribute layers 
+   on top of the object layer.  Instead, I issue an error if there 
+   is more than one object layer. 
+-- Added support to ArmyMen map export function for new
+   ArmyMen object category EnemyBase: (EBASxxxx).bmp
+-- Added support to export ArmyMen scenario data.
+   1> For now, I only write out the "Player" and "Enemy" legions. If there are 
+      other player names in the scenario directory, it will just skip them.
+      If you want to support more players, you just need to tell me what 
+      names to export.
+   2> If the artist places a unit outside of the map boundary, the
+      exporter will force it inside before it writes it out.  If however,
+	  the object is larger than the map itself, there is nothing I can do;
+	  I ensure that the upper-left corner is inside the map.
+
+Known Problems:
+--------------
+-- Right now the "units" and "resources" directory names are fixed names.
+   Eventually these will be a user-preference.
+-- The only way to delete a "player" from a ScenarioLayer is to:
+   1> Remove all deployed units for that player from the scenario
+      so there are no references any player scenario objects
+   2> set all the totals for all units and resources for that player to 0
+      so there are no totals for any player scenario objects.
+-- The only way to delete a player from a ScenarioSet 
+   1> Remove the player directory from the scenario directory so there are
+      no images to display
+   2> Remove the player from every ScenarioLayer in every open map 
+      using this scenario directory so there are no references to 
+	  any of the player's units/resources
+   3> Select File>Revert when the ScenarioView is active to refresh the
+      display of all scenario objects and to rebuild the list of available
+	  players.
+     
+MapEdit v2.11
+-------------
+-- Added "Update Tiles" options in the attribute layer: 
+   1> when the "update default value" option is checked,
+      setting a location's attribute value in the attribute
+      layer, updates the default value for tile in the associated 
+      tile layer.
+   2> when the "update tile locations" option is checked,
+      setting a location's attribute value in the attribute
+	  layer, sets the attribute value for all locations matching
+	  the corresponding tile in the associated tile layer. 
+
+   Note: these options do NOT effect pasting attribute values
+   into the attribute layer or using the arrow keys to 
+   increment/decrement selected values because the same tile
+   may be associated with multiple locations in the selected
+   region.
+
+   Note2: these options are NOT persistent; they do not get
+   saved with the attribute layer and they are deactivated
+   whenever the layer is deactivated.
+-- Added tile grid option
+-- Added Active Layer controls to the LayerBar (please excuse the
+   programmer graphics for now) and "Layers" menu.
+   Use the "|<" button to Activate the bottom most visible layer
+   Use the  "<" button to Activate the previous visible layer
+   Use the  ">" button to Activate the next visible layer
+   Use the ">|" button to Activate the top most visible layer 
+   You can use these controls/menu-items to activate a layer WITHOUT
+   hiding the current layer. Hold down the control key
+   while you select one of these controls/menu-items to HIDE
+   the current layer.
+-- Modified the active layer ComboBox in the LayerBar to pay
+   attention to the control key.  Hold down the control key while
+   you select a new active layer to simultaneously HIDE the current 
+   layer 
+-- Moved/Renamed the "View>Layers.." menu-item to "Layers>Arrange.." 
+-- The ObjectSetView now displays the object bmp hot-spot underneath
+   the object label. Please verify that your bmp hot-spots are correct
+   before exporting an ArmyMen map.
+-- Modified the ArmyMen Map Export function to write out the map
+   location of each object's hot-spot. 
+ 
+   Note: the MapEditor itself still uses the upper-left hand corner 
+   of the object to place the object and it is the upper-left hand
+   corner of the object that is displayed in the status bar when you 
+   select a map object.  If this is confusing to the artists, please
+   let me know and I will provide an option to display the hot-spot
+   location instead.
+
+MapEdit v2.10
+-------------
+- Added workaround for Compaq StretchBlt bug: this should prevent the
+  ObjectSet window from hanging on David's portable.
+
+MapEdit v2.9
+------------
+- Modified how the right mouse button works in the object layer; now
+  deselects all objects except the object you right mouse button down
+  on + it selects that object as the current object and you can still
+  drag it around if you want to.
+- Added public CTileSet::GetDIB() method for Andy.
+- Added "Edit>Update Attributes" option for the map tile/overlay layers
+  This will set the attributes for the selected tile locations to the
+  values stored in the current tileset for the selected tile values.
+  You can "Select All" then "Update Attributes" to reset the entire 
+  attribute layer to the new tile attributes.
+- Added greyscale options to the attribute view. When these options are
+  selected, the attribute's value determines its greyscale color
+  value. The greyscale values are only as good as your palette; so
+  if you have 16 unique evenly spaced grey values in your palette then
+  a 4-bit attribute layer should display 16 unique grey values. Warning:
+  If you have a 256 color greyscale palette, an 8-bit attribute layer should
+  display 236 greyscale colors because windows reserves 20 colors out 
+  for its system colors.
+- Made the global option load/save code more space efficient and
+  less error prone.
+
+MapEdit v2.8
+------------
+-- Added Attribute Layer:
+   To create a new attribute layer for your map:
+   1> open the map
+   2> bring up the View>Layers dialog
+   3> click on new layer
+   4> click on attribute
+   5> fill in the information for the new attribute, make sure that
+      the name of your attribute is correct and click ok
+	  This will create a new attribute layer filled with your default
+	  value. If this is a new attribute, it will be added to your tileset
+	  attributes. 
+
+   *** TBD: if you delete or rename an attribute layer the MapEditor will ask
+	   you if you want to update the tileset.
+   
+   Using the Attribute Layer;
+   > When an attribute layer is visible it displays all the values in the largest
+     font that will fit within your map tile area.  Please make sure you have windows
+	 "Small Fonts" installed on your system at the appropriately small fonts sizes. 
+	 This makes a BIG difference.
+   > When the attribute layer is the active layer
+     >> you can use the attribute control panel to the right of the map to 
+	    adjust the current & default attribute values.  
+     >> use the left mouse button to place the current value into an attribute location
+	 >> use the right mouse button to get the current value from an attribute location
+	 >> use the ctrl+left mouse button or the select tool to select attributes
+	 >> use cut/copy to cut/copy the selected attributes to the clipboard
+	    Note: because an attribute MUST have a value, when you cut attributes from
+		the attribute layer, the attribute locations get replaced with the current
+		default attribute value.  You can use UNDO to restore the old values if
+		necessary.
+     >> to paste attribute values into the attribute layer after you
+	    have cut/copied data to the clipboard, select an attribute location for
+		the upper-left hand corner of the data, then select paste.  Again,
+		you can use UNDO to restore the old values if necessary.
+	> While one or more attribute locations are selected you can use the
+	  the up/down (or right/left) arrows to increment/decrement the attribute
+	  values.  The values will not wrap.  Again, you can use UNDO to restore
+	  the old values.
+    > You can use Edit>Find to find all occurrences of the current attribute value
+	  in the attribute layer then use the up/down arrows to increment/decrement 
+	  these values. Or use cut to replace all the selected values with the
+	  current defaul attribute value.
+   > When the attribute layer is NOT the active layer
+     > placing a tile in the tile or overlay layer will set the corresponding
+	   attribute location to the tile's attribute value. 
+	 > for now, placing groups act as a collection of tiles they do not preserve
+	   their corresponding attribute values.
+-- Added Attribute Controls to the TileSet
+   When one or more tiles are selected in the TileSetView, you can use
+   the Tileset>Attributes.. menu to edit the attribute values for the
+   selected tiles. If you hit ok, this will modify all attribute values for 
+   the selected tiles.  Eventually, I'll add check boxes to selectively modify 
+   attribute values.
+-- Added popup menu to the TileSetView 
+   Use the right mouse button to bring up the popup menu
+-- Added View>Decimal menu item and Hex/Decimal toolbar Control
+   When this option is selected all your attribute values
+   will appear in decimal. When the button is up, all your attribute values
+   appear in hex.  Note: the state of this button is saved as a global 
+   user preference.
+-- Added Edit>With Attributes menu item and toolbar contols
+   When this option is selected, placing a tile in the map will copy the
+   tiles attributes into the appropriate attribute layers. 
+-- Fixed memory leak when drawing objects off-screen.
+-- Changed the way drag works in the object layer; drag now operates on all the
+   selected objects instead of the last object you clicked on. So clicking the
+   right mouse button will set the current object (but not select it) and dragging
+   with the right mouse button will move the selected objects.  Let me know if this
+   feels right/wrong...
+-- Exporting an armymen map now exports the mapeditor major/minor version numbers
+   so Nicky can tell which version of the mapeditor exported the map.  
+-- Added the following new object categories to the ArmyMen exporter:
+   "POWR" (PowerPlant), 
+   "FGAT" (FenceGate), 
+   "WGAT" (WallGate), 
+   "RADA" (RadarBuilding), 
+   "MISC" (Miscellaneous)
+   Note: it is the 4 letter object prefix which matters to the exporter, not the
+   subdirectory name. The MapEditor does not actually verify that the 4 letter
+   id matches the armymen object subdirectory folder name.  If you want me to add
+   this verification step, let me know.
+-- Modified the armymen exporter to export the following named attribute layers: 
+   "Movement"   4 bits         "Trigger1" 1 bit       "Trigger5" 1 bit
+   "Elevation"  4 bits         "Trigger2" 1 bit       "Trigger6" 1 bit
+   "Visibility" 4 bits         "Trigger3" 1 bit       "Trigger7" 1 bit
+   "Defense"    4 bits         "Trigger4" 1 bit       "Trigger8" 1 bit
+   Note1: if an attribute layers is missing, the attribute will be written out as 0. 
+   Note2: the exporter automatically truncates the attribute value to the correct
+   number of bits.
+-- TileSetView now shows you the depth of the width,height and depth of the tiles.
+-- Add Replace operator for the object layer
+   > the "Find Next" button on the find and replace dialog will highlight the
+     next object that matching the search string.
+   > The "Replace" button will replace all occurrences of the source string 
+     with the replacement string among the selected objects only
+     ie: replace "-" with "_" will change bush-001-xxx to bush_001_xxx
+   > The "Replace All" button will replace all occurrences of the source string
+     with the replacement string regardless of whether or not the objects are selected.
+   > If you do not specify an object category in the replacement string then
+     the program will assume you wish to maintain the object category 
+	 ie: replace "001" with "002" will replace
+			"bush\bush-001" with "bush\bush-002"
+	  and   "rock\rock-001" with "rock\rock-002"
+	  but not replace "bush\rock-001" 
+   > You can replace an object in one category with an object in another category
+     by specifying an category in the replacement string 
+	 ie: replace "bush-001" with "rock\rock-002"
+	 will replace all occurrences of bush-001 regardless of the object category
+	 with rock\rock-002 thus bush\bush-001 -> rock\rock-002
+   > REMINDER: the object layer undo is still NOT implemented, be sure to save
+     your map before doing any extensive object replacements.
+   > REMINDER: if you replace fake objects (the little crossed out square) with real objects
+     and you want to remove the fake objects from the object set window, select the 
+	 objectset window and choose File>Revert to reload the objectset and remove the
+	 now obsolete fake object handles.
+
+Known Problems:
+---------------
+1. Painting large number of overlay tiles using the transparency table method
+   can be very very slow on some systems -- especially on 8-bit displays. 
+   Therefore, for this release, I am providing two different versions:
+      2.8t uses the transparency tables
+	  2.8 uses a transparency mask (like we do for objects)
+   2.8 has the problem that your tileset bitmap MUST be (at least on my system
+   a multiple of 256 pixels wide). You can use the tileset properties dialog to
+   change your bitmap width to 256 (which is what Nicky needs anyway).
+2. The replace dialog is NOT a modal panel so PLEASE BE SURE TO CLOSE THE DIALOG
+   before turning off the object layer.  I try to do it programmatically and sometimes
+   it works but sometimes it doesn't.
+
+MapEdit v2.7a
+------------
+- Added global option to control if the overview window should be drawn off-screen;
+  This fixes the overview's object/overlay transparency problems but may be too
+  slow on some systems AND drawing off-screen means that thin lines (like
+  rectangles used for outline group preview or selected tiles) don't get 
+  rendered correctly ...<sigh>..this option is OFF by default.  
+- Fixed the display of the objects in the objectSet window by drawing them
+  off-screen.
+- The ObjectSet now shows the objects sorted by name.
+
+
+MapEdit v2.7
+------------
+- Add global option to show full object names when viewing all the objects
+  in the ObjectSet. Defaults to TRUE.
+- Now tells all the views onto a given ObjectSet to refresh themselves
+  whenever a map is loaded or the ObjectSet is reverted.  This should avoid
+  some of the confusion about "ghost" or "fake" objects.  If two maps 
+  share the same ObjectSet you should see a consistent view of the all
+  the objects including all the "ghost" objects used by ANY of the open
+  maps using the same ObjectSet.
+- Fixed crash when exporting armymen map with invalid object name.
+
+
+MapEdit v2.6
+------------
+- I think I fixed some of the view activation/palette-realization problems
+- Added two new palette manipulation routines:
+  * Tileset>Use Palette 
+    Load a new palette and doesn't remap tiles; this is useful when
+	you have constructed a palette in the correct 1 to 1 ordering and
+	you don't want the bitmap to change.
+  * Tileset>Remap To Palette -- load a new palette and remap the tiles
+    to the closest colors in the new palette; this uses the windows
+	color remapping functions so I don't have any idea how good/bad
+	it is.
+  You cannot undo these functions so be sure to save your tileset before
+  you try them.  If you don't like the results you can select the
+  tileset window and use File>Revert to restore the old colors.
+- Fixed two small startup memory leaks
+- ObjectSetView now maps all names to their lower-case equivalents
+- Fixed bogus message "Can't compact tileset" when using 24-bit or hi-color
+  tilesets.
+- Implemented BoldComboBox; the layers bar now displays visible layers
+  in bold and hidden layers in normal type. 
+
+Known Bugs:
+- if you cut/copy large amounts of data to the clipboard with the debug
+  version of the mapeditor you will get an assertion violation; this appears
+  to be a bug in MFC; you should be able to ignore the violation.
+
+MapEdit v2.5a,b
+----------------
+- Fixed load/save tileset; this also fixes cut/copy/paste of tiles.
+
+Known Bugs:
+- dragging a document with a long name onto the mapeditor
+  icon will truncate the name (to 8.3); I have no idea why.  If you load
+  double-click on the document instead or just open it directly in the
+  mapeditor, the name is not truncated.
+
+MapEdit v2.5
+------------
+- Rebuilt with VC++ 4.2 (yuk); Copy the MFC42.dll and MSVCRT.dll
+  into your c:\windows\system folder (or wherever you are keeping all your
+  windows dlls)
+- Fixed the display of object categories 
+- Fixed the off-by-one when rendering object place-holders (square with diagonal line)
+- Added code to generate the correct transparency masks for indexed-based
+  object bitmaps.  This code WILL NOT WORK FOR 24-BIT OR HI-COLOR BITMAPS
+- Fixed the Release versions settings so the executable is MapEdit.exe again;
+  this should fix all the long filename problems as well as 'the double-clicking
+  on map to launch' problems.
+- Modified the Object Info display to show the object's 
+  bitmap depth as well as it's width and height.
+- Fixed the 2.4 crash when resizing map tile layers 
+- Changed the object move forward/back to scan the list for the next/previous
+  overlapping object then move the object in front/behind the next/previous
+  overlapping object.
+- Fixed bug where ObjectSet view was not updated when adding an
+  object set to an existing document while viewing an empty object
+  layer.
+- Added check to ArmyMen export tileset routine for Nicky; 
+  Tileset bitmap must be 256 pixels wide
+- Added tileset property sheet to allow user to override the
+  the all the default tileset property's (including bitmap 
+  width)
+- Re-implemented the "new" and "property" panels for the map and tilesets
+  they now include all the options. The "new" panels now preseve the
+  values between invokations and will save the last set of used values
+  when the program exits.  The values will then be reloaded when the
+  program starts.
+- Got rid of the now obsolete map and tileset "options" panels
+- Note: the tileset now loads/saves the "Compact on Save", "Use Bitmap Width"
+  and "Bitmap Width" properties so the tilesets written out by this version of
+  the program will not load into previous versions of the MapEditor.  Old
+  tilesets will still load but its "Compact on Save" and "Use Bitmap Width"
+  properties will be initialized to true and its "Bitmap Width" will be set
+  to its old bitmap width.
+- Fixed the "New Window" command under the "Window" menu so you can now
+  have multiple windows opened onto the same map, tileset, or objectset.
+- Object layer now update's the frame item position whenever an item is
+  placed, selected, or moved.
+- Disabled the Save and SaveAs menu options when an ObjectSet's view 
+  is active. Also added code to update the frame title bar with the ObjectSet's
+  name so you know when the ObjectSet's view is active.
+- The object layer now displays selected objects with a dotted line; this makes
+  it a little easier to see selected objects when no tile layers are visible.
+- Fixed bug where cutting objects from the object layer would 
+  not updated the selected count and would therefore not deactivate the cut/copy
+  menu items.
+- Fixed bug where object layer wasn't always releasing the mouse capture 
+  so the keyboard short-cuts for cut/copy/paste etc...would not always work.
+- Modified the layerbar to active the layer by its index in the list not
+  by the layer name (just in case multiple layers have the same name)
+- Implemented the object layer "find" command
+
+MapEdit v2.4
+------------
+- Added ObjectLayer (sorry no undo/redo yet)
+  > Clicking down with the left mouse button will place the current object
+    in the object layer.  While the left mouse button is down you can
+	drag the object.  As soon as the left mouse button is released, the 
+	object is placed and selected.
+  > You can move any object by selecting it with the right mouse 
+    button (or toggle selecting it with ctrl left-button) and dragging it. 
+  > You can use the arrow keys to move the currently
+    selected objects left/right/up/down. 
+- LayerBar now gets refreshed whenever active document changes. 
+- The drop-down list associated with the LayerBar now displays layers in
+  drawing order NOT alphabetically.
+- Fixed an OnSize() bug in the TileSetView that might have
+  been causing some of our random crash problems.
+- Fixed bug where reverting a map/tileset would sometimes turn all 
+  view port colors to black temporarily.
+- You can re-load the ObjectSet data by viewing an object layer,
+  making the objectSet window active and selecting the "revert" option
+  under the file menu.  If an object that was used is no longer in the
+  directory, a little square with a diagonal line through it will be
+  displayed in place of the old object. 
+
+Known Bugs:
+-----------
+- If you can't double click on your map to launch the map editor OR your
+  long map/tileset filenames seem to get truncated, make sure the name of
+  your executable is MapEdit.exe NOT MapEditor.exe
+- If your overview window does not display the correct colors
+  for your overlay and/or object layers,  try switching into a 256 color display 
+  mode;  I'm not sure if this is my bug, an MFC bug, or a display
+  driver bug.
+- Using a 256 color display mode sometimes does not display the correct colors
+  when the views are first created; this might be a timing problem; if you
+  minimize/maximize the window, the colors should fix themselves.
+- If your object are not uncompressed 24-bit BMPs,
+  the code does not render the transparent areas correctly.
+- Again, exporting any layer using the transparency code (overlay or object),
+  will not render the correct colors.  I suggest you just export base tile layers
+  for now.
+- Cutting data from one object layer and pasting into another object layer
+  in a map with a different ObjectSet will do the wrong thing; It won't crash
+  but it won't paste the right objects.
+- I need to add better error handling for when an ObjectSet directory cannot
+  be found or accessed.
+- I'm still tracking down a memory leak.
+- I need to hook in a better ObjectSet directory browser; I hate the explorer
+  type browser.
+
+
+Other Notes:
+------------
+- To make win95 use a different icon for the exported ArmyMen maps and/or tilesets
+  1. Open an explorer window
+  2. Select Options from the View Menu
+  3. Select "File Types" from the Options Panel
+  4. Choose "New Type" from the "File Types" Panel
+  5. Enter "ArmyMen Map" (or "ArmyMen TileSet" for tileset) for the Description
+  6. Enter "AMM" (or "ATL" for tileset) for the Associated Extension
+  7. Choose "Change Icon" and select the icon you wish to use
+     In the MapEditor 2.4 folder you will find amap.ico and atiles.ico
+	 if you want to use mine.
+
+
+MapEdit v2.3
+------------
+Finished support for Categories of Groups:
+- Changed the TileSet menu to:
+   Tile Categories...
+   Group Categories...
+   Each menu item brings up a dialog allowing you to create/destroy/rename/
+   and/or re-order the selected categories. 
+- Added View Buttons to the top of the tileset window.
+  You can view either the "Tiles" or the "Groups" for any given tileset
+  When the "view" is set to "Tiles" the first tab in the tileset window will
+  display all the tiles belonging to the tileset.  The remaining tabs
+  are your tile categories.  Similarly, when the "view" is set to "Groups"
+  the first tab in the tileset window will display all the groups belonging
+  to the tileset. The remaining tabs are your group categories.
+- Added tooltips to the Layers (and Categories) dialogs
+
+Note: you will NOT be able to load tilesets created by this version
+of the MapEditor into older versions of the MapEditor but you WILL
+be able to load tilesets created with older versions of the MapEditor
+into version 2.3.  Similarly you CANNOT cut/paste between older versions
+of the MapEditor and this version of the MapEditor so don't even try it.
+
+
+MapEdit v2.2
+-------------
+- For Nicky now shrinks all layers to minimum rect on save; expands on load.
+- For DavidB, preference to view let active layer display group preview
+  so group preview may appear behind other layers 
+- For David, modified the code to "Select None" whenever
+  you place an item; you can still use the ctrl key
+  to modify the current selection. Let me know if there are
+  other places where you want me to clear the selection.
+- Now updates map windows whenever transparency color is changed 
+  and any overlay layer is visible.
+- Fixed crash when deleting group or category
+- Fixed bug where deleting the active item would not update the 
+  selected item preview area.
+- Can now select area by dragging in any direction.
+- Hooked in splash screen; unfortunately MFC does not allow splash
+  screen to be up while a dialog is active so the splash screen
+  is only visible for a second or two.
+- Made the main frame come up before the new map/tileset dialog so 
+  we can see the wait cursor when loading initial map or tileset.
+- Added option to show tile usage for all opens map associated with
+  the active tileset.
+- Clicking the right mouse button down inside the map window will
+  now activate the map window.
+- Added "Show Usage" command to the tileset menu.  This will allow
+  you to highlight all tiles in a given tileset that are below a
+  specified usage count in all the currently opened maps.  You can
+  use this feature to find unused tiles then Ctrl-X to remove them;
+  just make sure that all maps that use this tileset are open 
+  when you do.
+- Added find tile option: allows the user to highlight all occurrences
+  of the selected tile (select a tile then use Ctrl-F or Edit>Find)
+  to find all occurences.  The frame will display the number of 
+  tiles found.
+- Added export ArmyMen options for map (.AMM) and tileset (.AMT)
+- Added Multiple levels of undo/redo when editing the map
+  For now, the undo levels are unlimited. Let me know if this causes
+  any problems. The redo buffer gets cleared whenever you start
+  painting.  The undo and redo buffers get cleared whenever you
+  deactivate the active layer, remove tiles from the tileset,
+  or revert a map.
+
+Known Problems:
+---------------
+- While the group preview is active, you cannot use the keyboard accelerators
+  for any of the menu commands (ie: you cannot use Ctrl+Z for undo while
+  the group preview is visible).  
+  Workaround: use the menu commands or use the right mouse button to
+  select a tile instead of a group, then use the keyboard commands.
+- Group Preview will render itself in the active layer (behind other layers)
+  and will be transparent where the group does NOT contain tiles BUT will
+  not show the overlay transparency color as being transparent. It will 
+  still paint correctly; it just does not preview correctly. I'm still
+  working on this one...
+
+
+MapEdit v2.1
+-------------
+- Added edit menu item and keyboard equivalent for the clone tool
+- Modified the dispatch code so the clone command always gets sent to the map window
+- Modified the tooltips for the select and clone tools to show their keyboard equivalents.
+- Added status bar indicators for current item.
+  When the current item is a tile, the indicators will read: 
+       Tile TileNumber 
+  When the currernt item is a group, the indicators will read: 
+       Group Name Width x Height
+  or
+       Group --- Width x Height if the active group is temporary
+  When the current item is a tile Category, the indicator will read:
+       Category Name
+- Added row/column indicator for Nicky; this gets updated whenever
+  you select or place a tile.
+- Added code to handle the active layer control bar:
+  > You can now use the layer bar to select which layer is active
+    independent of which layers are visible.  If you select an invisible
+	layer to be the active layer, the program will first make the layer
+	visible, then make it the active layer.
+  > You can now use the check box next to the active layer box to 
+    hide the active layer.  When you do so, the program makes the
+	top most visible layer active.
+- Replaced the "Base Tiles" and "Overlay Tiles" menu items
+  with new "Layers..." menu item and added dialog that lets you
+  add/remove/rename/re-order/toggle-visibility of any layer.
+- Added wait cursor when exporting map as BMP
+- Fixed memory leak when cropping or resizing map
+- New TileSet dialog now uses the user's tileWidth, tileHeight options
+- Fixed bug where selecting a region with no tiles would not erase the selection rectangle.
+- Now loads and saves the tileSet transparency color (see updated FileFormat.txt)
+
+Known Problems:
+---------------
+The dropdown list associated with the layer control bar should display 
+currently visible layers in bold and invisible layers in normal text.
+
+
+MapEdit v2.0
+-------------
+- Fixed two uninitialized pointers that may have been causing 
+  some of the load/save problems.
+- New tilesets now use the global default transparency color.
+- Significantly improved the speed of actually removing the duplicate
+  tiles from the tileset once you've selected which tiles you want to 
+  remove. Many thanks to Jordon for creating such a large map/tileset
+  and pointing out the problem!  
+- Fixed creating new map with named tileset.
+- Added support for one temporary group. Can now cut/copy a group of
+  tiles from the current map, and use paste in the map window to create
+  a temporary group. The temporary group stays in effect until you
+  select a tile or another group.
+- Modified the frame title bar to only show the tileset name when
+  a tileset view is active. This should make it easier to know 
+  which window is the current command target.
+- Modified the dispatch code so all the Tileset commands 
+  (Add Category, Find Duplicates etc..) go the tileset view 
+  if present and the Select command goes to the map view
+  if present so you don't have to worry about which view in the map
+  frame is active. Let me know if this seems awkward for you or
+  if there are other commands you would like automatically dispatched.
+- Added export map as BMP (with options for scaling)
+- Added clone tool:
+  . First left button press selects the source.  
+  . Second left button press selects the anchor.
+  . As you drag the mouse around with the left button
+    down you clone tiles from the source offset by your distance from the
+    anchor.  
+  . Right mouse button reselects the source and releases the anchor
+    so next left mouse button will select a new anchor.
+- Added dialog bar for selecting and/or hiding the active layer;
+  I'm still working on this.
+
+Known Problems:
+--------------
+- if the group preview is visible in the map window you cannot use the
+  keyboard commands to cut/copy the currently selected map tiles but you
+  can use the menu cut/copy commands.
+- When you export just the overlay tiles as a BMP, the transparent
+  area of the overlay comes out a random color.  I'm not sure why
+  this is happening.
+- We need a better icon for the clone tool and it would be nice to
+  have a shadow cursor so the user knows which tile will be cloned.
+
+
+MapEdit v1.9
+------------
+- Generalized code to handle multiple tile layers; this
+  was a major code change (necessary for this and the object
+  layer changes) so I apologize in advance if I broke anything
+  in the process. Please let me know if you run into any
+  problems.
+- Added overlay layer
+
+Known Problems:
+- The files saved out by this version of the MapEditor
+  are NOT compatible with previous version of the MapEditor so
+  you won't be able to open v1.9 files with any
+  of the previous MapEditors.  Futhermore, files created
+  by previous version of the MapEditor will put up an
+  Unexpected file format message to warn you that you are
+  loading in an obsolete file format; the program will then
+  try to load the old file format. Again, let me know if you
+  run into problems.
+- The group preview in the overlay layer doesn't render the
+  tiles using the transparent color but it does *paint* with the
+  transparent color.  
+- You must activate one of the map windows before certain 
+  map related menus/controls become active; this is a pain, I
+  know - Ha, but I also know how to fix this now...
+
+MapEdit v1.8
+------------
+- Scrolling the map no longer trashes the contents of the map
+  window.
+- Fixed bug where map window was not recognizing when the cursor
+  leaves the view when the view is scrolled. This also fixes the
+  problem where the program would continue to paint even though 
+  the left mouse button isn't down.
+- Now loads/saves options to registry
+
+Note: the overview window still lags and flickers...I'm still 
+working on this one.
+
+MapEdit v1.7
+------------
+- Can now display transparent areas of tileGroup
+  as you move the mouse around.  
+- Fixed bug where selecting new tileGroup would cause 
+  the map window to redraw.
+- Fixed bug where scrolled view (and overview window) would
+  not repaint tileGroup preview properly; This should fix
+  the memory problems that Jordan was having.
+- Modified MapEditor to ask you for a new tileset path if
+  map could not open/find its original tileset.
+- Removed the now unecessary tileset search path controls 
+  from the map options
+- Centralized the tileGroup preview code so when you move
+  the tileGroup around you should see its position in both
+  the map and the overview windows regardless of which window
+  you are dragging the cursor around in.
+- Optimized the redraw of the map and overview windows.
+- Modified code to hide the tileGroup preview whenever cursor
+  leaves map or overview panels.
+
+Known Problems:
+- The repaint of the tileGroup preview in the Overview window lags
+  behind the repaint in the Map window, it flickers and does not 
+  use the correct colors; I'm still working on this one -- the new
+  double buffering code works in the Map window but doesn't work 
+  in the overview window for some reason.
+- Scrolling the map view trashes sometimes trashes the contents of
+  the map window.
+- Clicking the scrollbar in the map window while the tileGroup preview is
+  actually displayed in the map window can sometimes cause the
+  program to paint the tilegroup even though the left mouse button 
+  isn't down.
+- Scrolling the map window while the tileGroup preview is displayed
+  can sometimes lock the window frame so you can't select other 
+  tool icons or the menu items <sigh>
+
+MapEdit v1.6
+------------
+- Fixed bug where placing tile or TileGroup in map didn't always update the current
+  number of selected map tiles.
+- Optimized the refresh of the TileSet windows when adding/pasting tiles/groups
+- Modified code to NOT open a *seperate* TileSet window when tileSet is opened 
+  with map.
+- Modified the appearence of the selected tile as requested. 
+- Can now 'paint' with the current tile or group by simply dragging
+  the mouse around with the left mouse button down.
+- Can now select or deselect a group of tiles by dragging the mouse
+  around with the ctrl key down.  You will be selecting tiles if
+  you initially mouse down over a deselected tile.  You will be
+  deselecting tiles if you initially mouse down over a selected tile.
+- Added File>Revert operation for both maps and tilesets.  Note:
+  reverting a map does not automatically revert the tileset because 
+  multiple maps may be using the same tileset.  
+- Added TileGroup cut/copy/paste
+- Added option to repeat initial map data instead of filling 
+  with tile 0.  For now this option just works when creating a new
+  map with from a new tileset bitmap.
+- Added simple TileGroup preview and option to outline the preview.
+  Use "View>Options.." menu item to bring up the property sheet; the
+  outline preview option is under the "General" tab.
+  Note: if there isn't enough memory to allocate the preview bitmap,
+  the program will automatically display the outline.
+
+Known Problems:
+-- TileGroup Preview does not work correctly in the overview window.
+-- TileGroup mask not working so preview does not correctly display transparent areas.
+
+MapEdit v1.5
+------------
+- Fixed bug in FindDuplicates where anything that was a duplicate
+  of tile 0 wasn't being removed.
+
+MapEdit v1.4
+------------
+- Modified code to compact the tileset in an attempt to fix the save problems
+  we've been having
+- Find Duplicates dialog now displays the number of tiles found so far
+  and the minimum non-zero tile difference found so far.
+- Fixed palette refresh of current TileGroup item
+- Added SetRegistryKey("The 3DO Company")
+
+MapEdit v1.3
+------------
+- Fixed save tileset bug introduced in v1.1
+- Added select tile from map function -- use right mouse button to make the
+  selected map tile the "current" tile.
+- TileSet preview area now shows the tile number of the "current" tile
+  or the label of the current category if a category is selected.
+- Added progress dialog for find duplicates so user can see how far the search
+  has progressed and can interrupt or prematurely terminate the search.
+- Added ability to select/deselect map tiles: 
+  1> Use Ctrl+left mouse button to toggle selection of single tile.
+  2> Choose 'select' from map's Edit menu or toolbar, then use left mouse
+  to select a rectangular region of tiles or right mouse to deselect
+  rectangular region of tiles.  Holding down the control key, maintains
+  the mode.
+  Note: you may exit the select mode by toggling the 'select' item
+  from the map's Edit menu or toolbar or by hitting ESC. 
+- Added 'Select All' and 'Select None' functions.
+- Added 'Crop' function, select a group of map tiles then choose 'Crop'
+  from the Map edit menu
+- Added TileGroups
+- Added 'Options' item under the View menu -- still under construction;
+  not fully tested.
+
+Note: the tileset format has changed to accomodate tileGroups.  This version
+of the program will not load previous tilesets.  If this is a problem, please
+let me know and I will add code to compensate for the version change.
+
+Known Problems:
+- No feedback for placing tileGroup.  For now it will always place the
+  upper left corner of the group over the tile where the left mouse went
+  down.
+- Cannot cut/copy a tileGroup from the tileGroup window
+- Cannot rename or otherwise edit a tileGroup
+- Options are not yet saved between sessions.
+
+MapEdit v1.2
+------------
+- Fixed the duplicate display bug and paste/compact bugs introduced in v1.1
+
+MapEdit v1.1 
+------------
+- Uses the 3DO logo for the application icon
+- Warns the user that the may lose data when they reduce the Map width or height.
+- Fixed deleting tile categories
+- Fixed bug cutting multiple tiles from tileset
+- Fixed bug in redraw of Map and Overview views when 
+  multiple documents with multiple palettes are open.
+- Added drop-down list to the new category dialog so user can
+  select a pre-existing category or type in a new category name.
+- Fixed loading of large BMP files
+
+
+MapEdit v1.0  : Known Problems
+------------------------------
+- Opening/creating a map opens a seperate tileset window.
+- Changing a map's tileset doesn't deallocate the memory for the previously used tileset.
+- Copying the tiles from one tileset to another with a different palette does not
+  change the destination tileset's palette correctly.
+- Drawing lots of tiles can be very slow -- I'm still trying to figure out how to optimize this.
+- The paste operator always adds to the tileset; it doesn't not replace tiles so for
+  now there is no way to replace one tile image with another.
+- The find duplicate tile function is only implemented for 8-bit per pixel tilesets
+- The find duplicate tile function can be very slow; the program is not hung.
+- A map will not open if its tileset cannot be found and right now I do not have
+  a search path implemented.  The program assumes that the tileset will be found
+  exactly where it was saved.  For now, I suggest that all map/tileset creators
+  standardize on someplace where they will keep their data so the maps/tileset can
+  all be shared (ie: c:\armymen\maps c:\armymen\tilesets).  At some point I will 
+  implement a search path.
+
+
+Notes on Cut/Copy/Paste:
+------------------------
+- Pasting tiles into a category view, adds the selected tiles to the 
+  selected category. 
+- Pasting tiles into the "Tiles" view adds the tiles to the tileset.
+- Pasting tiles into the "Categories" view, will create a new category.
+- Pasting a group or category into a category adds all tiles from the
+  source group or category into the destination category.
+- Pasting a group or category into the "Tiles" view, adds all tiles
+  from the source group or category into the destination tileset.
+
+If the source and destination tilesets are not the same, the tiles from
+the source tileset will be copied to the destination tileset as needed.
+
+A Note on the Remove Duplications Option:
+-----------------------------------------
+- The tolerance value for a tile set controls how many pixels can be 
+  different yet still be considered a match.  If tolerance < 0 then,
+  we ignore duplicates.  If tolerance is 0, then if 0 pixels are
+  different we consider it a match.  If tolerance is 1, then if
+  1 or fewer pixels are different, we consider it a match. etc...

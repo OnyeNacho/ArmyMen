@@ -1,0 +1,35 @@
+
+
+OBJECT supports1
+	STATE undamaged
+	EVENT killed_supports1 (destroyed, -)
+		BEGIN
+			0
+		END
+
+	STATE destroyed
+		BEGIN
+			1
+		END
+
+ENDOBJECT
+
+OBJECT	top1
+	
+	STATE undamaged
+	EVENT killed_supports1 (destroyedtop, -)
+		BEGIN
+			0
+		END
+
+	STATE destroyedtop
+		BEGIN
+			1
+		END
+
+ENDOBJECT
+
+
+
+
+

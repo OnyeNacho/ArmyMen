@@ -1,0 +1,1630 @@
+//========================================================================
+//	FILE:			$Workfile: ScreenObj.dat $
+//
+//	DESCRIPTION:	ArmyMen ScreenObj static data definitions.
+//
+//	AUTHOR:			Andrew J Burgess
+//
+//	CREATED:		Wednesday, October 15, 1997
+//
+//	REVISION:		$Header: $
+//
+//========================================================================
+//                 COPYRIGHT(C)1997 The 3DO Company
+//      Unathorized reproduction, adaptation, distribution,
+//      performance or display of this computer program or
+//      the associated audiovisual work is strictly prohibited.
+//                      All rights reserved.
+///========================================================================
+//  History
+//
+//  $Log: /ArmyMen/src/ScreenObj.dat $
+//  
+//  $Nokeywords:$
+//========================================================================
+
+//------------------------------------------------------------------------
+//				DEPENDENCIES
+//------------------------------------------------------------------------
+extern	SCREENBTNDEF	NULL_20_ScreenBtn;
+extern	SCREENBTNDEF	NULL_14_ScreenBtn;
+
+extern	SCREENBTNDEF	FixedKey_ScreenBtn;
+extern	SCREENBTNDEF	Key_ScreenBtn;
+extern	SCREENBTNDEF	PassiveKey_ScreenBtn;
+extern	SCREENBTNDEF	JoyBtn_ScreenBtn;
+
+extern	SCREENBTNDEF	OK_ScreenBtn;
+extern	SCREENBTNDEF	CANCEL_ScreenBtn;
+extern	SCREENBTNDEF	FINISH_ScreenBtn;
+extern	SCREENBTNDEF	APPLY_ScreenBtn;
+extern	SCREENBTNDEF	APPLY2_ScreenBtn;
+
+extern	SCREENBTNDEF	BOOTCAMP_ScreenBtn;
+extern	SCREENBTNDEF	ONEPLAYER_ScreenBtn;
+extern	SCREENBTNDEF	MULTIPLAYER_ScreenBtn;
+extern	SCREENBTNDEF	OPTIONS_ScreenBtn;
+extern	SCREENBTNDEF	QUIT_ScreenBtn;
+extern	SCREENBTNDEF	DELETE_ScreenBtn;
+
+extern	SCREENBTNDEF	PLAYER_NAME_1_ScreenBtn;
+extern	SCREENBTNDEF	PLAYER_NAME_2_ScreenBtn;
+extern	SCREENBTNDEF	PLAYER_NAME_3_ScreenBtn;
+extern	SCREENBTNDEF	PLAYER_NAME_4_ScreenBtn;
+
+extern	SCREENBTNDEF	CAMPAIGN_MORE_ScreenBtn;
+extern	SCREENBTNDEF	CAMPAIGN_BACK_ScreenBtn;
+extern	SCREENBTNDEF	MISSION_MORE_ScreenBtn;
+extern	SCREENBTNDEF	MISSION_BACK_ScreenBtn;
+extern	SCREENBTNDEF	MISSION_CANCEL_ScreenBtn;
+extern	SCREENBTNDEF	MISSION_CANCEL1_ScreenBtn;
+
+extern	SCREENBTNDEF	AUDIO_ScreenBtn;
+extern	SCREENBTNDEF	CONTROL_ScreenBtn;
+extern	SCREENBTNDEF	ABOUT_ScreenBtn;
+
+extern	SCREENBTNDEF	KEYPAD_ScreenBtn;
+extern	SCREENBTNDEF	KEYBOARD_ScreenBtn;
+extern	SCREENBTNDEF	CUSTOM_ScreenBtn;
+extern	SCREENBTNDEF	JOYSTICK_ScreenBtn;
+
+extern	SCREENBTNDEF	AUDIO2_ScreenBtn;
+extern	SCREENBTNDEF	CONTROL2_ScreenBtn;
+extern	SCREENBTNDEF	ABORTMISSION_ScreenBtn;
+extern	SCREENBTNDEF	ABOUT2_ScreenBtn;
+
+extern	SCREENBTNDEF	KEYPAD2_ScreenBtn;
+extern	SCREENBTNDEF	KEYBOARD2_ScreenBtn;
+extern	SCREENBTNDEF	CUSTOM2_ScreenBtn;
+extern	SCREENBTNDEF	JOYSTICK2_ScreenBtn;
+
+extern	SCREENBTNDEF	NEXT_ScreenBtn;
+extern	SCREENBTNDEF	NEXT2_ScreenBtn;
+
+//extern	SCREENBTNDEF	BACK_ScreenBtn;
+extern	SCREENBTNDEF	BACK2_ScreenBtn;
+extern	SCREENBTNDEF	BACK3_ScreenBtn;
+extern	SCREENBTNDEF	BACK4_ScreenBtn;
+extern	SCREENBTNDEF	BACK5_ScreenBtn;
+extern	SCREENBTNDEF	BACK6_ScreenBtn;
+extern	SCREENBTNDEF	BACK7_ScreenBtn;
+extern	SCREENBTNDEF	BACK8_ScreenBtn;
+extern	SCREENBTNDEF	BACK9_ScreenBtn;
+extern	SCREENBTNDEF	BACK11_ScreenBtn;
+extern	SCREENBTNDEF	BACK12_ScreenBtn;
+extern	SCREENBTNDEF	BACK13_ScreenBtn;
+
+extern	SCREENBTNDEF	SFX_ON_ScreenBtn;
+extern	SCREENBTNDEF	SFX_OFF_ScreenBtn;
+extern	SCREENBTNDEF	MUSIC_ON_ScreenBtn;
+extern	SCREENBTNDEF	MUSIC_OFF_ScreenBtn;
+extern	SCREENBTNDEF	VOICE_ON_ScreenBtn;
+extern	SCREENBTNDEF	VOICE_OFF_ScreenBtn;
+extern	SCREENBTNDEF	Bar_ScreenBtn;
+extern	SCREENBTNDEF	SfxDn_ScreenBtn;
+extern	SCREENBTNDEF	SfxUp_ScreenBtn;
+extern	SCREENBTNDEF	MusicDn_ScreenBtn;
+extern	SCREENBTNDEF	MusicUp_ScreenBtn;
+extern	SCREENBTNDEF	VoiceDn_ScreenBtn;
+extern	SCREENBTNDEF	VoiceUp_ScreenBtn;
+extern	SCREENBTNDEF	SfxPlay_ScreenBtn;
+extern	SCREENBTNDEF	MusicPlay_ScreenBtn;
+extern	SCREENBTNDEF	VoicePlay_ScreenBtn;
+
+extern	SCREENBTNDEF	PlayAgain_ScreenBtn;
+extern	SCREENBTNDEF	YES_ScreenBtn;
+extern	SCREENBTNDEF	NO_ScreenBtn;
+extern	SCREENBTNDEF	CONTINUE_ScreenBtn;
+extern	SCREENBTNDEF	RESTOREkb_ScreenBtn;
+extern	SCREENBTNDEF	RESTOREkp_ScreenBtn;
+extern	SCREENBTNDEF	RESTOREjoy_ScreenBtn;
+
+extern	SCREENBTNDEF	YES_1_ScreenBtn;
+extern	SCREENBTNDEF	NO_1_ScreenBtn;
+
+extern	SCREENBTNDEF	GreenColor_ScreenBtn;
+extern	SCREENBTNDEF	TanColor_ScreenBtn;
+extern	SCREENBTNDEF	BlueColor_ScreenBtn;
+extern	SCREENBTNDEF	GrayColor_ScreenBtn;
+extern	SCREENBTNDEF	Start_ScreenBtn;
+extern	SCREENBTNDEF	LED_ScreenBtn;
+extern	SCREENBTNDEF	StartBtn_ScreenBtn;
+extern	SCREENBTNDEF	ExitBtn_ScreenBtn;
+extern	SCREENBTNDEF	MultiMap_ScreenBtn;
+extern	SCREENBTNDEF	HostSend_ScreenBtn;
+extern	SCREENBTNDEF	RemoteSend_ScreenBtn;
+extern	SCREENBTNDEF	ScrollUp_ScreenBtn;
+extern	SCREENBTNDEF	ScrollDn_ScreenBtn;
+
+
+extern	char*			GameStartTitle_Text;
+extern	char*			OnePlayerTitle_Text;
+extern	char*			CallSignTitle_Text;
+extern	char*			CampaignSelectTitle_Text;
+extern	char*			OptionsTitle_Text;
+extern	char*			ControlsTitle_Text;
+extern	char*			AudioTitle_Text;
+extern	char*			SfxTitle_Text;
+extern	char*			MusicTitle_Text;
+extern	char*			VoiceTitle_Text;
+extern	char*			MissionCompleteTitle_Text;
+extern	char*			MissionWonTitle_Text;
+extern	char*			MissionFailedTitle_Text;
+extern	char*			AnyKeyTitle_Text;
+
+extern	char*			SargeColumnTitle_Text;
+extern	char*			GameColumnTitle_Text;
+extern	char*			JoystickColumnTitle_Text;
+extern	char*			RotateRightTitle_Text;
+extern	char*			RotateLeftTitle_Text;
+extern	char*			RunForwardTitle_Text;
+extern	char*			WalkForwardTitle_Text;
+extern	char*			WalkBackwardTitle_Text;
+extern	char*			TurretRightTitle_Text;
+extern	char*			TurretLeftTitle_Text;
+extern	char*			FireTitle_Text;
+extern	char*			StopBrakeTitle_Text;
+extern	char*			SlowTitle_Text;
+extern	char*			MainWeaponTitle_Text;
+extern	char*			HeavyWeaponTitle_Text;
+extern	char*			SpecialItemTitle_Text;
+extern	char*			DiveTitle_Text;
+extern	char*			RollLeftTitle_Text;
+extern	char*			RollRightTitle_Text;
+extern	char*			RotateRightTitle_Text;
+extern	char*			RaisePositionTitle_Text;
+extern	char*			LowerPositionTitle_Text;
+extern	char*			StandTitle_Text;
+extern	char*			KneelTitle_Text;
+extern	char*			ProneTitle_Text;
+extern	char*			EnterVehicleTitle_Text;
+extern	char*			DropItemTitle_Text;
+extern	char*			FollowTitle_Text;
+extern	char*			AttackTitle_Text;
+extern	char*			DefendTitle_Text;
+extern	char*			AirStrikeTitle_Text;
+extern	char*			AirDropTitle_Text;
+extern	char*			ReconTitle_Text;
+extern	char*			FastAttackTitle_Text;
+extern	char*			FastDefendTitle_Text;
+extern	char*			SendTitle_Text;
+extern	char*			UnitScrollTitle_Text;
+
+extern	char			KEYPAD_TextBtn[];
+extern	char			KEYBOARD_TextBtn[];
+extern	char			CUSTOM_TextBtn[];
+extern	char			JOYSTICK_TextBtn[];
+
+//------------------------------------------------------------------------
+//			LOCAL DATA
+//------------------------------------------------------------------------
+
+SOBJTITLEDEF	nullTitle             = { {0,0}, 0, SBTN_BLACK, SBTN_BLACK, NULL, NULL };
+SOBJIMAGEDEF	nullImage             = { {0,0,0,0}, "\0" };
+SOBJAREA		nullArea              = { {0,0,0,0}, SBTN_BLACK };
+
+
+SOBJTITLEDEF	GameStartTitle        = { {24,16}, FONT_CARGO_20, SBTN_TRANSPARENT, SBTN_CYAN, NULL, GameStartTitle_Text };
+SOBJTITLEDEF	OnePlayerTitle        = { {24,16}, FONT_CARGO_20, SBTN_TRANSPARENT, SBTN_CYAN, NULL, OnePlayerTitle_Text };
+SOBJTITLEDEF	CallSignTitle         = { {24,16}, FONT_CARGO_20, SBTN_TRANSPARENT, SBTN_CYAN, NULL, CallSignTitle_Text };
+SOBJTITLEDEF	CampaignSelectTitle   = { {24,16}, FONT_CARGO_20, SBTN_TRANSPARENT, SBTN_CYAN, NULL, CampaignSelectTitle_Text };
+SOBJTITLEDEF	MissionTitle          = { {24,0},  FONT_CARGO_20, SBTN_TRANSPARENT, SBTN_CYAN, NULL, NULL };
+SOBJTITLEDEF	OptionsTitle          = { {24,16}, FONT_CARGO_20, SBTN_TRANSPARENT, SBTN_CYAN, NULL, OptionsTitle_Text };
+SOBJTITLEDEF	ControlsTitle         = { {24,16}, FONT_CARGO_20, SBTN_TRANSPARENT, SBTN_CYAN, NULL, ControlsTitle_Text };
+SOBJTITLEDEF	AudioTitle            = { {24,16}, FONT_CARGO_20, SBTN_TRANSPARENT, SBTN_CYAN, NULL, AudioTitle_Text };
+SOBJTITLEDEF	Default1ConfigTitle   = { {24,10}, FONT_CARGO_20, SBTN_TRANSPARENT, SBTN_CYAN, NULL, KEYPAD_TextBtn };
+SOBJTITLEDEF	Default2ConfigTitle   = { {24,10}, FONT_CARGO_20, SBTN_TRANSPARENT, SBTN_CYAN, NULL, KEYBOARD_TextBtn };
+SOBJTITLEDEF	CustomConfigTitle     = { {24,10}, FONT_CARGO_20, SBTN_TRANSPARENT, SBTN_CYAN, NULL, CUSTOM_TextBtn };
+SOBJTITLEDEF	JoystickConfigTitle   = { {24,10}, FONT_CARGO_20, SBTN_TRANSPARENT, SBTN_CYAN, NULL, JOYSTICK_TextBtn };
+SOBJTITLEDEF	SfxTitle              = { {24,0},  FONT_CARGO_14, SBTN_TRANSPARENT, SBTN_CYAN, NULL, SfxTitle_Text };
+SOBJTITLEDEF	MusicTitle            = { {24,0},  FONT_CARGO_14, SBTN_TRANSPARENT, SBTN_CYAN, NULL, MusicTitle_Text };
+SOBJTITLEDEF	VoiceTitle            = { {24,0},  FONT_CARGO_14, SBTN_TRANSPARENT, SBTN_CYAN, NULL, VoiceTitle_Text };
+SOBJTITLEDEF	MissionCompleteTitle  = { {0,12},  FONT_CARGO_36, SBTN_TRANSPARENT, SBTN_WHITE, NULL, MissionCompleteTitle_Text };
+SOBJTITLEDEF	MissionWonTitle       = { {0,12},  FONT_CARGO_36, SBTN_TRANSPARENT, SBTN_WHITE, NULL, MissionWonTitle_Text };
+SOBJTITLEDEF	MissionFailedTitle    = { {0,12},  FONT_CARGO_36, SBTN_TRANSPARENT, SBTN_WHITE, NULL, MissionFailedTitle_Text };
+SOBJTITLEDEF	AnyKeyTitle           = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, AnyKeyTitle_Text };
+SOBJTITLEDEF	PlayerTitle           = { {0,0},   FONT_TIMES_20, SBTN_BLACK,       SBTN_WHITE, NULL, NULL };
+SOBJTITLEDEF	SargeColumnTitle      = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_CYAN, NULL, SargeColumnTitle_Text };
+SOBJTITLEDEF	KeyTitle              = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, NULL };
+SOBJTITLEDEF	GameColumnTitle       = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_CYAN, NULL, GameColumnTitle_Text };
+SOBJTITLEDEF	JoystickColumnTitle   = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_CYAN, NULL, JoystickColumnTitle_Text };
+SOBJTITLEDEF	RotateRightTitle      = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, RotateRightTitle_Text };
+SOBJTITLEDEF	RotateLeftTitle       = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, RotateLeftTitle_Text };
+SOBJTITLEDEF	RunForwardTitle       = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, RunForwardTitle_Text };
+SOBJTITLEDEF	WalkForwardTitle      = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, WalkForwardTitle_Text };
+SOBJTITLEDEF	WalkBackwardTitle     = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, WalkBackwardTitle_Text };
+SOBJTITLEDEF	TurretRightTitle      = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, TurretRightTitle_Text };
+SOBJTITLEDEF	TurretLeftTitle       = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, TurretLeftTitle_Text };
+SOBJTITLEDEF	FireTitle             = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, FireTitle_Text };
+SOBJTITLEDEF	StopBrakeTitle        = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, StopBrakeTitle_Text };
+SOBJTITLEDEF	SlowTitle             = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, SlowTitle_Text };
+SOBJTITLEDEF	MainWeaponTitle       = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, MainWeaponTitle_Text };
+SOBJTITLEDEF	HeavyWeaponTitle      = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, HeavyWeaponTitle_Text };
+SOBJTITLEDEF	SpecialItemTitle      = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, SpecialItemTitle_Text };
+SOBJTITLEDEF	DiveTitle             = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, DiveTitle_Text };
+SOBJTITLEDEF	RollLeftTitle         = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, RollLeftTitle_Text };
+SOBJTITLEDEF	RollRightTitle        = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, RollRightTitle_Text };
+SOBJTITLEDEF	RaisePositionTitle    = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, RaisePositionTitle_Text };
+SOBJTITLEDEF	LowerPositionTitle    = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, LowerPositionTitle_Text };
+SOBJTITLEDEF	StandTitle            = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, StandTitle_Text };
+SOBJTITLEDEF	KneelTitle            = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, KneelTitle_Text };
+SOBJTITLEDEF	ProneTitle            = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, ProneTitle_Text };
+SOBJTITLEDEF	EnterVehicleTitle     = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, EnterVehicleTitle_Text };
+SOBJTITLEDEF	DropItemTitle         = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, DropItemTitle_Text };
+SOBJTITLEDEF	FollowTitle           = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, FollowTitle_Text };
+SOBJTITLEDEF	AttackTitle           = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, AttackTitle_Text };
+SOBJTITLEDEF	DefendTitle           = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, DefendTitle_Text };
+SOBJTITLEDEF	AirStrikeTitle        = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, AirStrikeTitle_Text };
+SOBJTITLEDEF	AirDropTitle          = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, AirDropTitle_Text };
+SOBJTITLEDEF	ReconTitle            = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, ReconTitle_Text };
+SOBJTITLEDEF	FastAttackTitle       = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, FastAttackTitle_Text };
+SOBJTITLEDEF	FastDefendTitle       = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, FastDefendTitle_Text };
+SOBJTITLEDEF	SendTitle             = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, SendTitle_Text };
+SOBJTITLEDEF	UnitScrollTitle       = { {0,0},   FONT_TIMES_14, SBTN_TRANSPARENT, SBTN_WHITE, NULL, UnitScrollTitle_Text };
+
+SOBJIMAGEDEF	btnbkg64wUp           = { {0,0,64,32}, "BTN64wUp.bmp" };
+SOBJIMAGEDEF	KeypadConfig          = { {0,0,480,340}, "panel.bmp" };
+SOBJIMAGEDEF	KeyboardConfig        = { {0,0,480,340}, "panel.bmp" };
+SOBJIMAGEDEF	CustomConfig          = { {0,0,480,340}, "panel.bmp" };
+SOBJIMAGEDEF	JoystickConfig        = { {0,0,480,340}, "panel.bmp" };
+SOBJIMAGEDEF	panelImage            = { {0,0,280,280}, "smlpanel.bmp" };
+SOBJIMAGEDEF	lgPanelImage          = { {0,0,480,340}, "panel.bmp" };
+SOBJIMAGEDEF	missionOverImage      = { {0,0,64,32}, "" };	// string is filled in later
+SOBJIMAGEDEF	yesnobkgdImage        = { {0,0,100,100}, "tinypanel.bmp" };
+
+SOBJAREA		BCNArea               = { {0, 0,262,  32}, SBTN_BLACK };
+SOBJAREA		GameStartArea         = { {0,40,280, 280}, SBTN_BLACK };
+SOBJAREA		MissionArea           = { {0, 0,230, 150}, SBTN_BLACK };
+SOBJAREA		MoreArea              = { {0, 0,280,  32}, SBTN_BLACK };
+SOBJAREA		BackArea              = { {0, 0, 64,  32}, SBTN_BLACK };
+SOBJAREA		ContinueArea          = { {0, 0,128,  32}, SBTN_TRANSPARENT };
+SOBJAREA		OptionsArea           = { {0,40,280, 280}, SBTN_BLACK };
+SOBJAREA		lgPanelArea           = { {0, 0,480, 340}, SBTN_TRANSPARENT };
+SOBJAREA		AudioArea             = { {0, 0,280,  40}, SBTN_BLACK };
+SOBJAREA		MissionCompleteArea   = { {0, 0,640, 400}, SBTN_TRANSPARENT };
+SOBJAREA		MissionFailedArea     = { {0, 0,400,  72}, SBTN_TRANSPARENT };
+SOBJAREA		HeadingArea           = { {0, 0,400,  24}, SBTN_TRANSPARENT };
+SOBJAREA		AnyKeyArea            = { {0, 0,128,  18}, SBTN_TRANSPARENT };
+SOBJAREA		ConfigArea            = { {0, 0,136,  40}, SBTN_TRANSPARENT };
+SOBJAREA		RestoreArea           = { {0, 0,244,  40}, SBTN_GREY };
+SOBJAREA		MapArea               = { {0, 0,256, 256}, SBTN_TRANSPARENT };
+SOBJAREA		BTN32Area             = { {0, 0, 32,  32}, SBTN_TRANSPARENT };
+SOBJAREA		ColorBtnArea          = { {0, 0, 32,  25}, SBTN_TRANSPARENT };
+SOBJAREA		LEDBtnArea            = { {0, 0, 21,  25}, SBTN_TRANSPARENT };
+SOBJAREA		StartBtnArea          = { {0, 0,210,  20}, SBTN_TRANSPARENT };
+SOBJAREA		ExitBtnArea           = { {0, 0, 27,  80}, SBTN_TRANSPARENT };
+SOBJAREA		PlayerArea            = { {0, 0,176,  24}, SBTN_BLACK };
+SOBJAREA		HostSendChatArea      = { {0, 0,556,  17}, SBTN_BLACK };
+SOBJAREA		HostReceiveChatArea   = { {0, 0,556,  59}, SBTN_BLACK };
+SOBJAREA		RemoteSendChatArea    = { {0, 0,556,  17}, SBTN_BLACK };
+SOBJAREA		RemoteReceiveChatArea = { {0, 0,556,  59}, SBTN_BLACK };
+SOBJAREA		RulesTitleArea        = { {0, 0,198,  20}, SBTN_BLACK };
+SOBJAREA		RulesArea             = { {0, 0,198,  35}, SBTN_BLACK };
+SOBJAREA		CampaignListArea      = { {0, 0,214,  56}, SBTN_BLACK };
+SOBJAREA		VerticalScrollArea    = { {0, 0, 23,  79}, SBTN_DK_GREY };
+SOBJAREA		HorizontalScrollArea  = { {0, 0,166,  23}, SBTN_DK_GREY };
+SOBJAREA		PlaySndArea           = { {0, 0, 24,  16}, SBTN_DK_GREY };
+SOBJAREA		KeyConfigArea         = { {0, 0,216,  14}, SBTN_TRANSPARENT };
+SOBJAREA		ColumnConfigArea      = { {0, 0,216,  16}, SBTN_TRANSPARENT };
+
+//------------------------------------------------------------------------
+//				NULL ScreenObj
+//------------------------------------------------------------------------
+
+SCREENOBJDEF	Null_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS ),	// screenObj Attributes
+	{ 336,64 },								// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&nullArea,								// screenObj Area information
+	0,										// number of screenBtnDefs
+	{ NULL }								// screenObj screenBtnDefs
+};
+
+
+//------------------------------------------------------------------------
+//				Game Start ScreenObj
+//------------------------------------------------------------------------
+
+SCREENOBJDEF	GameStart_ScreenObj =
+{
+	( SOBJ_BKG_IMAGE|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 180,100 },							// screenObj relative position
+	&GameStartTitle,						// screenObj title information
+	&panelImage,							// screenObj image information
+	&GameStartArea,							// screenObj Area information
+	4,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&BOOTCAMP_ScreenBtn,				// "Boot Camp"
+		&ONEPLAYER_ScreenBtn,				// "One Player"
+		&MULTIPLAYER_ScreenBtn,				// "Multi-Player"
+		&OPTIONS_ScreenBtn					// "Options"
+	}
+};
+
+SCREENOBJDEF	GameStartQuit_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS ),	// screenObj Attributes
+	{ 290,310 },							// screenBtn relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&BackArea,								// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&QUIT_ScreenBtn						// "Quit"
+	}
+};
+
+//------------------------------------------------------------------------
+//				Select Campaign ScreenObjs
+//------------------------------------------------------------------------
+
+SCREENOBJDEF	SelectCampaign_ScreenObj =
+{
+	( SOBJ_BKG_IMAGE|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 180,100 },							// screenObj relative position
+	&CampaignSelectTitle,					// screenObj title information
+	&panelImage,							// screenObj image information
+	&GameStartArea,							// screenObj Area information
+	4,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&NULL_20_ScreenBtn,					// Campaign Choice 0
+		&NULL_20_ScreenBtn,					// Campaign Choice 1
+		&NULL_20_ScreenBtn,					// Campaign Choice 2
+		&NULL_20_ScreenBtn					// Campaign Choice 3
+	}
+};
+
+SCREENOBJDEF	SelectCampaignMore_ScreenObj =
+{
+	( SOBJ_BKG_IMAGE|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 180,100 },							// screenObj relative position
+	&CampaignSelectTitle,					// screenObj title information
+	&panelImage,							// screenObj image information
+	&GameStartArea,							// screenObj Area information
+	4,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&NULL_20_ScreenBtn,					// Campaign Choice 0
+		&NULL_20_ScreenBtn,					// Campaign Choice 1
+		&NULL_20_ScreenBtn,					// Campaign Choice 2
+		&NULL_20_ScreenBtn					// Campaign Choice 3
+	}
+};
+
+SCREENOBJDEF	SelectCampaignBack_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS ),	// screenObj Attributes
+	{ 290,330 },							// screenBtn relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&BackArea,								// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&CAMPAIGN_BACK_ScreenBtn			// display back
+	}
+};
+
+SCREENOBJDEF	SelectCampaignBack2_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS ),	// screenObj Attributes
+	{ 200,330 },							// screenBtn relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&BackArea,								// screenObj Area information
+	2,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&CAMPAIGN_BACK_ScreenBtn,			// display back
+		&CAMPAIGN_MORE_ScreenBtn			// display More
+	}
+};
+
+//------------------------------------------------------------------------
+//				Select Mission ScreenObj
+//------------------------------------------------------------------------
+/*
+SCREENOBJDEF	SelectMission1a_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE|SOBJ_HAS_TITLE ),		// screenObj Attributes
+	{ 205,48 },								// screenObj relative position
+	&MissionTitle,							// screenObj title information
+	&nullImage,								// screenObj image information
+	&MissionArea,							// screenObj Area information
+	4,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&NULL_20_ScreenBtn,					// Mission Choice 0
+		&NULL_20_ScreenBtn,					// Mission Choice 1
+		&NULL_20_ScreenBtn,					// Mission Choice 2
+		&NULL_20_ScreenBtn,					// Mission Choice 3
+	}
+};
+*/
+
+SCREENOBJDEF	SelectMission2a_ScreenObj =
+{
+//	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE|SOBJ_HAS_TITLE ),		// screenObj Attributes
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS|SOBJ_HAS_TITLE ),		// screenObj Attributes
+	{ 80,48 },								// screenObj relative position
+	&MissionTitle,							// screenObj title information
+	&nullImage,								// screenObj image information
+	&MissionArea,							// screenObj Area information
+	4,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&NULL_20_ScreenBtn,					// Mission Choice 0
+		&NULL_20_ScreenBtn,					// Mission Choice 1
+		&NULL_20_ScreenBtn,					// Mission Choice 2
+		&NULL_20_ScreenBtn,					// Mission Choice 3
+	}
+};
+
+SCREENOBJDEF	SelectMission2b_ScreenObj =
+{
+//	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE|SOBJ_HAS_TITLE ),		// screenObj Attributes
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS|SOBJ_HAS_TITLE ),		// screenObj Attributes
+	{ 330,48 },								// screenObj relative position
+	&MissionTitle,							// screenObj title information
+	&nullImage,								// screenObj image information
+	&MissionArea,							// screenObj Area information
+	4,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&NULL_20_ScreenBtn,					// Mission Choice 0
+		&NULL_20_ScreenBtn,					// Mission Choice 1
+		&NULL_20_ScreenBtn,					// Mission Choice 2
+		&NULL_20_ScreenBtn,					// Mission Choice 3
+	}
+};
+
+/*
+SCREENOBJDEF	SelectMission3a_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE|SOBJ_HAS_TITLE ),		// screenObj Attributes
+	{ 205,218 },							// screenObj relative position
+	&MissionTitle,							// screenObj title information
+	&nullImage,								// screenObj image information
+	&MissionArea,							// screenObj Area information
+	4,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&NULL_20_ScreenBtn,					// Mission Choice 0
+		&NULL_20_ScreenBtn,					// Mission Choice 1
+		&NULL_20_ScreenBtn,					// Mission Choice 2
+		&NULL_20_ScreenBtn,					// Mission Choice 3
+	}
+};
+*/
+
+SCREENOBJDEF	SelectMission4a_ScreenObj =
+{
+//	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE|SOBJ_HAS_TITLE ),		// screenObj Attributes
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS|SOBJ_HAS_TITLE ),		// screenObj Attributes
+	{ 80,218 },								// screenObj relative position
+	&MissionTitle,							// screenObj title information
+	&nullImage,								// screenObj image information
+	&MissionArea,							// screenObj Area information
+	4,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&NULL_20_ScreenBtn,					// Mission Choice 0
+		&NULL_20_ScreenBtn,					// Mission Choice 1
+		&NULL_20_ScreenBtn,					// Mission Choice 2
+		&NULL_20_ScreenBtn,					// Mission Choice 3
+	}
+};
+
+SCREENOBJDEF	SelectMission4b_ScreenObj =
+{
+//	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE|SOBJ_HAS_TITLE ),		// screenObj Attributes
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS|SOBJ_HAS_TITLE ),		// screenObj Attributes
+	{ 330,218 },							// screenObj relative position
+	&MissionTitle,							// screenObj title information
+	&nullImage,								// screenObj image information
+	&MissionArea,							// screenObj Area information
+	4,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&NULL_20_ScreenBtn,					// Mission Choice 0
+		&NULL_20_ScreenBtn,					// Mission Choice 1
+		&NULL_20_ScreenBtn,					// Mission Choice 2
+		&NULL_20_ScreenBtn,					// Mission Choice 3
+	}
+};
+
+SCREENOBJDEF	SelectMissionBACK_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 180,380 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&MoreArea,								// screenObj Area information
+	2,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&MISSION_BACK_ScreenBtn,			// display Back
+		&MISSION_CANCEL_ScreenBtn			// display Cancel
+	}
+};
+
+SCREENOBJDEF	SelectMissionMORE_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 180,380 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&MoreArea,								// screenObj Area information
+	3,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&MISSION_BACK_ScreenBtn,			// display Back
+		&MISSION_MORE_ScreenBtn,			// display more choices
+		&MISSION_CANCEL1_ScreenBtn			// display Cancel
+	}
+};
+
+//------------------------------------------------------------------------
+//				Game Player Name ScreenObj
+//------------------------------------------------------------------------
+
+SCREENOBJDEF	GamePlayerName_ScreenObj =
+{
+	( SOBJ_BKG_IMAGE|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 180,100 },							// screenObj relative position
+	&CallSignTitle,							// screenObj title information
+	&panelImage,							// screenObj image information
+	&GameStartArea,							// screenObj Area information
+	4,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&PLAYER_NAME_1_ScreenBtn,			// Player Name 1
+		&PLAYER_NAME_2_ScreenBtn,			// Player Name 2
+		&PLAYER_NAME_3_ScreenBtn,			// Player Name 3
+		&PLAYER_NAME_4_ScreenBtn			// Player Name 4
+	}
+};
+
+SCREENOBJDEF	GamePlayerNameBack_ScreenObj =
+{
+	( SOBJ_BKG_IMAGE|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 180,330 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&AudioArea,								// screenObj Area information
+	3,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&BACK2_ScreenBtn,					// BACK
+		&DELETE_ScreenBtn,					// Delete Player Name
+		&NEXT2_ScreenBtn					// Next
+	}
+};
+
+//------------------------------------------------------------------------
+//				Options ScreenObj
+//------------------------------------------------------------------------
+
+SCREENOBJDEF	Options_ScreenObj =
+{
+	( SOBJ_BKG_IMAGE|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 180,100 },							// screenObj relative position
+	&OptionsTitle,							// screenObj title information
+	&panelImage,							// screenObj image information
+	&GameStartArea,							// screenObj Area information
+	3,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&CONTROL_ScreenBtn,					// "Controls"
+		&AUDIO_ScreenBtn,					// "Audio"
+		&ABOUT_ScreenBtn					// "About Button"
+	}
+};
+
+SCREENOBJDEF	Options2_ScreenObj =
+{
+	( SOBJ_BKG_IMAGE|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 180,60 },								// screenObj relative position
+	&OptionsTitle,							// screenObj title information
+	&panelImage,							// screenObj image information
+	&GameStartArea,							// screenObj Area information
+	3,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&CONTROL2_ScreenBtn,				// "Controls"
+		&AUDIO2_ScreenBtn,					// "Audio"
+		&ABORTMISSION_ScreenBtn				// "Abort Mission"
+	}
+};
+
+SCREENOBJDEF	Controls_ScreenObj =
+{
+	( SOBJ_BKG_IMAGE|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 180,100 },							// screenObj relative position
+	&ControlsTitle,							// screenObj title information
+	&panelImage,							// screenObj image information
+	&OptionsArea,							// screenObj Area information
+	4,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&KEYPAD_ScreenBtn,					// "KeyPad Configuration"
+		&KEYBOARD_ScreenBtn,				// "KeyBoard Configuration"
+		&CUSTOM_ScreenBtn,					// "Custom Configuration"
+		&JOYSTICK_ScreenBtn					// "Joystick Configuration"
+	}
+};
+
+SCREENOBJDEF	Controls2_ScreenObj =
+{
+	( SOBJ_BKG_IMAGE|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 180,60 },								// screenObj relative position
+	&ControlsTitle,							// screenObj title information
+	&panelImage,							// screenObj image information
+	&OptionsArea,							// screenObj Area information
+	4,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&KEYPAD2_ScreenBtn,					// "KeyPad Configuration"
+		&KEYBOARD2_ScreenBtn,				// "KeyBoard Configuration"
+		&CUSTOM2_ScreenBtn,					// "Custom Configuration"
+		&JOYSTICK2_ScreenBtn				// "Joystick Configuration"
+	}
+};
+
+SCREENOBJDEF	Default1_Config_ScreenObj =
+{
+	( SOBJ_BKG_IMAGE|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 80,24 },								// screenObj relative position
+	&Default1ConfigTitle,					// screenObj title information
+	&KeyboardConfig,						// screenObj image information
+	&nullArea,								// screenObj Area information
+	0,										// number of screenBtnDefs
+	{ NULL }								// screenObj screenBtnDefs
+};
+
+SCREENOBJDEF	Default2_Config_ScreenObj =
+{
+	( SOBJ_BKG_IMAGE|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 80,24 },								// screenObj relative position
+	&Default2ConfigTitle,					// screenObj title information
+	&KeyboardConfig,						// screenObj image information
+	&nullArea,								// screenObj Area information
+	0,										// number of screenBtnDefs
+	{ NULL }								// screenObj screenBtnDefs
+};
+
+SCREENOBJDEF	Custom_Config_ScreenObj =
+{
+	( SOBJ_BKG_IMAGE|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 80,24 },								// screenObj relative position
+	&CustomConfigTitle,						// screenObj title information
+	&CustomConfig,							// screenObj image information
+	&nullArea,								// screenObj Area information
+	0,										// number of screenBtnDefs
+	{ NULL }								// screenObj screenBtnDefs
+};
+
+SCREENOBJDEF	Joystick_Config_ScreenObj =
+{
+	( SOBJ_BKG_IMAGE|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 80,24 },								// screenObj relative position
+	&JoystickConfigTitle,					// screenObj title information
+	&JoystickConfig,						// screenObj image information
+	&nullArea,								// screenObj Area information
+	0,										// number of screenBtnDefs
+	{ NULL }								// screenObj screenBtnDefs
+};
+
+SCREENOBJDEF	Config_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 390,318 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&ConfigArea,							// screenObj Area information
+	2,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&APPLY_ScreenBtn,					// "Apply Configuration"
+		&BACK8_ScreenBtn					// "Custom Configuration"
+	}
+};
+
+SCREENOBJDEF	ConfigBack2_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 390,318 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&ConfigArea,							// screenObj Area information
+	2,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&APPLY_ScreenBtn,					// "Apply Configuration"
+		&BACK11_ScreenBtn					// "Custom Configuration"
+	}
+};
+
+SCREENOBJDEF	ConfigJoystick_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 390,318 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&ConfigArea,							// screenObj Area information
+	2,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&APPLY2_ScreenBtn,					// "Apply Configuration"
+		&BACK12_ScreenBtn					// "BACK"
+	}
+};
+
+SCREENOBJDEF	ConfigJoystick2_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 390,318 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&ConfigArea,							// screenObj Area information
+	2,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&APPLY2_ScreenBtn,					// "Apply Configuration"
+		&BACK13_ScreenBtn					// "BACK"
+	}
+};
+
+SCREENOBJDEF	ConfigBack_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 390,270 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&BackArea,								// screenObj Area information
+	1,										// number of screenBtnDefs
+	{ &BACK7_ScreenBtn }					// screenObj screenBtnDefs
+};
+
+SCREENOBJDEF	AudioBack_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 290,320 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&BackArea,								// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&BACK4_ScreenBtn					// "Back"
+	}
+};
+
+SCREENOBJDEF	AudioBack2_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+//	{ 305,338 },							// screenObj relative position
+	{ 310,294 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&BackArea,								// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&BACK5_ScreenBtn					// "Back"
+	}
+};
+
+SCREENOBJDEF	OptionBack_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 290,320 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&BackArea,								// screenObj Area information
+	1,										// number of screenBtnDefs
+	{ &BACK3_ScreenBtn }					// screenObj screenBtnDefs
+};
+
+SCREENOBJDEF	OptionsBack2_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 290,290 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&BackArea,								// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&BACK6_ScreenBtn					// "Back"
+	}
+};
+
+SCREENOBJDEF	ControlsBack2_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+//	{ 305,338 },							// screenObj relative position
+	{ 290,290 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&BackArea,								// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&BACK5_ScreenBtn					// "Back"
+	}
+};
+
+SCREENOBJDEF	AudioBack3_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 305,338 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&BackArea,								// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&BACK4_ScreenBtn					// "Back"
+	}
+};
+
+SCREENOBJDEF	AudioPlayBack_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 200,336 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&BackArea,								// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&BACK9_ScreenBtn					// "Back"
+	}
+};
+
+SCREENOBJDEF	Restore_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 110,318 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&RestoreArea,							// screenObj Area information
+	2,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&RESTOREkb_ScreenBtn,				// "reset to Default Keyboard Configuration"
+		&RESTOREkp_ScreenBtn				// "reset to Default Keypad Configuration"
+	}
+};
+
+SCREENOBJDEF	RestoreJoystick_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 110,318 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&RestoreArea,							// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&RESTOREjoy_ScreenBtn				// "reset to Default Joystick Configuration"
+	}
+};
+
+//------------------------------------------------------------------------
+//				AUDIO ScreenObjs
+//------------------------------------------------------------------------
+
+SCREENOBJDEF	Audio_ScreenObj =
+{
+	( SOBJ_BKG_IMAGE|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 180,100 },								// screenObj relative position
+	&AudioTitle,							// screenObj title information
+	&panelImage,							// screenObj image information
+	&nullArea,								// screenObj Area information
+	0,										// number of screenBtnDefs
+	{ NULL }								// screenObj screenBtnDefs
+};
+
+SCREENOBJDEF	Audio2_ScreenObj =
+{
+	( SOBJ_BKG_IMAGE|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 180,60 },								// screenObj relative position
+	&AudioTitle,							// screenObj title information
+	&panelImage,							// screenObj image information
+	&nullArea,								// screenObj Area information
+	0,										// number of screenBtnDefs
+	{ NULL }								// screenObj screenBtnDefs
+};
+
+SCREENOBJDEF	SFX_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 180,140 },								// screenObj relative position
+	&SfxTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&AudioArea,								// screenObj Area information
+	2,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&SFX_ON_ScreenBtn,					// "ON"
+		&SFX_OFF_ScreenBtn					// "OFF"
+	}
+};
+
+SCREENOBJDEF	SFXvolume_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE ),		// screenObj Attributes
+	{ 264,170 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&HorizontalScrollArea,					// screenObj Area information
+	3,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&SfxDn_ScreenBtn,
+		&Bar_ScreenBtn,
+		&SfxUp_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	SFXplay_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE ),		// screenObj Attributes
+	{ 220,174 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&PlaySndArea,							// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&SfxPlay_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	MUSIC_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 180,210 },							// screenObj relative position
+	&MusicTitle,							// screenObj title information
+	&nullImage,								// screenObj image information
+	&AudioArea,								// screenObj Area information
+	2,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&MUSIC_ON_ScreenBtn,				// "ON"
+		&MUSIC_OFF_ScreenBtn				// "OFF"
+	}
+};
+
+SCREENOBJDEF	MUSICvolume_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE ),		// screenObj Attributes
+	{ 264,240 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&HorizontalScrollArea,					// screenObj Area information
+	3,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&MusicDn_ScreenBtn,
+		&Bar_ScreenBtn,
+		&MusicUp_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	MUSICplay_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE ),		// screenObj Attributes
+	{ 220,244 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&PlaySndArea,							// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&MusicPlay_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	VOICE_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 180,280 },							// screenObj relative position
+	&VoiceTitle,							// screenObj title information
+	&nullImage,								// screenObj image information
+	&AudioArea,								// screenObj Area information
+	2,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&VOICE_ON_ScreenBtn,				// "ON"
+		&VOICE_OFF_ScreenBtn				// "OFF"
+	}
+};
+
+SCREENOBJDEF	VOICEvolume_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE ),		// screenObj Attributes
+	{ 264,310 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&HorizontalScrollArea,					// screenObj Area information
+	3,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&VoiceDn_ScreenBtn,
+		&Bar_ScreenBtn,
+		&VoiceUp_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	VOICEplay_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE ),		// screenObj Attributes
+	{ 220,314 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&PlaySndArea,							// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&VoicePlay_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	SFX2_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 180,110 },								// screenObj relative position
+	&SfxTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&AudioArea,								// screenObj Area information
+	2,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&SFX_ON_ScreenBtn,					// "ON"
+		&SFX_OFF_ScreenBtn					// "OFF"
+	}
+};
+
+SCREENOBJDEF	SFXvolume2_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE ),		// screenObj Attributes
+	{ 264,140 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&HorizontalScrollArea,					// screenObj Area information
+	3,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&SfxDn_ScreenBtn,
+		&Bar_ScreenBtn,
+		&SfxUp_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	SFXplay2_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE ),		// screenObj Attributes
+	{ 220,144 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&PlaySndArea,							// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&SfxPlay_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	MUSIC2_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 180,170 },							// screenObj relative position
+	&MusicTitle,							// screenObj title information
+	&nullImage,								// screenObj image information
+	&AudioArea,								// screenObj Area information
+	2,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&MUSIC_ON_ScreenBtn,				// "ON"
+		&MUSIC_OFF_ScreenBtn				// "OFF"
+	}
+};
+
+SCREENOBJDEF	MUSICvolume2_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE ),		// screenObj Attributes
+	{ 264,200 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&HorizontalScrollArea,					// screenObj Area information
+	3,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&MusicDn_ScreenBtn,
+		&Bar_ScreenBtn,
+		&MusicUp_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	MUSICplay2_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE ),		// screenObj Attributes
+	{ 220,194 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&PlaySndArea,							// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&MusicPlay_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	VOICE2_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 180,230 },							// screenObj relative position
+	&VoiceTitle,							// screenObj title information
+	&nullImage,								// screenObj image information
+	&AudioArea,								// screenObj Area information
+	2,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&VOICE_ON_ScreenBtn,				// "ON"
+		&VOICE_OFF_ScreenBtn				// "OFF"
+	}
+};
+
+SCREENOBJDEF	VOICEvolume2_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE ),		// screenObj Attributes
+	{ 264,260 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&HorizontalScrollArea,					// screenObj Area information
+	3,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&VoiceDn_ScreenBtn,
+		&Bar_ScreenBtn,
+		&VoiceUp_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	VOICEplay2_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE ),		// screenObj Attributes
+	{ 220,264 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&PlaySndArea,							// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&VoicePlay_ScreenBtn
+	}
+};
+
+//------------------------------------------------------------------------
+//				PLAY Options ScreenObj
+//------------------------------------------------------------------------
+
+//------------------------------------------------------------------------
+//				Player Mission Lose ScreenObjs
+//------------------------------------------------------------------------
+
+SCREENOBJDEF	AnyKeyInvisible_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 256,320 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&ContinueArea,							// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&CONTINUE_ScreenBtn					// "CONTINUE"
+	}
+};
+
+SCREENOBJDEF	YesNoInvisible_ScreenObj =
+{
+	( SOBJ_BKG_IMAGE|SOBJ_BKG_AREA|SOBJ_BKG_TRANS|SOBJ_HAS_TITLE ),		// screenObj Attributes
+	{ 420,250 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&yesnobkgdImage,						// screenObj image information
+	&ContinueArea,							// screenObj Area information
+	3,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&PlayAgain_ScreenBtn,				// "Play Again?"
+		&YES_ScreenBtn,						// "Yes"
+		&NO_ScreenBtn						// "No"
+	}
+};
+
+//------------------------------------------------------------------------
+//				Player Mission Win ScreenObjs
+//------------------------------------------------------------------------
+
+SCREENOBJDEF	MissionComplete_ScreenObj =
+{
+	( SOBJ_BKG_IMAGE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 160,0 },								// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&missionOverImage,						// screenObj image information
+	&MissionCompleteArea,					// screenObj Area information
+	0,										// number of screenBtnDefs
+	{ NULL }								// screenObj screenBtnDefs
+};
+
+SCREENOBJDEF	Empty_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_HAS_TITLE|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 0,0 },								// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&nullArea,								// screenObj Area information
+	0,										// number of screenBtnDefs
+	{ NULL }								// screenObj screenBtnDefs
+};
+
+
+//------------------------------------------------------------------------
+//				Multi Player Campaign Select Screen Objects
+//------------------------------------------------------------------------
+
+SCREENOBJDEF	StratMap_ScreenObj =
+{
+	( SOBJ_BKG_IMAGE|SOBJ_BKG_OPAQUE ),		// screenObj Attributes
+	{ 325,13 },								// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&MapArea,								// screenObj Area information
+	0,										// number of screenBtnDefs
+	{ NULL }								// screenObj screenBtnDefs
+};
+
+SCREENOBJDEF	GreenBtn_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 89,20 },								// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&ColorBtnArea,							// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&GreenColor_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	TanBtn_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 132,20 },								// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&ColorBtnArea,							// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&TanColor_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	BlueBtn_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 175,20 },								// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&ColorBtnArea,							// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&BlueColor_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	GrayBtn_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 218,20 },								// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&ColorBtnArea,							// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&GrayColor_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	Player0Led_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 254,80 },								// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&LEDBtnArea,							// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&LED_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	Player1Led_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 254,113 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&LEDBtnArea,							// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&LED_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	Player2Led_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 254,146 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&LEDBtnArea,							// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&LED_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	Player3Led_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 254,179 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&LEDBtnArea,							// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&LED_ScreenBtn
+	}
+};
+
+
+SCREENOBJDEF	Player0_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE|SOBJ_HAS_TITLE ),	// screenObj Attributes
+	{ 70,80 },								// screenObj relative position
+	&PlayerTitle,							// screenObj title information
+	&nullImage,								// screenObj image information
+	&PlayerArea,							// screenObj Area information
+	0,										// number of screenBtnDefs
+	{ NULL }								// screenObj screenBtnDefs
+};
+
+SCREENOBJDEF	Player1_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE|SOBJ_HAS_TITLE ),	// screenObj Attributes
+	{ 70,113 },								// screenObj relative position
+	&PlayerTitle,							// screenObj title information
+	&nullImage,								// screenObj image information
+	&PlayerArea,							// screenObj Area information
+	0,										// number of screenBtnDefs
+	{ NULL }								// screenObj screenBtnDefs
+};
+
+SCREENOBJDEF	Player2_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE|SOBJ_HAS_TITLE ),	// screenObj Attributes
+	{ 70,146 },								// screenObj relative position
+	&PlayerTitle,							// screenObj title information
+	&nullImage,								// screenObj image information
+	&PlayerArea,							// screenObj Area information
+	0,										// number of screenBtnDefs
+	{ NULL }								// screenObj screenBtnDefs
+};
+
+SCREENOBJDEF	Player3_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE|SOBJ_HAS_TITLE ),	// screenObj Attributes
+	{ 70,179 },								// screenObj relative position
+	&PlayerTitle,							// screenObj title information
+	&nullImage,								// screenObj image information
+	&PlayerArea,							// screenObj Area information
+	0,										// number of screenBtnDefs
+	{ NULL }								// screenObj screenBtnDefs
+};
+
+SCREENOBJDEF	StartBtn_ScreenObj =
+{
+	( SOBJ_BKG_AREA ),						// screenObj Attributes
+	{ 67,52 },								// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&StartBtnArea,							// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&StartBtn_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	ExitBtn_ScreenObj =
+{
+	( SOBJ_BKG_AREA ),						// screenObj Attributes
+	{ 600,286 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&ExitBtnArea,							// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&ExitBtn_ScreenBtn
+	}
+};
+
+
+SCREENOBJDEF	HostChatSend_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 40,380 },								// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&HostSendChatArea,						// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&HostSend_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	HostChatReceive_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE ),		// screenObj Attributes
+	{ 40,405 },								// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&HostReceiveChatArea,					// screenObj Area information
+	0,										// number of screenBtnDefs
+	{ NULL }								// screenObj screenBtnDefs
+};
+
+SCREENOBJDEF	RulesTitle_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE ),		// screenObj Attributes
+	{ 72,250 },								// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&RulesTitleArea,						// screenObj Area information
+	0,										// number of screenBtnDefs
+	{ NULL }								// screenObj screenBtnDefs
+};
+
+SCREENOBJDEF	Rules_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE ),		// screenObj Attributes
+	{ 72,280 },								// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&RulesArea,								// screenObj Area information
+	0,										// number of screenBtnDefs
+	{ NULL }								// screenObj screenBtnDefs
+};
+
+SCREENOBJDEF	CampaignList_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE ),		// screenObj Attributes
+	{ 320,302 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&CampaignListArea,						// screenObj Area information
+	3,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&MultiMap_ScreenBtn,
+		&MultiMap_ScreenBtn,
+		&MultiMap_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	VerticalScroll_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS ),		// screenObj Attributes
+	{ 544,302 },							// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&nullArea,								// screenObj Area information
+	2,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&ScrollUp_ScreenBtn,
+		&ScrollDn_ScreenBtn
+	}
+};
+
+
+SCREENOBJDEF	RemoteChatSend_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE ),		// screenObj Attributes
+	{ 40,380 },								// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&RemoteSendChatArea,					// screenObj Area information
+	1,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&RemoteSend_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	RemoteChatReceive_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_OPAQUE ),		// screenObj Attributes
+	{ 40,405 },								// screenObj relative position
+	&nullTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&RemoteReceiveChatArea,					// screenObj Area information
+	0,										// number of screenBtnDefs
+	{ NULL }								// screenObj screenBtnDefs
+};
+
+//------------------------------------------------------------------------
+
+SCREENOBJDEF	SargeColumn_ScreenObj =
+{
+//	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS|SOBJ_HAS_TITLE|SOBJ_TITLE_CENTER ),	// screenObj Attributes
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS|SOBJ_HAS_TITLE ),	// screenObj Attributes
+	{ 108,58 },								// screenObj relative position
+	&SargeColumnTitle,						// screenObj title information
+	&nullImage,								// screenObj image information
+	&ColumnConfigArea,						// screenObj Area information
+	0,										// number of screenBtnDefs
+	{ NULL }								// screenObj screenBtnDefs
+};
+
+SCREENOBJDEF	GameColumn_ScreenObj =
+{
+//	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS|SOBJ_HAS_TITLE|SOBJ_TITLE_CENTER ),	// screenObj Attributes
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS|SOBJ_HAS_TITLE ),	// screenObj Attributes
+	{ 336,58 },								// screenObj relative position
+	&GameColumnTitle,						// screenObj title information
+	&nullImage,								// screenObj image information
+	&ColumnConfigArea,						// screenObj Area information
+	0,										// number of screenBtnDefs
+	{ NULL }								// screenObj screenBtnDefs
+};
+
+SCREENOBJDEF	JoystickColumn_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS|SOBJ_HAS_TITLE ),	// screenObj Attributes
+	{ 112,58 },								// screenObj relative position
+	&JoystickColumnTitle,					// screenObj title information
+	&nullImage,								// screenObj image information
+	&ColumnConfigArea,						// screenObj Area information
+	0,										// number of screenBtnDefs
+	{ NULL }								// screenObj screenBtnDefs
+};
+
+SCREENOBJDEF	SargeKey_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS|SOBJ_HAS_TITLE ),	// screenObj Attributes
+	{ 108,72 },								// screenObj relative position
+	&KeyTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&KeyConfigArea,							// screenObj Area information
+	2,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&FixedKey_ScreenBtn,
+		&Key_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	SargeKeyPassive_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS|SOBJ_HAS_TITLE ),	// screenObj Attributes
+	{ 108,72 },								// screenObj relative position
+	&KeyTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&KeyConfigArea,							// screenObj Area information
+	2,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&FixedKey_ScreenBtn,
+		&PassiveKey_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	GameKey_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS|SOBJ_HAS_TITLE ),	// screenObj Attributes
+	{ 336,72 },								// screenObj relative position
+	&KeyTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&KeyConfigArea,							// screenObj Area information
+	2,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&FixedKey_ScreenBtn,
+		&Key_ScreenBtn
+	}
+};
+
+SCREENOBJDEF	GameKeyPassive_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS|SOBJ_HAS_TITLE ),	// screenObj Attributes
+	{ 336,72 },								// screenObj relative position
+	&KeyTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&KeyConfigArea,							// screenObj Area information
+	2,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&FixedKey_ScreenBtn,
+		&PassiveKey_ScreenBtn
+	}
+};
+
+
+SCREENOBJDEF	JoystickButton_ScreenObj =
+{
+	( SOBJ_BKG_AREA|SOBJ_BKG_TRANS|SOBJ_HAS_TITLE ),	// screenObj Attributes
+	{ 132,72 },								// screenObj relative position
+	&KeyTitle,								// screenObj title information
+	&nullImage,								// screenObj image information
+	&KeyConfigArea,							// screenObj Area information
+	2,										// number of screenBtnDefs
+	{										// screenObj screenBtnDefs
+		&FixedKey_ScreenBtn,
+		&JoyBtn_ScreenBtn
+	}
+};
+
+//========================================================================
+//						EOF
+//========================================================================

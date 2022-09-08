@@ -1,0 +1,1793 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif\r\n"
+    "#include ""res\\MapEditor.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#include ""afxprint.rc""       // printing/print preview resources\r\n"
+    "#endif\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\MapEditor.ico"
+IDR_MAPTYPE             ICON    DISCARDABLE     "res\\MapEditorDoc.ico"
+IDR_TILESET             ICON    DISCARDABLE     "res\\TileSet.ico"
+IDR_ARMYMAP             ICON    DISCARDABLE     "res\\amap.ico"
+IDR_ARMYTILESET         ICON    DISCARDABLE     "res\\atiles.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_CHECK               BITMAP  DISCARDABLE     "res\\check.bmp"
+IDB_CROSS               BITMAP  DISCARDABLE     "res\\cross.bmp"
+IDB_DELETE              BITMAP  DISCARDABLE     "res\\delete.bmp"
+IDB_DOWN                BITMAP  DISCARDABLE     "res\\down.bmp"
+IDB_NEW                 BITMAP  DISCARDABLE     "res\\new.bmp"
+IDB_UP                  BITMAP  DISCARDABLE     "res\\up.bmp"
+IDB_SPLASH              BITMAP  DISCARDABLE     "res\\splash.bmp"
+IDB_STATE               BITMAP  DISCARDABLE     "res\\stateico.bmp"
+IDB_DOORWAY             BITMAP  DISCARDABLE     "res\\doorway.bmp"
+IDB_ROUTE               BITMAP  DISCARDABLE     "res\\route.bmp"
+IDB_START               BITMAP  DISCARDABLE     "res\\start.bmp"
+IDB_END                 BITMAP  DISCARDABLE     "res\\end.bmp"
+IDB_CYCLEF              BITMAP  DISCARDABLE     "res\\cyclef.bmp"
+IDB_CYCLEB              BITMAP  DISCARDABLE     "res\\cycleb.bmp"
+IDB_CYCLEN              BITMAP  DISCARDABLE     "res\\cyclen.bmp"
+IDR_MAINFRAME           BITMAP  DISCARDABLE     "res\\tb.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_EDIT_SELECT
+    BUTTON      ID_EDIT_CLONE
+    BUTTON      ID_EDIT_RANDOMIZE
+    BUTTON      ID_VIEW_REPOSITION
+    SEPARATOR
+    BUTTON      ID_ATTRIBUTE_DECIMAL
+    BUTTON      ID_EDIT_WITHATTRIBUTES
+    BUTTON      ID_VIEW_GRID
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New...\tCtrl+N",             ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "Import...",                   ID_FILE_IMPORT
+        MENUITEM SEPARATOR
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM "&Layer Bar",                  ID_VIEW_LAYERBAR
+        MENUITEM SEPARATOR
+        MENUITEM "&Decimal",                    ID_ATTRIBUTE_DECIMAL
+        , CHECKED
+        MENUITEM "&Options...",                 ID_VIEW_OPTIONS
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About MapEditor...",         ID_APP_ABOUT
+    END
+END
+
+IDR_MAPTYPE MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+        MENUITEM SEPARATOR
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Revert",                     ID_FILE_REVERT
+        MENUITEM SEPARATOR
+        MENUITEM "Import...",                   ID_FILE_IMPORT
+        MENUITEM "Export...",                   ID_FILE_EXPORT
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "Print S&etup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Sen&d...",                    ID_FILE_SEND_MAIL
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM "&Redo\tCtrl+Y",               ID_EDIT_REDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM SEPARATOR
+        MENUITEM "Crop",                        ID_EDIT_CROP
+        MENUITEM "Clon&e\tAlt+C",               ID_EDIT_CLONE
+        MENUITEM "Randomi&ze",                  ID_EDIT_RANDOMIZE
+        MENUITEM "E&xpand",                     ID_EDIT_EXPAND
+        MENUITEM SEPARATOR
+        MENUITEM "&Find\tCtrl+F",               ID_EDIT_FIND
+        MENUITEM "Rep&lace...\tCtrl-R",         ID_EDIT_REPLACE
+        MENUITEM SEPARATOR
+        MENUITEM "&Select\tAlt+S",              ID_EDIT_SELECT
+        MENUITEM "Select Area...",              ID_EDIT_SELECTDLG
+        MENUITEM "Select &All\tCtrl+A",         ID_EDIT_SELECT_ALL
+        MENUITEM "Select &None\tAlt+N",         ID_EDIT_SELECT_NONE
+        MENUITEM SEPARATOR
+        MENUITEM "&With Attributes",            ID_EDIT_WITHATTRIBUTES
+        , CHECKED
+        MENUITEM "Up&date Attributes",          ID_EDIT_UPDATEATTRIBUTES
+        MENUITEM SEPARATOR
+        MENUITEM "Scr&ipts",                    ID_EDIT_SCRIPTS
+        MENUITEM "Attri&butes...\tCtrl+W",      ID_EDIT_ATTRIBUTES
+        MENUITEM "Pr&operties...\tAlt+Enter",   ID_EDIT_PROPERTIES
+        MENUITEM "&Viewable Area...",           ID_EDIT_VIEWABLE
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM "&Layer Bar",                  ID_VIEW_LAYERBAR
+        MENUITEM "O&verview",                   ID_VIEW_OVERVIEW
+        MENUITEM SEPARATOR
+        MENUITEM "&Decimal",                    ID_ATTRIBUTE_DECIMAL
+        , CHECKED
+        MENUITEM "&Grid",                       ID_VIEW_GRID
+        MENUITEM "&Options...",                 ID_VIEW_OPTIONS
+        MENUITEM SEPARATOR
+        MENUITEM "&Reposition\t<sp>",           ID_VIEW_REPOSITION
+    END
+    POPUP "&Layers"
+    BEGIN
+        MENUITEM "Activate &Top",               ID_LAYERS_ACTIVATETOP
+        MENUITEM "Activate &Bottom",            ID_LAYERS_ACTIVATEBOTTOM
+        MENUITEM "Activate &Next",              ID_LAYERS_ACTIVATENEXT
+        MENUITEM "Activate &Previous",          ID_LAYERS_ACTIVATEPREVIOUS
+        MENUITEM SEPARATOR
+        MENUITEM "&Compute...",                 ID_LAYERS_COMPUTE
+        MENUITEM "&Arrange...",                 ID_LAYERS_ARRANGE
+    END
+    POPUP "&Tileset"
+    BEGIN
+        MENUITEM "&Tile Categories...",         ID_TILESET_TILECATEGORIES
+        MENUITEM "&Group Categories...",        ID_TILESET_GROUPCATEGORIES
+        MENUITEM "CME Categories...",           ID_TILESET_CMECATEGORIES
+        MENUITEM SEPARATOR
+        MENUITEM "Use &Palette...",             ID_TILESET_USEPALETTE
+        MENUITEM "&Remap to Palette...",        ID_TILESET_REMAPTOPALETTE
+        MENUITEM SEPARATOR
+        MENUITEM "Find &Duplicates...",         ID_TILESET_FINDDUP
+        MENUITEM "Show &Usage...",              ID_TILESET_SHOWUSAGE
+        MENUITEM "&Compact",                    ID_TILESET_COMPACT
+    END
+    POPUP "&Object"
+    BEGIN
+        MENUITEM "Move To &Top\tCtrl+]",        ID_OBJECT_TOP
+        MENUITEM "Move To Botto&m\tCtrl+[",     ID_OBJECT_BOTTOM
+        MENUITEM "Move &Forward\t]",            ID_OBJECT_FORWARD
+        MENUITEM "Move &Back\t[",               ID_OBJECT_BACK
+        MENUITEM SEPARATOR
+        MENUITEM "&Animate\tF1",                ID_OBJECT_ANIMATE
+        MENUITEM "Flip &Horizontal",            ID_OBJECT_FLIPHORIZONTAL
+        MENUITEM SEPARATOR
+        MENUITEM "&Sort",                       ID_OBJECT_SORT
+        MENUITEM "&Remap All",                  ID_OBJECT_REMAP
+        MENUITEM "&Create Multi-Object Group",  ID_OBJECT_CREATEMOG
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&New Window",                 ID_WINDOW_NEW
+        MENUITEM SEPARATOR
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "Tile &Horizontally",          ID_WINDOW_TILE_HORZ
+        MENUITEM "&Tile Vertically",            ID_WINDOW_TILE_VERT
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About MapEditor...",         ID_APP_ABOUT
+    END
+END
+
+IDR_TILESETTYPE MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+        MENUITEM SEPARATOR
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Revert",                     ID_FILE_REVERT
+        MENUITEM SEPARATOR
+        MENUITEM "Import...",                   ID_FILE_IMPORT
+        MENUITEM "Export...",                   ID_FILE_EXPORT
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Sen&d...",                    ID_FILE_SEND_MAIL
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM SEPARATOR
+        MENUITEM "&Select\tAlt+S",              ID_EDIT_SELECT
+        MENUITEM "Select &All\tCtrl+A",         ID_EDIT_SELECT_ALL
+        MENUITEM "Select &None\tAlt+N",         ID_EDIT_SELECT_NONE
+        MENUITEM SEPARATOR
+        MENUITEM "Attri&butes...\tCtrl+W",      ID_EDIT_ATTRIBUTES
+        MENUITEM "Pr&operties...\tAlt+Enter",   ID_EDIT_PROPERTIES
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM "&Layer Bar",                  ID_VIEW_LAYERBAR
+        MENUITEM SEPARATOR
+        MENUITEM "&Decimal",                    ID_ATTRIBUTE_DECIMAL
+        , CHECKED
+        MENUITEM "&Options...",                 ID_VIEW_OPTIONS
+    END
+    POPUP "&Tileset"
+    BEGIN
+        MENUITEM "&Tile Categories...",         ID_TILESET_TILECATEGORIES
+        MENUITEM "&Group Categories...",        ID_TILESET_GROUPCATEGORIES
+        MENUITEM "CME Categories...",           ID_TILESET_CMECATEGORIES
+        MENUITEM SEPARATOR
+        MENUITEM "Use &Palette...",             ID_TILESET_USEPALETTE
+        MENUITEM "&Remap to Palette...",        ID_TILESET_REMAPTOPALETTE
+        MENUITEM SEPARATOR
+        MENUITEM "Find &Duplicates...",         ID_TILESET_FINDDUP
+        MENUITEM "Show &Usage...",              ID_TILESET_SHOWUSAGE
+        MENUITEM "&Compact",                    ID_TILESET_COMPACT
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&New Window",                 ID_WINDOW_NEW
+        MENUITEM SEPARATOR
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "Tile &Horizontally",          ID_WINDOW_TILE_HORZ
+        MENUITEM "&Tile Vertically",            ID_WINDOW_TILE_VERT
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About MapEditor...",         ID_APP_ABOUT
+    END
+END
+
+IDR_TILESETPOPUP MENU DISCARDABLE 
+BEGIN
+    POPUP ""
+    BEGIN
+        MENUITEM "Tile Categories...",          ID_TILESET_TILECATEGORIES
+        MENUITEM "Group Categories...",         ID_TILESET_GROUPCATEGORIES
+        MENUITEM "CME Categories...",           ID_TILESET_CMECATEGORIES
+        MENUITEM "Attributes...",               ID_EDIT_ATTRIBUTES
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    27,             ID_OBJECT_BOTTOM,       ASCII,  NOINVERT
+    29,             ID_OBJECT_TOP,          ASCII,  NOINVERT
+    "A",            ID_EDIT_SELECT_ALL,     VIRTKEY, CONTROL, NOINVERT
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "C",            ID_EDIT_CLONE,          VIRTKEY, ALT, NOINVERT
+    "F",            ID_EDIT_FIND,           VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_EDIT_SELECT_NONE,    VIRTKEY, ALT, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL, NOINVERT
+    "R",            ID_EDIT_REPLACE,        VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_EDIT_SELECT,         VIRTKEY, ALT, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_DOWN,        ID_DOWN,                VIRTKEY, NOINVERT
+    VK_DOWN,        ID_DOWN,                VIRTKEY, CONTROL, NOINVERT
+    VK_ESCAPE,      ID_CANCEL_OP,           VIRTKEY, NOINVERT
+    VK_F1,          ID_OBJECT_ANIMATE,      VIRTKEY, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    VK_LEFT,        ID_LEFT,                VIRTKEY, NOINVERT
+    VK_LEFT,        ID_LEFT,                VIRTKEY, CONTROL, NOINVERT
+    VK_RETURN,      ID_EDIT_PROPERTIES,     VIRTKEY, ALT, NOINVERT
+    VK_RIGHT,       ID_RIGHT,               VIRTKEY, NOINVERT
+    VK_RIGHT,       ID_RIGHT,               VIRTKEY, CONTROL, NOINVERT
+    VK_SPACE,       ID_VIEW_REPOSITION,     VIRTKEY, NOINVERT
+    VK_UP,          ID_UP,                  VIRTKEY, NOINVERT
+    VK_UP,          ID_UP,                  VIRTKEY, CONTROL, NOINVERT
+    "W",            ID_EDIT_ATTRIBUTES,     VIRTKEY, CONTROL, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Y",            ID_EDIT_REDO,           VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+    "[",            ID_OBJECT_BACK,         ASCII,  NOINVERT
+    "]",            ID_OBJECT_FORWARD,      ASCII,  NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 218, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,18,20
+    LTEXT           "MapEditor Version",IDC_VERSION,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright © 1996 The 3DO Company",IDC_STATIC,40,25,119,
+                    8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,32,14,WS_GROUP
+END
+
+IDD_NEWCATERGORY DIALOG DISCARDABLE  0, 0, 187, 44
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "New Category"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,130,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,130,24,50,14
+    LTEXT           "Category Title",IDC_STATIC,7,7,44,8
+    COMBOBOX        IDC_CATEGORY_TITLE,7,18,115,57,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_NEWGROUP DIALOG DISCARDABLE  0, 0, 186, 42
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "New Group"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,129,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,24,50,14
+    LTEXT           "Group Name",IDC_STATIC,7,4,50,8
+    COMBOBOX        IDC_GROUP_NAME,6,15,109,30,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_FINDDUPLICATES DIALOG DISCARDABLE  0, 0, 186, 95
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Find Duplicates"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Total Pixels Per Tile:",IDC_STATIC,13,61,65,11
+    LTEXT           "0",IDC_TILESET_MAXTOL,86,61,42,8,NOT WS_GROUP
+    DEFPUSHBUTTON   "OK",IDOK,129,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,24,50,14
+    LTEXT           "Different Pixel Tolerance:",IDC_STATIC,13,15,105,10
+    EDITTEXT        IDC_TILESET_TOLERANCE,35,33,68,15,ES_AUTOHSCROLL | 
+                    WS_GROUP
+END
+
+IDD_REMOVEDUPLICATES DIALOG DISCARDABLE  0, 0, 247, 166
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Remove Duplicates"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Cancel",IDCANCEL,190,38,50,14
+    LISTBOX         IDC_REMDUP_LIST,19,17,153,123,LBS_SORT | LBS_MULTIPLESEL | 
+                    LBS_OWNERDRAWFIXED | LBS_NOINTEGRALHEIGHT | 
+                    LBS_MULTICOLUMN | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Remove All",IDOK,190,7,50,14
+    LTEXT           "Found:",IDC_STATIC,13,143,23,8,NOT WS_GROUP
+    LTEXT           "0",IDC_REMDUP_FOUND,39,143,35,8,NOT WS_GROUP
+    PUSHBUTTON      "Remove",IDC_REMDUP_REMOVE,190,22,50,14
+END
+
+CG_IDD_PROGRESS DIALOG DISCARDABLE  0, 0, 191, 76
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Cancel",IDCANCEL,67,55,50,14
+    CONTROL         "Progress1",CG_IDC_PROGDLG_PROGRESS,"msctls_progress32",
+                    WS_BORDER,16,38,154,13
+    LTEXT           " 0 %",CG_IDC_PROGDLG_PERCENT,84,27,18,8
+    LTEXT           "Searching..",IDC_PROGRESS_STATUS,13,7,168,15
+END
+
+IDD_PROP_GENERAL DIALOG DISCARDABLE  0, 0, 270, 102
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "General"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Show outline during preview",IDC_OUTLINE_PREVIEW,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,16,105,10
+    CONTROL         "Render preview in active layer",IDC_PREVIEW_ACTIVE,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,26,111,10
+    GROUPBOX        "Preview Item",IDC_STATIC,7,7,256,33
+    GROUPBOX        "ObjectSet ",IDC_STATIC,7,41,256,26
+    CONTROL         "Show full object name when viewing full object list",
+                    IDC_SHOW_FULL_OBJECTNAME,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,14,51,173,10
+    GROUPBOX        "OffScreen Rendering",IDC_STATIC,7,69,256,25
+    CONTROL         "Use 8-bit DIBs (all BMPs must be 8-bit and share the same palette)",
+                    IDC_DRAW_OFFSCREEN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    13,78,250,10
+END
+
+IDD_LAYERS DIALOG DISCARDABLE  0, 0, 238, 177
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Layers"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "",IDC_DOWN_ITEM,211,1,16,15,BS_BITMAP | NOT WS_TABSTOP
+    PUSHBUTTON      "",IDC_UP_ITEM,194,1,16,15,BS_BITMAP | NOT WS_TABSTOP
+    PUSHBUTTON      "",IDC_DELETE_ITEM,177,1,16,15,BS_BITMAP | NOT 
+                    WS_TABSTOP
+    PUSHBUTTON      "",IDC_NEW_ITEM,159,1,17,15,BS_BITMAP | NOT WS_TABSTOP
+    CONTROL         "List1",IDC_LAYER_LIST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_EDITLABELS | LVS_NOSORTHEADER | 
+                    WS_BORDER | WS_TABSTOP,7,17,221,150
+END
+
+IDD_EXPORT_MAPBMP DIALOG DISCARDABLE  0, 0, 213, 121
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Export Map Bitmap"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,156,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,156,24,50,14
+    GROUPBOX        "Layers",IDC_STATIC,7,7,143,48
+    CONTROL         "Export &All layers",IDC_EXPORT_ALL,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,16,17,103,10
+    CONTROL         "Export &Visible layers only",IDC_EXPORT_VISIBLE_LAYERS,
+                    "Button",BS_AUTORADIOBUTTON,16,28,93,10
+    CONTROL         "Export Ac&tive layer only",IDC_EXPORT_ACTIVE_LAYERS,
+                    "Button",BS_AUTORADIOBUTTON,16,39,89,10
+    GROUPBOX        "Bitmap Properties",IDC_STATIC,7,56,199,58
+    CONTROL         "&Standard",IDC_EXPORT_STANDARD,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,17,68,41,10
+    CONTROL         "&Custom:",IDC_EXPORT_CUSTOM,"Button",BS_AUTORADIOBUTTON,
+                    17,81,41,10
+    EDITTEXT        IDC_BITMAP_PERCENTAGE,60,81,32,14,ES_AUTOHSCROLL | 
+                    WS_GROUP
+    EDITTEXT        IDC_BITMAP_WIDTH,28,96,45,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_BITMAP_HEIGHT,77,96,45,14,ES_AUTOHSCROLL
+    COMBOBOX        IDC_BITMAP_DEPTH,125,96,73,70,CBS_DROPDOWNLIST | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "%",IDC_STATIC,93,82,8,8
+    LTEXT           "width x height x ncolors",IDC_BITMAP_PROPERTIES,67,68,
+                    119,8,NOT WS_GROUP
+END
+
+CG_IDD_LAYERBAR DIALOG DISCARDABLE  0, 0, 192, 19
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_ACTIVATE_LAYER,3,2,119,75,CBS_DROPDOWNLIST | 
+                    CBS_OWNERDRAWFIXED | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      ">",ID_LAYERS_ACTIVATENEXT,157,5,15,10,NOT WS_TABSTOP
+    PUSHBUTTON      "<",ID_LAYERS_ACTIVATEPREVIOUS,141,5,15,10,NOT 
+                    WS_TABSTOP
+    PUSHBUTTON      "|<",ID_LAYERS_ACTIVATEBOTTOM,126,5,15,10,NOT WS_TABSTOP
+    PUSHBUTTON      ">|",ID_LAYERS_ACTIVATETOP,172,5,15,10,NOT WS_TABSTOP
+END
+
+IDD_TILESET DIALOGEX 0, 0, 361, 257
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LISTBOX         IDC_TILESET_LIST,17,59,315,179,LBS_SORT | 
+                    LBS_MULTIPLESEL | LBS_OWNERDRAWFIXED | 
+                    LBS_NOINTEGRALHEIGHT | LBS_MULTICOLUMN | NOT WS_BORDER | 
+                    WS_VSCROLL | WS_HSCROLL | WS_TABSTOP,WS_EX_CLIENTEDGE
+    CONTROL         "Tab1",IDC_TILESET_TAB,"SysTabControl32",TCS_RAGGEDRIGHT | 
+                    WS_TABSTOP,6,40,338,210
+    CONTROL         "",IDC_TILESET_ITEM,"Button",BS_OWNERDRAW | BS_VCENTER | 
+                    BS_FLAT | WS_TABSTOP,8,5,31,31,WS_EX_CLIENTEDGE
+    CONTROL         "",IDC_TRANSPARENT_COLOR,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,41,4,18,16,WS_EX_CLIENTEDGE
+    CONTROL         "Tab1",IDC_TILESET_VIEW,"SysTabControl32",TCS_BUTTONS,41,
+                    23,165,15,WS_EX_TRANSPARENT
+END
+
+IDD_NEWLAYER DIALOG DISCARDABLE  0, 0, 186, 95
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "New Layer"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,129,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,24,50,14
+    LISTBOX         IDC_LAYER_TYPE,9,17,107,64,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&New",IDC_STATIC,9,6,16,8
+END
+
+IDD_SHOWUSAGE DIALOG DISCARDABLE  0, 0, 186, 47
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Show Usage"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,129,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,24,50,14
+    LTEXT           "Highlight when usage is less than or equal to:",
+                    IDC_STATIC,11,10,108,19
+    EDITTEXT        IDC_USAGE_THRESHOLD,12,27,103,14,ES_AUTOHSCROLL
+END
+
+IDD_CATEGORIES DIALOG DISCARDABLE  0, 0, 181, 114
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Categories"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "",IDC_DOWN_ITEM,157,1,16,15,BS_BITMAP | NOT WS_TABSTOP
+    PUSHBUTTON      "",IDC_UP_ITEM,140,1,16,15,BS_BITMAP | NOT WS_TABSTOP
+    PUSHBUTTON      "",IDC_DELETE_ITEM,123,1,16,15,BS_BITMAP | NOT 
+                    WS_TABSTOP
+    PUSHBUTTON      "",IDC_NEW_ITEM,105,1,17,15,BS_BITMAP | NOT WS_TABSTOP
+    LISTBOX         IDC_CATEGORY_LIST,5,16,170,60,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Category &Title:",IDC_STATIC,5,84,69,8
+    EDITTEXT        IDC_CATEGORY_TITLE,5,93,172,14,ES_AUTOHSCROLL
+    LTEXT           "&Categories:",IDC_STATIC,5,7,43,8
+END
+
+IDD_OBJECTSET DIALOGEX 0, 0, 311, 188
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LISTBOX         IDC_OBJECTSET_LIST,18,61,267,119,LBS_SORT | 
+                    LBS_MULTIPLESEL | LBS_OWNERDRAWFIXED | 
+                    LBS_NOINTEGRALHEIGHT | LBS_MULTICOLUMN | NOT WS_BORDER | 
+                    WS_VSCROLL | WS_HSCROLL | WS_TABSTOP,WS_EX_CLIENTEDGE
+    CONTROL         "Tab1",IDC_OBJECTSET_TAB,"SysTabControl32",
+                    TCS_RAGGEDRIGHT | WS_TABSTOP,7,40,287,145
+    CONTROL         "",IDC_OBJECTSET_ITEM,"Button",BS_OWNERDRAW | BS_VCENTER | 
+                    BS_FLAT | WS_TABSTOP,7,4,32,32,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "",IDC_OBJECTSET_CYLCE,42,19,18,16,BS_BITMAP
+END
+
+IDD_EMPTYVIEW DIALOG DISCARDABLE  0, 0, 186, 95
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+END
+
+IDD_NEWTILESET DIALOG DISCARDABLE  0, 0, 246, 129
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Tileset Properties"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,193,6,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,193,23,50,14
+    PUSHBUTTON      "Browse...",IDC_TILESET_BROWSE,185,103,50,14
+    GROUPBOX        "Initial Data",IDC_STATIC,3,94,240,31
+    EDITTEXT        IDC_TILESET_DATA,10,104,160,14,ES_AUTOHSCROLL
+    CONTROL         "Compact on Save",IDC_COMPACT_ON_SAVE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,10,16,73,10
+    CONTROL         "Use Bitmap Width",IDC_USE_BITMAP_WIDTH,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,10,28,73,10
+    EDITTEXT        IDC_BITMAP_WIDTH,88,26,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_TILE_WIDTH,57,57,58,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_TILE_HEIGHT,57,73,58,14,ES_AUTOHSCROLL
+    LTEXT           "Tile Width",IDC_STATIC,10,63,35,9,NOT WS_GROUP
+    LTEXT           "Tile Height",IDC_STATIC,10,76,35,9,NOT WS_GROUP
+    GROUPBOX        "Data",IDC_DATA_CTRL,3,50,240,40
+    GROUPBOX        "Saving",IDC_STATIC,3,7,178,39
+    LTEXT           "Transparency Color",IDC_STATIC,123,67,62,8
+    CONTROL         "",IDC_TRANSPARENT_COLOR,"Button",BS_OWNERDRAW | 
+                    BS_VCENTER | BS_FLAT | WS_TABSTOP,193,57,42,27
+END
+
+IDD_ATTRIBUTEVIEW DIALOG DISCARDABLE  0, 0, 117, 271
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Current Value",IDC_STATIC,7,7,103,28
+    EDITTEXT        IDC_ATTRIBUTE_VALUE,15,17,72,14,ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_ATTRIBUTE_VALUE_UPDOWN,"msctls_updown32",
+                    UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | 
+                    UDS_NOTHOUSANDS,89,17,11,14
+    GROUPBOX        "Default Value",IDC_STATIC,7,40,103,29
+    EDITTEXT        IDC_ATTRIBUTE_DEFAULT,15,49,72,14,ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_ATTRIBUTE_DEFAULT_UPDOWN,"msctls_updown32",
+                    UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | 
+                    UDS_NOTHOUSANDS,89,50,11,14
+    LTEXT           "Maximum:",IDC_STATIC,7,74,31,12
+    LTEXT           "Static",IDC_ATTRIBUTE_MAX,42,74,66,12
+    GROUPBOX        "Color",IDC_STATIC,7,85,103,63
+    CONTROL         "",IDC_ATTRIBUTE_COLOR,"Button",BS_OWNERDRAW | 
+                    BS_VCENTER | BS_FLAT | WS_TABSTOP,46,93,57,17
+    CONTROL         "Solid",IDC_ATTRIBUTE_SOLID,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,13,98,31,10
+    CONTROL         "Greyscale",IDC_ATTRIBUTE_GREYSCALE,"Button",
+                    BS_AUTORADIOBUTTON,14,113,47,10
+    CONTROL         "Inverted Greyscale",IDC_ATTRIBUTE_INVERTEDGREY,"Button",
+                    BS_AUTORADIOBUTTON,14,129,83,10
+    GROUPBOX        "Update Tiles",IDC_STATIC,5,167,102,53,WS_GROUP
+    CONTROL         "Update default value",IDC_ATTRIBUTE_UPDATE_DEFAULT,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,178,89,10
+    CONTROL         "Update tile locations",IDC_ATTRIBUTE_UPDATE_TILES,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,191,89,10
+    COMBOBOX        IDC_ATTRIBUTE_TILELAYER,11,204,91,54,CBS_DROPDOWN | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Show Object Attributes",IDC_ATTRIBUTE_SHOW_OBJECTS,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,153,102,10
+END
+
+IDD_SCENARIO DIALOGEX 0, 0, 318, 238
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "",IDC_OBJECTSET_CYLCE,63,32,18,16,BS_BITMAP
+    CONTROL         "",IDC_OBJECTSET_ITEM,"Button",BS_OWNERDRAW | BS_VCENTER | 
+                    BS_FLAT | WS_TABSTOP,13,16,45,32,WS_EX_CLIENTEDGE
+    LISTBOX         IDC_OBJECTSET_LIST,16,80,133,142,LBS_SORT | 
+                    LBS_MULTIPLESEL | LBS_OWNERDRAWFIXED | 
+                    LBS_NOINTEGRALHEIGHT | LBS_MULTICOLUMN | NOT WS_BORDER | 
+                    WS_VSCROLL | WS_HSCROLL | WS_TABSTOP,WS_EX_CLIENTEDGE
+    LISTBOX         IDC_SCENARIO_RESOURCES,158,80,132,142,LBS_SORT | 
+                    LBS_MULTIPLESEL | LBS_OWNERDRAWFIXED | 
+                    LBS_NOINTEGRALHEIGHT | LBS_MULTICOLUMN | NOT WS_BORDER | 
+                    WS_VSCROLL | WS_HSCROLL | WS_TABSTOP,WS_EX_CLIENTEDGE
+    CONTROL         "Tab1",IDC_OBJECTSET_TAB,"SysTabControl32",
+                    TCS_RAGGEDRIGHT | WS_TABSTOP,7,54,297,180
+    GROUPBOX        "Item Name",IDC_SCENARIO_ITEMID,7,7,297,46
+    EDITTEXT        IDC_SCENARIO_TOTAL,113,16,50,14,ES_AUTOHSCROLL
+    LTEXT           "Total:",IDC_STATIC,89,18,20,10
+    LTEXT           "Deployed: %u",IDC_SCENARIO_DEPLOYED,89,34,70,12
+END
+
+IDD_NEWMAP DIALOGEX 0, 0, 322, 162
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Map Properties"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CONTROL         "Repeat bitmap data for new tileset.",IDC_NEWMAP_REPEAT,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,145,125,10
+    EDITTEXT        IDC_MAP_SCENARIOSET,69,94,152,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Browse...",IDC_MAP_BROWSE,226,56,50,14
+    DEFPUSHBUTTON   "OK",IDOK,263,14,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,263,34,50,14
+    EDITTEXT        IDC_MAP_WIDTH,98,17,59,15,ES_AUTOHSCROLL
+    EDITTEXT        IDC_MAP_HEIGHT,98,33,59,15,ES_AUTOHSCROLL
+    LTEXT           "Width",IDC_STATIC,52,20,35,9,0,WS_EX_RIGHT
+    LTEXT           "Height",IDC_STATIC,54,38,35,9,0,WS_EX_RIGHT
+    EDITTEXT        IDC_MAP_TILESET,69,56,152,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_MAP_OBJECTSET,69,75,152,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Browse...",IDC_MAP_OBSBROWSE,226,75,50,14
+    PUSHBUTTON      "Browse...",IDC_MAP_SCENBROWSE,226,94,50,14
+    LTEXT           "ScenarioSet:",IDC_STATIC,24,96,42,8
+    LTEXT           "ObjectSet:",IDC_STATIC,32,80,34,8
+    LTEXT           "TileSet:",IDC_STATIC,41,62,25,8
+    CONTROL         "Color",IDC_MAP_COLOR,"Button",BS_OWNERDRAW | WS_TABSTOP,
+                    170,19,50,29,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_MAP_DESC,69,112,206,28,ES_AUTOHSCROLL
+    LTEXT           "Description:",IDC_STATIC,28,116,38,8
+END
+
+IDD_NEWATTRIBUTE DIALOG DISCARDABLE  0, 0, 200, 101
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Attribute Properties"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,139,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,139,24,50,14
+    GROUPBOX        "Name",IDC_STATIC,6,10,123,27
+    EDITTEXT        IDC_ATTRIBUTE_NAME,11,19,113,14,ES_AUTOHSCROLL
+    GROUPBOX        "Number of Bits",IDC_STATIC,5,38,185,29
+    EDITTEXT        IDC_ATTRIBUTE_BITCOUNT,12,48,99,14,ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_ATTRIBUTE_BITS,"msctls_updown32",
+                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | 
+                    UDS_ARROWKEYS,111,48,11,14
+    GROUPBOX        "Default Value",IDC_STATIC,6,70,185,27
+    EDITTEXT        IDC_ATTRIBUTE_DSTRING,14,78,72,14,ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_ATTRIBUTE_DEFAULT,"msctls_updown32",
+                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | 
+                    UDS_ARROWKEYS,87,79,11,14
+    LTEXT           "0 - MaxValue",IDC_ATTRIBUTE_MAX,111,81,65,11
+    LTEXT           "1 - 15",IDC_STATIC,130,52,37,10
+END
+
+IDD_ATTRIBUTES DIALOG DISCARDABLE  0, 0, 261, 133
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Attributes"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "List1",IDC_ATTRIBUTE_LIST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_NOSORTHEADER | WS_BORDER | 
+                    WS_TABSTOP,7,7,247,88
+    EDITTEXT        IDC_ATTRIBUTE_VALUE,7,112,174,14,ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_ATTRIBUTE_VALUE_UPDOWN,"msctls_updown32",
+                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | 
+                    UDS_ARROWKEYS | UDS_NOTHOUSANDS,183,112,11,14
+    LTEXT           "0",IDC_ATTRIBUTE_MAX,210,114,44,11
+    LTEXT           "Attribute:",IDC_ATTRIBUTE_LABEL,7,99,171,10
+END
+
+IDD_PROP_SCENARIO DIALOG DISCARDABLE  0, 0, 270, 102
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Scenario"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_SCENARIO_UNITNAME,109,30,97,12,ES_AUTOHSCROLL | 
+                    WS_DISABLED
+    LTEXT           "Unit Folder Name:",IDC_STATIC,45,33,60,9
+    LTEXT           "Resource Folder Name:",IDC_STATIC,28,50,77,9
+    EDITTEXT        IDC_SCENARIO_RSRCNAME,110,49,97,12,ES_AUTOHSCROLL | 
+                    WS_DISABLED
+END
+
+IDD_DOORWAYS DIALOG DISCARDABLE  0, 0, 135, 210
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "",IDC_DOORWAY_COMPUTE,9,10,21,17,BS_BITMAP
+    PUSHBUTTON      "",IDC_DOORWAY_ROUTE,32,10,22,17,BS_BITMAP
+    PUSHBUTTON      "",IDC_DOORWAY_START,55,10,22,17,BS_BITMAP
+    PUSHBUTTON      "",IDC_DOORWAY_END,78,10,22,17,BS_BITMAP
+    PUSHBUTTON      "",IDC_DOORWAY_CLEAR,101,10,22,17,BS_BITMAP
+    GROUPBOX        "Line Color",IDC_STATIC,9,29,112,26
+    CONTROL         "",IDC_DOORWAY_LINE_COLOR,"Button",BS_OWNERDRAW | 
+                    BS_FLAT | WS_TABSTOP,17,39,98,11
+    GROUPBOX        "Point Color",IDC_STATIC,9,55,112,26
+    CONTROL         "",IDC_DOORWAY_POINT_COLOR,"Button",BS_OWNERDRAW | 
+                    BS_FLAT | WS_TABSTOP,17,65,98,11
+    GROUPBOX        "Route",IDC_STATIC,9,81,112,51
+    CONTROL         "",IDC_DOORWAY_ROUTE_COLOR,"Button",BS_OWNERDRAW | 
+                    BS_FLAT | WS_TABSTOP,15,91,98,11
+    LISTBOX         IDC_DOORWAY_LIST,9,136,111,67,LBS_OWNERDRAWFIXED | 
+                    LBS_HASSTRINGS | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Start: %d,%d",IDC_DOORWAY_START_TEXT,15,106,98,11
+    LTEXT           "End: %d,%d",IDC_DOORWAY_END_TEXT,15,120,98,11
+END
+
+IDD_GETNUMBER DIALOG DISCARDABLE  0, 0, 186, 44
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,129,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,24,50,14
+    EDITTEXT        IDC_GET_NUMBER,15,20,84,16,ES_AUTOHSCROLL
+    LTEXT           "Please enter amount:",IDC_GET_NUMBER_CAPTION,5,4,117,16
+END
+
+IDD_PROP_AMEN DIALOG DISCARDABLE  0, 0, 270, 102
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ArmyMen"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Trigger 1:",IDC_STATIC,31,6,42,9
+    LTEXT           "Trigger 2:",IDC_STATIC,31,17,42,9
+    LTEXT           "Trigger 3:",IDC_STATIC,31,28,42,9
+    LTEXT           "Trigger 4:",IDC_STATIC,31,39,42,9
+    LTEXT           "Trigger 5:",IDC_STATIC,31,50,42,9
+    LTEXT           "Trigger 6:",IDC_STATIC,31,61,42,9
+    LTEXT           "Trigger 7:",IDC_STATIC,31,72,42,9
+    LTEXT           "Trigger 8:",IDC_STATIC,31,83,42,9
+    EDITTEXT        IDC_EDIT1,77,4,139,11,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT2,77,15,139,11,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT3,77,26,139,11,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT4,77,37,139,11,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT5,77,48,139,11,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT6,77,59,139,11,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT7,77,70,139,11,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT8,77,82,139,11,ES_AUTOHSCROLL
+END
+
+IDD_PROP_ANIM DIALOG DISCARDABLE  0, 0, 261, 133
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Anim"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "List1",IDC_SEQUENCE_LIST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_NOSORTHEADER | WS_BORDER | 
+                    WS_TABSTOP,7,7,247,118
+END
+
+IDD_COMPUTE_LAYER DIALOG DISCARDABLE  0, 0, 186, 70
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Compute Layer"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,129,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,24,50,14
+    LTEXT           "Source Layer",IDC_STATIC,15,14,69,10
+    EDITTEXT        IDC_INPUT_VALUE,71,49,50,14,ES_AUTOHSCROLL
+    LTEXT           "Input Value",IDC_STATIC,15,53,49,10
+    COMBOBOX        IDC_SOURCE_LAYER,16,26,106,42,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_OBJTEXT DIALOG DISCARDABLE  0, 0, 261, 133
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Text"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_TEXT,7,7,247,119,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+END
+
+IDD_SCRIPTS DIALOG DISCARDABLE  0, 0, 177, 169
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Scripts"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,120,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,120,24,50,14
+    COMBOBOX        IDC_SLIST,13,18,71,47,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "&Script Type",IDC_STATIC,7,7,82,29
+    GROUPBOX        "&File",IDC_STATIC,7,44,163,29
+    EDITTEXT        IDC_FILE,13,55,151,12,ES_AUTOHSCROLL
+    GROUPBOX        "&Text",IDC_STATIC,7,78,163,84
+    EDITTEXT        IDC_TEXT,13,89,151,66,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+END
+
+IDD_NEWMOG DIALOG DISCARDABLE  0, 0, 186, 46
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Create Multi-Object Group"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,129,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,24,50,14
+    LTEXT           "Name:",IDC_STATIC,7,7,22,8
+    EDITTEXT        IDC_NAME,7,18,114,12,ES_AUTOHSCROLL
+END
+
+IDD_SELECT DIALOG DISCARDABLE  0, 0, 108, 95
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Select Area"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "&Begin Tile",IDC_STATIC,7,7,44,47
+    LTEXT           "X:",IDC_STATIC,13,21,8,8
+    EDITTEXT        IDC_BX,23,19,22,12,ES_AUTOHSCROLL
+    LTEXT           "Y:",IDC_STATIC,13,37,8,8
+    EDITTEXT        IDC_BY,23,35,22,12,ES_AUTOHSCROLL
+    GROUPBOX        "&End Tile",IDC_STATIC,57,7,44,47
+    LTEXT           "X:",IDC_STATIC,63,21,8,8
+    EDITTEXT        IDC_EX,73,19,22,12,ES_AUTOHSCROLL
+    LTEXT           "Y:",IDC_STATIC,63,37,8,8
+    EDITTEXT        IDC_EY,73,35,22,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,14,74,34,14
+    PUSHBUTTON      "Cancel",IDCANCEL,58,74,34,14
+    CONTROL         "Reset Current Selection",IDC_RESET,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,58,91,10
+END
+
+IDD_EXPAND DIALOG DISCARDABLE  0, 0, 156, 102
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Expand"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,99,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,99,24,50,14
+    GROUPBOX        "New tiles",IDC_STATIC,7,7,83,38
+    CONTROL         "&Bottom Right",IDC_TOP,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,13,18,57,10
+    CONTROL         "&Top Left",IDC_BOTTOM,"Button",BS_AUTORADIOBUTTON,13,30,
+                    43,10
+    GROUPBOX        "Amount",IDC_STATIC,7,52,83,43
+    LTEXT           "&Width:",IDC_STATIC,13,65,22,8
+    EDITTEXT        IDC_WIDTH,41,63,40,12,ES_AUTOHSCROLL
+    LTEXT           "&Height:",IDC_STATIC,13,80,24,8
+    EDITTEXT        IDC_HEIGHT,41,77,40,12,ES_AUTOHSCROLL
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "ArmyMen MapEditor\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "MAPEDITOR\0"
+            VALUE "LegalCopyright", "Copyright © 1996 The 3DO Company\0"
+            VALUE "OriginalFilename", "MAPEDITOR.EXE\0"
+            VALUE "ProductName", "ArmyMen MapEditor\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 211
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_NEWCATERGORY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 37
+    END
+
+    IDD_NEWGROUP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 35
+    END
+
+    IDD_FINDDUPLICATES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 88
+    END
+
+    IDD_REMOVEDUPLICATES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 240
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 159
+    END
+
+    CG_IDD_PROGRESS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 184
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 69
+    END
+
+    IDD_PROP_GENERAL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 263
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 95
+    END
+
+    IDD_LAYERS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 231
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 170
+    END
+
+    IDD_EXPORT_MAPBMP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 206
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 114
+    END
+
+    CG_IDD_LAYERBAR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 185
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 12
+    END
+
+    IDD_TILESET, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 354
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 250
+    END
+
+    IDD_NEWLAYER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 88
+    END
+
+    IDD_SHOWUSAGE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 40
+    END
+
+    IDD_CATEGORIES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 174
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 107
+    END
+
+    IDD_OBJECTSET, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 304
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 181
+    END
+
+    IDD_EMPTYVIEW, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 88
+    END
+
+    IDD_NEWTILESET, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 239
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 122
+    END
+
+    IDD_ATTRIBUTEVIEW, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 110
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 264
+    END
+
+    IDD_SCENARIO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 304
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 228
+    END
+
+    IDD_NEWMAP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 315
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 155
+    END
+
+    IDD_NEWATTRIBUTE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 193
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 94
+    END
+
+    IDD_ATTRIBUTES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 254
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 126
+    END
+
+    IDD_PROP_SCENARIO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 263
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 95
+    END
+
+    IDD_DOORWAYS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 128
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 203
+    END
+
+    IDD_GETNUMBER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 37
+    END
+
+    IDD_PROP_AMEN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 263
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 95
+    END
+
+    IDD_PROP_ANIM, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 254
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 125
+    END
+
+    IDD_COMPUTE_LAYER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 63
+    END
+
+    IDD_OBJTEXT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 254
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 126
+    END
+
+    IDD_SCRIPTS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 170
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 162
+    END
+
+    IDD_NEWMOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 39
+    END
+
+    IDD_SELECT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 101
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 88
+    END
+
+    IDD_EXPAND, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 149
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 95
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_EXPORT_MAPBMP DLGINIT
+BEGIN
+    IDC_BITMAP_DEPTH, 0x403, 11, 0
+0x6f4d, 0x6f6e, 0x6863, 0x6f72, 0x656d, "\000" 
+    IDC_BITMAP_DEPTH, 0x403, 9, 0
+0x2034, 0x6f43, 0x6f6c, 0x7372, "\000" 
+    IDC_BITMAP_DEPTH, 0x403, 9, 0
+0x2038, 0x6f43, 0x6f6c, 0x7372, "\000" 
+    IDC_BITMAP_DEPTH, 0x403, 10, 0
+0x3631, 0x4320, 0x6c6f, 0x726f, 0x0073, 
+    IDC_BITMAP_DEPTH, 0x403, 10, 0
+0x3233, 0x4320, 0x6c6f, 0x726f, 0x0073, 
+    IDC_BITMAP_DEPTH, 0x403, 10, 0
+0x3436, 0x4320, 0x6c6f, 0x726f, 0x0073, 
+    IDC_BITMAP_DEPTH, 0x403, 11, 0
+0x3231, 0x2038, 0x6f43, 0x6f6c, 0x7372, "\000" 
+    IDC_BITMAP_DEPTH, 0x403, 11, 0
+0x3532, 0x2036, 0x6f43, 0x6f6c, 0x7372, "\000" 
+    IDC_BITMAP_DEPTH, 0x403, 13, 0
+0x3631, 0x622d, 0x7469, 0x4320, 0x6c6f, 0x726f, "\000" 
+    IDC_BITMAP_DEPTH, 0x403, 13, 0
+0x3432, 0x622d, 0x7469, 0x4320, 0x6c6f, 0x726f, "\000" 
+    IDC_BITMAP_DEPTH, 0x403, 13, 0
+0x3233, 0x622d, 0x7469, 0x4320, 0x6c6f, 0x726f, "\000" 
+    0
+END
+
+CG_IDD_LAYERBAR DLGINIT
+BEGIN
+    IDC_ACTIVATE_LAYER, 0x403, 1, 0
+"\000" 
+    0
+END
+
+IDD_SCRIPTS DLGINIT
+BEGIN
+    IDC_SLIST, 0x403, 15, 0
+0x694d, 0x7373, 0x6f69, 0x206e, 0x6353, 0x6972, 0x7470, "\000" 
+    IDC_SLIST, 0x403, 14, 0
+0x624f, 0x656a, 0x7463, 0x5320, 0x7263, 0x7069, 0x0074, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_HAND_CURSOR         CURSOR  DISCARDABLE     "res\\hand.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "MapEditor"
+    IDR_MAPTYPE             "\nMap\nMap\nMap Files (*.map)\n.MAP\nMapEditor.Document\nMap Document"
+    IDR_OBJECTSET           "\nObjectSet\n\n\n"
+    IDR_SCENARIOSET         "\nScenarioSet\n\n\n"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "MapEditor"
+    AFX_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
+    ID_FILE_PRINT           "Print the active document\nPrint"
+    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
+    ID_FILE_SEND_MAIL       "Send the active document through electronic mail\nSend Mail"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_WINDOW_NEW           "Open another window for the active document\nNew Window"
+    ID_WINDOW_ARRANGE       "Arrange icons at the bottom of the window\nArrange Icons"
+    ID_WINDOW_CASCADE       "Arrange windows so they overlap\nCascade Windows"
+    ID_WINDOW_TILE_HORZ     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_TILE_VERT     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find all occurrences of the selected item\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific items with different items\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the last undo\nRedo"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+    AFX_IDS_MDICHILD        "Activate this window"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "Close print preview mode\nCancel Preview"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDR_TILESETTYPE         "\nTileSet\nTileSet\nTileSet Files (*.tls)\n.TLS\nTileSet.Document\nTileSet Document"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_AMV_OBJOFFMAP       "Object at (%1!d!,%2!d!) lies outside of Map bounds"
+    CG_IDS_CANNOT_OPEN_CLIPBOARD "Failed to open Clipboard!"
+    CG_IDS_CANNOT_GET_CLIPBOARD_DATA "Failed to get Clipboard data!"
+    IDS_CANT_RESIZE_MAP     "Not enough memory to resize map"
+    IDS_CANT_ADD_TILE       "Can't add tile to TileSet"
+    IDS_PROPSHT_CAPTION     "Options"
+    IDS_DUPLICATE_OBJECT_NAME "Duplicate Object Name: %1\\%2"
+    IDS_DUPLICATE_OBJECT_NUMBER "Duplicate Object Numbers: %1 and %2"
+    CG_IDS_PROGRESS_CAPTION "Finding Duplicates"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_INSERT_NEWGROUP      "Create a new tile group\nNew Group"
+    ID_INSERT_NEWCATEGORY   "Create a new tile Category\nNew Category"
+    ID_VIEW_OVERVIEW        "Show or hide the map overview window\nToggle Overview"
+    ID_WINDOW_CLOSEALL      "Close all open windows"
+    ID_TILESET_ADDGROUP     "Add a new tile group"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_TILESET_READONLY     "Toggle the read-only attribute of this tileset"
+    ID_EDIT_PROPERTIES      "Edit the current map's properties\nProperties"
+    ID_TILESET_FINDDUP      "Find any duplicate tiles\nFind Duplicates"
+    ID_TILESET_COMPACT      "Compact the tileset bitmap to permanently remove unused tiles.\nCompact"
+    ID_FILE_EXPORT          "Export the active document as a bitmap"
+    ID_EDIT_SELECT          "Select a rectangular area of tiles to move, copy, or edit\nSelect (Alt+S)"
+    ID_EDIT_CROP            "Crop map to selected tile area"
+    ID_EDIT_SELECT_NONE     "De-select all tiles\nSelect None"
+    ID_FILE_IMPORT          "Import a bitmap as new map and tileset"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_DIB_TOO_BIG         "Bitmap is too large to load"
+    IDS_CANNOT_LOAD_DIB     "Cannot load bitmap"
+    IDS_CANNOT_SAVE_DIB     "Cannot save bitmap"
+    IDS_CANT_CREATE_TILESET "Can't create TileSet"
+    IDS_BAD_DIB_DIMENSIONS  "The dimensions of this bitmap are not multiples of the requested tile size.  Proceed anyway?"
+    IDS_DIB_TOO_SMALL       "Bitmap is too small for requested tile size."
+    IDS_CANNOT_COPY_DIB     "An error occurred while attempting to copy bitmap data."
+    IDS_NOT_8BIT_TILESET    "Sorry, this is not an uncompressed 8-bit per pixel tileset."
+    IDS_NO_DUPLICATES       "No duplicates detected."
+    IDS_INCOMPATIBLE_TILESET 
+                            "Can't copy/paste  between incompatible tilesets."
+    IDS_ASK_COPY_PALETTE    "The selected TileSets use different palettes. Do you want to copy the source palette to the destination TileSet?"
+    IDS_CANT_COMPACT_TILESET "Not enough memory to compact tileset."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CANT_COMPACT_ON_SAVE 
+                            "Not enough memory to compact tileset. Save anyway?"
+    IDS_TILESET_EXPORT_FILTER 
+                            "ArmyMen TileSet (*.atl)|*.atl|Bitmap (*.bmp)|*.bmp||"
+    IDS_RESIZE_MAY_LOSE_DATA 
+                            "Reducing the map width or height may lose data.  Do you still wish to resize the map?"
+    IDS_ASK_CROP            "Are you sure you want to crop the map to the selected tiles?"
+    IDS_ASK_OVERWRITE_GROUP "Group %1 already exists.  Do you wish to overwrite it?"
+    IDS_CATEGORY_FORMAT     "Category %d"
+    IDS_GROUP_FORMAT        "Group %d"
+    IDS_ANIM                "Anim"
+    IDS_FIND_STATUS_FORMAT  "Matches Found: %1\nMinimum non-zero difference: %2"
+    IDS_REVERT_MAY_LOSE_DATA 
+                            "The current document has been modified. Are you sure you wish to revert to %1?"
+    IDS_BASE_LAYER          "Base Tiles"
+    IDS_OVERLAY_LAYER       "Overlay Tiles"
+    IDS_ATTRIBUTE_LAYER     "Attribute"
+    IDS_MAP_EXPORT_FILTER   "ArmyMen Map (*.amm)|*.amm|Bitmap (*.bmp)|*.bmp||"
+    IDS_BITMAP_PROPERTIES   "%1 Wide, %1 High, "
+    IDS_ASK_DELETE_CATEGORY "Are you sure you want to delete the selected category?"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_OPTIONS         "Edit program options"
+    ID_VIEW_OPTIONS         "View or modify program options"
+    ID_SELECT_ADD           "Select a rectangular area of tiles to move, copy, or edit\nSelect"
+    ID_FILE_REVERT          "Revert the active document to its last saved state."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_LAYERS          "Create, destroy, and/or arrange layers"
+    ID_FILE_OPENOLD         "Open MapEditor v1.8 files.  Warning: This is a temporary feature!!"
+    ID_VIEW_LAYERBAR        "Show or hide the layer bar\nToggle LayerBar"
+    ID_OBJECT_BOTTOM        "Move the selected object to the bottom-most level\nBottom"
+    ID_OBJECT_TOP           "Move the selected object to the top-most level\nTop"
+    ID_EDIT_CLONE           "Select and place cloned tiles\nClone (Alt-C)"
+    ID_TILESET_FINDUNUSED   "Find unused tiles in all opened maps using active tileset."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TILECATEGORIES      "Tile Categories"
+    IDS_LAYERBARNAME        "Layer"
+    IDS_ADDING_PLAYER       "Adding player: %s"
+    IDS_NOTHING_TO_EXPORT   "Nothing to export."
+    IDS_TILE                "Tile"
+    IDS_GROUP               "Group"
+    IDS_OBJECT              "Object"
+    IDS_CATEGORY            "Category"
+    IDS_ROW_COLUMN_FORMAT   "R%d,C%d"
+    IDS_POINT_FORMAT        "X%d,Y%d"
+    IDS_ITEMS_FOUND_FORMAT  "%u item(s) found."
+    IDS_AMV_MAPSIZE         "ArmyMen map cannot be larger than 240 x 240 tiles."
+    IDS_AMV_TILESIZE        "An ArmyMen tile must be 16 x 16 pixels."
+    IDS_AMV_TILEDEPTH       "An ArmyMen tile must be 8 bits per pixel"
+    IDS_AMV_BASELAYER       "An ArmyMen map may only contain one base tile layer and it\nmust be the bottom most layer."
+    IDS_AMV_OBJECTLAYER     "An ArmyMen map can only contain one object layer."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_INDICATOR_ITEMTYPE   "                  "
+    ID_INDICATOR_ITEMID     "                                "
+    ID_INDICATOR_ITEMPOS    "                         "
+    ID_INDICATOR_ITEMINFO   "                       "
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_ACTIVATE_LAYER      "Select active layer (+ctrl to hide current layer, +alt to toggle selected layer\nActivate Layer"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_TILESET_SHOWUSAGE    "Highlight tiles that are below usage threshold in all opened maps."
+    ID_TILESET_TILECATEGORIES 
+                            "Create, destroy, and/or arrange tile categories"
+    ID_TILESET_GROUPCATEGORIES 
+                            "Create, destroy, and/or arrange group categories"
+    ID_OBJECT_FORWARD       "Move the selected object(s) forward a level\nForward"
+    ID_OBJECT_BACK          "Move the selected object(s) back a level\nBack"
+    ID_TILESET_USEPALETTE   "Load a palette to use with this tileset"
+    ID_TILESET_REMAPTOPALETTE 
+                            "Load a palette to use with this tileset and remap tiles."
+    ID_ATTRIBUTE_DECIMAL    "Toggle decimal/hex attribute display\nToggle Decimal/Hex"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_AMV_TILE            "An ArmyMen map cannot reference a tile number >32767"
+    IDS_AMV_TILESET         "Cannot save ArmyMen map until tileset name has been\nestablished.  Save your tileset and try again."
+    IDS_GROUPCATEGORIES     "Group Categories"
+    IDS_GROUPS              "Groups"
+    IDS_TILES               "Tiles"
+    IDS_BAD_OBJECT_NAME     "Bad object name %1"
+    IDS_OBJECT_LAYER        "Object Layer"
+    IDS_SELECT_OBJECTSET    "Select ObjectSet Directory"
+    IDS_SELECT_TILESET      "Select TileSet"
+    IDS_ADDING_CATEGORY     "Adding category: %s"
+    IDS_LOADING_FILE        "Loading file: %s"
+    IDS_OBJECTS             "Objects"
+    IDS_AMV_BADOBJECT       "Not a valid ArmyMen object %1"
+    IDS_AMV_TILESETBM       "An ArmyMen tileset bitmap must be 256 pixels wide."
+    IDS_NO_PALETTE          "Bitmap doesn't contain palette."
+    IDS_WARN_PALETTE_CHANGE "Changing the palette of a tileset is a highly destructive operation and cannot be undone.\nDo you want to proceed anyway?"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_DOORWAY_ROUTE       "Compute Route"
+    IDC_DOORWAY_START       "Set Route Start"
+    IDC_DOORWAY_END         "Set Route End"
+    IDC_DOORWAY_CLEAR       "Clear All"
+    IDC_NEW_ITEM            "New"
+    IDC_DELETE_ITEM         "Delete"
+    IDC_UP_ITEM             "Up"
+    IDC_DOWN_ITEM           "Down"
+    IDS_DOORWAY_START_TEXT  "Start: R%d, C%d"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_ATTRIBUTES          "Edit the current selection's attributes"
+    ID_EDIT_WITHATTRIBUTES  "Toggle ""place with attributes"" mode\nToggle Place Attributes"
+    ID_OBJECT_RENAME        "Adjust all or part of selected object names."
+    ID_EDIT_UPDATEATTRIBUTES 
+                            "Update attributes for selected tiles from the current tileset defaults"
+    ID_VIEW_GRID            "Toggle tile grid on/off\nToggle Grid"
+    ID_SELECT_TOP           "Toggle active layer selection from top/bottom\nToggle top/bottom"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ATTRIBUTE           "Attribute"
+    IDS_VALUE               "Value"
+    IDS_ADJUST_ATTRIBUTE    "Tileset %1 contains conflicting attribute %2.\nDo you wish to adjust the tileset attribute?"
+    IDS_DELETE_TILEATTRIBUTE 
+                            "Do you wish to delete attribute %1 from tileset %2 as well?\nWarning this action is highly destructive and cannot be undone."
+    IDS_ASK_NEWATTRIBUTELAYER 
+                            "Do you wish to add a new %1-bit %2 attribute layer to this map?"
+    IDS_CANT_UNDO_REPLACE   "Your map has been modified and this replace operation cannot be undone.  Proceed with replace?"
+    IDS_ITEMS_SELECTED_FORMAT "%u item(s) selected."
+    IDS_AMV_SCENARIONAME    "An ArmyMen scenario name cannot have more than 16 characters."
+    IDS_SELECT_SCENARIOSET  "Select ScenarioSet Directory"
+    IDS_SCENARIO            "Scenario"
+    IDS_DEPLOYMENT_ERROR    "You have already deployed the maximum number of %s for this scenario."
+    IDS_SCENARIO_DEPLOYED   "Deployed: %u"
+    IDS_RESOURCE_DEPLOYMENT_ERROR 
+                            "%s is not a deployable object for this scenario."
+    IDS_AMV_BADUNITTOTAL    "Unit total for %s:%s\\%s must not exceed %u"
+    IDS_DOORWAY             "Doorway"
+    IDS_GETINCREMENT        "Enter amount to increment:"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_LAYERS_ACTIVATETOP   "Make the top-most visible layer active (+ctrl to hide current layer)\nTop"
+    ID_LAYERS_ACTIVATEBOTTOM 
+                            "Make the bottom-most visible layer active (+ctrl to hide current layer)\nBottom"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_LAYERS_ACTIVATENEXT  "Make the next visible layer active  (+ctrl to hide current layer)\nNext"
+    ID_LAYERS_ACTIVATEPREVIOUS 
+                            "Make the previous visible layer active  (+ctrl to hide current layer)\nPrevious"
+    ID_LAYERS_ARRANGE       "Create, destroy, rename, or arrange layers"
+    ID_EDIT_RANDOMIZE       "Spray a random pattern of group tiles over the map or selected area.\nRandomize"
+    ID_TILESET_TILEATTRIBUTES "Edit the selected tiles' attributes"
+    ID_EDIT_ATTRIBUTES      "Edit the selected item's attributes"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_GETDECREMENT        "Enter amount to decrement:"
+    IDS_ATTRIBUTES          "Attributes"
+    IDS_SEQUENCE            "Sequence"
+    IDS_TILESET_ATTRIBUTES  "Tileset Attributes"
+    IDS_COPY_TILEDATA       "You are copying data from one tileset to another.\nDo you wish to copy the image data as well?"
+    IDS_BITMAP_TOO_SMALL    "The given bitmap is too small to represent the current tileset.\nDo you want to proceed anyway?"
+    IDS_NOT_8BIT_BITMAP     "%1 is not an uncompressed 8-bit per pixel bitmap."
+    IDS_REMOVING_TILE       "Removing tile %d"
+    IDS_REMAPPING_OBJECT    "Remapping object %s"
+    IDS_TYPE                "Type"
+    IDS_LAYER               "Layer"
+    IDS_DUPLICATE_LAYER     "Layer '%s' already exists.\nPlease select another name."
+    IDS_ATTRIBUTE_INFO      "%d-bit AttributeLayer"
+    IDS_ASK_DELETE_LAYER    "Are you sure you want to delete layer '%s'?"
+    IDS_AMV_MAPDESC         "An ArmyMen map description string cannot have more than 1023 characters."
+    IDS_FRAMES              "Frames"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_DOORWAY_COMPUTE     "Compute Doorways"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_DOORWAY_END_TEXT    "End:  R%d, C%d"
+    IDS_RANDALL             "The Randomize operation will occur over the entire map, are you sure you want to continue?"
+    IDS_RANDSEL             "The Randomize operation will occur within the current selection, are you sure you want to continue?"
+    IDS_MOG                 "MultiGroups"
+    IDS_MOGEXT              "\\*.mog"
+    IDS_EXTMOG              ".mog"
+    IDS_VIEWAREA            "Viewable Area"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_OBJECT_REMAP         "Remap 8-bit objects to tileset palette"
+    ID_VIEW_REPOSITION      "Reposition the current view.\nReposition View <sp>"
+    ID_OBJECT_FLIPHORIZONTAL "Flip the selected object(s) horizontally"
+    ID_OBJECT_ANIMATE       "Toggle on/off object animations."
+    ID_LAYERS_COMPUTE       "Compute values for this attribute layer"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_SCRIPTS         "Edits Mission and Object scripts"
+    ID_OBJECT_CREATEMOG     "Creates a Multi-Object Group"
+    ID_EDIT_SELECTDLG       "Display the Selet Area dialog\nSelect Area"
+    ID_EDIT_VIEWABLE        "Edit the viewable area for the map"
+    ID_EDIT_EXPAND          "Expands the map"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif
+#include "res\MapEditor.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#include "afxprint.rc"       // printing/print preview resources
+#endif
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

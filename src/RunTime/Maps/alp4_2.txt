@@ -1,0 +1,332 @@
+//ALPINE SCENARIO 4 Mission 9  Run for the Airport
+
+PAD goal 0 GREEN SARGE > 0
+
+PAD goal1 0 GreenRifle1 > 0
+PAD goal2 0 GreenRifle2 > 0
+PAD goal3 0 GreenRifle3 > 0
+PAD goal4 0 GreenRifle4 > 0
+PAD goal5 0 GreenRifle5 > 0
+PAD goal6 0 GreenRifle6 > 0
+PAD goal7 0 GreenRifle7 > 0
+
+PAD unitgoal1 80 GreenRifle1 > 0
+PAD unitgoal2 81 GreenRifle2 > 0
+PAD unitgoal3 82 GreenRifle3 > 0
+PAD unitgoal4 83 GreenRifle4 > 0
+PAD unitgoal5 84 GreenRifle5 > 0
+PAD unitgoal6 85 GreenRifle6 > 0
+PAD unitgoal7 86 GreenRifle7 > 0
+
+PAD sargeabove 12 GREEN  > 0
+PAD sargebelow 15 GREEN  > 0
+PAD tantop 10
+PAD tanbot 11 
+PAD tanbot3 13
+PAD tanbot2 14
+PAD middleofbridge 29
+PAD crossingnorth2 28	GREEN > 0
+PAD crossingnorth 29	GREEN > 0
+PAD radiotower 40	GREEN SARGE > 0
+
+PAD medicaltentpad 30	GREEN SARGE > 0
+PAD medicaltentpad1 30	GREEN UNIT > 0
+
+PAD tanbot4 60
+
+
+
+
+//Music
+IF addtension THEN
+	AUDIO HIGHINTENSITY
+
+IF reducetension THEN
+	AUDIO LOWINTENSITY
+
+
+
+
+
+IF startup THEN
+	MAKENONSTRATEGIC prisoner,
+	TRIGGER reducetension,
+	TRIGGER unitcon2,
+	TRIGGER unitcon3,
+	TRIGGER unitcon4,
+	TRIGGER unitcon5,
+	TRIGGER unitcon6,
+	TRIGGER unitcon7,
+	MAKESTRATEGIC radiobox,
+	TRIGGER endlooping,
+	SETAICONTROL TanTank101,
+	SETAICONTROL TanTank102,
+	ORDER TanFlamer102 GOTO TanFlamer102 INMODE DEFEND THEN ATMODE DEFEND
+
+
+	// ** UNIT DISPERSEMENT ** //
+//TanRifle201 undeployed on southwest side of northern bridge, 1 trooper
+
+
+
+	
+	// ** GAME TERMINATION CONDITIONS ** //
+
+// if sarge or unit dies, tan wins
+IF killed_GreenSarge BUTNOT leave THEN
+	SHOWBMP "Alpine4_2Lose.bmp",
+	PLAYSTREAM ALPINE4_2LOSE,
+	TRIGGER tanwins
+
+
+
+// Radioing for air transport
+IF on_radiotower AFTER off_radiotower THEN
+	TRIGGER addtension,
+	ORDER TanRifle102 GOTO GreenSarge INMODE ATTACK THEN ATMODE ATTACK,
+	ORDER TanRifle103 GOTO GreenSarge INMODE ATTACK THEN ATMODE ATTACK,
+	ORDER TanTank101 GOTO GreenSarge INMODE ATTACK THEN ATMODE ATTACK,
+	ORDER TanTank102 GOTO GreenSarge INMODE ATTACK THEN ATMODE ATTACK,
+	TRIGGER go_transmitter,
+	TRIGGER radioed
+
+IF off_radiotower AFTER on_radiotower THEN
+	TRIGGERDELAY 3 stop_transmitter
+
+IF towerdestroyed BUTNOT sent THEN
+	SHOWBMP "Alpine4_2Lose.bmp",
+	PLAYSTREAM ALPINE4_2LOSE,
+	TRIGGERDELAY 3 tanwins
+
+IF radioed BUTNOT killed_transmitter THEN
+	TRIGGER radioed2
+
+IF radioed2 BUTNOT sent THEN
+	TRIGGER radiochatter,
+	TRIGGER sent,
+	TRIGGERDELAY 15 gochopper
+
+
+
+
+
+// Getting into chopper
+IF landed THEN
+	TRIGGERDELAY 3 sendthegreentroops
+
+IF sendthegreentroops THEN
+	SETAICONTROL GreenRifle1,
+	SETAICONTROL GreenRifle2,
+	SETAICONTROL GreenRifle3,
+	SETAICONTROL GreenRifle4,
+	SETAICONTROL GreenRifle5,
+	SETAICONTROL GreenRifle6,
+	SETAICONTROL GreenRifle7,
+	ORDER GreenRifle1 GOTO unitgoal1 INMODE IGNORE THEN ATMODE IGNORE TRIGGER unitthere1,
+	ORDER GreenRifle2 GOTO unitgoal2 INMODE IGNORE THEN ATMODE IGNORE TRIGGER unitthere2,
+	ORDER GreenRifle3 GOTO unitgoal3 INMODE IGNORE THEN ATMODE IGNORE TRIGGER unitthere3,
+	ORDER GreenRifle4 GOTO unitgoal4 INMODE IGNORE THEN ATMODE IGNORE TRIGGER unitthere4,
+	ORDER GreenRifle5 GOTO unitgoal5 INMODE IGNORE THEN ATMODE IGNORE TRIGGER unitthere5,
+	ORDER GreenRifle6 GOTO unitgoal6 INMODE IGNORE THEN ATMODE IGNORE TRIGGER unitthere6,
+	ORDER GreenRifle7 GOTO unitgoal7 INMODE IGNORE THEN ATMODE IGNORE TRIGGER unitthere7
+
+
+IF 1 OF killed_GreenRifle1 on_unitgoal1 unitthere1 THEN
+	UNDEPLOY GreenRifle1,
+	TRIGGER unitcon1
+
+IF 1 OF killed_GreenRifle2 on_unitgoal2 unitthere2 THEN
+	UNDEPLOY GreenRifle2,
+	TRIGGER unitcon2
+
+IF 1 OF killed_GreenRifle3 on_unitgoal3 unitthere3 THEN
+	UNDEPLOY GreenRifle3,
+	TRIGGER unitcon3
+
+IF 1 OF killed_GreenRifle4 on_unitgoal4 unitthere4 THEN
+	UNDEPLOY GreenRifle4,
+	TRIGGER unitcon4
+
+IF 1 OF killed_GreenRifle5 on_unitgoal5 unitthere5 THEN
+	UNDEPLOY GreenRifle5,
+	TRIGGER unitcon5
+
+IF 1 OF killed_GreenRifle6 on_unitgoal6 unitthere6 THEN
+	UNDEPLOY GreenRifle6,
+	TRIGGER unitcon6
+
+IF 1 OF killed_GreenRifle7 on_unitgoal7 unitthere7 THEN
+	UNDEPLOY GreenRifle7,
+	TRIGGER unitcon7
+
+
+
+
+//IF the units are still back at base camp
+IF on_goal1 AFTER off_goal1 AND landed AFTER null THEN
+	TRIGGERDELAY 2 unitthere1
+
+IF on_goal2 AFTER off_goal2 AND landed AFTER null THEN
+	TRIGGERDELAY 2 unitthere2
+
+IF on_goal3 AFTER off_goal3 AND landed AFTER null THEN
+	TRIGGERDELAY 2 unitthere3
+
+IF on_goal4 AFTER off_goal4 AND landed AFTER null THEN
+	TRIGGERDELAY 2 unitthere4
+
+IF on_goal5 AFTER off_goal5 AND landed AFTER null THEN
+	TRIGGERDELAY 2 unitthere5
+
+IF on_goal6 AFTER off_goal6 AND landed AFTER null THEN
+	TRIGGERDELAY 2 unitthere6
+
+IF on_goal7 AFTER off_goal7 AND landed AFTER null THEN
+	TRIGGERDELAY 2 unitthere7
+
+
+
+
+
+
+
+
+
+
+
+IF ALLOF unitcon1 unitcon2 unitcon3 unitcon4 unitcon5 unitcon6 unitcon7 THEN
+	TRIGGER unitthere
+
+
+// Big frieking convoluted recursive loops involving green riflemen
+
+IF on_goal AFTER off_goal AND unitthere AFTER NULL AND landed AFTER NULL THEN
+	TRIGGER reducetension,
+	UNDEPLOY GreenSarge,
+	TRIGGER leave
+
+IF on_goal AFTER off_goal AND landed AFTER NULL AND startup AFTER unitthere THEN
+	TRIGGER dontleave1
+
+IF 1 OF dontleave1 THEN
+	PLAYSTREAM SARGE_DONTLEAVE
+
+IF gone THEN
+	INVULNERABLESARGE,
+	TRIGGER greenwins
+
+
+	
+	// ** GAME EVENTS ** //
+
+
+
+
+// when sarge and squad cross top of first bridge tan runs to bottom of second bridge
+IF on_sargeabove BUTNOT deployed2 THEN
+	TRIGGER addtension,
+	TRIGGERDELAY 15 reducetension,
+	DEPLOY TanRifle201 ATMODE DEFEND,
+	ORDER TanRifle201 GOTO tanbot INMODE RETURNFIRE THEN ATMODE DEFEND,
+	TRIGGER deployed
+
+
+// when sarge and squad cross bottom part of first bridge tan rund to top of second bridge 
+IF on_sargebelow BUTNOT deployed THEN
+	TRIGGER addtension,
+	TRIGGERDELAY 15 reducetension,
+	DEPLOY TanRifle201 ATMODE DEFEND,
+	ORDER TanRifle201 GOTO tantop INMODE IGNORE THEN ATMODE DEFEND,
+	TRIGGER deployed2
+
+IF ALLOF on_sargebelow deployed THEN
+	ORDER TanRifle201 GOTO tantop INMODE IGNORE THEN ATMODE DEFEND
+
+
+// Power-ups
+IF killed_TanFlamer102 THEN
+	REMOVEOBJECT flame1,
+	PLACEOBJECT flame1 TanFlamer102
+
+IF killed_crate1 THEN
+	REMOVEOBJECT mine1,
+	PLACEOBJECT mine1 crate1
+
+IF killed_outhouse2 THEN
+	REMOVEOBJECT sweep29,
+	PLACEOBJECT sweep29 outhouse2
+
+IF killed_outhouse3 BUTNOT get_GreenSarge_para1 THEN
+	REMOVEOBJECT para1,
+	PLACEOBJECT para1 outhouse3
+
+
+
+
+IF on_crossingnorth THEN
+	TRIGGER triggertank
+
+IF triggertank THEN SEQUENTIAL
+	ORDER TanTank102 GOTO tantop SLOW INMODE RETURNFIRE THEN ATMODE ATTACK TRIGGER triggertank,
+	ORDER TanTank102 GOTO tanbot4 SLOW INMODE RETURNFIRE THEN ATMODE ATTACK TRIGGER followsarge
+
+IF followsarge THEN
+	ORDER TanRifle102 GOTO GreenSarge INMODE ATTACK THEN ATMODE ATTACK,
+	ORDER TanGrenadier102 GOTO GreenSarge INMODE ATTACK THEN ATMODE ATTACK,
+	ORDER TanGrenadier101 GOTO GreenSarge INMODE ATTACK THEN ATMODE ATTACK
+
+
+
+
+IF on_crossingnorth2 THEN
+	TRIGGER addtension,
+	TRIGGERDELAY 15 reducetension,
+	ORDER TanTank101 GOTO tanbot3 INMODE RETURNFIRE THEN ATMODE ATTACK TRIGGER followsarge2,
+	TRIGGERDELAY 12 soldierscrossbrid
+
+
+
+IF soldierscrossbrid THEN
+	ORDER TanRifle102 GOTO tanbot3 INMODE RETURNFIRE THEN ATMODE ATTACK,
+	ORDER TanFlamer101 GOTO tanbot3 INMODE RETURNFIRE THEN ATMODE ATTACK
+
+
+IF followsarge2 THEN
+	ORDER TanTank101 GOTO GreenSarge INMODE ATTACK THEN ATMODE ATTACK
+
+
+
+
+// enable mash tents
+IF startup THEN
+	TRIGGER setupgreen,
+	TRIGGERDELAY 0.1 setmash
+
+IF setupgreen THEN
+	TRIGGER gsmedtime
+
+IF setmash THEN 
+	TRIGGER greenmashready
+
+IF on_medicaltentpad AFTER off_medicaltentpad AND gsmedtime AFTER NULL 
+	AND startup AFTER killed_greenmash THEN
+	HEAL ME	10,
+	TRIGGERDELAY 1.5 gsmedtime
+
+
+IF on_medicaltentpad1 BUTNOT killed_greenmash THEN
+	HEAL ME 100
+
+
+
+IF killed_TanRifle103 THEN
+	REMOVEOBJECT fullhealth71,
+	PLACEOBJECT fullhealth71 TanRifle103
+
+IF killed_TanRifle1 THEN
+	REMOVEOBJECT gren34,
+	PLACEOBJECT gren34 TanRifle1
+
+IF killed_TanRifle104 THEN
+	REMOVEOBJECT explosive12,
+	PLACEOBJECT explosive12 TanRifle104

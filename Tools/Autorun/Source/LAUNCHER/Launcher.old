@@ -1,0 +1,22 @@
+// Vegas Games Launcher
+
+#include <windows.h>
+#include <stdio.h>
+#include <direct.h>
+#include <string.h>
+
+
+int PASCAL WinMain( HANDLE hInstance, HANDLE hPrevInstance, LPSTR lpszCmdParam, int nCmdShow )
+{
+HINSTANCE err;
+
+    err = ShellExecute (NULL, "play",  lpszCmdParam, NULL, NULL, SW_SHOWNORMAL);
+
+    if ((int)err < 32)
+        err = ShellExecute (NULL, "open",  lpszCmdParam, NULL, NULL, SW_SHOWNORMAL);
+
+    if ((int)err < 32)
+        err = ShellExecute (NULL, NULL,  lpszCmdParam, NULL, NULL, SW_SHOWNORMAL);
+
+    return(1);
+}

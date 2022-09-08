@@ -1,0 +1,94 @@
+// ALPINE SCENARIO 3 Mission 7 Roundabout
+PAD startpad 14
+PAD tanguy 70
+
+PAD medicaltentpad 9 GREEN SARGE > 0
+PAD medicaltentpad1 9 GREEN UNIT > 0
+
+	// ** UNIT DISPERSEMENT ** //
+//TanRifle301, deployed in southern group, 2 troopers
+//TanRifle302, deployed, most northern trooper, 1 trooper
+//TanRifle303, deployed south of 302, 1 trooper
+//TanMortar301, deployed in southern group, 1 trooper
+//TanBazooka301, deployed in southern group, 1 trooper
+//TanTank301, deployed in southern group, 1 tank
+
+	// ** GAME TERMINATION CONDITIONS ** //
+
+//Lose if Sarge dies
+IF killed_GreenSarge THEN
+	TRIGGERDELAY 2 tanwins
+
+
+
+//Music
+IF addtension THEN
+	AUDIO HIGHINTENSITY
+
+IF reducetension THEN
+	AUDIO LOWINTENSITY
+
+
+
+	// ** GAME EVENTS ** //
+
+IF startup THEN
+	TRIGGER timetoheal,
+	TRIGGER reducetension,
+	ORDER TanRifle302 GOTO startpad INMODE ATTACK THEN ATMODE ATTACK,
+	ORDER TanTank301 GOTO TanTank301 INMODE DEFEND THEN ATMODE DEFEND,
+	TRIGGER endlooping,
+	MAKESTRATEGIC radiotower,
+	REMOVEOBJECT strategic3,
+	PLACEOBJECT strategic3 radiotower,
+	SETAICONTROL GreenRifle2,
+	SETAICONTROL GreenRifle3,
+	SETAICONTROL GreenRifle4,
+	SETAICONTROL GreenRifle5,
+	SETAICONTROL GreenRifle6,
+	SETAICONTROL GreenRifle7,
+	SETAICONTROL GreenMortar1,
+	SETAICONTROL truck,
+	TRIGGER addtension,
+	ORDER TanHalftrack1 GOTO truck SLOW INMODE ATTACK THEN ATMODE ATTACK,
+	TRIGGER go_radiotower
+
+IF 1 OF on_tanguy THEN
+	ORDER TanRifle303 GOTO tanguy INMODE ATTACK THEN ATMODE ATTACK
+
+IF ALLOF killed_TanTank301 killed_TanRifle301 killed_TanRifle302 killed_TanRifle303 killed_TanMortar301 killed_TanBazooka301 THEN
+	TRIGGER tandead
+
+
+
+
+// enable mash tents
+IF startup THEN
+	TRIGGER setupgreen,
+	TRIGGERDELAY 0.1 setmash
+
+IF setupgreen THEN
+	TRIGGER gsmedtime
+
+IF setmash THEN 
+	TRIGGER greenmashready
+
+IF on_medicaltentpad AFTER off_medicaltentpad AND gsmedtime AFTER NULL AND startup AFTER killed_greenmash THEN
+	HEAL ME	10,
+	TRIGGERDELAY 1.5 gsmedtime
+
+
+IF on_medicaltentpad1 BUTNOT killed_greenmash THEN
+	HEAL ME 100
+
+
+
+
+IF towerdestroyed THEN
+	INVULNERABLESARGE,
+	TRIGGERDELAY 1 greenwins
+
+
+
+// END OF ALPINE SCENARIO 2 - WINDING RIVER
+

@@ -1,0 +1,231 @@
+//ALPINE SCENARIO 2 Mission 1 Pac Man
+
+PAD spyescape 42 BLUE > 0
+PAD guard1 10
+PAD guard2 11
+PAD flee 12	GREEN > 0
+PAD flee2 13	GREEN > 0
+PAD hide 14
+
+
+PAD trapped1 15 GREEN SARGE > 0
+
+PAD path2 38 BLUE > 0
+PAD greenguarding 40  GREEN > 0
+PAD greenguarding2 43  GREEN > 0
+PAD path3 61  BLUE > 0
+PAD path1 41 BLUE > 0
+
+PAD medicaltentpad 23 GREEN SARGE > 0
+PAD medicaltentpad1 23 GREEN UNIT > 0
+
+PAD sargeisabadboy 99 GREEN SARGE > 0
+PAD sargeisabadboy2 98 GREEN SARGE > 0
+PAD sargeisabadboy3 97 GREEN SARGE > 0
+PAD sargeisabadboy4 7 GREEN SARGE > 0
+
+
+	// ** UNIT DISPERSEMENT ** //
+//4 Total
+//GreenSarge deployed at base in southwest corner
+//GreenRifle1 deployed at base near Sarge, 3 troopers
+//TanRifle1 undeployed in camp on eastside, 1 trooper
+//TanRifle2 undeployed in camp on eastside, 1 trooper
+
+
+
+IF startup THEN 
+	ALLY TAN BLUE,
+	TRIGGER reducetension,
+	TRIGGER timetoheal,
+	TRIGGER endlooping
+
+
+
+	// ** GAME TERMINATION CONDITIONS ** //
+
+// if sarge dies or tan spy reaches escape area, tan wins
+IF ANYOF killed_GreenSarge on_spyescape THEN
+	TRIGGERDELAY 1 endcampalarm,
+	TRIGGERDELAY 2 tanwins
+
+// win if you kill the spy and companion unit
+IF get_GreenSarge_spynote THEN
+	INVULNERABLESARGE,
+	TRIGGERDELAY 1 endcampalarm,
+	SHOWBMP "tannote01.bmp",
+	TRIGGERDELAY 2 greenwins
+
+
+/Music
+IF addtension THEN
+	AUDIO HIGHINTENSITY
+
+IF reducetension THEN
+	AUDIO LOWINTENSITY
+
+
+	// ** GAME EVENTS ** //
+
+//gurad1 and guard2 : DEPLOYS tan units in camp
+IF 1 OF on_guard1 THEN
+	TRIGGER Guard1
+
+IF 1 OF on_guard2 THEN
+	TRIGGER Guard2
+
+IF Guard1 BUTNOT Guard2 THEN
+	DEPLOY TanRifle1 ATMODE DEFEND,
+	DEPLOY TanRifle2 ATMODE DEFEND
+
+IF Guard2 BUTNOT Guard1 THEN
+	DEPLOY TanRifle1 ATMODE DEFEND,
+	DEPLOY TanRifle2 ATMODE DEFEND
+
+
+// use of mortar on a tent causes confusion in the camp.
+//For now, triggering pads will accomplish this
+
+IF Flee THEN
+	TRIGGER spystart
+
+IF hit_tent2 THEN
+	TRIGGER	campalarm,
+	TRIGGERDELAY 10 endcampalarm,
+	TRIGGER Hide
+
+
+IF spystart THEN
+	TRIGGER addtension,
+	DEPLOY Spy1 ATMODE IGNORE,
+	SETAICONTROL Spy1,
+	TRIGGER pathtest
+
+// Go to path2 if green units are directly west
+IF ALLOF pathtest on_greenguarding THEN
+	ORDER Spy1 GOTO path2 SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER newpath
+
+
+// If green are not guarding directly west then look to see if the rock has fallen
+IF pathtest BUTNOT on_greenguarding THEN
+	TRIGGER rockpathtest
+
+IF rockpathtest BUTNOT fallingrock THEN
+	ORDER Spy1 GOTO path3 SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER newerpath
+
+IF ALLOF rockpathtest fallingrock THEN
+	ORDER Spy1 GOTO path2 SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER newpath
+
+IF newpath THEN 
+	ORDER Spy1 GOTO path1 SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER newerpath
+
+IF newerpath THEN
+	ORDER Spy1 GOTO spyescape SLOW INMODE IGNORE THEN ATMODE IGNORE
+
+
+IF killed_mineshaft1 THEN
+	TRIGGER fallingrock
+
+//Spy hides if Green approaches camp from west side
+
+//Flee
+IF 1 OF on_flee THEN
+	TRIGGER	campalarm,
+	TRIGGERDELAY 10 endcampalarm,
+	TRIGGER Flee
+
+//flee2
+IF 1 OF on_flee2 THEN
+	TRIGGER	campalarm,
+	TRIGGERDELAY 10 endcampalarm,
+	TRIGGER Hide
+
+IF Hide BUTNOT Flee THEN
+	DEPLOY Spy1 ATMODE RETURNFIRE,
+	SETAICONTROL Spy1,
+	ORDER Spy1 GOTO hide SLOW INMODE IGNORE THEN ATMODE DEFEND TRIGGER delay
+
+//Makes a dash for the escape pad after 30 seconds of hiding
+IF delay THEN
+	TRIGGERDELAY 30 spystart
+
+
+
+IF killed_Spy1 THEN
+	REMOVEOBJECT spynote,
+	PLACEOBJECT spynote Spy1
+
+
+//PLACE POWER-UPS
+IF killed_TanGrenadier1 THEN
+	REMOVEOBJECT gren1,
+	PLACEOBJECT gren1 TanGrenadier1
+
+
+IF killed_TanGrenadier2 THEN
+	REMOVEOBJECT gren2,
+	PLACEOBJECT gren2 TanGrenadier2
+
+IF killed_TanMortar1 THEN
+	REMOVEOBJECT mort1,
+	PLACEOBJECT mort1 TanMortar1
+
+IF killed_TanRifle8 THEN
+	REMOVEOBJECT recon69,
+	PLACEOBJECT recon69 TanRifle8
+
+// enable mash tents
+IF startup THEN
+	TRIGGER setupgreen,
+	TRIGGERDELAY 0.1 setmash
+
+IF setupgreen THEN
+	TRIGGER gsmedtime
+
+IF setmash THEN 
+	TRIGGER greenmashready
+
+IF on_medicaltentpad AFTER off_medicaltentpad AND gsmedtime AFTER NULL AND startup AFTER killed_greenmash THEN
+	HEAL ME	10,
+	TRIGGERDELAY 1.5 gsmedtime
+
+
+IF on_medicaltentpad1 BUTNOT killed_greenmash THEN
+	HEAL ME 100
+
+
+
+
+
+// If sarge is trapped due to a mine collapse
+IF on_sargeisabadboy AFTER off_sargeisabadboy AND checktrapped1 AFTER NULL THEN
+	EXPLODE GreenSarge
+
+IF killed_mineshaft3 THEN
+	TRIGGER checktrapped1,
+	TRIGGER checktrapped3
+
+IF killed_mineshaft2 THEN
+	TRIGGER checktrapped3
+
+IF killed_mineshaft5 THEN
+	TRIGGER checktrapped2
+
+IF killed_startbridge THEN
+	TRIGGER checktrapped4
+
+IF on_sargeisabadboy4 AFTER off_sargeisabadboy4 AND checktrapped4 AFTER NULL THEN
+	TRIGGERDELAY 2 airstrikesarge
+
+IF on_sargeisabadboy2 AFTER off_sargeisabadboy2 AND checktrapped2 AFTER NULL THEN
+	TRIGGERDELAY 2 airstrikesarge
+
+IF on_trapped1 AFTER off_trapped1 AND checktrapped3 AFTER NULL THEN
+	TRIGGERDELAY 2 airstrikesarge
+
+IF on_sargeisabadboy3 AFTER off_sargeisabadboy3 AND bridgekilled AFTER NULL THEN
+	TRIGGERDELAY 2 airstrikesarge
+
+IF ALLOF airstrikesarge BUTNOT killed_GreenSarge THEN
+	AIRSTRIKE GreenSarge,
+	TRIGGERDELAY 6 airstrikesarge

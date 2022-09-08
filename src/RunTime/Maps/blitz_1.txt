@@ -1,0 +1,267 @@
+	// generic blitz rules
+
+// random pads throughout the map for all sarges to resurrect to
+PAD res0 20
+PAD res1 21
+PAD res2 22
+PAD res3 23
+PAD res4 24
+PAD res5 25
+PAD res6 26
+PAD res7 27
+PAD res8 28
+PAD res9 29
+PAD res10 30
+PAD res11 31
+PAD res12 32
+PAD res13 33
+PAD res14 34
+PAD res15 35
+
+// flags and flagstands should not be strategic.
+// but sarges should be
+IF startup THEN
+	MAKENONSTRATEGIC grflagbase,   
+	MAKENONSTRATEGIC tflagbase,   
+	MAKENONSTRATEGIC gflagbase,   
+	MAKENONSTRATEGIC bflagbase,
+	MAKENONSTRATEGIC greenflag1,
+	MAKENONSTRATEGIC tanflag1,
+	MAKENONSTRATEGIC blueflag1,
+	MAKENONSTRATEGIC grayflag1,
+	MAKESTRATEGIC GreenSarge,
+	MAKESTRATEGIC TanSarge,
+	MAKESTRATEGIC BlueSarge,
+	MAKESTRATEGIC GraySarge
+
+// resurrect any dead sarges randomly throughout map
+IF killed_GreenSarge THEN TRIGGERDELAY 3 res
+IF killed_TanSarge THEN TRIGGERDELAY 3 res
+IF killed_BlueSarge THEN TRIGGERDELAY 3 res
+IF killed_GraySarge THEN TRIGGERDELAY 3 res
+
+IF res THEN RANDOM
+	RESURRECT ME res0,
+	RESURRECT ME res1,
+	RESURRECT ME res2,
+	RESURRECT ME res3,
+	RESURRECT ME res4,
+	RESURRECT ME res5,
+	RESURRECT ME res6,
+	RESURRECT ME res7,
+	RESURRECT ME res8,
+	RESURRECT ME res9,
+	RESURRECT ME res10,
+	RESURRECT ME res11,
+	RESURRECT ME res12,
+	RESURRECT ME res13,
+	RESURRECT ME res14,
+	RESURRECT ME res15
+
+
+// credit kills for the win
+IF axed_GreenSarge_TAN THEN 
+		TRIGGER tankill	,
+		SHOWMESSAGE "Tan Kills Green Sarge"
+IF axed_GreenSarge_BLUE THEN 
+		TRIGGER bluekill  ,
+		SHOWMESSAGE "Blue Kills Green Sarge"
+IF axed_GreenSarge_GRAY THEN 
+		TRIGGER graykill ,
+		SHOWMESSAGE "Gray Kills Green Sarge"
+IF axed_TanSarge_GREEN THEN 
+		TRIGGER greenkill ,
+		SHOWMESSAGE "Green Kills Tan Sarge"
+IF axed_TanSarge_BLUE THEN 
+		TRIGGER bluekill  ,
+		SHOWMESSAGE "Blue Kills Tan Sarge"
+IF axed_TanSarge_GRAY THEN 
+		TRIGGER graykill  ,
+		SHOWMESSAGE "Gray Kills Tan Sarge"
+IF axed_BlueSarge_GREEN THEN 
+		TRIGGER greenkill ,
+		SHOWMESSAGE "Green Kills Blue Sarge"
+IF axed_BlueSarge_TAN THEN 
+		TRIGGER tankill	 ,
+		SHOWMESSAGE "Tan Kills Blue Sarge"
+IF axed_BlueSarge_GRAY THEN 
+		TRIGGER graykill ,
+		SHOWMESSAGE "Gray Kills Blue Sarge"
+IF axed_GraySarge_GREEN THEN 
+		TRIGGER greenkill ,
+		SHOWMESSAGE "Green Kills Gray Sarge"
+IF axed_GraySarge_TAN THEN 
+		TRIGGER tankill	 ,
+		SHOWMESSAGE "Tan Kills Gray Sarge"
+IF axed_GraySarge_BLUE THEN 
+		TRIGGER bluekill  ,
+		SHOWMESSAGE "Blue Kills Gray Sarge"
+
+// if there is ai in the game, launch attacks
+IF startup THEN TRIGGERDELAY 10 considerattack
+IF ALLOF considerattack keepai THEN TRIGGER attackrandom
+
+// keep em guessing when we attack next
+IF attackrandom THEN RANDOM
+	TRIGGERDELAY 30 attack,
+	TRIGGERDELAY 40 attack,
+	TRIGGERDELAY 50 attack,
+	TRIGGERDELAY 60 attack,
+	TRIGGERDELAY 70 attack,
+	TRIGGERDELAY 80 attack,
+	TRIGGERDELAY 90 attack
+
+// pick someone to attack. Only human attacks will go thru
+IF attack THEN RANDOM
+	TRIGGER attackgreen,
+	TRIGGER attacktan,
+	TRIGGER attackblue,
+	TRIGGER attackgray
+
+// if an attack is triggered against a non-human, try again.
+// otherwise have some ai launah an assault against selected human
+// delay the attack to avoid a recursive loop on a bad random
+IF ALLOF attackgray grayai THEN 
+	SETTRIGGER grayai,
+	TRIGGERDELAY 0.1 attack
+IF ALLOF attackblue blueai THEN
+	SETTRIGGER blueai,
+	TRIGGERDELAY 0.1  attack
+IF ALLOF attacktan tanai THEN 
+	SETTRIGGER tanai,
+	TRIGGERDELAY 0.1  attack
+IF ALLOF attackgreen greenai THEN 
+	SETTRIGGER greenai,
+	TRIGGERDELAY 0.1  attack
+IF ALLOF attackgray grayhuman THEN 
+	SETTRIGGER grayhuman,
+	TRIGGER assaultgray
+IF ALLOF attackblue bluehuman THEN 
+	SETTRIGGER bluehuman,
+	TRIGGER assaultblue
+IF ALLOF attacktan tanhuman THEN 
+	SETTRIGGER tanhuman,
+	TRIGGER assaulttan
+IF ALLOF attackgreen greenhuman THEN 
+	SETTRIGGER greenhuman,
+	TRIGGER assaultgreen	
+
+// restart a new attack every minute
+IF assaultgreen THEN 
+	TRIGGER attackrandom,
+	TRIGGER pickattackergreen
+IF assaulttan THEN 
+	TRIGGER attackrandom,
+	TRIGGER pickattackertan
+IF assaultblue THEN 
+	TRIGGER attackrandom,
+	TRIGGER pickattackerblue
+IF assaultgray THEN 
+	TRIGGER attackrandom,
+	TRIGGER pickattackergray
+
+// random ai army goes after target sarge
+// if you pick a human army, try again after brief interval to avoid recursive loop if random bad
+IF pickattackergreen THEN RANDOM
+	TRIGGER blue2green,
+	TRIGGER gray2green,
+	TRIGGER tan2green
+IF ALLOF blue2green bluehuman THEN 
+	SETTRIGGER bluehuman,
+	TRIGGERDELAY 0.1  pickattackergreen
+IF ALLOF gray2green grayhuman THEN 
+	SETTRIGGER grayhuman,
+	TRIGGERDELAY 0.1  pickattackergreen
+IF ALLOF tan2green tanhuman THEN 
+	SETTRIGGER tanhuman,
+	TRIGGERDELAY 0.1  pickattackergreen
+IF ALLOF grayai gray2green THEN
+	SETTRIGGER grayai,
+	ORDER GraySarge GOTO GreenSarge INMODE ATTACK THEN ATMODE ATTACK, 
+	ORDER GRAY GOTO GreenSarge INMODE ATTACK THEN ATMODE ATTACK 
+IF ALLOF blueai blue2green THEN
+	SETTRIGGER blueai,
+	ORDER BlueSarge GOTO GreenSarge INMODE ATTACK THEN ATMODE ATTACK, 
+	ORDER BLUE GOTO GreenSarge INMODE ATTACK THEN ATMODE ATTACK 
+IF ALLOF tanai tan2green THEN
+	SETTRIGGER tanai,
+	ORDER TanSarge GOTO GreenSarge INMODE ATTACK THEN ATMODE ATTACK, 
+	ORDER TAN GOTO GreenSarge INMODE ATTACK THEN ATMODE ATTACK 
+
+IF pickattackertan THEN RANDOM
+	TRIGGER blue2tan,
+	TRIGGER gray2tan,
+	TRIGGER green2tan
+IF ALLOF blue2tan bluehuman THEN 
+	SETTRIGGER bluehuman,
+	TRIGGERDELAY 0.1  pickattackertan
+IF ALLOF gray2tan grayhuman THEN 
+	SETTRIGGER grayhuman,
+	TRIGGERDELAY 0.1  pickattackertan
+IF ALLOF green2tan greenhuman THEN 
+	SETTRIGGER greenhuman,
+	TRIGGERDELAY 0.1  pickattackertan
+IF ALLOF grayai gray2tan THEN
+	SETTRIGGER grayai,
+	ORDER GraySarge GOTO TanSarge INMODE ATTACK THEN ATMODE ATTACK, 
+	ORDER GRAY GOTO TanSarge INMODE ATTACK THEN ATMODE ATTACK 
+IF ALLOF blueai blue2tan THEN
+	SETTRIGGER blueai,
+	ORDER BlueSarge GOTO TanSarge INMODE ATTACK THEN ATMODE ATTACK, 
+	ORDER BLUE GOTO TanSarge INMODE ATTACK THEN ATMODE ATTACK 
+IF ALLOF greenai green2tan THEN
+	SETTRIGGER greenai,
+	ORDER GreenSarge GOTO TanSarge INMODE ATTACK THEN ATMODE ATTACK, 
+	ORDER GREEN GOTO TanSarge INMODE ATTACK THEN ATMODE ATTACK 
+
+IF pickattackerblue THEN RANDOM
+	TRIGGER tan2blue,
+	TRIGGER gray2blue,
+	TRIGGER green2blue
+IF ALLOF tan2blue tanhuman THEN 
+	SETTRIGGER tanhuman,
+	TRIGGERDELAY 0.1  pickattackerblue
+IF ALLOF gray2blue grayhuman THEN 
+	SETTRIGGER grayhuman,
+	TRIGGERDELAY 0.1  pickattackerblue
+IF ALLOF green2blue greenhuman THEN 
+	SETTRIGGER greenhuman,
+	TRIGGERDELAY 0.1  pickattackerblue
+IF ALLOF tanai tan2blue THEN
+	SETTRIGGER tanai,
+	ORDER TanSarge GOTO BlueSarge INMODE ATTACK THEN ATMODE ATTACK, 
+	ORDER TAN GOTO BlueSarge INMODE ATTACK THEN ATMODE ATTACK 
+IF ALLOF grayai gray2blue THEN
+	SETTRIGGER grayai,
+	ORDER GraySarge GOTO BlueSarge INMODE ATTACK THEN ATMODE ATTACK, 
+	ORDER GRAY GOTO BlueSarge INMODE ATTACK THEN ATMODE ATTACK 
+IF ALLOF greenai green2blue THEN
+	SETTRIGGER greenai,
+	ORDER GreenSarge GOTO BlueSarge INMODE ATTACK THEN ATMODE ATTACK, 
+	ORDER GREEN GOTO BlueSarge INMODE ATTACK THEN ATMODE ATTACK 
+
+IF pickattackergray THEN RANDOM
+	TRIGGER tan2gray,
+	TRIGGER blue2gray,
+	TRIGGER green2gray
+IF ALLOF tan2gray tanhuman THEN 
+	SETTRIGGER tanhuman,
+	TRIGGERDELAY 0.1  pickattackergray
+IF ALLOF blue2gray bluehuman THEN 
+	SETTRIGGER bluehuman,
+	TRIGGERDELAY 0.1  pickattackergray
+IF ALLOF green2gray greenhuman THEN 
+	SETTRIGGER greenhuman,
+	TRIGGERDELAY 0.1  pickattackergray
+IF ALLOF tanai tan2gray THEN
+	SETTRIGGER tanai,
+	ORDER TanSarge GOTO GraySarge INMODE ATTACK THEN ATMODE ATTACK, 
+	ORDER TAN GOTO GraySarge INMODE ATTACK THEN ATMODE ATTACK 
+IF ALLOF blueai blue2gray THEN
+	SETTRIGGER blueai,
+	ORDER BlueSarge GOTO GraySarge INMODE ATTACK THEN ATMODE ATTACK, 
+	ORDER BLUE GOTO GraySarge INMODE ATTACK THEN ATMODE ATTACK 
+IF ALLOF greenai green2gray THEN
+	SETTRIGGER greenai,
+	ORDER GreenSarge GOTO GraySarge INMODE ATTACK THEN ATMODE ATTACK, 
+	ORDER GREEN GOTO GraySarge INMODE ATTACK THEN ATMODE ATTACK 

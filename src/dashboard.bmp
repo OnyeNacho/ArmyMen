@@ -1,0 +1,578 @@
+// 3DO Standard network subsystem
+//
+//	File:	3DONetwork.cpp
+//
+//
+
+#include "stdafx.h"
+#include "GameFlow.h"
+#include "3DONetwork.h"
+#include "resource.h"
+#include "comm.h"	// helper functions for directplay
+// #include "dpgame.h"
+// #include "gameproc.h"
+unsigned long msgbuffer[MAX_MSGS][MAX_MSG_SIZE/4];
+unsigned long bitbucket[MAX_MSG_SIZE/4];
+
+/*
+ * Globals
+ */
+HANDLE								ObjectTable[32];	/* maximum objects to wait for */
+HANDLE								PlayerEvent;
+LPGUID								glpGuid;
+HWND								ghWndMain;					// hack to get comm. into Armymen
+HINSTANCE							ghinst;						// Application instance handle      
+HANDLE								ghThread;					// handle to wizard thread
+
+LOGACKMSG				gLogAckMsg;					// message buffer
+TDGLIST freelist;
+TDGLIST inuselist;
+BOOL GameLaunched;			// should be set at end of LaunchGame
+
+
+TDGMSG msgs[MAX_MSGS];
+
+DWORD numObjs;
+
+BOOL		gShutDown;
+
+
+DWORD					PacketThreadID;
+HANDLE					ThreadHandle;
+
+          // our player id
+extern HINSTANCE                ghinst;           
+
+#define EMPTYLIST(l)	((l)->first == 0)
+
+BOOL InitTdgList(TDGLIST *l)
+{
+	l->first = 0;
+	l->last = 0;
+	l->MutexLock = CreateMutex(0,0,0);
+	if (l->MutexLock == 0) return FALSE;
+	return TRUE;
+}
+
+static void FreeTdgList(TDGLIST *l) 
+{
+	l->first = 0;
+	l->last = 0;
+	if (l->MutexLock ) CloseHandle(l->MutexLock);
+	l->MutexLock = 0;
+}
+
+
+
+void AddMsg(TDGLIST *l, TDGMSG *m)
+{
+	TDGMSG *lastmsg;
+	m->next = 0;
+	WaitForSingleObject(l->MutexLock, INFINITE);
+	lastmsg = l->last;
+	m->prev = lastmsg;
+	if (lastmsg == 0)
+	{	// EmptyList
+		l->first = m;
+		l->last = m;
+	}
+	else
+	{
+		lastmsg->next = m;
+		l->last = m;
+	}
+	ReleaseMutex(l->MutexLock);
+}
+
+TDGMSG *RemHead(TDGLIST *l)
+{
+	TDGMSG *m;
+	WaitForSingleObject(l->MutexLock, INFINITE);
+	m = l->first;
+	if (m)
+	{
+		TDGMSG *n = m->next;
+		l->first = n;
+		if (n == 0) l->last = 0;
+		else	n->prev = 0;
+	}
+	ReleaseMutex(l->MutexLock);
+	return m;
+}
+void RemMsg(TDGLIST *l, TDGMSG *m)
+{
+	TDGMSG *t;
+	TDGMSG *s;
+	WaitForSingleObject(l->MutexLock, INFINITE);
+	if (m->prev == 0)	// first msg on list
+	{
+		t = m->next;
+		l->first = t;
+		if (t)	t->prev = 0;
+		else	l->last = 0;	// empty list now
+	}
+	else if (m->next == 0)	// last msg on list
+	{
+		// we know there one before us
+		t = m->prev;
+		t->next = 0;
+		l->last = t;
+	}
+	else
+	{
+		t = m->prev;
+		s = m->next;
+		t->next = s;
+		s->prev = t;
+	}
+	ReleaseMutex(l->MutexLock);
+}
+
+
+DWORD	TDGTimeDelta;	// set after round trip tests
+DWORD	clockerr = 0;
+
+#include <sys/types.h>
+#include <sys/timeb.h>
+
+DWORD TDGTimeStamp(void)
+{
+
+	return GetTickCount();
+
+}
+
+DWORD TDGRealTime(void)
+{
+	return TDGTimeStamp() + TDGTimeDelta;
+}
+
+BOOL DoLocalSystemMessage(TDGMSG *m);
+
+BOOL ProcessTdgMsgLocal(TDGMSG *m)
+{
+    LPLOGMSG lpLogMsg;
+    LPLOGACKMSG  lpLogAckMsg = &gLogAckMsg;
+	// all msgs get defered for now
+	LPGENERICMSG lpMsg;
+	if (m->idFrom == DPID_SYSMSG)
+	{
+	    return DoLocalSystemMessage(m);
+	}
+	lpMsg = (LPGENERICMSG)m->data;
+	switch (lpMsg->tdg.tdg_Type)
+	{
+#ifdef THREAD_LOGGING
+	case MSG_LOG:
+		{
+			lpLogMsg = (LPLOGMSG) lpMsg;
+			lpLogAckMsg->seq = lpLogMsg->seq;
+			lpLogAckMsg->xsum = XorSum((LPGENERICMSG)lpLogMsg);
+			SendGameMessage( (LPGENERICMSG) lpLogAckMsg, m->idFrom, 0 );
+		}
+		return FALSE;	// allow app to process also
+		// return TRUE;	// done with msg. Do not allow app to process also
+		break;
+#endif
+	default: return FALSE;
+	}
+}
+
+DWORD DPlayNextMsgSize(void)
+{
+	HRESULT hr;
+	DPID from,to;
+	DWORD msgsize = 0;
+	hr = gpComm->Receive(&from,&to, DPRECEIVE_ALL,
+							0,&msgsize);
+	return msgsize;
+}
+
+
+unsigned PacketThread(void * arg)
+{
+	int what;
+	int need_to_post;
+	DWORD fromIgnored, toIgnored;
+	DWORD sizeIgnored = MAX_MSG_SIZE;
+	HRESULT	hr;
+	TDGMSG *m = 0;
+	/* just wait for network objects */
+	// this should start up and wait
+	while (1)
+	{
+		what = WaitForMultipleObjects(numObjs,ObjectTable,FALSE,INFINITE);
+		need_to_post = 0;
+		if (what == 0)
+		{
+			/* got signal from event */
+			/* wait while main process recomputes table */
+			WaitForSingleObject(ObjectTable[0],INFINITE);
+		}
+		else
+		{
+			/* some other kind of event, should be network object */
+		 // TDG_DEBUG_OUT("EVENT");
+		  while (TRUE)
+		  {
+			if (!m) m = RemHead(&freelist);	// get a free msg block
+			if (m == 0)
+			{
+				// big time error NO Buffers to receive into
+				//ShowError(IDS_DPERR_NOBUFFERS);
+				// ExitGame();
+				//while (1);
+				// For now better to dump messages on the floor than to let
+				// DPlay continue to buffer them up exhausting memory
+				TRACE(" Comm Error No Recieve Buffers");
+				TRACE(" Dumping incoming message on the floor");
+				hr = gpComm->Receive(&fromIgnored,&toIgnored, DPRECEIVE_ALL,
+							bitbucket,&sizeIgnored);
+				break;
+			}
+			//msgsize = DPlayNextMsgSize();	// not really used yet
+			m->datasize = MAX_MSG_SIZE;
+			hr = gpComm->Receive(&m->idFrom,&m->idTo, DPRECEIVE_ALL,
+							m->data,&m->datasize);
+			if (hr == DPERR_BUFFERTOOSMALL)
+			{
+			    // another bigtime error
+				// big time error
+				ShowError(IDS_DPERR_BUFFERTOOSMALL);
+				// ExitGame();
+			    // while (1);
+			}
+			else if (hr == DP_OK)
+			{
+			    /* do we handle the message in this thread? */
+			    if (ProcessTdgMsgLocal(m) == 0)
+			    {
+					// nope, need to defer to main process
+					need_to_post = 1;
+//					TDG_DEBUG_OUT("Defer\n");
+					AddMsg(&inuselist,m);
+					m = 0;
+			    }
+			    else
+			    {
+					AddMsg(&freelist,m);
+					// TDG_DEBUG_OUT("local\n");
+			    }
+			}
+			else break;
+		  }
+		  if (need_to_post)
+					PostMessage(ghWndMain, UM_TDG_DPLAY, 0, 0);
+		}
+	}
+	TRACE("Packet Thread Exiting %x %x %x \n", what, what, what);
+	return TRUE;	// should never get here
+}
+
+void KillMsgSystem(void)
+{
+	FreeTdgList(&freelist);
+	FreeTdgList(&inuselist);
+	if (ObjectTable[0]) CloseHandle(ObjectTable[0]);
+	ObjectTable[0]= 0;
+	if (ObjectTable[1]) CloseHandle(ObjectTable[1]);
+	ObjectTable[1]= 0;
+}
+
+BOOL InitMsgSystem(void)
+{
+	int i;
+	if (!InitTdgList(&freelist)) return FALSE;
+	if (!InitTdgList(&inuselist)) return FALSE;
+	for (i = 0; i < MAX_MSGS; i++)
+	{
+		msgs[i].dwMsgBufferMaxSize = MAX_MSG_SIZE;
+		msgs[i].data = msgbuffer[i];
+		AddMsg(&freelist,&msgs[i]);
+	}
+	ObjectTable[0] = CreateEvent(0,0,0,0);	// control event
+	ObjectTable[1] = CreateEvent(0,0,0,0);	// player event
+	PlayerEvent = ObjectTable[1];
+	numObjs = 2;
+	if ((ThreadHandle = CreateThread((LPSECURITY_ATTRIBUTES)NULL,
+						(unsigned)0,
+						(LPTHREAD_START_ROUTINE)PacketThread,
+						0, 0, &PacketThreadID)) < 0)
+	{
+	
+		TRACE("Error launching packet thread\n",0,0,0);
+		//ExitGame();
+		return FALSE;
+	}
+	// set priority of thread
+	if (!SetThreadPriority(ThreadHandle, THREAD_PRIORITY_ABOVE_NORMAL))
+	{
+		//MyMsg("Error Setting thread priority");
+		//ExitGame();
+		return FALSE;
+	}
+
+	return TRUE;
+}
+
+/*
+ * SendGameMessage
+ *
+ * Sends a message to specified player(s)
+ */
+HRESULT SendGameMessage( LPGENERICMSG lpMsg, DPID idTo, DWORD dwFlags )
+{
+    HRESULT hr=E_FAIL ;
+	if((!gpComm->m_bActive)) return hr;
+	if (gpComm->m_bSessionLost)
+    {
+        // no sends when we are not in the session
+        return DPERR_NOCONNECTION;
+    }
+	//TRACE("SendGameMsg(type=%lx to=%lx flags=%lx)\n",lpMsg->tdg.tdg_Type, idTo, dwFlags);
+
+    // Send the message to the relevant player(s)
+    hr = gpComm->Send(idTo, dwFlags, (LPVOID)lpMsg, lpMsg->tdg.tdg_Size);    
+	if (FAILED(hr)) {
+		TRACE("DPlaySend Failure %x to %x size %d\n", hr, idTo, lpMsg->tdg.tdg_Size);
+		if ( hr == E_FAIL) return hr;
+		gShutDown = TRUE;
+		if ( hr == DPERR_BUSY ) ShowError(IDS_DPERR_BUSY);
+		if ( hr == DPERR_INVALIDOBJECT ) ShowError(IDS_DPERR_INVALIDOBJECT);
+		if ( hr == DPERR_INVALIDPARAMS ) ShowError(IDS_DPERR_INVALIDPARAMS);
+		if ( hr == DPERR_INVALIDPLAYER ) ShowError(IDS_DPERR_INVALIDPLAYER);
+		if ( hr == DPERR_SENDTOOBIG ) ShowError(IDS_DPERR_SENDTOOBIG);
+		TRACE("gpComm->Send Failure2 %x to %x size %d\n", hr, idTo, lpMsg->tdg.tdg_Size);
+		ExitGame();
+	}
+	return hr;
+}
+
+/*
+ * DoLocalSystemMessage
+ *
+ * called via an interrupt, so main app is till running!
+ * Evaluates system messages and performs appropriate actions
+ * returns whether msg is not defered.
+ */
+BOOL DoLocalSystemMessage(TDGMSG *m)
+{
+    // for this release, all msgs are defered to avoid race conditions
+	LPGENERICMSG pgm = (LPGENERICMSG)m->data;
+    switch (pgm->tdg.tdg_Type)
+	{
+		case DPSYS_SESSIONLOST:	gpComm->m_bSessionLost = TRUE;
+								/* let msg continue on */
+								break;
+		default: break;
+	}
+    return FALSE;
+}
+
+/*
+ * LaunchedByLobby
+ *
+ * Determines if we were launched by a lobby. If so, gets the connection settings
+ * and creates our player using the information from the lobby
+ */
+BOOL LaunchedByLobby(void)
+{
+    HRESULT hr;
+    HWND    hwndStatus;
+
+    // create a lobby object
+    hr = gpComm->LobbyCreate();
+    if (FAILED(hr))
+    {
+        ShowError(IDS_DPLOBBY_ERROR_C);
+        return FALSE;
+    }
+
+    // get connection settings from the lobby (into gpComm->m_pConnection)
+    hr = gpComm->LobbyGetConnectionSettings();
+    if (FAILED(hr))
+    {
+        if (DPERR_NOTLOBBIED == hr)
+        {
+            // we were not lobbied - start up game normally
+            hr = gpComm->LobbyRelease();
+            if (FAILED(hr))
+            {
+                ShowError(IDS_DPLOBBY_ERROR_R);
+                goto FAIL;
+            }
+            // move on
+            return FALSE;
+        }
+        else
+        {
+            ShowError(IDS_DPLOBBY_ERROR_GCS);
+            goto FAIL;
+        }
+    }
+
+    // are we hosting or joining ?
+    if (gpComm->m_pConnection->dwFlags & DPLCONNECTION_CREATESESSION)
+    {
+        gpComm->m_bHost  = TRUE;
+		gpGame->GameType = GAMETYPE_HOST_MULTIPLAYER;
+    }
+
+    // set our session flags
+    gpComm->m_pConnection->lpSessionDesc->dwFlags = DPSESSION_MIGRATEHOST | 
+                                                 DPSESSION_KEEPALIVE;
+
+    // let lobby know our connection flags
+    hr = gpComm->LobbySetConnectionSettings();
+    if (FAILED(hr))
+    {
+        ShowError(IDS_DPLOBBY_ERROR_SCS);
+        goto FAIL;
+    }
+
+    if ( gpComm->m_bHost ) 
+    {
+        // show splash screen and 
+        // connection status if we are joining a game
+        UpdateWindow(ghWndMain);
+        hwndStatus = ShowConnectStatus();
+    }
+    else
+    {
+        // we are hosting, don't need connection status
+        hwndStatus = NULL;
+    }
+
+    // connect to the lobby
+    hr = gpComm->LobbyConnect();
+
+    if ( hwndStatus )
+    {
+        // get rid of the connectino status window
+        DestroyWindow(hwndStatus);
+    }
+
+    if (FAILED(hr))
+    {
+        ShowError(IDS_DPLOBBY_ERROR_CONNECT);
+        goto FAIL;
+    }
+
+    // create our player
+    hr = gpComm->CreatePlayer(
+                          
+#ifdef UNICODE
+                            gpComm->m_pConnection->lpPlayerName->lpszShortName,
+#else
+                            gpComm->m_pConnection->lpPlayerName->lpszShortNameA,
+#endif
+                            NULL,
+                            NULL,
+                            0
+                          );
+
+    if (FAILED(hr))
+    {
+        ShowError(IDS_DPLAY_ERROR_CP);
+        goto FAIL;
+    }
+
+
+    // cleanup
+    hr = gpComm->LobbyRelease();
+    if (FAILED(hr))
+    {
+        ShowError(IDS_DPLOBBY_ERROR_R);
+        goto FAIL;
+    }
+
+    // we were lobbied
+    return TRUE;
+
+FAIL:
+    // cleanup and exit
+    gpComm->LobbyRelease();
+    ExitGame();
+    return FALSE;
+}
+
+/*
+ * ReceiveGameMessages
+ *
+ * Checks if there are any messages for us and receives them
+ */
+void ReceiveMessages( void )
+{
+	TDGMSG *m;
+	int nMsgs = 0;
+	// TRACE("RcvMsgs launched=%d %d %d\n",GameLaunched,0,0);
+	if (gpComm->m_bActive)
+	{
+	    while (m = (TDGMSG *)RemHead(&inuselist))
+	    {
+			LPGENERICMSG gm;
+			gm = (LPGENERICMSG)m->data;
+		    nMsgs++;
+			// presently all messages, system and our own are coming this way
+			//if (m->idFrom == DPID_SYSMSG)
+			//   TRACE("sysmsg from=%d type=%ld\n",
+			//							m->idFrom,gm->tdg.tdg_Type,0);
+			//else
+			//   TRACE("appmsg from=%d type=%ld\n",
+			//							m->idFrom,gm->tdg.tdg_Type,0);
+			if (m->idFrom == DPID_SYSMSG)
+				DoSystemMessage((LPDPMSG_GENERIC)gm,m->datasize,
+					 m->idFrom, m->idTo);
+			else
+                DoApplicationMessage((LPGENERICMSG)gm,
+					 m->datasize, m->idFrom, m->idTo);
+                
+		    // Done, put it back on freelist
+		    AddMsg(&freelist,(TDGMSG*)m);
+		}
+		if (nMsgs > 15) TRACE("Received  %d messages \n",nMsgs,0,0);
+	}
+	else // let messages stack up until we are ready
+	{
+	}
+}
+
+
+DWORD XorSum(LPGENERICMSG pMsg) {
+	DWORD xsum = 0;
+	DWORD *pdw;
+	int i,n;
+	pdw = (DWORD *) pMsg;
+	n = pMsg->tdg.tdg_Size >> 2;
+	for( i=0; i<n;i++,pdw++) xsum ^= *pdw;
+	return xsum;
+	
+ }
+
+
+BOOL ShowError( int iStrID )
+{
+    TCHAR tszMsg[MAX_ERRORMSG];
+    TCHAR tszTitle[MAX_WINDOWTITLE];
+
+    LoadString(ghinst, iStrID, tszMsg, MAX_ERRORMSG);
+    LoadString(ghinst, IDS_DUEL_ERROR_TITLE, tszTitle, MAX_WINDOWTITLE);
+	Error("%s:%s",tszTitle,tszMsg);
+    // TRACE("DPLAYERRORB # %x %d \n",iStrID  , iStrID, IDS_DUEL_ERROR_TITLE );
+    return FALSE;
+}
+
+/*
+ * ExitGame
+ *
+ * Game termination code
+ */
+void ExitGame(void)
+{
+    // shut down app
+    gShutDown = TRUE;
+	TRACE("Exit Game Posting WM_CLOSE from 3DONetwork\n",0,0,0);
+	PostMessage( ghWndMain, WM_CLOSE, 0, 0 );
+}
+
+

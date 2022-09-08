@@ -1,0 +1,347 @@
+////////////////////////////////////////////////////////	
+//						      //	
+// 		ALPINE Scenario 1   		      //
+//   Mission 1 : Lure the Tiger out of the Mountains  //
+//						      //	
+////////////////////////////////////////////////////////
+
+
+	// ** PADS ** //
+
+PAD sargeincamp 0	GREEN SARGE > 0 	// sarge ends in camp to win
+PAD trip1 	9	GREEN > 0 	// tripwire for building1
+PAD trip2 	8	GREEN > 0	 // tripwire for building2
+PAD southpad   10  GREEN > 0 	//alerts souther units of incoming green 
+PAD southwest  11  GREEN > 0   	//alerts all south-of-river tan squads to attack Sarge
+PAD northpad   12  GREEN > 0 	//alerts northern units of incoming green
+PAD northpad2 13       GREEN > 0  	//triggers Tan attack when Sarge penetrates too far
+PAD northpad3 14  GREEN SARGE > 0	//tells all south-of-river tan units to retreat back to their starting position
+//(Don't think I need) PAD northpad4 15  GREEN > 0 	//alerts tan of incoming green
+//(Don't think I need) PAD northpad5 16 	//retreatposition
+PAD position1 17	//Defend position for Tanrifle3
+PAD position2 18	//Defend position for Tanrifle4
+PAD position3 19	//Defend position for Tanrifle5	
+PAD lastline   21  GREEN > 0
+PAD getsarge 22 GREEN > 0 //get's first two tan guys on the green guys
+
+PAD medicaltentpad 23	GREEN SARGE > 0    //pad next to green medicaltent 
+PAD medicaltentpad1 23	GREEN UNIT > 0    //pad next to green medicaltent 
+
+PAD campcenter 24	//pad in logging camp that TanRifle1 goes and covers at for five seconds before attacking
+PAD southpad2 25	//second southern pad that triggers release of second set of southern tan troops
+PAD cross 30	//pad running north-south down the middle of the map, triggers all out Tan attack
+PAD stonecircle 31
+PAD trail1 32
+PAD rescue 33
+PAD loggingcamp 34	GREEN SARGE > 0
+PAD freerifles 35	GREEN SARGE > 0
+PAD tripjeep 36	GREEN SARGE > 0
+PAD truckpos 52	//
+PAD opengate1 60	TAN VEHICLE > 0
+PAD closegate1 63	TAN VEHICLE > 0
+PAD truck1 68
+PAD truck2 69
+PAD truck3 70
+PAD truck4 71
+PAD truck5 72
+PAD truck6 73
+PAD truck7 74
+PAD truck8 75
+PAD truck9 76
+PAD truck10 77
+PAD truck11 78
+PAD truck12 79
+PAD truck13 80
+PAD truck14 81		TAN VEHICLE > 0
+
+
+	// ** UNIT DISPERSEMENT ** //
+
+//16 total
+//GreenSarge deployed at green base
+//GreenRifle1 delpoyed at green base, five troopers
+//TanRifle1 undeployed in first building in Logging camp, 3 troopers
+//TanRifle2 undeployed in second building in Logging camp, 4 troopers
+//TanRifle3 undeployed at the base of the southern bridge below Sarge, 1 trooper
+//TanRifle4 and TanRifle 5 undeployed north of the north bridge from Sarge, 1 trooper each
+//TanRifle6 undeployed southcentral, 6 troopers
+//TanRifle7 undeployed southcentral, 5 troopers
+//TanRifle8, TanRifle9, TanRifle10 undeployed northeast, 1 trooper each
+//TanRifle11 undeployed far northwest, 8 troopers
+//TanRifle 12, TanRifle13, TanRifle14, undeployed north, 2 troopers each
+//TanMortar1, TanMortar2, TanMortar3 all undeployed in south/southeast sector, 1-3 troopers
+//TanRifle15 undeployed in southeast sector, 5 troopers
+//TanBazooka1 undeployed before loggingcamp, 1 trooper
+
+
+
+	// ** GAME TERMINATION CONDITIONS ** //
+
+// Lose if sarge dies.
+IF killed_GreenSarge THEN
+	TRIGGERDELAY 1 endcampalarm,
+	TRIGGERDELAY 2 tanwins
+
+IF killed_truck THEN
+	INVULNERABLESARGE,
+	TRIGGERDELAY 1 endcampalarm,
+	TRIGGERDELAY 2 greenwins
+
+
+
+
+//Music
+IF addtension THEN
+	AUDIO HIGHINTENSITY
+
+IF reducetension THEN
+	AUDIO LOWINTENSITY
+
+
+
+
+ 
+	// ** GAME EVENTS ** //
+
+//TanRifle3 behavior and startup sequences
+IF startup THEN
+	TRIGGER reducetension,
+	TRIGGER endlooping,
+	DEPLOY TanRifle3 ATMODE ATTACK,
+	SETUSERCONTROL GreenRifle201,
+	ORDER TanGrenadier105 GOTO TanGrenadier105 INMODE ATTACK THEN ATMODE NESTFIRE,
+	TRIGGER timetohealtest,
+	ORDER TanRifle3 GOTO medicaltentpad INMODE ATTACK THEN ATMODE ATTACK
+
+
+//Temporary explosions////////////////////////////////////////////////////////
+
+PAD thirtynine 39
+PAD forty 40
+PAD fortyone 41
+PAD fortytwo 42
+PAD fortythree 43
+PAD fortyfour 44
+PAD fortyfive 45
+PAD fortysix 46
+
+
+
+// If sarge gets near jeep trigger tan defenders to annoy player
+IF on_southwest THEN
+	DEPLOY TanRifle15 ATMODE ATTACK,
+	DEPLOY TanFlamer2 ATMODE ATTACK
+
+
+//Incoming southern  unit will attack and regenerate once
+IF killed_TanRifle3 BUTNOT deadonce THEN
+	RESURRECT TanRifle3 southpad,
+	TRIGGER deadonce
+
+IF deadonce THEN
+	ORDER TanRifle3 GOTO medicaltentpad INMODE ATTACK THEN ATMODE ATTACK
+	
+
+//First pad north of Sarge will let loose two tan troopers
+IF 1 OF on_getsarge THEN
+	DEPLOY TanRifle18 ATMODE STANDFIRE,
+	DEPLOY TanRifle4 ATMODE ATTACK,
+	DEPLOY TanRifle5 ATMODE KNEELFIRE,
+	DEPLOY TanBazooka1 ATMODE STANDFIRE
+	
+
+//second line	
+IF 1 OF on_southpad2 THEN
+	DEPLOY TanRifle6 ATMODE ATTACK,
+	DEPLOY TanRifle7 ATMODE ATTACK
+
+	
+	
+//If Sarge penetrates too far north from the east then deploy scattered tan units
+IF on_lastline BUTNOT crossed THEN
+	DEPLOY TanRifle12 ATMODE ATTACK,
+	DEPLOY TanRifle13 ATMODE ATTACK,
+	DEPLOY TanRifle14 ATMODE ATTACK,
+	TRIGGER crosslast
+		
+//If Sarge penetrates too far north from the west the
+IF on_cross BUTNOT crosslast THEN
+	DEPLOY TanRifle12 ATMODE ATTACK,
+	DEPLOY TanRifle13 ATMODE ATTACK,
+	DEPLOY TanRifle14 ATMODE ATTACK,
+	TRIGGER crossed
+	
+
+
+		// INSIDE LOGGING CAMP //
+
+
+
+// Check to see if sarge has ever entered the logging camp
+IF 1 OF on_loggingcamp THEN
+	TRIGGER camppenetration
+
+// First time some building receives damage both tan units will exit and attack.
+IF 2 OF hit_building1 hit_building2 hit_building3 hit_building4 camppenetration THEN
+	TRIGGER hitbuilding
+
+IF hitbuilding BUTNOT whytrigger THEN
+	DEPLOY TanRifle1 ATMODE DEFEND,
+	DEPLOY TanRifle2 ATMODE DEFEND,
+	DEPLOY TanRifle16 ATMODE DEFEND,
+	TRIGGER whytrigger
+
+IF whytrigger BUTNOT whytrigger2 THEN
+	ORDER TanRifle1 FOLLOW GreenSarge INMODE ATTACK,
+	ORDER TanRifle2 FOLLOW GreenSarge INMODE ATTACK,
+	ORDER TanRifle16 FOLLOW GreenSarge INMODE ATTACK
+
+
+
+// First time the truck receives damage all tan units will exit and attack.
+
+IF whytrigger2 BUTNOT whytrigger THEN
+	ORDER TanRifle1 GOTO truck INMODE RETURNFIRE THEN ATMODE DEFEND,
+	ORDER TanRifle2 GOTO truck INMODE RETURNFIRE THEN ATMODE DEFEND,
+	ORDER TanRifle16 GOTO truckpos INMODE RETURNFIRE THEN ATMODE DEFEND
+
+
+IF hittruck BUTNOT whytrigger2 THEN
+	DEPLOY TanRifle1 ATMODE DEFEND,
+	DEPLOY TanRifle2 ATMODE DEFEND,
+	DEPLOY TanRifle16 ATMODE DEFEND,
+	TRIGGER gotruck,
+	TRIGGER whytrigger2
+
+
+IF 1 OF hit_truck THEN
+	TRIGGER hittruck,
+	TRIGGER campalarm,
+	TRIGGERDELAY 10 endcampalarm
+
+IF 1 OF on_loggingcamp hit_gturr1 hit_gturr2 hit_building1 hit_building2 hit_building3 hit_building4 hit_aagun1 hit_aagun2 hit_aagun3 THEN
+	DEPLOY TanRifle1 ATMODE DEFEND,
+	DEPLOY TanRifle2 ATMODE DEFEND,
+	DEPLOY TanRifle16 ATMODE DEFEND,
+	TRIGGER campalarm,
+	TRIGGER addtension,
+	TRIGGERDELAY 10 endcampalarm
+
+
+IF 7 OF gotruck THEN
+	TRIGGER addtension
+
+IF gotruck THEN SEQUENTIAL
+	ORDER truck GOTO truck1 SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER gotruck,
+	ORDER truck GOTO truck2 SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER gotruck,
+	ORDER truck GOTO truck3 SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER gotruck,
+	ORDER truck GOTO truck4 SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER gotruck,
+	ORDER truck GOTO truck5 SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER gotruck,
+	ORDER truck GOTO truck6 SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER gotruck,
+	ORDER truck GOTO truck7 SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER gotruck,
+	ORDER truck GOTO truck8 SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER gotruck,
+	ORDER truck GOTO truck9 SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER gotruck,
+	ORDER truck GOTO truck10 SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER gotruck,
+	ORDER truck GOTO truck11 SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER gotruck,
+	ORDER truck GOTO truck12 SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER gotruck,
+	ORDER truck GOTO truck13 SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER gotruck,
+	ORDER truck GOTO truck14 SLOW INMODE IGNORE THEN ATMODE IGNORE
+
+
+IF 1 OF on_truck14 THEN
+	SHOWBMP "Alpine1_2Lose.bmp",
+	PLAYSTREAM ALPINE1_2LOSE,
+	TRIGGERDELAY 3 tanwins
+
+
+IF REPEAT 5 OF gotruck THEN
+	REMOVEOBJECT invisible1,
+	PLACEOBJECT invisible1 truck,
+	TRIGGERDELAY 1 deploytruckguards
+
+IF deploytruckguards THEN
+	DEPLOY TanGrenadier106 invisible1 ATMODE DEFEND,
+	DEPLOY TanRifle117 invisible1 ATMODE DEFEND,
+	DEPLOY TanFlamer103 invisible1 ATMODE DEFEND
+	
+
+
+
+//northpad
+//DEPLOYS three tan units to startegic positions when any green crosses the line
+
+IF 1 OF on_northpad THEN
+	DEPLOY TanRifle8 ATMODE DEFEND,
+	DEPLOY TanRifle9 ATMODE DEFEND,
+	DEPLOY TanRifle10 ATMODE DEFEND,
+	DEPLOY TanBazooka104 ATMODE ATTACK,
+	ORDER TanRifle8 GOTO position1 SLOW INMODE RETURNFIRE THEN ATMODE DEFEND,
+	ORDER TanRifle9 GOTO position2 SLOW INMODE RETURNFIRE THEN ATMODE DEFEND,
+	ORDER TanRifle10 GOTO position3 SLOW INMODE RETURNFIRE THEN ATMODE DEFEND
+	
+
+// northpad2
+//IF any green breaks through to this line, they've gone too far and the 
+//three defending units will turn and attack
+
+IF 1 OF on_northpad2 THEN
+	TRIGGER attack2
+
+IF attack2 THEN
+	ORDER TanRifle8 GOTO TanRifle8 INMODE ATTACK THEN ATMODE ATTACK,
+	ORDER TanRifle9 GOTO TanRifle9 INMODE ATTACK THEN ATMODE ATTACK,
+	ORDER TanRifle10 GOTO TanRifle10 INMODE ATTACK THEN ATMODE ATTACK
+	
+		
+//Northpad3
+//Sarge is way out of the mission objective and will encounter a strong defense
+//at this point that should discourage him from going this way
+ 
+IF 1 OF on_northpad3 THEN
+	DEPLOY TanRifle11 ATMODE DEFEND
+	
+
+
+
+// enable mash tents
+IF startup THEN
+	TRIGGER setupgreen,
+	TRIGGERDELAY 0.1 setmash
+
+IF setupgreen THEN
+	TRIGGER gsmedtime
+
+IF setmash THEN 
+	TRIGGER greenmashready
+
+IF on_medicaltentpad AFTER off_medicaltentpad AND gsmedtime AFTER NULL AND startup AFTER killed_greenmash THEN
+	HEAL ME	10,
+	TRIGGERDELAY 1.5 gsmedtime
+
+
+IF on_medicaltentpad1 BUTNOT killed_greenmash THEN
+	HEAL ME 100
+
+
+
+IF killed_TanBazooka104 THEN
+	REMOVEOBJECT airstrike1,
+	PLACEOBJECT airstrike1 TanBazooka104
+
+
+
+IF killed_TanFlamer102 THEN
+	REMOVEOBJECT flame1,
+	PLACEOBJECT flame1 TanFlamer102
+
+
+IF on_opengate1 AFTER off_opengate1 THEN
+	TRIGGER go_loggate
+
+IF on_closegate1 AFTER off_closegate1 THEN
+	TRIGGER stop_loggate
+
+
+IF killed_TanBazooka1 THEN
+	REMOVEOBJECT baz2,
+	PLACEOBJECT baz2 TanBazooka1

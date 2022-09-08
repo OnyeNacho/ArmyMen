@@ -1,0 +1,26 @@
+// Actions.txt - list of actions available for a sequence, in the drop-down list.
+
+// Format of ACTIONS.TXT:
+//   KEY VALUE (long)   "STRING VALUE"
+
+1 "Idle Stand"
+2 "Idle Kneel"
+3 "Idle Prone"
+4 "Walk"
+5 "Run"	
+5 "Crawl"	
+6 "Stand to Kneel"
+7 "Kneel to Prone"
+8 "Kneel to Stand"
+9 "Prone to Kneel"
+10 "Fire Stand"
+11 "Fire Kneel"
+12 "Fire Prone"
+13 "Throw Stand"
+14 "Throw Kneel"
+15 "Throw Prone"
+16 "Dive"
+17 "Fall"
+18 "Deploy"
+19 "Load"
+20 "Dead"

@@ -1,0 +1,6 @@
+
+
+IF REPEAT 15 OF tankill THEN TRIGGER  tanwon
+IF REPEAT 15 OF graykill THEN TRIGGER  graywon
+IF REPEAT 15 OF greenkill THEN TRIGGER  greenwon
+IF REPEAT 15 OF bluekill THEN TRIGGER  bluewon

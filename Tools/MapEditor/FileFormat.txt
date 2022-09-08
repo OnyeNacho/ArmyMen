@@ -1,0 +1,74 @@
+Map File Format v2.1
+---------------------
+
+CMapEditorDoc ::= 
+  SAFE_SCHEMA(ar, CMapEditorDoc, 1)
+  int m_iMapWidth
+  int m_iMapHeight
+  CString m_pszTileSetPath  // full path to the tileset
+  CTypedPtrList<CObList,CMapLayer *> m_layers
+
+ 
+CMapLayer ::= 
+   SAFE_SCHEMA(ar, CMapLayer, 1)
+   CString m_pszTitle
+   BOOL m_bVisible
+   CTileLayer | CObjectLayer  
+
+
+CTileLayer ::=
+   SAFE_SCHEMA(ar, CTileLayer, 2)  *** Updated in 2.1
+   CString m_pszTitle              *** Removed in schema == 2
+   CPoint m_location    // for now this is always 0,0
+   CSize m_size         // for now this is always m_iMapWidth,m_iMapHeight
+   BOOL m_bTransparent  
+   int m_piTiles[m_size.cx * m_size.cy]   
+
+
+// To retrieve a tile index N from the tile layer, use:
+// something of the form: m_piTiles[iRow * m_size.cx + iColumn)
+
+// since there is no way for the artist to create the object layer
+// in v1.9, you don't have to worry about loading the object layer
+// for now.
+
+
+CTileSet ::=
+    SAFE_SCHEMA(ar, CTileSet, 2)       *** Updated in 2.1
+	int m_iTileWidth
+    int m_iTileHeight
+	int m_iTolerance
+	int m_iMaxTiles    // maximum number of tiles dib can hold
+	int m_iTilesWide   // dib width in tiles 
+	COLORREF m_rgbTransparent           *** Added schema == 2
+
+    CArray<int,int> m_tileList
+	CArray<int,int> m_tileMap
+	CArray<CTileCategory, CTileCategory&> m_categories
+	CArray<CTileGroup, CTileGroup&> m_groups
+    CDIB m_dib          // your standard device independent bitmap
+
+// Note: m_iMaxTiles and m_iTilesWide are stored just for 
+// convenience; they are redundant because they can be computed
+// from the dib width/height and may go away in a future release.
+
+CTileCategory ::=
+    SAFE_SCHEMA(ar, CTileCategory, 2)
+    CString m_pszTitle;
+	CArray<int,int> m_itemArray
+
+CTileGroup ::= 
+    SAFE_SCHEMA(ar, CTileGroup, 2)
+	CString m_pszTitle;
+	int m_GroupWidth;
+	int m_GroupHeight
+	int m_piTiles[m_GroupWidth * m_GroupHeight // same formula
+
+
+
+SAFE_SCHMEA is a macro/kludge to make MFC read/write the serialization schema information
+for my classes even though I am calling the Serialize function directly.   For
+more information see CArchive::SerializeClass(const CRuntimeClass* pClassRef)
+
+All of my classes use IMPLEMENT_SERIAL(class, baseclass, VERSIONABLE_SCHEMA | version)
+

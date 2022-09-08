@@ -1,0 +1,198 @@
+// Bayou SCENARIO 4 Mission 9	Roll Dem Bones
+PAD cemtr1 30 TanRifle201 >0
+PAD cemtr2 30 TanRifle202 >0
+PAD cemtr3 30 TanRifle203 >0
+PAD cemtb1 30 TanBazooka201 >0
+PAD cemtf1 30 TanFlamer201 >0
+PAD cemgr1 30 GrayRifle201 >0
+PAD cemgr2 30 GrayRifle202 >0
+PAD cemgr3 30 GrayRifle203 >0
+PAD cemgb1 30 GrayBazooka201 >0
+PAD cemgf1 30 GrayFlamer201 >0
+PAD closeit 30 GREEN SARGE > 0
+PAD battle 0
+PAD winall 100 GREEN SARGE > 0
+PAD res1 1
+PAD res2 2
+PAD res3 3
+PAD res4 4
+PAD res5 5
+PAD res6 6
+PAD res7 7	
+PAD key  99 GREEN SARGE > 0
+
+// ** GAME TERMINATION CONDITIONS ** //
+
+
+// Win if destroy undead coffin and remaining undead
+IF INORDER didit on_winall THEN
+	ENDSOUNDLOOP PORTAL,
+	TRIGGER greenwins
+
+
+
+// lose if sarge dies
+IF killed_GreenSarge THEN
+	TRIGGERDELAY 2 tanwins,
+	SHOWBMP "Bayou4_3lose.bmp",
+	PLAYSTREAM LOSE_MSG
+
+
+	// ** GAME EVENTS ** //
+
+IF startup THEN
+	TRIGGER startglowing,
+	TRIGGERDELAY 2 gogateright,
+	TRIGGERDELAY 2 gogateleft,
+	TRIGGERDELAY 2 playopen,
+	ORDER TanRifle201 GOTO battle INMODE IGNORE THEN ATMODE ATTACK, 
+	ORDER TanRifle202 GOTO battle INMODE IGNORE THEN ATMODE ATTACK, 
+	ORDER TanRifle203 GOTO battle INMODE IGNORE THEN ATMODE ATTACK, 
+	ORDER TanBazooka201 GOTO battle INMODE IGNORE THEN ATMODE ATTACK, 
+	ORDER TanFlamer201 GOTO battle INMODE IGNORE THEN ATMODE ATTACK, 
+	ORDER GrayRifle201 GOTO battle INMODE IGNORE THEN ATMODE ATTACK, 
+	ORDER GrayRifle202 GOTO battle INMODE IGNORE THEN ATMODE ATTACK, 
+	ORDER GrayRifle203 GOTO battle INMODE IGNORE THEN ATMODE ATTACK, 
+	ORDER GrayBazooka201 GOTO battle INMODE IGNORE THEN ATMODE ATTACK, 
+	ORDER GrayFlamer201 GOTO battle INMODE IGNORE THEN ATMODE ATTACK, 
+	ORDER GrayBazooka202 GOTO GrayBazooka202 INMODE IGNORE THEN ATMODE ATTACK, 
+	ORDER GrayFlamer204 GOTO GrayFlamer204 INMODE IGNORE THEN ATMODE ATTACK, 
+	ORDER GrayRifle204 GOTO GrayRifle204 INMODE IGNORE THEN ATMODE ATTACK, 
+	ORDER GrayRifle205 GOTO GrayRifle205 INMODE IGNORE THEN ATMODE ATTACK,
+	ORDER GrayRifle206 GOTO GrayRifle206 INMODE IGNORE THEN ATMODE ATTACK, 
+	ORDER GrayRifle207 GOTO GrayRifle207 INMODE IGNORE THEN ATMODE ATTACK, 
+	ORDER GrayBazooka203 GOTO GrayBazooka203 INMODE IGNORE THEN ATMODE ATTACK 
+
+
+IF playopen THEN
+	PLAYSTREAM CEMETARY_GATE_OPEN
+
+IF startglowing THEN
+	TRIGGER startglow,
+	TRIGGERDELAY 10 startglowing
+
+	
+
+IF on_closeit THEN
+	TRIGGER closegateleft,
+	TRIGGER closegateright,
+	AUDIO HIGHINTENSITY,
+	PLAYSTREAM CEMETARY_GATE_CLOSE
+
+
+IF on_key THEN
+	PLAYSOUNDLOOP PORTAL, 
+	TRIGGER goport,
+	TRIGGER didit,
+	REMOVEOBJECT key1,
+	REMOVEOBJECT key2,
+	PLACEOBJECT key2 key1
+
+
+
+IF ALLOF killed_TanRifle201 BUTNOT killed_statue THEN
+	TRIGGERDELAY 20 gocryptr1 
+
+IF ALLOF killed_TanRifle202 BUTNOT killed_statue THEN
+	TRIGGERDELAY 20 gocryptr2 
+
+IF ALLOF killed_TanRifle203 BUTNOT killed_statue THEN
+	TRIGGERDELAY 20 gocryptr3 
+
+IF ALLOF killed_TanBazooka201 BUTNOT killed_statue THEN
+	TRIGGERDELAY 20 gocryptb1  
+
+IF ALLOF killed_TanFlamer201 BUTNOT killed_statue THEN
+	TRIGGERDELAY 20 gocryptf1 
+
+IF ALLOF killed_GrayRifle201 BUTNOT killed_statue THEN
+	TRIGGERDELAY 20 gocrypgr1 
+
+IF ALLOF killed_GrayRifle202 BUTNOT killed_statue THEN
+	TRIGGERDELAY 20 gocrypgr2 
+
+IF ALLOF killed_GrayRifle203 BUTNOT killed_statue THEN
+	TRIGGERDELAY 20 gocrypgr3
+
+IF ALLOF killed_GrayBazooka201 BUTNOT killed_statue THEN
+	TRIGGERDELAY 20 gocrypgb1 
+
+IF ALLOF killed_GrayFlamer201 BUTNOT killed_statue THEN
+	TRIGGERDELAY 20 gocrypgf1 
+
+IF placeguytr1 THEN 
+	RESURRECT TanRifle201 (2739,3464),
+	ORDER TanRifle201 GOTO TanRifle201 INMODE ATTACK THEN ATMODE ATTACK
+
+IF placeguytr2 THEN 
+	RESURRECT TanRifle202 (3515,3340),
+	ORDER TanRifle202 GOTO TanRifle202 INMODE ATTACK THEN ATMODE ATTACK
+
+IF placeguytr3 THEN 
+	RESURRECT TanRifle203 (3225,3372),
+	ORDER TanRifle203 GOTO TanRifle203 INMODE ATTACK THEN ATMODE ATTACK
+
+IF placeguytb1 THEN
+	RESURRECT TanBazooka201 (2889,3141),
+	 ORDER TanBazooka201 GOTO TanBazooka201 INMODE ATTACK THEN ATMODE ATTACK
+
+IF placeguytf1 THEN 
+	RESURRECT TanFlamer201 (2689,2844),
+	ORDER TanFlamer201 GOTO TanFlamer201 INMODE ATTACK THEN ATMODE ATTACK
+
+IF placeguygr1 THEN 
+	RESURRECT GrayRifle201 (2731,3504),
+	ORDER GrayRifle201 GOTO GrayRifle201 INMODE ATTACK THEN ATMODE ATTACK
+
+IF placeguygr2 THEN 
+	RESURRECT GrayRifle202 (2571,3589),
+	ORDER GrayRifle202 GOTO GrayRifle202 INMODE ATTACK THEN ATMODE ATTACK
+
+IF placeguygr3 THEN
+	RESURRECT GrayRifle203 (3348,3752),
+	ORDER GrayRifle203 GOTO GrayRifle203 INMODE ATTACK THEN ATMODE ATTACK
+
+IF placeguygb1 THEN
+	RESURRECT GrayBazooka201 (3629,3152),
+	ORDER GrayBazooka201 GOTO GrayBazooka201 INMODE ATTACK THEN ATMODE ATTACK
+
+IF placeguygf1 THEN
+	RESURRECT GrayFlamer201 (3117,2867),
+	ORDER GrayFlamer201 GOTO GrayFlamer201 INMODE ATTACK THEN ATMODE ATTACK
+
+IF ALLOF killed_TanRifle201 killed_statue THEN
+	TRIGGER tr1dead
+	
+IF ALLOF killed_TanRifle202 killed_statue THEN
+	TRIGGER tr2dead
+
+IF ALLOF killed_TanRifle203 killed_statue THEN
+	TRIGGER tr3dead
+
+IF ALLOF killed_TanBazooka201 killed_statue THEN
+	TRIGGER tb1dead
+
+IF ALLOF killed_TanFlamer201 killed_statue THEN
+	TRIGGER tf1dead
+
+IF ALLOF killed_GrayRifle201 killed_statue THEN
+	TRIGGER gr1dead
+
+IF ALLOF killed_GrayRifle202 killed_statue THEN
+	TRIGGER gr2dead
+
+IF ALLOF killed_GrayRifle203 killed_statue THEN
+	TRIGGER gr3dead
+
+IF ALLOF killed_GrayBazooka201 killed_statue THEN
+	TRIGGER gb1dead
+
+IF ALLOF killed_GrayFlamer201 killed_statue THEN
+	TRIGGER gf1dead
+
+
+
+IF killed_statue THEN
+	REMOVEOBJECT out,
+	REMOVEOBJECT statueglow
+

@@ -1,0 +1,1345 @@
+//========================================================================
+//	FILE:			$Workfile: Screen.dat $
+//
+//	DESCRIPTION:	ArmyMen Full Screen static data definitions.
+//
+//	AUTHOR:			Andrew J Burgess
+//
+//	CREATED:		Sunday, October 19, 1997
+//
+//	REVISION:		$Header: $
+//
+//========================================================================
+//                 COPYRIGHT(C)1997 The 3DO Company
+//      Unathorized reproduction, adaptation, distribution,
+//      performance or display of this computer program or
+//      the associated audiovisual work is strictly prohibited.
+//                      All rights reserved.
+///========================================================================
+//  History
+//
+//  $Log: /ArmyMen/src/Screen.dat $
+//  
+//  $Nokeywords:$
+//========================================================================
+
+//------------------------------------------------------------------------
+//				DEPENDENCIES
+//------------------------------------------------------------------------
+extern	SCREENOBJDEF	Null_ScreenObj;
+extern	SCREENOBJDEF	GameStart_ScreenObj;
+extern	SCREENOBJDEF	GameStartQuit_ScreenObj;
+extern	SCREENOBJDEF	GamePlayerName_ScreenObj;
+extern	SCREENOBJDEF	GamePlayerNameBack_ScreenObj;
+extern	SCREENOBJDEF	SelectCampaign_ScreenObj;
+extern	SCREENOBJDEF	SelectCampaignMore_ScreenObj;
+extern	SCREENOBJDEF	SelectCampaignBack_ScreenObj;
+extern	SCREENOBJDEF	SelectCampaignBack2_ScreenObj;
+
+extern	SCREENOBJDEF	SelectMission1a_ScreenObj;
+extern	SCREENOBJDEF	SelectMission2a_ScreenObj;
+extern	SCREENOBJDEF	SelectMission2b_ScreenObj;
+extern	SCREENOBJDEF	SelectMission3a_ScreenObj;
+extern	SCREENOBJDEF	SelectMission4a_ScreenObj;
+extern	SCREENOBJDEF	SelectMission4b_ScreenObj;
+extern	SCREENOBJDEF	SelectMissionMORE_ScreenObj;
+extern	SCREENOBJDEF	SelectMissionBACK_ScreenObj;
+
+extern	SCREENOBJDEF	Options_ScreenObj;
+extern	SCREENOBJDEF	Controls_ScreenObj;
+extern	SCREENOBJDEF	Audio_ScreenObj;
+extern	SCREENOBJDEF	Default1_Config_ScreenObj;
+extern	SCREENOBJDEF	Default2_Config_ScreenObj;
+extern	SCREENOBJDEF	Custom_Config_ScreenObj;
+extern	SCREENOBJDEF	Joystick_Config_ScreenObj;
+extern	SCREENOBJDEF	Config_ScreenObj;
+extern	SCREENOBJDEF	ConfigJoystick_ScreenObj;
+extern	SCREENOBJDEF	AudioBack_ScreenObj;
+extern	SCREENOBJDEF	ConfigBack_ScreenObj;
+extern	SCREENOBJDEF	OptionBack_ScreenObj;
+
+extern	SCREENOBJDEF	SFX_ScreenObj;
+extern	SCREENOBJDEF	SFXvolume_ScreenObj;
+extern	SCREENOBJDEF	MUSIC_ScreenObj;
+extern	SCREENOBJDEF	MUSICvolume_ScreenObj;
+extern	SCREENOBJDEF	VOICE_ScreenObj;
+extern	SCREENOBJDEF	VOICEvolume_ScreenObj;
+extern	SCREENOBJDEF	SFXplay_ScreenObj;
+extern	SCREENOBJDEF	MUSICplay_ScreenObj;
+extern	SCREENOBJDEF	VOICEplay_ScreenObj;
+extern	SCREENOBJDEF	SFX2_ScreenObj;
+extern	SCREENOBJDEF	SFXvolume2_ScreenObj;
+extern	SCREENOBJDEF	MUSIC2_ScreenObj;
+extern	SCREENOBJDEF	MUSICvolume2_ScreenObj;
+extern	SCREENOBJDEF	VOICE2_ScreenObj;
+extern	SCREENOBJDEF	VOICEvolume2_ScreenObj;
+extern	SCREENOBJDEF	SFXplay2_ScreenObj;
+extern	SCREENOBJDEF	MUSICplay2_ScreenObj;
+extern	SCREENOBJDEF	VOICEplay2_ScreenObj;
+
+extern	SCREENOBJDEF	Options2_ScreenObj;
+extern	SCREENOBJDEF	OptionsBack2_ScreenObj;
+extern	SCREENOBJDEF	Controls2_ScreenObj;
+extern	SCREENOBJDEF	ControlsBack2_ScreenObj;
+extern	SCREENOBJDEF	Audio2_ScreenObj;
+extern	SCREENOBJDEF	AudioBack2_ScreenObj;
+extern	SCREENOBJDEF	ConfigBack2_ScreenObj;
+extern	SCREENOBJDEF	ConfigJoystick2_ScreenObj;
+
+extern	SCREENOBJDEF	AudioBack3_ScreenObj;
+extern	SCREENOBJDEF	AudioPlayBack_ScreenObj;
+extern	SCREENOBJDEF	Restore_ScreenObj;
+extern	SCREENOBJDEF	RestoreJoystick_ScreenObj;
+
+extern	SCREENOBJDEF	MissionComplete_ScreenObj;
+extern	SCREENOBJDEF	AnyKeyInvisible_ScreenObj;
+extern	SCREENOBJDEF	YesNoInvisible_ScreenObj;
+extern	SCREENOBJDEF	Empty_ScreenObj;
+
+extern	SCREENOBJDEF	StratMap_ScreenObj;
+extern	SCREENOBJDEF	GreenBtn_ScreenObj;
+extern	SCREENOBJDEF	TanBtn_ScreenObj;
+extern	SCREENOBJDEF	BlueBtn_ScreenObj;
+extern	SCREENOBJDEF	GrayBtn_ScreenObj;
+extern	SCREENOBJDEF	Player0Led_ScreenObj;
+extern	SCREENOBJDEF	Player1Led_ScreenObj;
+extern	SCREENOBJDEF	Player2Led_ScreenObj;
+extern	SCREENOBJDEF	Player3Led_ScreenObj;
+extern	SCREENOBJDEF	Player0_ScreenObj;
+extern	SCREENOBJDEF	Player1_ScreenObj;
+extern	SCREENOBJDEF	Player2_ScreenObj;
+extern	SCREENOBJDEF	Player3_ScreenObj;
+extern	SCREENOBJDEF	StartBtn_ScreenObj;
+extern	SCREENOBJDEF	ExitBtn_ScreenObj;
+extern	SCREENOBJDEF	HostChatSend_ScreenObj;
+extern	SCREENOBJDEF	HostChatReceive_ScreenObj;
+extern	SCREENOBJDEF	RemoteChatSend_ScreenObj;
+extern	SCREENOBJDEF	RemoteChatReceive_ScreenObj;
+extern	SCREENOBJDEF	RulesTitle_ScreenObj;
+extern	SCREENOBJDEF	Rules_ScreenObj;
+extern	SCREENOBJDEF	CampaignList_ScreenObj;
+extern	SCREENOBJDEF	VerticalScroll_ScreenObj;
+
+extern	SCREENOBJDEF	SargeColumn_ScreenObj;
+extern	SCREENOBJDEF	GameColumn_ScreenObj;
+extern	SCREENOBJDEF	JoystickColumn_ScreenObj;
+extern	SCREENOBJDEF	SargeKey_ScreenObj;
+extern	SCREENOBJDEF	GameKey_ScreenObj;
+extern	SCREENOBJDEF	SargeKeyPassive_ScreenObj;
+extern	SCREENOBJDEF	GameKeyPassive_ScreenObj;
+extern	SCREENOBJDEF	JoystickButton_ScreenObj;
+
+
+//------------------------------------------------------------------------
+//				EMPTY Full Screen
+//------------------------------------------------------------------------
+
+SCREENDEF	SCRNemptyScreen =
+{
+	( SCRN_AREA_TYPE|SCRN_TRANSPARENT ),	// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_TRANSPARENT,						// screen default bkg color
+	{0,0,640,480},							// screen area
+	"\0",									// screen bkg reference
+	0,										// screen number of screenObjDefs
+	{ NULL }								// screen array of screenObjDefs
+};
+
+//------------------------------------------------------------------------
+//				Game Start Full Screen
+//------------------------------------------------------------------------
+
+SCREENDEF	SCRNtitleScreen =
+{
+	( SCRN_BKG_TYPE ),						// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_BLACK,								// screen default bkg color
+	{0,0,640,480},							// screen area
+	"Title_legal.bmp",						// screen bkg reference
+	0,										// screen number of screenObjDefs
+	{ NULL }								// screen array of screenObjDefs
+};
+
+//------------------------------------------------------------------------
+//				Game Start Full Screen
+//------------------------------------------------------------------------
+
+SCREENDEF	SCRNstartScreen =
+{
+	( SCRN_BKG_TYPE ),						// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_BLACK,								// screen default bkg color
+	{0,0,640,480},							// screen area
+	"Title2.bmp",							// screen bkg reference
+	2,										// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+		&GameStart_ScreenObj,
+		&GameStartQuit_ScreenObj
+	}
+};
+
+//------------------------------------------------------------------------
+//				Select Campaign Full Screens
+//------------------------------------------------------------------------
+
+SCREENDEF	SCRNselectCampaignScreen =
+{
+	( SCRN_BKG_TYPE ),						// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_BLACK,								// screen default bkg color
+	{0,0,640,480},							// screen area
+	"Title2.bmp",							// screen bkg reference
+	2,										// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+		&SelectCampaign_ScreenObj,
+		&SelectCampaignBack_ScreenObj
+	}
+};
+
+SCREENDEF	SCRNselectCampaignMoreScreen =
+{
+	( SCRN_BKG_TYPE ),						// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_BLACK,								// screen default bkg color
+	{0,0,640,480},							// screen area
+	"Title2.bmp",							// screen bkg reference
+	2,										// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+		&SelectCampaignMore_ScreenObj,
+		&SelectCampaignBack2_ScreenObj
+	}
+};
+
+//------------------------------------------------------------------------
+//				Select Mission Full Screens
+//------------------------------------------------------------------------
+/*
+SCREENDEF	SCRNselectMission1Screen =
+{
+	( SCRN_BKG_TYPE ),						// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_BLACK,								// screen default bkg color
+	{0,0,640,480},							// screen area
+	"\0",									// screen bkg reference
+	2,										// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+		&SelectMission1a_ScreenObj,
+		&SelectMissionBACK_ScreenObj
+	}
+};
+
+SCREENDEF	SCRNselectMission2Screen =
+{
+	( SCRN_BKG_TYPE ),						// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_BLACK,								// screen default bkg color
+	{0,0,640,480},							// screen area
+	"\0",									// screen bkg reference
+	3,										// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+		&SelectMission2a_ScreenObj,
+		&SelectMission2b_ScreenObj,
+		&SelectMissionBACK_ScreenObj
+	}
+};
+
+SCREENDEF	SCRNselectMission3Screen =
+{
+	( SCRN_BKG_TYPE ),						// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_BLACK,								// screen default bkg color
+	{0,0,640,480},							// screen area
+	"\0",									// screen bkg reference
+	4,										// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+		&SelectMission2a_ScreenObj,
+		&SelectMission2b_ScreenObj,
+		&SelectMission3a_ScreenObj,
+		&SelectMissionBACK_ScreenObj
+	}
+};
+*/
+
+#define	MISSION_BACK_OBJ	4
+#define	MISSION_MORE_OBJ	5
+
+SCREENDEF	SCRNselectMission4Screen =
+{
+	( SCRN_BKG_TYPE ),						// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_WHITE,								// screen default bkg color
+	{0,0,640,480},							// screen area
+	"\0",									// screen bkg reference
+	5,										// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+		&SelectMission2a_ScreenObj,
+		&SelectMission2b_ScreenObj,
+		&SelectMission4a_ScreenObj,
+		&SelectMission4b_ScreenObj,
+//		&SelectMissionBACK_ScreenObj,
+		&SelectMissionMORE_ScreenObj
+	}
+};
+
+//------------------------------------------------------------------------
+//				GamePLAYER NAME Full Screen
+//------------------------------------------------------------------------
+
+SCREENDEF	SCRNplayerNameScreen =
+{
+	( SCRN_BKG_TYPE ),						// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_BLACK,								// screen default bkg color
+	{0,0,640,480},							// screen area
+	"Title2.bmp",							// screen bkg reference
+	2,										// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+	  &GamePlayerName_ScreenObj,
+	  &GamePlayerNameBack_ScreenObj
+	}
+};
+
+//------------------------------------------------------------------------
+//				Game Options Full Screen
+//------------------------------------------------------------------------
+
+SCREENDEF	SCRNoptionsScreen =
+{
+	( SCRN_BKG_TYPE ),						// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_BLACK,								// screen default bkg color
+	{0,0,640,480},							// screen area
+	"Title2.bmp",							// screen bkg reference
+	2,										// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+	  &Options_ScreenObj,
+	  &OptionBack_ScreenObj
+	}
+};
+
+#define	CONTROLS_OBJECT	0
+#define		KEYPAD_OBJECT		0
+#define		KEYBOARD_OBJECT		1
+#define		CUSTOM_OBJECT		2
+#define		JOYSTICK_OBJECT		3
+
+SCREENDEF	SCRNcontrolsScreen =
+{
+	( SCRN_BKG_TYPE ),						// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_BLACK,								// screen default bkg color
+	{0,0,640,480},							// screen area
+	"Title2.bmp",							// screen bkg reference
+	2,										// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+	  &Controls_ScreenObj,
+	  &AudioBack_ScreenObj
+	}
+};
+
+#define	SFX_ON_OFF_OBJECT	1
+#define		ON_OBJECT			0
+#define		OFF_OBJECT			1
+#define	SFX_VOLUME_OBJECT	2
+#define		SLIDER_BAR_BUTTON	1
+#define	SFX_PLAY_OBJECT		3
+#define	MUSIC_ON_OFF_OBJECT	4
+#define	MUSIC_VOLUME_OBJECT	5
+#define	MUSIC_PLAY_OBJECT	6
+#define	VOICE_ON_OFF_OBJECT	7
+#define	VOICE_VOLUME_OBJECT	8
+#define	VOICE_PLAY_OBJECT	9
+
+SCREENDEF	SCRNaudioScreen =
+{
+	( SCRN_BKG_TYPE ),						// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_BLACK,								// screen default bkg color
+	{0,0,640,480},							// screen area
+	"Title2.bmp",							// screen bkg reference
+	11,										// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+		&Audio_ScreenObj,
+		&SFX_ScreenObj,
+		&SFXvolume_ScreenObj,
+ 		&SFXplay_ScreenObj,
+		&MUSIC_ScreenObj,
+		&MUSICvolume_ScreenObj,
+ 		&MUSICplay_ScreenObj,
+		&VOICE_ScreenObj,
+ 		&VOICEvolume_ScreenObj,
+ 		&VOICEplay_ScreenObj,
+		&AudioBack3_ScreenObj
+   }
+};
+
+
+SCREENDEF	SCRNKeypadScreen =
+{
+	( SCRN_BKG_TYPE ),						// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_BLACK,								// screen default bkg color
+	{0,0,640,480},							// screen area
+	"Title2.bmp",							// screen bkg reference
+	DEFAULT_LAST_KEY,						// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+		&Default1_Config_ScreenObj,			// 00
+
+		&SargeColumn_ScreenObj,				// 01 Sarge Key column heading
+		&GameColumn_ScreenObj,				// 02 Game Key column heading
+
+		&SargeKeyPassive_ScreenObj,				// 03 customizable Sarge keys
+		&SargeKeyPassive_ScreenObj,				// 04
+		&SargeKeyPassive_ScreenObj,				// 05
+		&SargeKeyPassive_ScreenObj,				// 06
+		&SargeKeyPassive_ScreenObj,				// 07
+		&SargeKeyPassive_ScreenObj,				// 08
+		&SargeKeyPassive_ScreenObj,				// 09
+		&SargeKeyPassive_ScreenObj,				// 10
+		&SargeKeyPassive_ScreenObj,				// 11
+		&SargeKeyPassive_ScreenObj,				// 12
+		&SargeKeyPassive_ScreenObj,				// 13
+		&SargeKeyPassive_ScreenObj,				// 14
+		&SargeKeyPassive_ScreenObj,				// 15
+		&SargeKeyPassive_ScreenObj,				// 16
+		&SargeKeyPassive_ScreenObj,				// 17
+		&SargeKeyPassive_ScreenObj,				// 18
+		&SargeKeyPassive_ScreenObj,				// 19
+		&SargeKeyPassive_ScreenObj,				// 20
+		&SargeKeyPassive_ScreenObj,				// 21
+		&SargeKeyPassive_ScreenObj,				// 22
+		&SargeKeyPassive_ScreenObj,				// 23
+		&SargeKeyPassive_ScreenObj,				// 24
+		&SargeKeyPassive_ScreenObj,				// 25
+		&SargeKeyPassive_ScreenObj,				// 26
+		&SargeKeyPassive_ScreenObj,				// 27
+		&SargeKeyPassive_ScreenObj,				// 28
+		&SargeKeyPassive_ScreenObj,				// 29
+		&SargeKeyPassive_ScreenObj,				// 30
+		&SargeKeyPassive_ScreenObj,				// 31
+		&SargeKeyPassive_ScreenObj,				// 32
+		&SargeKeyPassive_ScreenObj,				// 33
+		&SargeKeyPassive_ScreenObj,				// 34
+
+		&GameKeyPassive_ScreenObj,					// 35 customizable Game keys
+		&GameKeyPassive_ScreenObj,					// 36
+		&GameKeyPassive_ScreenObj,					// 37
+		&GameKeyPassive_ScreenObj,					// 38
+		&GameKeyPassive_ScreenObj,					// 39
+		&GameKeyPassive_ScreenObj,					// 40
+		&GameKeyPassive_ScreenObj,					// 41
+		&GameKeyPassive_ScreenObj,					// 42
+		&GameKeyPassive_ScreenObj,					// 43
+		&GameKeyPassive_ScreenObj,					// 44
+		&GameKeyPassive_ScreenObj,					// 45
+		&GameKeyPassive_ScreenObj,					// 46
+		&GameKeyPassive_ScreenObj,					// 47
+		&GameKeyPassive_ScreenObj,					// 48
+		&GameKeyPassive_ScreenObj,					// 49
+		&GameKeyPassive_ScreenObj,					// 50
+		&GameKeyPassive_ScreenObj,					// 51
+		&GameKeyPassive_ScreenObj,					// 52
+		&GameKeyPassive_ScreenObj,					// 53
+		&GameKeyPassive_ScreenObj,					// 54
+		&GameKeyPassive_ScreenObj,					// 55
+		&GameKeyPassive_ScreenObj,					// 56
+		&GameKeyPassive_ScreenObj,					// 57
+		&GameKeyPassive_ScreenObj,					// 58
+		&GameKeyPassive_ScreenObj,					// 59
+		&GameKeyPassive_ScreenObj,					// 60
+		&GameKeyPassive_ScreenObj,					// 61
+		&GameKeyPassive_ScreenObj,					// 62
+		&GameKeyPassive_ScreenObj,					// 63
+		&GameKeyPassive_ScreenObj,					// 64
+		&GameKeyPassive_ScreenObj,					// 65
+		&GameKeyPassive_ScreenObj,					// 66
+
+		&Config_ScreenObj							// 67
+   }
+};
+
+SCREENDEF	SCRNKeyboardScreen =
+{
+	( SCRN_BKG_TYPE ),						// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_BLACK,								// screen default bkg color
+	{0,0,640,480},							// screen area
+	"Title2.bmp",							// screen bkg reference
+	DEFAULT_LAST_KEY,						// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+		&Default2_Config_ScreenObj,			// 00
+
+		&SargeColumn_ScreenObj,				// 01 Sarge Key column heading
+		&GameColumn_ScreenObj,				// 02 Game Key column heading
+
+		&SargeKeyPassive_ScreenObj,				// 03 customizable Sarge keys
+		&SargeKeyPassive_ScreenObj,				// 04
+		&SargeKeyPassive_ScreenObj,				// 05
+		&SargeKeyPassive_ScreenObj,				// 06
+		&SargeKeyPassive_ScreenObj,				// 07
+		&SargeKeyPassive_ScreenObj,				// 08
+		&SargeKeyPassive_ScreenObj,				// 09
+		&SargeKeyPassive_ScreenObj,				// 10
+		&SargeKeyPassive_ScreenObj,				// 11
+		&SargeKeyPassive_ScreenObj,				// 12
+		&SargeKeyPassive_ScreenObj,				// 13
+		&SargeKeyPassive_ScreenObj,				// 14
+		&SargeKeyPassive_ScreenObj,				// 15
+		&SargeKeyPassive_ScreenObj,				// 16
+		&SargeKeyPassive_ScreenObj,				// 17
+		&SargeKeyPassive_ScreenObj,				// 18
+		&SargeKeyPassive_ScreenObj,				// 19
+		&SargeKeyPassive_ScreenObj,				// 20
+		&SargeKeyPassive_ScreenObj,				// 21
+		&SargeKeyPassive_ScreenObj,				// 22
+		&SargeKeyPassive_ScreenObj,				// 23
+		&SargeKeyPassive_ScreenObj,				// 24
+		&SargeKeyPassive_ScreenObj,				// 25
+		&SargeKeyPassive_ScreenObj,				// 26
+		&SargeKeyPassive_ScreenObj,				// 27
+		&SargeKeyPassive_ScreenObj,				// 28
+		&SargeKeyPassive_ScreenObj,				// 29
+		&SargeKeyPassive_ScreenObj,				// 30
+		&SargeKeyPassive_ScreenObj,				// 31
+		&SargeKeyPassive_ScreenObj,				// 32
+		&SargeKeyPassive_ScreenObj,				// 33
+		&SargeKeyPassive_ScreenObj,				// 34
+
+		&GameKeyPassive_ScreenObj,					// 35 customizable Game keys
+		&GameKeyPassive_ScreenObj,					// 36
+		&GameKeyPassive_ScreenObj,					// 37
+		&GameKeyPassive_ScreenObj,					// 38
+		&GameKeyPassive_ScreenObj,					// 39
+		&GameKeyPassive_ScreenObj,					// 40
+		&GameKeyPassive_ScreenObj,					// 41
+		&GameKeyPassive_ScreenObj,					// 42
+		&GameKeyPassive_ScreenObj,					// 43
+		&GameKeyPassive_ScreenObj,					// 44
+		&GameKeyPassive_ScreenObj,					// 45
+		&GameKeyPassive_ScreenObj,					// 46
+		&GameKeyPassive_ScreenObj,					// 47
+		&GameKeyPassive_ScreenObj,					// 48
+		&GameKeyPassive_ScreenObj,					// 49
+		&GameKeyPassive_ScreenObj,					// 50
+		&GameKeyPassive_ScreenObj,					// 51
+		&GameKeyPassive_ScreenObj,					// 52
+		&GameKeyPassive_ScreenObj,					// 53
+		&GameKeyPassive_ScreenObj,					// 54
+		&GameKeyPassive_ScreenObj,					// 55
+		&GameKeyPassive_ScreenObj,					// 56
+		&GameKeyPassive_ScreenObj,					// 57
+		&GameKeyPassive_ScreenObj,					// 58
+		&GameKeyPassive_ScreenObj,					// 59
+		&GameKeyPassive_ScreenObj,					// 60
+		&GameKeyPassive_ScreenObj,					// 61
+		&GameKeyPassive_ScreenObj,					// 62
+		&GameKeyPassive_ScreenObj,					// 63
+		&GameKeyPassive_ScreenObj,					// 64
+		&GameKeyPassive_ScreenObj,					// 65
+		&GameKeyPassive_ScreenObj,					// 66
+
+		&Config_ScreenObj					// 68
+   }
+};
+
+SCREENDEF	SCRNCustomScreen =
+{
+	( SCRN_BKG_TYPE ),						// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_BLACK,								// screen default bkg color
+	{0,0,640,480},							// screen area
+	"Title2.bmp",							// screen bkg reference
+	CUSTOM_LAST_KEY,						// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+		&Custom_Config_ScreenObj,			// 00
+
+		&SargeColumn_ScreenObj,				// 01 Sarge Key column heading
+		&GameColumn_ScreenObj,				// 02 Game Key column heading
+
+		&SargeKey_ScreenObj,				// 03 customizable Sarge keys
+		&SargeKey_ScreenObj,				// 04
+		&SargeKey_ScreenObj,				// 05
+		&SargeKey_ScreenObj,				// 06
+		&SargeKey_ScreenObj,				// 07
+		&SargeKey_ScreenObj,				// 08
+		&SargeKey_ScreenObj,				// 09
+		&SargeKey_ScreenObj,				// 10
+		&SargeKey_ScreenObj,				// 11
+		&SargeKey_ScreenObj,				// 12
+		&SargeKey_ScreenObj,				// 13
+		&SargeKey_ScreenObj,				// 14
+		&SargeKey_ScreenObj,				// 15
+		&SargeKey_ScreenObj,				// 16
+		&SargeKey_ScreenObj,				// 17
+		&SargeKey_ScreenObj,				// 18
+		&SargeKey_ScreenObj,				// 19
+		&SargeKey_ScreenObj,				// 20
+		&SargeKey_ScreenObj,				// 21
+		&SargeKey_ScreenObj,				// 22
+		&SargeKey_ScreenObj,				// 23
+		&SargeKey_ScreenObj,				// 24
+		&SargeKey_ScreenObj,				// 25
+		&SargeKey_ScreenObj,				// 26
+		&SargeKey_ScreenObj,				// 27
+		&SargeKey_ScreenObj,				// 28
+		&SargeKey_ScreenObj,				// 29
+		&SargeKey_ScreenObj,				// 30
+		&SargeKey_ScreenObj,				// 31
+		&SargeKey_ScreenObj,				// 32
+		&SargeKey_ScreenObj,				// 33
+		&SargeKey_ScreenObj,				// 34
+
+		&GameKey_ScreenObj,					// 35 customizable Game keys
+		&GameKey_ScreenObj,					// 36
+		&GameKey_ScreenObj,					// 37
+		&GameKey_ScreenObj,					// 38
+		&GameKey_ScreenObj,					// 39
+		&GameKey_ScreenObj,					// 40
+		&GameKey_ScreenObj,					// 41
+		&GameKey_ScreenObj,					// 42
+		&GameKey_ScreenObj,					// 43
+		&GameKey_ScreenObj,					// 44
+		&GameKey_ScreenObj,					// 45
+		&GameKey_ScreenObj,					// 46
+		&GameKey_ScreenObj,					// 47
+		&GameKey_ScreenObj,					// 48
+		&GameKey_ScreenObj,					// 49
+		&GameKey_ScreenObj,					// 50
+		&GameKey_ScreenObj,					// 51
+		&GameKey_ScreenObj,					// 52
+		&GameKey_ScreenObj,					// 53
+		&GameKey_ScreenObj,					// 54
+		&GameKey_ScreenObj,					// 55
+		&GameKey_ScreenObj,					// 56
+		&GameKey_ScreenObj,					// 57
+		&GameKey_ScreenObj,					// 58
+		&GameKey_ScreenObj,					// 59
+		&GameKey_ScreenObj,					// 60
+		&GameKey_ScreenObj,					// 61
+		&GameKey_ScreenObj,					// 62
+		&GameKey_ScreenObj,					// 63
+		&GameKey_ScreenObj,					// 64
+		&GameKey_ScreenObj,					// 65
+		&GameKey_ScreenObj,					// 66
+
+		&Restore_ScreenObj,					// 67 user restore, apply, and back buttons
+		&Config_ScreenObj					// 68
+   }
+};
+
+SCREENDEF	SCRNJoystickScreen =
+{
+	( SCRN_BKG_TYPE ),						// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_BLACK,								// screen default bkg color
+	{0,0,640,480},							// screen area
+	"Title2.bmp",							// screen bkg reference
+	JOYSTICK_MAX_OBJS,						// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+		&Joystick_Config_ScreenObj,
+
+		&JoystickColumn_ScreenObj,			// 01 Joystick column heading
+		&Null_ScreenObj,					// 02 null
+
+		&JoystickButton_ScreenObj,			// 03 customizable Joystick Buttons
+		&JoystickButton_ScreenObj,			// 04
+		&JoystickButton_ScreenObj,			// 05
+		&JoystickButton_ScreenObj,			// 06
+		&JoystickButton_ScreenObj,			// 07
+		&JoystickButton_ScreenObj,			// 08
+		&JoystickButton_ScreenObj,			// 09
+		&JoystickButton_ScreenObj,			// 10
+		&JoystickButton_ScreenObj,			// 11
+		&JoystickButton_ScreenObj,			// 12
+		&JoystickButton_ScreenObj,			// 13
+		&JoystickButton_ScreenObj,			// 14
+		&JoystickButton_ScreenObj,			// 15
+		&JoystickButton_ScreenObj,			// 16
+		&JoystickButton_ScreenObj,			// 17
+		&JoystickButton_ScreenObj,			// 18
+		&JoystickButton_ScreenObj,			// 19
+		&JoystickButton_ScreenObj,			// 20
+		&JoystickButton_ScreenObj,			// 21
+		&JoystickButton_ScreenObj,			// 22
+		&JoystickButton_ScreenObj,			// 23
+		&JoystickButton_ScreenObj,			// 24
+		&JoystickButton_ScreenObj,			// 25
+		&JoystickButton_ScreenObj,			// 26
+		&JoystickButton_ScreenObj,			// 27
+		&JoystickButton_ScreenObj,			// 28
+		&JoystickButton_ScreenObj,			// 29
+		&JoystickButton_ScreenObj,			// 30
+		&JoystickButton_ScreenObj,			// 31
+		&JoystickButton_ScreenObj,			// 32
+		&JoystickButton_ScreenObj,			// 33
+		&JoystickButton_ScreenObj,			// 34
+
+		&RestoreJoystick_ScreenObj,			// 35 user restore button
+		&ConfigJoystick_ScreenObj			// 36
+   }
+};
+
+//------------------------------------------------------------------------
+//				Game Play Options Full Screen
+//------------------------------------------------------------------------
+#define	ABORT_OBJECT	0
+#define	ABORT_BUTTON	2
+
+SCREENDEF	SCRNoptions2Screen =
+{
+	( SCRN_AREA_TYPE|SCRN_TRANSPARENT ),	// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_TRANSPARENT,						// screen default bkg color
+	{0,0,640,480},							// screen area
+	"\0",									// screen bkg reference
+	2,										// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+	  &Options2_ScreenObj,
+	  &OptionsBack2_ScreenObj
+	}
+};
+
+SCREENDEF	SCRNcontrols2Screen =
+{
+	( SCRN_AREA_TYPE|SCRN_TRANSPARENT ),	// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_TRANSPARENT,						// screen default bkg color
+	{0,0,640,480},							// screen area
+	"\0",									// screen bkg reference
+	2,										// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+	  &Controls2_ScreenObj,
+	  &ControlsBack2_ScreenObj
+	}
+};
+
+SCREENDEF	SCRNaudio2Screen =
+{
+	( SCRN_AREA_TYPE|SCRN_TRANSPARENT ),	// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_TRANSPARENT,						// screen default bkg color
+	{0,0,640,480},							// screen area
+	"\0",									// screen bkg reference
+	11,										// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+		&Audio2_ScreenObj,
+		&SFX2_ScreenObj,
+		&SFXvolume2_ScreenObj,
+ 		&SFXplay2_ScreenObj,
+		&MUSIC2_ScreenObj,
+		&MUSICvolume2_ScreenObj,
+ 		&MUSICplay2_ScreenObj,
+		&VOICE2_ScreenObj,
+ 		&VOICEvolume2_ScreenObj,
+ 		&VOICEplay2_ScreenObj,
+		&AudioBack2_ScreenObj
+   }
+};
+
+SCREENDEF	SCRNKeypad2Screen =
+{
+	( SCRN_AREA_TYPE|SCRN_TRANSPARENT ),	// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_BLACK,								// screen default bkg color
+	{0,0,640,480},							// screen area
+	"\0",									// screen bkg reference
+	DEFAULT_LAST_KEY,						// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+		&Default1_Config_ScreenObj,			// 00
+
+		&SargeColumn_ScreenObj,				// 01 Sarge Key column heading
+		&GameColumn_ScreenObj,				// 02 Game Key column heading
+
+		&SargeKey_ScreenObj,				// 03 customizable Sarge keys
+		&SargeKey_ScreenObj,				// 04
+		&SargeKey_ScreenObj,				// 05
+		&SargeKey_ScreenObj,				// 06
+		&SargeKey_ScreenObj,				// 07
+		&SargeKey_ScreenObj,				// 08
+		&SargeKey_ScreenObj,				// 09
+		&SargeKey_ScreenObj,				// 10
+		&SargeKey_ScreenObj,				// 11
+		&SargeKey_ScreenObj,				// 12
+		&SargeKey_ScreenObj,				// 13
+		&SargeKey_ScreenObj,				// 14
+		&SargeKey_ScreenObj,				// 15
+		&SargeKey_ScreenObj,				// 16
+		&SargeKey_ScreenObj,				// 17
+		&SargeKey_ScreenObj,				// 18
+		&SargeKey_ScreenObj,				// 19
+		&SargeKey_ScreenObj,				// 20
+		&SargeKey_ScreenObj,				// 21
+		&SargeKey_ScreenObj,				// 22
+		&SargeKey_ScreenObj,				// 23
+		&SargeKey_ScreenObj,				// 24
+		&SargeKey_ScreenObj,				// 25
+		&SargeKey_ScreenObj,				// 26
+		&SargeKey_ScreenObj,				// 27
+		&SargeKey_ScreenObj,				// 28
+		&SargeKey_ScreenObj,				// 29
+		&SargeKey_ScreenObj,				// 30
+		&SargeKey_ScreenObj,				// 31
+		&SargeKey_ScreenObj,				// 32
+		&SargeKey_ScreenObj,				// 33
+		&SargeKey_ScreenObj,				// 34
+
+		&GameKey_ScreenObj,					// 35 customizable Game keys
+		&GameKey_ScreenObj,					// 36
+		&GameKey_ScreenObj,					// 37
+		&GameKey_ScreenObj,					// 38
+		&GameKey_ScreenObj,					// 39
+		&GameKey_ScreenObj,					// 40
+		&GameKey_ScreenObj,					// 41
+		&GameKey_ScreenObj,					// 42
+		&GameKey_ScreenObj,					// 43
+		&GameKey_ScreenObj,					// 44
+		&GameKey_ScreenObj,					// 45
+		&GameKey_ScreenObj,					// 46
+		&GameKey_ScreenObj,					// 47
+		&GameKey_ScreenObj,					// 48
+		&GameKey_ScreenObj,					// 49
+		&GameKey_ScreenObj,					// 50
+		&GameKey_ScreenObj,					// 51
+		&GameKey_ScreenObj,					// 52
+		&GameKey_ScreenObj,					// 53
+		&GameKey_ScreenObj,					// 54
+		&GameKey_ScreenObj,					// 55
+		&GameKey_ScreenObj,					// 56
+		&GameKey_ScreenObj,					// 57
+		&GameKey_ScreenObj,					// 58
+		&GameKey_ScreenObj,					// 59
+		&GameKey_ScreenObj,					// 60
+		&GameKey_ScreenObj,					// 61
+		&GameKey_ScreenObj,					// 62
+		&GameKey_ScreenObj,					// 63
+		&GameKey_ScreenObj,					// 64
+		&GameKey_ScreenObj,					// 65
+		&GameKey_ScreenObj,					// 66
+
+		&ConfigBack2_ScreenObj				// 67
+   }
+};
+
+SCREENDEF	SCRNKeyboard2Screen =
+{
+	( SCRN_AREA_TYPE|SCRN_TRANSPARENT ),	// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_TRANSPARENT,						// screen default bkg color
+	{0,0,640,480},							// screen area
+	"\0",									// screen bkg reference
+	DEFAULT_LAST_KEY,						// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+		&Default2_Config_ScreenObj,			// 00
+
+		&SargeColumn_ScreenObj,				// 01 Sarge Key column heading
+		&GameColumn_ScreenObj,				// 02 Game Key column heading
+
+		&SargeKey_ScreenObj,				// 03 customizable Sarge keys
+		&SargeKey_ScreenObj,				// 04
+		&SargeKey_ScreenObj,				// 05
+		&SargeKey_ScreenObj,				// 06
+		&SargeKey_ScreenObj,				// 07
+		&SargeKey_ScreenObj,				// 08
+		&SargeKey_ScreenObj,				// 09
+		&SargeKey_ScreenObj,				// 10
+		&SargeKey_ScreenObj,				// 11
+		&SargeKey_ScreenObj,				// 12
+		&SargeKey_ScreenObj,				// 13
+		&SargeKey_ScreenObj,				// 14
+		&SargeKey_ScreenObj,				// 15
+		&SargeKey_ScreenObj,				// 16
+		&SargeKey_ScreenObj,				// 17
+		&SargeKey_ScreenObj,				// 18
+		&SargeKey_ScreenObj,				// 19
+		&SargeKey_ScreenObj,				// 20
+		&SargeKey_ScreenObj,				// 21
+		&SargeKey_ScreenObj,				// 22
+		&SargeKey_ScreenObj,				// 23
+		&SargeKey_ScreenObj,				// 24
+		&SargeKey_ScreenObj,				// 25
+		&SargeKey_ScreenObj,				// 26
+		&SargeKey_ScreenObj,				// 27
+		&SargeKey_ScreenObj,				// 28
+		&SargeKey_ScreenObj,				// 29
+		&SargeKey_ScreenObj,				// 30
+		&SargeKey_ScreenObj,				// 31
+		&SargeKey_ScreenObj,				// 32
+		&SargeKey_ScreenObj,				// 33
+		&SargeKey_ScreenObj,				// 34
+
+		&GameKey_ScreenObj,					// 35 customizable Game keys
+		&GameKey_ScreenObj,					// 36
+		&GameKey_ScreenObj,					// 37
+		&GameKey_ScreenObj,					// 38
+		&GameKey_ScreenObj,					// 39
+		&GameKey_ScreenObj,					// 40
+		&GameKey_ScreenObj,					// 41
+		&GameKey_ScreenObj,					// 42
+		&GameKey_ScreenObj,					// 43
+		&GameKey_ScreenObj,					// 44
+		&GameKey_ScreenObj,					// 45
+		&GameKey_ScreenObj,					// 46
+		&GameKey_ScreenObj,					// 47
+		&GameKey_ScreenObj,					// 48
+		&GameKey_ScreenObj,					// 49
+		&GameKey_ScreenObj,					// 50
+		&GameKey_ScreenObj,					// 51
+		&GameKey_ScreenObj,					// 52
+		&GameKey_ScreenObj,					// 53
+		&GameKey_ScreenObj,					// 54
+		&GameKey_ScreenObj,					// 55
+		&GameKey_ScreenObj,					// 56
+		&GameKey_ScreenObj,					// 57
+		&GameKey_ScreenObj,					// 58
+		&GameKey_ScreenObj,					// 59
+		&GameKey_ScreenObj,					// 60
+		&GameKey_ScreenObj,					// 61
+		&GameKey_ScreenObj,					// 62
+		&GameKey_ScreenObj,					// 63
+		&GameKey_ScreenObj,					// 64
+		&GameKey_ScreenObj,					// 65
+		&GameKey_ScreenObj,					// 66
+
+		&ConfigBack2_ScreenObj				// 67
+   }
+};
+
+SCREENDEF	SCRNCustom2Screen =
+{
+	( SCRN_AREA_TYPE|SCRN_TRANSPARENT ),	// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_BLACK,								// screen default bkg color
+	{0,0,640,480},							// screen area
+	"\0",									// screen bkg reference
+	CUSTOM_LAST_KEY,						// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+		&Custom_Config_ScreenObj,			// 00
+
+		&SargeColumn_ScreenObj,				// 01 Sarge Key column heading
+		&GameColumn_ScreenObj,				// 02 Game Key column heading
+
+		&SargeKey_ScreenObj,				// 03 customizable Sarge keys
+		&SargeKey_ScreenObj,				// 04
+		&SargeKey_ScreenObj,				// 05
+		&SargeKey_ScreenObj,				// 06
+		&SargeKey_ScreenObj,				// 07
+		&SargeKey_ScreenObj,				// 08
+		&SargeKey_ScreenObj,				// 09
+		&SargeKey_ScreenObj,				// 10
+		&SargeKey_ScreenObj,				// 11
+		&SargeKey_ScreenObj,				// 12
+		&SargeKey_ScreenObj,				// 13
+		&SargeKey_ScreenObj,				// 14
+		&SargeKey_ScreenObj,				// 15
+		&SargeKey_ScreenObj,				// 16
+		&SargeKey_ScreenObj,				// 17
+		&SargeKey_ScreenObj,				// 18
+		&SargeKey_ScreenObj,				// 19
+		&SargeKey_ScreenObj,				// 20
+		&SargeKey_ScreenObj,				// 21
+		&SargeKey_ScreenObj,				// 22
+		&SargeKey_ScreenObj,				// 23
+		&SargeKey_ScreenObj,				// 24
+		&SargeKey_ScreenObj,				// 25
+		&SargeKey_ScreenObj,				// 26
+		&SargeKey_ScreenObj,				// 27
+		&SargeKey_ScreenObj,				// 28
+		&SargeKey_ScreenObj,				// 29
+		&SargeKey_ScreenObj,				// 30
+		&SargeKey_ScreenObj,				// 31
+		&SargeKey_ScreenObj,				// 32
+		&SargeKey_ScreenObj,				// 33
+		&SargeKey_ScreenObj,				// 34
+
+		&GameKey_ScreenObj,					// 35 customizable Game keys
+		&GameKey_ScreenObj,					// 36
+		&GameKey_ScreenObj,					// 37
+		&GameKey_ScreenObj,					// 38
+		&GameKey_ScreenObj,					// 39
+		&GameKey_ScreenObj,					// 40
+		&GameKey_ScreenObj,					// 41
+		&GameKey_ScreenObj,					// 42
+		&GameKey_ScreenObj,					// 43
+		&GameKey_ScreenObj,					// 44
+		&GameKey_ScreenObj,					// 45
+		&GameKey_ScreenObj,					// 46
+		&GameKey_ScreenObj,					// 47
+		&GameKey_ScreenObj,					// 48
+		&GameKey_ScreenObj,					// 49
+		&GameKey_ScreenObj,					// 50
+		&GameKey_ScreenObj,					// 51
+		&GameKey_ScreenObj,					// 52
+		&GameKey_ScreenObj,					// 53
+		&GameKey_ScreenObj,					// 54
+		&GameKey_ScreenObj,					// 55
+		&GameKey_ScreenObj,					// 56
+		&GameKey_ScreenObj,					// 57
+		&GameKey_ScreenObj,					// 58
+		&GameKey_ScreenObj,					// 59
+		&GameKey_ScreenObj,					// 60
+		&GameKey_ScreenObj,					// 61
+		&GameKey_ScreenObj,					// 62
+		&GameKey_ScreenObj,					// 63
+		&GameKey_ScreenObj,					// 64
+		&GameKey_ScreenObj,					// 65
+		&GameKey_ScreenObj,					// 66
+
+		&Restore_ScreenObj,					// 67 user restore, apply, and back buttons
+		&ConfigBack2_ScreenObj				// 68
+   }
+};
+
+SCREENDEF	SCRNJoystick2Screen =
+{
+	( SCRN_AREA_TYPE|SCRN_TRANSPARENT ),	// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_TRANSPARENT,						// screen default bkg color
+	{0,0,640,480},							// screen area
+	"\0",									// screen bkg reference
+	37,										// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+		&Joystick_Config_ScreenObj,
+
+		&JoystickColumn_ScreenObj,			// 01 Joystick column heading
+		&Null_ScreenObj,					// 02 null
+
+		&JoystickButton_ScreenObj,			// 03 customizable Joystick Buttons
+		&JoystickButton_ScreenObj,			// 04
+		&JoystickButton_ScreenObj,			// 05
+		&JoystickButton_ScreenObj,			// 06
+		&JoystickButton_ScreenObj,			// 07
+		&JoystickButton_ScreenObj,			// 08
+		&JoystickButton_ScreenObj,			// 09
+		&JoystickButton_ScreenObj,			// 10
+		&JoystickButton_ScreenObj,			// 11
+		&JoystickButton_ScreenObj,			// 12
+		&JoystickButton_ScreenObj,			// 13
+		&JoystickButton_ScreenObj,			// 14
+		&JoystickButton_ScreenObj,			// 15
+		&JoystickButton_ScreenObj,			// 16
+		&JoystickButton_ScreenObj,			// 17
+		&JoystickButton_ScreenObj,			// 18
+		&JoystickButton_ScreenObj,			// 19
+		&JoystickButton_ScreenObj,			// 20
+		&JoystickButton_ScreenObj,			// 21
+		&JoystickButton_ScreenObj,			// 22
+		&JoystickButton_ScreenObj,			// 23
+		&JoystickButton_ScreenObj,			// 24
+		&JoystickButton_ScreenObj,			// 25
+		&JoystickButton_ScreenObj,			// 26
+		&JoystickButton_ScreenObj,			// 27
+		&JoystickButton_ScreenObj,			// 28
+		&JoystickButton_ScreenObj,			// 29
+		&JoystickButton_ScreenObj,			// 30
+		&JoystickButton_ScreenObj,			// 31
+		&JoystickButton_ScreenObj,			// 32
+		&JoystickButton_ScreenObj,			// 33
+		&JoystickButton_ScreenObj,			// 34
+
+		&RestoreJoystick_ScreenObj,			// 35 user restore button
+		&ConfigJoystick2_ScreenObj			// 36
+   }
+};
+
+//------------------------------------------------------------------------
+//				Game Mission Complete Screens
+//------------------------------------------------------------------------
+
+SCREENDEF	SCRNmissionCompleteScreen =
+{
+	( SCRN_AREA_TYPE|SCRN_TRANSPARENT ),	// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_BLACK,								// screen default bkg color
+	{0,0,640,480},							// screen area
+	"\0",									// screen bkg reference
+	2,										// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+		&MissionComplete_ScreenObj,			// Title (MISSION COMPLETE)
+		&AnyKeyInvisible_ScreenObj					// Continue button					
+	}
+};
+
+SCREENDEF	SCRNmissionFailedScreen =
+{
+	( SCRN_AREA_TYPE|SCRN_TRANSPARENT ),	// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_BLACK,								// screen default bkg color
+	{0,0,640,480},							// screen area
+	"\0",									// screen bkg reference
+	2,										// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+		&MissionComplete_ScreenObj,			// Title (MISSION COMPLETE)
+		&YesNoInvisible_ScreenObj					// Yes/No buttons				
+	}
+};
+
+//------------------------------------------------------------------------
+//				Game Multi Player Campaign Select Screens
+//------------------------------------------------------------------------
+#define	START_MAP_OBJECT			0
+
+#define	GREEN_BUTTON				1
+#define	TAN_BUTTON					2
+#define	BLUE_BUTTON					3
+#define	GRAY_BUTTON					4
+
+#define	PLAYER0_LED					5
+#define	PLAYER1_LED					6
+#define	PLAYER2_LED					7
+#define	PLAYER3_LED					8
+
+#define	PLAYER0_OBJECT				9
+#define	PLAYER1_OBJECT				10
+#define	PLAYER2_OBJECT				11
+#define	PLAYER3_OBJECT				12
+
+#define	CHAT_SEND_OBJECT			13
+#define	CHAT_RECEIVE_OBJECT			14
+
+#define	RULESTITLE_OBJECT			15
+#define	RULES_OBJECT				16
+#define	EXIT_BUTTON					17
+
+#define	REMOTE_OBJECT_COUNT				18
+#define	START_BUTTON				18
+
+#define	CAMPAIGN_LIST_OBJECT		19
+#define	VERTICAL_SCROLL_OBJECT		20
+#define	HOST_OBJECT_COUNT				21
+
+SCREENDEF	SCRNhostSelectScreen =
+{
+	( SCRN_BKG_TYPE ),						// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_BLACK,								// screen default bkg color
+	{0,0,640,480},							// screen area
+	"multihost.bmp",						// screen bkg reference
+	HOST_OBJECT_COUNT,						// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+		&StratMap_ScreenObj,
+
+		&GreenBtn_ScreenObj,
+		&TanBtn_ScreenObj,
+		&BlueBtn_ScreenObj,
+		&GrayBtn_ScreenObj,
+
+		&Player0Led_ScreenObj,
+		&Player1Led_ScreenObj,
+		&Player2Led_ScreenObj,
+		&Player3Led_ScreenObj,
+
+		&Player0_ScreenObj,
+		&Player1_ScreenObj,
+		&Player2_ScreenObj,
+		&Player3_ScreenObj,
+
+		&HostChatSend_ScreenObj,
+		&HostChatReceive_ScreenObj,
+
+		&RulesTitle_ScreenObj,
+		&Rules_ScreenObj,
+
+		&ExitBtn_ScreenObj,
+		&StartBtn_ScreenObj,
+
+		&CampaignList_ScreenObj,
+		&VerticalScroll_ScreenObj
+	}
+};
+
+SCREENDEF	SCRNremoteSelectScreen =
+{
+	( SCRN_BKG_TYPE ),						// screen Attributes
+	{ 0,0 },								// screen position
+	SBTN_BLACK,								// screen default bkg color
+	{0,0,640,480},							// screen area
+	"multiremote.bmp",						// screen bkg reference
+	REMOTE_OBJECT_COUNT,					// screen number of screenObjDefs
+	{										// screen array of screenObjDefs
+		&StratMap_ScreenObj,
+
+		&GreenBtn_ScreenObj,
+		&TanBtn_ScreenObj,
+		&BlueBtn_ScreenObj,
+		&GrayBtn_ScreenObj,
+
+		&Player0Led_ScreenObj,
+		&Player1Led_ScreenObj,
+		&Player2Led_ScreenObj,
+		&Player3Led_ScreenObj,
+
+		&Player0_ScreenObj,
+		&Player1_ScreenObj,
+		&Player2_ScreenObj,
+		&Player3_ScreenObj,
+
+		&RemoteChatSend_ScreenObj,
+		&RemoteChatReceive_ScreenObj,
+
+		&RulesTitle_ScreenObj,
+		&Rules_ScreenObj,
+
+		&ExitBtn_ScreenObj
+	}
+};
+
+//------------------------------------------------------------------------
+//				SCREEN STATE LOOKUP TABLE
+//------------------------------------------------------------------------
+SCREENSTATES	SCRNstateTable[ SCRN_LAST_STATE ] =
+{
+	{	SCRN_TITLE_STATE,				// Title Screen State
+		ScrnInitTitleScreen,			// Screen state initialization
+		ScrnDisplay,					// Screen state display
+		ScrnTitleUpdate,				// Screen state update
+		ScrnTerminateTitleScreen		// Screen state termination
+	},
+	{	SCRN_GAME_START_STATE,			// One or Multi Player, Options, Quit
+		ScrnInitGameStart,				// Screen state initialization
+		ScrnDisplay,					// Screen state display
+		ScrnUpdate,						// Screen state update
+		ScrnTerminateScreen				// Screen state termination
+	},
+	{	SCRN_SELECT_CAMPAIGN_STATE,		// One Player campaign selection
+		ScrnInitSelectCampaign,			// Screen state initialization
+		ScrnDisplay,					// Screen state display
+		ScrnUpdate,						// Screen state update
+		ScrnTerminateSelectCampaign		// Screen state termination
+	},
+	{	SCRN_SELECT_CALLSIGN_STATE,		// One Player player name selection
+		ScrnInitPlayerName,				// Screen state initialization
+		ScrnDisplay,					// Screen state display
+		ScrnUpdate,						// Screen state update
+		ScrnTerminateScreen				// Screen state termination
+	},
+	{	SCRN_SELECT_MISSION_STATE,		// One Player mission selection
+		ScrnInitSelectMission,			// Screen state initialization
+		ScrnDisplay,					// Screen state display
+		ScrnUpdate,						// Screen state update
+		ScrnTerminateSelectMission		// Screen state termination
+	},
+
+	//---------------------------------------------------------------------
+
+	{	SCRN_MULTI_HOST_STATE,			// Multi Player HOST campaign selection
+		ScrnInitHost,					// Screen state initialization
+		ScrnDisplay,					// Screen state display
+		ScrnUpdate,						// Screen state update
+		ScrnTerminateHost				// Multi Player HOST termination
+	},
+
+	{	SCRN_MULTI_REMOTE_STATE,		// Multi Player REMOTE campaign selection
+		ScrnInitRemote,					// Screen state initialization
+		ScrnDisplay,					// Screen state display
+		ScrnUpdate,						// Screen state update
+		ScrnTerminateRemote				// Multi Player REMOTE termination
+	},
+
+	//---------------------------------------------------------------------
+
+	{	SCRN_OPTIONS_STATE,				// Army options selection
+		ScrnInitOptions,				// Screen state initialization
+		ScrnDisplay,					// Screen state display
+		ScrnUpdate,						// Screen state update
+		ScrnTerminateScreen				// Screen state termination
+	},
+
+	{	SCRN_CONTROLS_STATE,			// User Controls Configuration
+		ScrnControlsScreen,				// Screen state initialization
+		ScrnDisplay,					// Screen state display
+		ScrnUpdate,						// Screen state update
+		ScrnTerminateScreen				// Screen state termination
+	},
+
+	{	SCRN_AUDIO_STATE,				// Audio Controls Configuration
+		ScrnAudioScreen,				// Screen state initialization
+		ScrnDisplay,					// Screen state display
+		ScrnUpdate,						// Screen state update
+		ScrnTerminateAudioScreen		// Screen state termination
+	},
+
+	{	SCRN_ABOUT_STATE,				// About Armymen Configuration
+		ScrnAboutScreen,				// Screen state initialization
+		ScrnDisplay,					// Screen state display
+		ScrnUpdate,						// Screen state update
+		ScrnTerminateAboutScreen		// Screen state termination
+	},
+
+	{	SCRN_PLAY_OPTIONS_STATE,		// Army options selection during game play
+		ScrnInitPlayOptions,			// Screen state initialization
+		ScrnDisplay,					// Screen state display
+		ScrnUpdate,						// Screen state update
+		ScrnTerminateScreen				// Screen state termination
+	},
+
+	{	SCRN_PLAY_CONTROLS_STATE,		// User Controls Configuration during game play
+		ScrnControlsScreen,				// Screen state initialization
+		ScrnDisplay,					// Screen state display
+		ScrnUpdate,						// Screen state update
+		ScrnTerminateScreen				// Screen state termination
+	},
+
+	{	SCRN_PLAY_AUDIO_STATE,			// Audio Controls Configuration during game play
+		ScrnPlayAudioScreen,			// Screen state initialization
+		ScrnDisplay,					// Screen state display
+		ScrnUpdate,						// Screen state update
+		ScrnTerminateAudioScreen		// Screen state termination
+	},
+
+	{	SCRN_PLAY_ABOUT_STATE,			// About Armymen Configuration during game play
+		ScrnPlayAboutScreen,			// Screen state initialization
+		ScrnDisplay,					// Screen state display
+		ScrnUpdate,						// Screen state update
+		ScrnTerminatePlayAboutScreen	// Screen state termination
+	},
+
+	//---------------------------------------------------------------------
+
+	{	SCRN_QUIT_STATE,				// Army quit
+		ScrnNOOP,						// Screen state initialization
+		ScrnDisplay,					// Screen state display
+		ScrnUpdate,						// Screen state update
+		ScrnNOOP						// Screen state termination
+	},
+
+	//---------------------------------------------------------------------
+
+	{	SCRN_STATS_STATE,				// Army statistics
+		ScrnInitStats,					// Screen state initialization
+		ScrnDisplay,					// Screen state display
+		ScrnUpdate,						// Screen state update
+		ScrnTerminateStats				// Screen state termination
+	},
+
+	{	SCRN_KEYPAD_STATE,				// Army user alternate default Configuration
+		ScrnKeypadInitState,			// Screen state initialization
+		ScrnDisplay,					// Screen state display
+		ScrnUpdate,						// Screen state update
+		ScrnTerminateScreen				// Screen state termination
+	},
+
+	{	SCRN_KEYBOARD_STATE,			// Army user typical default Configuration
+		ScrnKeyboardInitState,			// Screen state initialization
+		ScrnDisplay,					// Screen state display
+		ScrnUpdate,						// Screen state update
+		ScrnTerminateScreen				// Screen state termination
+	},
+
+	{	SCRN_CUSTOM_STATE,				// Army user custom default Configuration
+		ScrnCustomInitState,			// Screen state initialization
+		ScrnDisplay,					// Screen state display
+		ScrnUpdate,						// Screen state update
+		ScrnTerminateScreen				// Screen state termination
+	},
+
+	{	SCRN_JOYSTICK_STATE,			// Army user custom joystick Configuration
+		ScrnJoystickInitState,			// Screen state initialization
+		ScrnDisplay,					// Screen state display
+		ScrnUpdate,						// Screen state update
+		ScrnTerminateScreen				// Screen state termination
+	}
+
+};
+//========================================================================
+//						EOF
+//========================================================================

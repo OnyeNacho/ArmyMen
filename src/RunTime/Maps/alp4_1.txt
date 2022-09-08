@@ -1,0 +1,412 @@
+// ALPINE SCENARIO 4 Mission 8 Great Escape
+
+PAD goal 0 	GREEN SARGE > 0
+PAD kill 35
+PAD hiddenex 34
+PAD prisoncamp 20	GREEN SARGE > 0
+PAD home 21
+PAD target 22
+PAD origin 23
+PAD Tan1 24
+PAD Tan2 25
+PAD rescuepad 30 GREEN NPC > 0
+PAD medicaltentpad 30	GREEN SARGE > 0
+PAD medicaltentpad1 30	GREEN UNIT > 0
+PAD patrol1 50
+PAD patrol2 51
+PAD patrol3 52
+PAD patrol4 53
+PAD crossingnorth 29	GREEN > 0
+
+
+	// ** GAME TERMINATION CONDITIONS ** //
+
+// rescue Npc green
+IF merged THEN
+	INVULNERABLESARGE,
+	TRIGGER greenwins
+
+// tan wins if sarge dies or 4 npc die
+IF killed_GreenSarge THEN
+	TRIGGER tanwins
+
+IF ALLOF killed_GreenRifle2 killed_GreenRifle3 killed_GreenRifle4 killed_GreenRifle5 killed_GreenRifle6 killed_GreenRifle7 THEN
+	TRIGGER tanwins
+
+
+
+//Music
+IF addtension THEN
+	AUDIO HIGHINTENSITY
+
+IF reducetension THEN
+	AUDIO LOWINTENSITY
+
+
+
+	// ** GAME EVENTS ** //
+
+// order tan to attack mode
+IF startup THEN
+	MAKESTRATEGIC prisoner,
+	TRIGGER reducetension,
+	ORDER TanBazooka4 GOTO TanBazooka4 INMODE NESTFIRE THEN ATMODE NESTFIRE,
+	ORDER TanTank1 GOTO TanTank1 INMODE DEFEND THEN ATMODE DEFEND,
+	TRIGGER timetoheal,
+	ORDER TanRifle10 GOTO TanRifle10 INMODE IGNORE THEN ATMODE IGNORE,
+	ORDER TanRifle11 GOTO TanRifle11 INMODE IGNORE THEN ATMODE IGNORE,
+	ORDER TanRifle12 GOTO TanRifle12 INMODE IGNORE THEN ATMODE IGNORE,
+	ORDER TanFlamer1 GOTO TanFlamer1 INMODE IGNORE THEN ATMODE IGNORE,
+	TRIGGER endlooping,
+	INVISIBLE GreenRifle2,
+	INVISIBLE GreenRifle3,
+	INVISIBLE GreenRifle4,
+	INVISIBLE GreenRifle5,
+	INVISIBLE GreenRifle6,
+	INVISIBLE GreenRifle7,
+	SETAICONTROL GreenRifle2,
+	SETAICONTROL GreenRifle3,
+	SETAICONTROL GreenRifle4,
+	SETAICONTROL GreenRifle5,
+	SETAICONTROL GreenRifle6,
+	SETAICONTROL GreenRifle7,
+	ORDER TanTank2 GOTO TanTank2 INMODE DEFEND THEN ATMODE DEFEND
+
+
+//escaping
+IF escape BUTNOT killed_cells THEN
+	MAKENONSTRATEGIC prisoner,
+	REMOVEOBJECT prisoner,
+	TRIGGER addtension,
+	DEPLOY GreenRifle2 ATMODE IGNORE,
+	DEPLOY GreenRifle3 ATMODE IGNORE,
+	DEPLOY GreenRifle4 ATMODE IGNORE,
+	DEPLOY GreenRifle5 ATMODE IGNORE,
+	DEPLOY GreenRifle6 ATMODE IGNORE,
+	DEPLOY GreenRifle7 ATMODE IGNORE,
+	VISIBLE GreenRifle2,
+	VISIBLE GreenRifle3,
+	VISIBLE GreenRifle4,
+	VISIBLE GreenRifle5,
+	VISIBLE GreenRifle6,
+	VISIBLE GreenRifle7,
+	SETAICONTROL GreenRifle2,
+	SETAICONTROL GreenRifle3,
+	SETAICONTROL GreenRifle4,
+	SETAICONTROL GreenRifle5,
+	SETAICONTROL GreenRifle6,
+	SETAICONTROL GreenRifle7,
+	PLAYSTREAM GET_OUT_OF_HERE,
+	TRIGGERDELAY 3 running
+
+IF running THEN
+	ORDER GreenRifle2 GOTO rescuepad SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER undeploy2,
+	ORDER GreenRifle3 GOTO rescuepad SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER undeploy3,
+	ORDER GreenRifle4 GOTO rescuepad SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER undeploy4,
+	ORDER GreenRifle5 GOTO rescuepad SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER undeploy5,
+	ORDER GreenRifle6 GOTO rescuepad SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER undeploy6,
+	ORDER GreenRifle7 GOTO rescuepad SLOW INMODE IGNORE THEN ATMODE IGNORE TRIGGER undeploy7
+
+
+
+IF undeploy2 THEN
+	TRIGGER mergetest2,
+	UNDEPLOY GreenRifle2
+
+IF undeploy3 THEN
+	TRIGGER mergetest3,
+	UNDEPLOY GreenRifle3
+
+IF undeploy4 THEN
+	TRIGGER mergetest4,
+	UNDEPLOY GreenRifle4
+
+IF undeploy5 THEN
+	TRIGGER mergetest5,
+	UNDEPLOY GreenRifle5
+
+IF undeploy6 THEN
+	TRIGGER mergetest6,
+	UNDEPLOY GreenRifle6
+
+IF undeploy7 THEN
+	TRIGGER mergetest7,
+	UNDEPLOY GreenRifle7
+
+
+IF ONEOF killed_GreenRifle2 mergetest2 THEN
+	TRIGGER merge2
+
+IF ONEOF killed_GreenRifle3 mergetest3 THEN
+	TRIGGER merge3
+
+IF ONEOF killed_GreenRifle4 mergetest4 THEN
+	TRIGGER merge4
+
+IF ONEOF killed_GreenRifle5 mergetest5 THEN
+	TRIGGER merge5
+
+IF ONEOF killed_GreenRifle6 mergetest6 THEN
+	TRIGGER merge6
+
+IF ONEOF killed_GreenRifle7 mergetest7 THEN
+	TRIGGER merge7
+
+
+IF ALLOF merge2 merge3 merge4 merge5 merge6 merge7 THEN
+	TRIGGER merge
+
+
+
+IF on_goal AFTER off_goal AND merge AFTER NULL THEN
+	TRIGGERDELAY 1 merged
+	
+
+
+
+// in 120 seconds green2 gets executed
+IF TIMEABSOLUTE 255 THEN
+	TRIGGER test1
+
+IF ANYOF killed_GreenRifle2 killed_TanBazooka4 escape THEN
+	TRIGGER killedguy1
+
+
+
+IF ALLOF test1 BUTNOT killedguy1 THEN
+	TRIGGER addtension,
+	TRIGGERDELAY 15 reducetension,
+	TRIGGER goprisoner
+	
+
+IF 1 OF killed_GreenRifle2 THEN
+	TRIGGER soldierkilled,
+	VISIBLE GreenRifle2,
+	TRIGGER kill
+
+
+
+// in 165 seconds green3 gets executed
+IF TIMEABSOLUTE 285 THEN
+	TRIGGER test2
+
+IF ANYOF killed_GreenRifle3 killed_TanBazooka4 escape THEN
+	TRIGGER killedguy2
+
+IF ALLOF test2 killed_GreenRifle2 BUTNOT killedguy2 THEN
+	TRIGGER addtension,
+	TRIGGERDELAY 15 reducetension,
+	TRIGGER goprisoner
+	
+IF 1 OF killed_GreenRifle3 THEN
+	TRIGGER soldierkilled,
+	VISIBLE GreenRifle3,
+	TRIGGER kill
+
+
+// in 210 seconds green4 gets executed
+IF TIMEABSOLUTE 315 THEN
+	TRIGGER test3
+
+
+IF ANYOF killed_GreenRifle4 killed_TanBazooka4 escape THEN
+	TRIGGER killedguy3
+
+
+IF ALLOF test3 killed_GreenRifle2 killed_GreenRifle3 BUTNOT killedguy3 THEN
+	TRIGGER addtension,
+	TRIGGERDELAY 15 reducetension,
+	TRIGGER goprisoner
+
+IF 1 OF killed_GreenRifle4 THEN
+	TRIGGER soldierkilled,
+	VISIBLE GreenRifle4,
+	TRIGGER kill
+
+
+// in 255 seconds green4 gets executed
+IF TIMEABSOLUTE 345 THEN
+	TRIGGER test4
+
+IF ANYOF killed_GreenRifle5 killed_TanBazooka4 escape THEN
+	TRIGGER killedguy4
+
+
+IF ALLOF test4 killed_GreenRifle2 killed_GreenRifle3 killed_GreenRifle4 BUTNOT killedguy4 THEN
+	TRIGGER addtension,
+	TRIGGERDELAY 15 reducetension,
+	TRIGGER goprisoner
+
+IF 1 OF killed_GreenRifle5 THEN
+	TRIGGER soldierkilled,
+	VISIBLE GreenRifle5,
+	TRIGGER kill
+
+
+// in 300 seconds green4 gets executed
+IF TIMEABSOLUTE 375 THEN
+	TRIGGER test5
+
+IF ANYOF killed_GreenRifle6 killed_TanBazooka4 escape THEN
+	TRIGGER killedguy5
+
+IF ALLOF test5 killed_GreenRifle2 killed_GreenRifle3 killed_GreenRifle4 killed_GreenRifle5 BUTNOT killedguy5 THEN
+	TRIGGER addtension,
+	TRIGGERDELAY 15 reducetension,
+	TRIGGER goprisoner
+
+IF 1 OF killed_GreenRifle6 THEN
+	PLAYSTREAM AS4M1_3,
+	TRIGGER soldierkilled,
+	VISIBLE GreenRifle6,
+	TRIGGER kill
+
+
+// in 345 seconds green4 gets executed
+IF TIMEABSOLUTE 405 THEN
+	TRIGGER test6
+
+IF ANYOF killed_GreenRifle7 killed_TanBazooka4 escape THEN
+	TRIGGER killedguy6
+
+IF ALLOF test6 killed_GreenRifle2 killed_GreenRifle3 killed_GreenRifle4 killed_GreenRifle5 killed_GreenRifle6 BUTNOT killedguy6 THEN
+	TRIGGER addtension,
+	TRIGGERDELAY 15 reducetension,
+	TRIGGER goprisoner
+
+IF 1 OF killed_GreenRifle7 THEN
+	TRIGGER soldierkilled,
+	VISIBLE GreenRifle7,
+	TRIGGER kill
+
+IF kill THEN RANDOM
+	PLAYSTREAM AS4M1_2,
+	PLAYSTREAM AS4M1_1
+
+
+//IF on_prisoncamp AFTER off_prisoncamp AND killed_TanBazooka4 AFTER NULL THEN
+	//TRIGGER escape
+
+IF ALLOF killed_TanBazooka4 sargeishere THEN
+	TRIGGER escape
+
+IF killed_cells BUTNOT escape THEN
+	TRIGGER kill,
+	TRIGGER kill,
+	TRIGGER kill,
+	TRIGGER kill,
+	TRIGGER kill,
+	TRIGGER kill,
+	TRIGGERDELAY 1 tanwins
+
+
+IF prisonerslastpos THEN
+	REMOVEOBJECT prisonerslast,
+	PLACEOBJECT prisonerslast prisoner
+
+
+
+IF ALLOF deployguy THEN SEQUENTIAL
+	TRIGGER deployguy2,
+	TRIGGER deployguy2,
+	TRIGGER deployguy2,
+	TRIGGER deployguy2,
+	TRIGGER deployguy2,
+	TRIGGER deployguy2
+
+IF ALLOF makeinvisible THEN SEQUENTIAL
+	INVISIBLE GreenRifle2,
+	INVISIBLE GreenRifle3,
+	INVISIBLE GreenRifle4,
+	INVISIBLE GreenRifle5,
+	INVISIBLE GreenRifle6,
+	INVISIBLE GreenRifle7
+
+
+IF ALLOF deployguy2 THEN SEQUENTIAL
+	DEPLOY GreenRifle2 prisonerslast ATMODE IGNORE,
+	DEPLOY GreenRifle3 prisonerslast ATMODE IGNORE,
+	DEPLOY GreenRifle4 prisonerslast ATMODE IGNORE,
+	DEPLOY GreenRifle5 prisonerslast ATMODE IGNORE,
+	DEPLOY GreenRifle6 prisonerslast ATMODE IGNORE,
+	DEPLOY GreenRifle7 prisonerslast ATMODE IGNORE
+
+
+
+// Power-ups
+IF killed_TanBazooka308 THEN
+	REMOVEOBJECT baz1,
+	PLACEOBJECT baz1 TanBazooka308
+
+IF killed_TanRifle2 THEN
+	REMOVEOBJECT mort1,
+	PLACEOBJECT mort1 TanRifle2
+
+IF killed_TanBazooka1 THEN
+	REMOVEOBJECT fullhealth1,
+	PLACEOBJECT fullhealth1 TanBazooka1
+
+IF killed_outhouse THEN
+	REMOVEOBJECT sweep1,
+	PLACEOBJECT sweep1 outhouse
+
+IF killed_crate2 THEN
+	REMOVEOBJECT recon1,
+	PLACEOBJECT recon1 crate2
+
+IF killed_outhouse3 THEN
+	REMOVEOBJECT para1,
+	PLACEOBJECT para1 outhouse3
+
+
+
+// enable mash tents
+IF startup THEN
+	TRIGGER setupgreen,
+	TRIGGERDELAY 0.1 setmash
+
+IF setupgreen THEN
+	TRIGGER gsmedtime
+
+IF setmash THEN 
+	TRIGGER greenmashready
+
+IF on_medicaltentpad AFTER off_medicaltentpad AND gsmedtime AFTER NULL AND startup AFTER killed_greenmash THEN
+	HEAL ME	10,
+	TRIGGERDELAY 1.5 gsmedtime
+
+
+IF on_medicaltentpad1 BUTNOT killed_greenmash THEN
+	HEAL ME 100
+
+
+
+
+IF ONEOF hit_TanRifle10 hit_TanRifle11 hit_TanRifle12 hit_TanFlamer1 hit_gturr1 hit_gturr2 hit_building2 hit_TanBazooka4 hit_stable1 hit_stable2 BUTNOT prisonalarm THEN
+	ORDER TanRifle10 GOTO TanRifle10 INMODE DEFEND THEN ATMODE DEFEND,
+	ORDER TanRifle11 GOTO TanRifle11 INMODE DEFEND THEN ATMODE DEFEND,
+	ORDER TanRifle12 GOTO GreenSarge INMODE DEFEND THEN ATMODE ATTACK,
+	ORDER TanFlamer1 GOTO GreenSarge INMODE ATTACK THEN ATMODE ATTACK,
+	PLAYSTREAM HALT_INTRUDER,
+	TRIGGER prisonalarm
+
+
+
+IF on_prisoncamp BUTNOT prisonpenetrated THEN
+	DEPLOY TanFlamer1 ATMODE ATTACK,
+	ORDER TanRifle10 GOTO TanRifle10 INMODE ATTACK THEN ATMODE ATTACK,
+	ORDER TanRifle11 GOTO TanRifle11 INMODE ATTACK THEN ATMODE ATTACK,
+	ORDER TanRifle12 GOTO TanRifle12 INMODE ATTACK THEN ATMODE ATTACK,
+	ORDER TanTank1 GOTO GreenSarge INMODE ATTACK THEN ATMODE ATTACK,
+	ORDER TanTank2 GOTO GreenSarge INMODE ATTACK THEN ATMODE ATTACK,
+	ORDER TanFlamer1 GOTO GreenSarge INMODE ATTACK THEN ATMODE ATTACK,
+	TRIGGER sargeishere,
+	TRIGGER prisonpenetrated
+
+
+IF prisonpenetrated BUTNOT prisonalarm THEN
+	TRIGGER prisonalarm
+
+
+
+

@@ -1,0 +1,82 @@
+
+                                // Bootcamp 
+	
+
+PAD bcr 11 GREEN SARGE > 0
+PAD bcb 12 GREEN SARGE > 0
+PAD bcmor 13 GREEN SARGE > 0
+PAD bcmine1 14 GREEN SARGE > 0
+PAD bcmine2 15 GREEN SARGE > 0
+PAD bcf 16 GREEN SARGE > 0
+PAD bcmp 17 GREEN SARGE > 0
+PAD bcob 19 GREEN SARGE > 0
+PAD bcg   20 GREEN SARGE > 0
+PAD bca   21 GREEN SARGE > 0
+PAD bcsf   22 GREEN SARGE > 0
+PAD bcsa   23 GREEN SARGE > 0
+PAD bcsd   24 GREEN SARGE > 0
+PAD bcex   25 GREEN SARGE > 0
+
+
+                                     // ** In Game Stuff ** //
+
+IF get_GreenSarge_recon1 THEN
+	DEPLOY TanRifle1 ATMODE IGNORE,
+	DEPLOY TanRifle2 ATMODE IGNORE,
+	DEPLOY GrayRifle3 ATMODE IGNORE,
+	DEPLOY GrayRifle2 ATMODE IGNORE,
+	DEPLOY BlueRifle3 ATMODE IGNORE,
+	DEPLOY BlueRifle2 ATMODE IGNORE
+
+IF killed_GreenSarge THEN
+	TRIGGERDELAY 2 res
+
+IF res THEN	
+	RESURRECT GreenSarge GreenSarge
+
+IF on_bcob THEN
+	SHOWBMP "bcob.bmp" 
+
+IF on_bcr THEN
+	SHOWBMP "bcr.bmp"
+
+IF on_bcb THEN
+	SHOWBMP "bcb.bmp"
+
+IF on_bcmor THEN
+	SHOWBMP "bcmor.bmp"
+
+IF on_bcmine1 THEN
+	SHOWBMP "bcmine1.bmp"
+
+IF on_bcmine2 THEN
+	SHOWBMP "bcmine2.bmp"
+
+IF on_bcf THEN
+	SHOWBMP "bcf.bmp"
+
+IF on_bcmp THEN
+	SHOWBMP "bcmp.bmp"
+
+IF on_bca THEN
+	SHOWBMP "bca.bmp"
+
+IF on_bcg THEN
+	SHOWBMP "bcg.bmp"
+
+IF on_bcsf THEN
+	SHOWBMP "bcsf.bmp"
+
+IF on_bcsa THEN
+	SHOWBMP "bcsa.bmp"
+
+IF on_bcsd THEN
+	SHOWBMP "bcsd.bmp"
+
+IF on_bcex THEN
+	SHOWBMP "bcex.bmp"
+
+
+
+
+	

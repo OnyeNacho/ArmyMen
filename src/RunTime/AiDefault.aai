@@ -1,0 +1,379 @@
+#-----------------------------------------------------------------------
+#    This is the text file that will contain AI information for 
+# "Army Men" It will contain Generic Game variables and information, 
+# Unit information, and Weapon information
+#-----------------------------------------------------------------------
+#
+#					GLOBAL DEFAULT
+#
+#-----------------------------------------------------------------------
+# Generic Game Variables and information
+VIS_RANGE 25	# in tiles (was 40!)
+LAT 	3	# Look Ahead Time for calculating the Zone Of Control
+ 		# from weapons
+MLA 	10	# Movement Look Ahead  is the distance you look ahead
+# during local movement
+
+VEHICLE_DANGER		15	#tiles from vehicle to start avoiding it
+VEHICLE_STANDOFF	9	#tiles from frnd vehicle to stop
+TROOPER_TURN_RATE	256	#per frame change of direction allowed on run
+TROOPER_POSE_RATE	150	#frames to maintain prone,kneel,stand 
+TROOPER_SLIDE_RATE	2	#round directions to this power of two (= 4)
+DEFENSE_RADIUS		7	#tiles within to attack victim 
+ATTACK_RADIUS		12	#tiles within to attack people 
+ATTACK_HUNT		12	#tiles from attack center to roam in patrol
+FOLLOW_RADIUS		5	#tiles from sarge before we must move towardhim
+FOLLOW_ENGAGED_RADIUS	12	#tiles if we are engaged before we must break
+				#off and goto sarge (ignoring fire upon us)
+
+#common to all maps
+#-----------------------------------------------------------------------
+# TROOPER information and AI data
+#
+#	WEAPON		--	Weapon carried
+
+RIFLE_MEN
+	WEAPON				LIGHT_MACHINE_GUN
+GRENADE_MEN
+	WEAPON				GRENADE
+FLAME_MEN
+	WEAPON				FLAME_THROWER
+BAZOOKA_MEN
+	WEAPON				BAZOOKA
+MORTAR_MEN
+	WEAPON				MORTAR
+MINER_MEN
+SPECIAL_MEN
+
+#-----------------------------------------------------------------------
+# Unit Composition 
+#	UNIT		Block name
+#		NAME			Name to use as prefix to unit number
+#		COMPOSITION		enumerates specials and rifles used
+
+UNIT				RIFLE_UNIT
+	NAME			"Rifle "
+	COMPOSITION		R;R;R;R;R		# Special ; Rifle
+
+UNIT				GRENADE_UNIT
+	NAME			"Grenade "
+	COMPOSITION		S;S;R;R;R		# Special ; Rifle
+
+UNIT				FLAME_UNIT
+	NAME			"Flamer "
+	COMPOSITION		S;S;R;R;R		# Special ; Rifle
+
+UNIT				BAZOOKA_UNIT
+	NAME			"Bazooka "
+	COMPOSITION		S;S;R;R;R		# Special ; Rifle
+
+UNIT				MORTAR_UNIT
+	NAME			"Mortar "
+	COMPOSITION		S;S;R;R;R		# Special ; Rifle
+
+UNIT				MINER_UNIT
+	NAME			"Miner "
+	COMPOSITION		S;S;R;R;R		# Special ; Rifle
+
+UNIT				SPECIAL_UNIT
+	NAME			"Special "
+	COMPOSITION		S;S;R;R;R		# Special ; Rifle
+
+
+
+#-----------------------------------------------------------------------
+# Weapon information and AI data
+#  RATE_OF_FIRE	--	Rate Of Fire	2 fields
+#		Field 1:	How many frames between shots
+#		Field 2:	Varies based on weapon type
+# WEAPON_TYPE
+#			LINE_OF_SITE		Line of site weapon
+#				MINIMUM_RANGE	Minimum range to activate
+#				MAXIMUM_RANGE	Maximum Range of attack
+#				PERCENTAGE_DECREASE_RATE
+#							Percent Decrease Rate to hit
+#				DAMAGE		Damage at Point of attack
+#			GROUND_MISSILE		Ground Missile Style weapon
+#				VELOCITY		Velocity in pixels/second
+#				Z_VELOCITY		Z velocity in pixels/second
+#				MINIMUM_RANGE	Minimum range to activate
+#				MAXIMUM_RANGE	Maximum Range of attack
+#				DAMAGE		Damage at Point of attack
+#				DRIFT			Drift of shell
+#			AIR_MISSILE			Air Missile Style weapon
+#				VELOCITY		Velocity in pixels/second
+#				Z_VELOCITY		Z velocity in pixels/second
+#				MINIMUM_RANGE	Minimum range to activate
+#				MAXIMUM_RANGE	Maximum Range of attack
+#				DAMAGE		Damage at Point of attack
+#				DRIFT			Drift of shell
+#			CONE				Cone attack weapon
+#				MINIMUM_RANGE	Minimum usable range
+#				MAXIMUM_RANGE	Maximum Range of attack
+#				DAMAGE		Damage at Point of attack
+#				DAMAGE_DECREASE_RATE
+#							Damage Decrease Rate 
+#			AREA	Area attack weapon
+#				VELOCITY		Velocity in pixels/second
+#				Z_VELOCITY		Z velocity in pixels/second
+#				MINIMUM_RANGE	Minimum usable range
+#				MAXIMUM_RANGE	Maximum usable range
+#				DAMAGE		Damage at Point of attack
+#				DAMAGE_DECREASE_RATE
+#							Damage Decrease Rate 
+#				DRIFT			Drift of shell
+
+LIGHT_MACHINE_GUN					# Light Machine Gun
+	RATE_OF_FIRE			1000;0		# Ticks between fires; Second field is null
+	LINE_OF_SITE
+	VELOCITY			1000
+	MINIMUM_RANGE			8
+	MAXIMUM_RANGE			384
+	DAMAGE				3
+
+FLAME_THROWER						#Flame Thrower 
+	RATE_OF_FIRE			150;0		#Second field is sustain ticks 
+	CONE		
+	MINIMUM_RANGE			50
+	MAXIMUM_RANGE			140
+	DAMAGE				3
+
+GRENADE							# Grenade 
+	RATE_OF_FIRE			1500;0
+	AREA		
+	VELOCITY			200
+	Z_VELOCITY			200
+	MINIMUM_RANGE			100
+	MAXIMUM_RANGE			250
+	DAMAGE				15
+
+BAZOOKA							#Bazooka
+	RATE_OF_FIRE			2000;0		# Second field is null
+	GROUND_MISSILE		
+	VELOCITY			1000
+	Z_VELOCITY			0
+	MINIMUM_RANGE			0
+	MAXIMUM_RANGE			384
+	DAMAGE				23
+
+MORTAR							#Mortar Shell
+	RATE_OF_FIRE			3000;0		# Second field is null
+	AREA		
+	VELOCITY			220
+	Z_VELOCITY			425
+	MINIMUM_RANGE			150
+	MAXIMUM_RANGE			512
+	DAMAGE				75
+
+HEAVY_MACHINE_GUN					# Heavy Machine Gun
+	RATE_OF_FIRE			350;0		# Second field is null
+	LINE_OF_SITE	
+	VELOCITY			1000
+	MINIMUM_RANGE			32
+	MAXIMUM_RANGE			384
+	DAMAGE				6
+
+MEDIUM_MACHINE_GUN					# Medium Machine Gun
+	RATE_OF_FIRE			375;0		# Second field is null
+	LINE_OF_SITE	
+	VELOCITY			1000
+	MINIMUM_RANGE			0
+	MAXIMUM_RANGE			384
+	DAMAGE				5
+
+LARGE_CANNON						#Large Cannon on tank
+	RATE_OF_FIRE			3000;0		# Second field is null
+	GROUND_MISSILE	
+	VELOCITY			1000
+	Z_VELOCITY			0
+	MINIMUM_RANGE			0
+	MAXIMUM_RANGE			512
+	DAMAGE				25
+
+RIFLE							#Sarge's machine gun
+	RATE_OF_FIRE			375;0		# Second field is null
+	GROUND_MISSILE	
+	VELOCITY			1000
+	Z_VELOCITY			0
+	MINIMUM_RANGE			0
+	MAXIMUM_RANGE			384
+	DAMAGE				4
+
+AUTO_RIFLE						#Sarge's machine gun
+	RATE_OF_FIRE			375;0		# Second field is null
+	GROUND_MISSILE	
+	VELOCITY			1000
+	Z_VELOCITY			0
+	MINIMUM_RANGE			0
+	MAXIMUM_RANGE			384
+	DAMAGE				4
+
+TOWER_RIFLE						#Guard Tower gun
+	RATE_OF_FIRE			500;0		# Second field is null
+	GROUND_MISSILE	
+	VELOCITY			1000
+	Z_VELOCITY			0
+	MINIMUM_RANGE			60
+	MAXIMUM_RANGE			450
+	DAMAGE				5
+
+EXPLOSIVE
+	DAMAGE				150
+
+MINE
+	DAMAGE				30
+
+MEDPACK
+	RATE_OF_FIRE			1000;0
+	DAMAGE				33
+
+MEDKIT
+	DAMAGE				100
+
+
+
+
+#-----------------------------------------------------------------------
+# Unit information and AI data
+#	TROOPERS		--  Unit trooper makeup, 2 fields
+#		Field 1 Primary Troops
+#		Field 2 Secondary Troops
+#	TROOPS	--	Number of troops in unit
+#	SPEED		    --	Speed			2 fields
+#		Field 1	Normal marching speed before terrain effects
+#		Field 2	Run speed before terrain effects
+#	TARGET  --  Target Acquisition Min and Max
+#       Field 1 Minimum number of attackers for acquistion
+#       Field 2 Maximum number of attackers for acquistion
+RIFLE_UNIT
+	TROOPERS		RIFLE_MEN;RIFLE_MEN
+	TROOPS			5		# maximum number of troopers for this unit
+	TROOP_STRENGTH	15		# hit points per trooper	
+	SPEED			3;6;9	# Speed slow, normal and run
+	TARGET			1;3		# min and maximum Target acquisition values
+GRENADE_UNIT
+	TROOPERS		GRENADE_MEN;RIFLE_MEN
+	TROOPS			5		# maximum number of troopers for this unit
+	TROOP_STRENGTH	15		# hit points per trooper	
+	SPEED			3;6;9	# Speed slow, normal and run
+	TARGET			1;3		# min and maximum Target acquisition values
+FLAME_UNIT
+	TROOPERS		FLAME_MEN;RIFLE_MEN
+	TROOPS			5		# maximum number of troopers for this unit
+	TROOP_STRENGTH	15		# hit points per trooper	
+	SPEED			2;4;7	# Speed slow, normal and run
+	TARGET			1;3		# min and maximum Target acquisition values
+BAZOOKA_UNIT
+	TROOPERS		BAZOOKA_MEN;RIFLE_MEN
+	TROOPS			5		# maximum number of troopers for this unit
+	TROOP_STRENGTH	15		# hit points per trooper	
+	SPEED			2;5;8	# Speed slow, normal and run
+	TARGET			1;3		# min and maximum Target acquisition values
+ENGINEER_UNIT
+	TROOPERS		ENGINEER_MEN;RIFLE_MEN
+	TROOPS			4		# maximum number of troopers for this unit
+	TROOP_STRENGTH	15		# hit points per trooper	
+	SPEED			2;5;8	# Speed slow, normal and run
+	TARGET			1;3		# min and maximum Target acquisition values
+MORTAR_UNIT
+	TROOPERS		MORTAR_MEN;RIFLE_MEN
+	TROOPS			5		# maximum number of troopers for this unit
+	TROOP_STRENGTH	15		# hit points per trooper	
+	SPEED			2;5;8	# Speed slow, normal and run
+	TARGET			1;3		# min and maximum Target acquisition values
+MINER_UNIT
+	TROOPERS		MINER_MEN;RIFLE_MEN
+	TROOPS			5		# maximum number of troopers for this unit
+	TROOP_STRENGTH	15		# hit points per trooper	
+	SPEED			2;5;8	# Speed slow, normal and run
+	TARGET			1;3		# min and maximum Target acquisition values
+SPECIAL_UNIT
+	TROOPERS		SPECIAL_MEN;RIFLE_MEN
+	TROOPS			5		# maximum number of troopers for this unit
+	TROOP_STRENGTH	15		# hit points per trooper	
+	SPEED			2;5;8	# Speed slow, normal and run
+	TARGET			1;3		# min and maximum Target acquisition values
+
+#-----------------------------------------------------------------------
+# Vehicle information and AI data
+#
+#	WEAPON	--	Weapon carried	2 fields
+#		Field 1	First weapon
+#		Field 2	Second weapon if available
+#	AMMO	--	Ammo			2 fields
+#		Field 1	Ammo for weapon 1
+#		Field 2	Ammo for weapon 2
+#	SPEED	--	Speed			2 fields
+#		Field 1	Maximum Speed before terrain effects
+#		Field 2	Minimum Speed before terrain effects
+#	ACCEL	--  Acceleration    3 fields
+#		Field 1 Forward Acceleration (lower = faster)
+#		Field 2 Backward Acceleration (lower = faster)
+#		Field 3 Braking (lower = stronger brakes)
+#	FUEL	--	Fuel			2 fields
+#		Field 1	Total fuel supply
+#		Field 2	Fuel burn rate
+#	TROOP_STRENGTH	--	Total Hit Points	1 field
+#		Field 1	Hit points
+#	TARGET  --  Target Acquisition Min and Max
+#       Field 1 Minimum number of attackers for acquistion
+#       Field 2 Maximum number of attackers for acquistion
+TANK					#Tank
+	WEAPON	LARGE_CANNON	
+	CAPACITY		0		
+	AMMO			40
+	SPEED			120,-100	# 25;-18	#Maximum/Minimum
+	ACCEL			31,31,25
+	FUEL			32000;3
+	TROOP_STRENGTH		108	#150
+	TARGET			1;3		# min and maximum Target acquisition values
+	COLLISION		32		# just below armor so 2 tanks cant ram and kill each other
+	ARMOR			33
+HALF_TRACK				#Half Track
+	WEAPON	HEAVY_MACHINE_GUN
+	CAPACITY		2		
+	AMMO			-1
+	SPEED			140,-120	# 30;-20	#Maximum/Minimum
+	ACCEL			38,38,28
+	FUEL			32000;2
+	TROOP_STRENGTH		70	#75
+	TARGET			1;3		# min and maximum Target acquisition values
+	COLLISION		35
+	ARMOR			25
+JEEP					#Jeep
+	WEAPON	MEDIUM_MACHINE_GUN
+	CAPACITY		1		
+	AMMO			-1
+	SPEED			200,-150		# 45;-35	#Maximum/Minimum
+	ACCEL			31,31,25
+	FUEL			32000;2
+	TROOP_STRENGTH		55		#40
+	TARGET			1;3		# min and maximum Target acquisition values
+	COLLISION		20
+	ARMOR			15
+CONVOY						#convoy
+	WEAPON	
+	CAPACITY		2		
+	AMMO			-1
+	SPEED			160,-94		# 25;-10
+	ACCEL			35,35,53
+	FUEL			18000;2
+	TROOP_STRENGTH		55
+	TARGET			1;3		# min and maximum Target acquisition values
+	COLLISION		35
+	ARMOR			15
+SARGE						#Commander			
+	WEAPON	RIFLE
+	CAPACITY		4		
+	AMMO			-1;15
+	SPEED			56,-56		# 5;-5		#Maximum/Minimum	
+	ACCEL			901,901,901			
+	FUEL			18000;1
+	TROOP_STRENGTH		60
+	TARGET			1;3		# min and maximum Target acquisition values
+	COLLISION		0
+
+
+#-----------------------------------------------------------------------
+#						EOF
+#-----------------------------------------------------------------------

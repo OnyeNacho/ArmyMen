@@ -1,0 +1,30 @@
+//=======================================================================
+//     FILE:     streams.dat
+//
+//     CREATED:  Saturday, March 21, 1998 19:17:57
+//
+//=======================================================================
+
+SND_NAMES	SND_streams_Names[] =
+{
+	{	TITLE_MUSIC,	"TITLE_MUSIC"	},	// 2000
+	{	ALPINE1_MUSIC,	"ALPINE1_MUSIC"	},	// 2001
+	{	ALPINE2_MUSIC,	"ALPINE2_MUSIC"	},	// 2002
+	{	DESERT1_MUSIC,	"DESERT1_MUSIC"	},	// 2003
+	{	DESERT2_MUSIC,	"DESERT2_MUSIC"	},	// 2004
+	{	BAYOU1_MUSIC,	"BAYOU1_MUSIC"	},	// 2005
+	{	BAYOU2_MUSIC,	"BAYOU2_MUSIC"	},	// 2006
+	{	BAYOU3_MUSIC,	"BAYOU3_MUSIC"	},	// 2007
+	{	WIN_MUSIC,	"WIN_MUSIC"	},	// 2008
+	{	LOSE_MUSIC,	"LOSE_MUSIC"	},	// 2009
+
+	// do not add anything beyond this point
+
+	{	SND_NULL_SND_ID,	"\0"	}	// -1
+
+};
+
+//=======================================================================
+//                                  EOF
+//=======================================================================
+

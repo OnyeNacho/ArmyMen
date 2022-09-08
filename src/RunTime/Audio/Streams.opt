@@ -1,0 +1,82 @@
+# 3DO BLDSND .OPT for building .SND files
+#
+# Author: Andrew J Burgess
+#
+# Date:   08/11/96
+#
+#     Copyright(c)1996, The 3DO Company
+#
+#===========================================
+SND_OUTPUT streams
+SND_INUM 2000
+
+#===========================================
+# ARMYMEN Title MUSIC TRACK
+#===========================================
+
+
+# Title Music
+SND_FILE Music\Title.wav
+SND_NAME TITLE_MUSIC
+SND_CNT  1
+SND_IDX  0
+
+# Mission Music
+SND_FILE Music\Alpine1.wav
+SND_NAME ALPINE1_MUSIC
+SND_CNT  1
+SND_IDX  0
+
+# Mission Music
+SND_FILE Music\Alpine2.wav
+SND_NAME ALPINE2_MUSIC
+SND_CNT  1
+SND_IDX  0
+
+# Mission Music
+SND_FILE Music\Desert1.wav
+SND_NAME DESERT1_MUSIC
+SND_CNT  1
+SND_IDX  0
+
+# Mission Music
+SND_FILE Music\Desert2.wav
+SND_NAME DESERT2_MUSIC
+SND_CNT  1
+SND_IDX  0
+
+# Mission Music
+SND_FILE Music\Bayou1.wav
+SND_NAME BAYOU1_MUSIC
+SND_CNT  1
+SND_IDX  0
+
+# Mission Music
+SND_FILE Music\Bayou2.wav
+SND_NAME BAYOU2_MUSIC
+SND_CNT  1
+SND_IDX  0
+
+# Mission Music (Creepy cemetary music, mission 4)
+SND_FILE Music\Bayou3.wav
+SND_NAME BAYOU3_MUSIC
+SND_CNT  1
+SND_IDX  0
+
+# Win Audio
+SND_FILE Music\Win.wav
+SND_NAME WIN_MUSIC
+SND_CNT  1
+SND_IDX  0
+
+# Lose Audio
+SND_FILE Music\Lose.wav
+SND_NAME LOSE_MUSIC
+SND_CNT  1
+SND_IDX  0
+
+
+
+#===========================================
+# EOF
+#===========================================

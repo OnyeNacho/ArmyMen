@@ -1,0 +1,199 @@
+
+//
+//	DESERT 
+//	Map #1
+//	Mission #2
+//
+////////////////////
+
+PAD Inside		120					// target pad inside target house
+
+//Base sentry points
+PAD StationLR	11					//bottom right
+PAD StationLL	12					//bottom left
+PAD StationUL	13					//upper left
+PAD StationUR	14					//upper right
+
+//Base cover points
+PAD Cover16		16					//left of outside bottom rock
+PAD Cover17		17					//behind inside bottom rock
+PAD Cover18		18					//behind inside upper rock circle
+PAD Cover19		19					//West of Jeep
+PAD Cover20		20					//South of Jeep
+PAD Cover21		21					//East of Jeep
+
+//Base regions
+PAD Region0		0	GreenSarge	> 0		//map 1 bottom right
+PAD Region1		1	GreenSarge	> 0		//map 2 bottom middle
+PAD Region2		2	GreenSarge	> 0		//map 4 bottom left
+PAD Region3		3	GreenSarge	> 0		//map 8 top right
+PAD Region4		4	GreenSarge	> 0		//map 16 top left
+PAD Region5		5	GreenSarge	> 0		//map 32 top above Jeep
+PAD Region6		6	GreenSarge	> 0		//map 64 sarge inside compound fence
+
+PAD BlueInside	15	BlueRifle201 > 0
+PAD StationBlue	36	BlueRifle201 > 0		//station for blue informant
+
+PAD JeepDeath	50					//jeep explosion site
+
+
+//2nd half pads
+PAD BigBridge	81	GreenSarge	> 0
+PAD Trigger201	80	GreenSarge	> 0
+PAD Trigger202	82	GreenSarge	> 0
+
+PAD Win		75	GreenSarge	> 0
+
+PAD WaitHere	208	TanTank201	> 0
+
+
+//ENDGAMES
+IF on_Win THEN
+	INVULNERABLESARGE,
+	TRIGGERDELAY 2 greenwins
+IF killed_GreenSarge THEN
+	TRIGGERDELAY 1 tanwins
+
+
+
+//INIT
+IF startup THEN
+	VULNERABLESARGE,
+	REMOVEOBJECT TanFlag,
+	REMOVEOBJECT GreenFlag,
+	PLACEOBJECT GreenFlag (3786, 1891),
+//	DUMPMESSAGE "   ",
+//	DUMPMESSAGE "   ",
+//	DUMPMESSAGE "   ",
+//	DUMPMESSAGE "   ",
+//	DUMPMESSAGE "   ",
+//	DUMPMESSAGE "   ",
+//	DUMPMESSAGE "Sarge, get to the relay station in sector F-3 across the //bridge south of town and transmit the newly acquired information to HQ.",
+//	SHOWBMP "D13mid.bmp",
+	SETAICONTROL TanTank201,
+	MAKESTRATEGIC TanTank201,
+	ORDER TanTank201 GOTO WaitHere INMODE RETURNFIRE THEN ATMODE RETURNFIRE,
+	SETAICONTROL GreenTank201,
+	ORDER GreenTank201 GOTO (320, 3160) INMODE IGNORE THEN TRIGGER GiveIt,
+	REMOVEOBJECT Bazooka13,
+	PLACEOBJECT Bazooka13 (410, 2840)
+
+IF GiveIt THEN
+	SETUSERCONTROL GreenTank201
+
+
+
+//Tank/jeep guarding bridge
+IF REPEAT 1 OF hit_TanTank201 THEN
+	TRIGGER GoGoPowerRangers
+IF REPEAT 1 OF on_BigBridge THEN
+	TRIGGER GoGoPowerRangers
+
+IF GoGoPowerRangers THEN
+	ORDER TanTank201 GOTO GreenSarge INMODE DEFEND THEN ATMODE DEFEND
+
+//magic units
+IF on_Trigger201 THEN
+	DEPLOY TanRifle201 ATMODE ATTACK,
+	SETAICONTROL TanRifle201,
+	ORDER TanRifle201 FOLLOW GreenSarge INMODE ATTACK
+
+IF on_Trigger202 THEN
+	DEPLOY TanRifle202 ATMODE ATTACK,
+	SETAICONTROL TanRifle202,
+	ORDER TanRifle202 FOLLOW GreenSarge INMODE ATTACK
+
+
+//item drops
+IF killed_TanRifle13 THEN
+	REMOVEOBJECT Meds32,
+	PLACEOBJECT Meds32 TanRifle13
+IF killed_TanRifle27 THEN
+	REMOVEOBJECT Meds8,
+	PLACEOBJECT Meds8 TanRifle27
+IF killed_TanRifle14 THEN
+	REMOVEOBJECT Meds9,
+	PLACEOBJECT Meds9 TanRifle14
+IF killed_MagiCrate1 THEN
+	REMOVEOBJECT Grenades1,
+	PLACEOBJECT Grenades1 MagiCrate1
+IF killed_MagiCrate2 THEN
+	REMOVEOBJECT MedPack1,
+	PLACEOBJECT MedPack1 MagiCrate2
+IF killed_MagiCrate3 THEN
+	REMOVEOBJECT Flam3,
+	PLACEOBJECT Flam3 MagiCrate3
+IF killed_RobertZalot THEN
+	REMOVEOBJECT Grenades2,
+	PLACEOBJECT Grenades2 BonusCrate1
+IF killed_RichardsBox THEN
+	REMOVEOBJECT RichardHicks,
+	PLACEOBJECT RichardHicks RichardsBox
+IF killed_NicksBox THEN
+	REMOVEOBJECT NickEarl,
+	PLACEOBJECT NickEarl NicksBox 
+IF killed_BonusCrate2 THEN
+	REMOVEOBJECT Flam007,
+	PLACEOBJECT Flam007 BonusCrate2
+IF killed_BonusCrate1 THEN
+	REMOVEOBJECT AlvinMuolic,
+	PLACEOBJECT AlvinMuolic BonusCrate1 
+
+
+
+
+
+
+
+//FRONTLINE resurrections
+IF killed_GreenRifle1 THEN
+	RESURRECT GreenRifle1 (3946, 1225),
+	SETAICONTROL GreenRifle1,
+	ORDER GreenRifle1 GOTO (3611, 1383) INMODE ATTACK THEN ATMODE DEFEND
+IF killed_GreenRifle2 THEN
+	RESURRECT GreenRifle2 (3946, 1225),
+	SETAICONTROL GreenRifle2,
+	ORDER GreenRifle2 GOTO (3470, 750) INMODE ATTACK THEN ATMODE DEFEND
+IF killed_GreenRifle3 THEN
+	RESURRECT GreenRifle3 (3946, 1225),
+	SETAICONTROL GreenRifle3,
+	ORDER GreenRifle3 GOTO (3466, 725) INMODE ATTACK THEN ATMODE DEFEND
+IF killed_TanRifle7 THEN
+	RESURRECT TanRifle7 (3320, 160),
+	SETAICONTROL TanRifle7,
+	ORDER TanRifle7 GOTO (3421, 535) INMODE RETURNFIRE THEN ATMODE DEFEND
+IF killed_TanRifle24 THEN
+	RESURRECT TanRifle24 (3320, 160),
+	SETAICONTROL TanRifle24,
+	ORDER TanRifle24 GOTO (3611, 1383) INMODE RETURNFIRE THEN ATMODE DEFEND
+IF killed_TanRifle8 THEN
+	RESURRECT TanRifle8 (3320, 160),
+	SETAICONTROL TanRifle8,
+	ORDER TanRifle8 GOTO (3466, 725) INMODE RETURNFIRE THEN ATMODE DEFEND
+IF killed_TanRifle25 THEN
+	RESURRECT TanRifle25 (3320, 160),
+	SETAICONTROL TanRifle25,
+	ORDER TanRifle25 GOTO (3441, 1100) INMODE RETURNFIRE THEN ATMODE DEFEND
+IF killed_TanGrenadier1 THEN
+	RESURRECT TanGrenadier1 (3320, 160),
+	SETAICONTROL TanGrenadier1,
+	ORDER TanGrenadier1 GOTO (3470, 749) INMODE RETURNFIRE THEN ATMODE DEFEND
+IF killed_TanRifle34 THEN
+	RESURRECT TanRifle34 (3320, 160),
+	SETAICONTROL TanRifle34,
+	ORDER TanRifle34 GOTO (3471, 1435) INMODE RETURNFIRE THEN ATMODE DEFEND
+
+//delay Green grenadier and Flamethrower guy
+IF killed_GreenGrenadier1 THEN
+	TRIGGERDELAY 30 ResGren
+IF ResGren THEN
+	RESURRECT GreenGrenadier1 (3900, 1025),
+	SETAICONTROL GreenGrenadier1,
+	ORDER GreenGrenadier1 GOTO (3441, 1100) INMODE ATTACK THEN ATMODE ATTACK
+
+IF killed_GreenFlamer1 THEN
+	TRIGGERDELAY 60 ResFlam
+IF ResFlam THEN
+	RESURRECT GreenFlamer1 (3900, 660),
+	SETAICONTROL GreenFlamer1,
+	ORDER GreenFlamer1 GOTO (3460, 755) INMODE RETURNFIRE THEN ATMODE DEFEND

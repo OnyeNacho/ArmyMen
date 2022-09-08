@@ -1,0 +1,28 @@
+#==========================================
+# Sample 3DO .OPT for building .SND files
+#
+# Author: Andrew J Burgess
+#
+# Date:   04/30/96
+#
+#     Copyright(c)1996, The 3DO Company
+#
+#===========================================
+SND_OUTPUT sounds
+SND_INUM 1000
+SND_FILE Ricocht1.wav
+SND_NAME RIC1
+SND_CNT  1
+SND_IDX  0
+SND_FILE Shot1.wav
+SND_NAME SHT1
+SND_CNT  1
+SND_IDX  0
+SND_FILE Ricocht2.wav
+SND_NAME RIC2
+SND_CNT  1
+SND_IDX  0
+SND_FILE Gunfire4.wav
+SND_NAME GUN4
+SND_CNT  1
+SND_IDX  0
