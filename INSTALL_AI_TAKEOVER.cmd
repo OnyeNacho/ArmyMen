@@ -1,5 +1,5 @@
 @echo off
-setlocal EnableExtensions
+setlocal EnableExtensions EnableDelayedExpansion
 title ArmyMen AI Takeover - One Click Build and Install
 
 rem Run this file from the feature checkout on a Windows machine.
@@ -28,7 +28,7 @@ if not errorlevel 1 (
     git -C "%ROOT%" rev-parse --is-inside-work-tree >nul 2>&1
     if not errorlevel 1 (
         for /f "delims=" %%B in ('git -C "%ROOT%" branch --show-current') do set "CURRENT_BRANCH=%%B"
-        if /i "%CURRENT_BRANCH%"=="feature/ai-autoplay-spectator-camera" (
+        if /i "!CURRENT_BRANCH!"=="feature/ai-autoplay-spectator-camera" (
             echo Updating the AI Takeover branch...
             git -C "%ROOT%" pull --ff-only origin feature/ai-autoplay-spectator-camera
             if errorlevel 1 (
