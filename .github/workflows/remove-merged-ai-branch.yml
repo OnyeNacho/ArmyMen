@@ -1,0 +1,31 @@
+# One-time cleanup for the November 2026 AI takeover merge.
+# This only fires when this workflow file is first added to main.
+# It deletes the obsolete source branch; it will not delete future branches.
+name: Remove merged AI takeover branch
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/remove-merged-ai-branch.yml
+
+permissions:
+  contents: write
+
+jobs:
+  delete-merged-branch:
+    if: github.repository == 'MattKoRn/ArmyMen'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete the obsolete AI feature branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          if gh api "repos/$GH_REPO/git/ref/heads/feature/ai-autoplay-spectator-camera" >/dev/null 2>&1; then
+            gh api -X DELETE "repos/$GH_REPO/git/refs/heads/feature/ai-autoplay-spectator-camera"
+            echo "Deleted feature/ai-autoplay-spectator-camera; main is preserved."
+          else
+            echo "The feature branch is already absent; nothing to delete."
+          fi
