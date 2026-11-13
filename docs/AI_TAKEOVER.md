@@ -1,10 +1,10 @@
 # Full AI Takeover + Intelligent Spectator Camera (prototype)
 
-This feature branch turns the **local player's faction** into an AI-run army as soon as a mission starts. The human player watches the fight through an automatic, smoothly panning camera rather than issuing orders.
+This release turns the **local player's faction** into an AI-run army as soon as a mission starts. The human player watches the fight through an automatic, smoothly panning camera rather than issuing orders.
 
 ## Install on Windows
 
-1. Clone or download branch `feature/ai-autoplay-spectator-camera` from `MattKoRn/ArmyMen`.
+1. Clone or download the `main` branch from `MattKoRn/ArmyMen`.
 2. In a Windows environment containing **NMAKE**, **cl.exe**, and the original game's compatible legacy VC++ / DirectX SDK dependencies, double-click **`INSTALL_AI_TAKEOVER.cmd`** at the repository root.
 3. The script builds `src/Armymen.mak` in Release configuration, backs up `src/RunTime/Armymen.exe` (if present), installs the patched executable, and launches the game.
 4. If compilation fails or the toolchain is unavailable, the script stops without replacing the original executable. Do not use the checked-in binary as evidence the patch is already compiled; that binary predates these changes.
