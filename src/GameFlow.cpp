@@ -878,7 +878,8 @@ void	CGame::SetSubState(GAME_SUBSTATE subState)
 			ShowTheCursor(FALSE);
 			SetNormalizeJoystickInput();
 			pMainFrame->SetUI(&UI_GAME_PLAY_STATE);
-			pKeyTable = SargeKeyTable;
+			// AI spectator keeps only the normal ESC/menu key binding.
+			pKeyTable = Player0IsAI() ? PauseKeyTable : SargeKeyTable;
 			pPrePauseKeyTable = NULL;
 			UI_CurMode = UIMODE_LOOKINGATSARGE;
 			NeedToJumpToSarge = 1;
@@ -1570,6 +1571,8 @@ void MissionInit()
 void BeginMission()
 {
 	StartScripting();
+	// Transfer every local player unit, vehicle and Sarge to AI immediately.
+	if (Player0IsAI()) AutoAIStartMission();
 	ArmiesClearOldLocation(); // force all pads to update on next line
 	ArmiesUpdatePads();
 	SelectNextUnit();
