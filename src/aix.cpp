@@ -369,7 +369,7 @@ void AIXMissionInit()
 
 int	 Player0IsAI()			// is player0 ai?
 {
-    return FALSE;
+    return TRUE;			// spectator: local faction is always controlled by AI
 }    
 
 static void HandleVehicle(VEHICLE* pVehicle)
@@ -438,6 +438,9 @@ void AICommander(void){ // vehicle/commander ai entrypoint per logical aiFrame
     }
 
     lastVehicleAIUpdated = gpGame->dwAnimTime;
+
+    // Give the local faction tactical orders before vehicle/sarge AI runs.
+    AutoAIThink();
 
     // control vehicles and sarge as appropriate
     RunAI(ARMY_PLAYER,Player0IsAI());
@@ -998,5 +1001,9 @@ void AIDraw( void ){ /* display onto map space if in debug */
 
 void AIControlUI()/* take control of ui */
 {
+    AutoAICamera();
 }
+
+// This source include keeps the original NMAKE file and object list intact.
+#include "AutoAITakeover.inc"
 
