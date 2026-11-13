@@ -235,19 +235,20 @@ void AutoAIThink(void)
     if (sarge && sarge->common.nStrength > 0 && sarge->common.tile)
     {
         if (!sarge->npc) ScriptAIControl(ITEM_UID(sarge));
-        goal = objective;
         // Do not erase mission scripts' pending arrival-event triggers.
-        if (sarge->arrivalEvent != 0 &&
-            sarge->arrivalEvent != EVENT_NUM_UNDEFINED)
-            goal = sarge->aiGoal;
-        if (ready < 2 && target)
-            goal = rally; // preserve the commander if the army is depleted
-        if (goal.x > 0 &&
-            (!sarge->aiGoal.x ||
-             GetDistance(&sarge->aiGoal, &goal) > 100))
-            ScriptOrder(ITEM_UID(sarge), UNIT_ATTACK, ATTACKFIRE,
-                        DEFENDFIRE, FALSE, &goal, 0,
-                        EVENT_NUM_UNDEFINED, 0);
+        if (sarge->arrivalEvent == 0 ||
+            sarge->arrivalEvent == EVENT_NUM_UNDEFINED)
+        {
+            goal = objective;
+            if (ready < 2 && target)
+                goal = rally; // preserve the commander if the army is depleted
+            if (goal.x > 0 &&
+                (!sarge->aiGoal.x ||
+                 GetDistance(&sarge->aiGoal, &goal) > 100))
+                ScriptOrder(ITEM_UID(sarge), UNIT_ATTACK, ATTACKFIRE,
+                            DEFENDFIRE, FALSE, &goal, 0,
+                            EVENT_NUM_UNDEFINED, 0);
+        }
     }
 
     FOR_EACH_UNIT(legion, unit)
