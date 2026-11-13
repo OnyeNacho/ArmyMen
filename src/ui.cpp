@@ -1501,6 +1501,11 @@ void UI_ProcessScreen(void)
 	ANIM *curanim;
 	int x=0,y=0;
 
+	if (Player0IsAI()) {
+		AIControlUI(); // independent spectator camera, no player movement
+		return;
+	}
+
 	switch(UI_CurMode)
 	{
 	case UIMODE_IGNORE:
@@ -2702,6 +2707,8 @@ BOOL BruceLButtonDn(CPoint point)
 
 void InGameLButtonDn(UINT nFlags, CPoint point)
 {
+	if (Player0IsAI() && gpGame->game_substate == PLAY_SUB_STATE)
+		return; // spectator cannot issue orders or deploy through dashboard
 	if (gpGame->IsPaused())
 		return;
 
@@ -3288,6 +3295,8 @@ void UI_GiveOrder(BOOL terminate)
 
 void InGameRButtonDn(UINT nFlags, CPoint point)
 {
+	if (Player0IsAI() && gpGame->game_substate == PLAY_SUB_STATE)
+		return;
 	POINT pt;
 	SPOINT wpt;
 
