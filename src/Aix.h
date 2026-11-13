@@ -17,6 +17,9 @@ int	 Player2IsAI();			// is player2 ai?
 int	 Player0IsAI();			// is player0 ai?
 
 void AIControlUI();			// take control of ui 
+void AutoAIStartMission(void);	// activate spectator takeover at mission start
+void AutoAIThink(void);		// strategic orders for local player army
+void AutoAICamera(void);		// smooth camera following local AI forces
 extern int visibilityRange;		// how many tiles a LOS runs for unit
 
 void DoFatal(char* buf);	// Bad news...hit debugger
