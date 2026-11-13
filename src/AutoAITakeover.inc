@@ -236,6 +236,10 @@ void AutoAIThink(void)
     {
         if (!sarge->npc) ScriptAIControl(ITEM_UID(sarge));
         goal = objective;
+        // Do not erase mission scripts' pending arrival-event triggers.
+        if (sarge->arrivalEvent != 0 &&
+            sarge->arrivalEvent != EVENT_NUM_UNDEFINED)
+            goal = sarge->aiGoal;
         if (ready < 2 && target)
             goal = rally; // preserve the commander if the army is depleted
         if (goal.x > 0 &&
@@ -253,6 +257,10 @@ void AutoAIThink(void)
         if (!UNIT_ALIVE(unit)) continue;
         if (!unit->npc) ScriptAIControl(ITEM_UID(unit));
         if (!UNIT_IN_OPEN(unit) || unit->common.nStrength <= 0)
+            continue;
+        // Scenario scripts can own mission-critical travel/arrival events.
+        if (unit->arrivalEvent != 0 &&
+            unit->arrivalEvent != EVENT_NUM_UNDEFINED)
             continue;
         localEnemy = AutoAINearestEnemy(unit->common.position);
         distance = localEnemy ?
@@ -304,6 +312,9 @@ void AutoAIThink(void)
         if (!vehicle || !VEHICLE_ON_MAP(vehicle) ||
             vehicle->common.nStrength <= 0) continue;
         if (!vehicle->npc) ScriptAIControl(ITEM_UID(vehicle));
+        if (vehicle->arrivalEvent != 0 &&
+            vehicle->arrivalEvent != EVENT_NUM_UNDEFINED)
+            continue;
         target = AutoAINearestEnemy(vehicle->common.position);
         goal = target ? target->position : objective;
         if (goal.x <= 0) continue;
