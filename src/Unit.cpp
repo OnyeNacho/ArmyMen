@@ -4670,6 +4670,8 @@ void ScriptAtMode(UID namedUnit,BEHAVIOR atMode)
 
 void ScriptUserControl(UID namedItem)
 {
+	   if (Player0IsAI() && EXTRACT_ARMY(namedItem) == ARMY_PLAYER)
+		return; // mission scripts must not give control back to spectator
 	   if (scriptDebug) TRACE("Script UserControl triggered\n");
 
     if (OBJTYPE(namedItem) == ARMY_UNIT)
