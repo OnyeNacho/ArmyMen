@@ -2,7 +2,7 @@
 setlocal EnableExtensions EnableDelayedExpansion
 title ArmyMen AI Takeover - One Click Build and Install
 
-rem Run this file from the feature checkout on a Windows machine.
+rem Run this file from the main branch checkout on a Windows machine.
 rem The 1998 project uses NMAKE and needs a compatible legacy MSVC/DirectX SDK.
 set "ROOT=%~dp0"
 set "SOURCE=%ROOT%src"
@@ -22,28 +22,28 @@ if not exist "%SOURCE%\Armymen.mak" (
     goto :failed
 )
 
-rem Pull only if already on the feature branch. Never discard local changes.
+rem Pull only if already on main. Never discard local changes.
 where git >nul 2>&1
 if not errorlevel 1 (
     git -C "%ROOT%" rev-parse --is-inside-work-tree >nul 2>&1
     if not errorlevel 1 (
         for /f "delims=" %%B in ('git -C "%ROOT%" branch --show-current') do set "CURRENT_BRANCH=%%B"
-        if /i "!CURRENT_BRANCH!"=="feature/ai-autoplay-spectator-camera" (
-            echo Updating the AI Takeover branch...
-            git -C "%ROOT%" pull --ff-only origin feature/ai-autoplay-spectator-camera
+        if /i "!CURRENT_BRANCH!"=="main" (
+            echo Updating ArmyMen main...
+            git -C "%ROOT%" pull --ff-only origin main
             if errorlevel 1 (
                 echo ERROR: Could not fast-forward. Your local edits were left untouched.
                 goto :failed
             )
         ) else (
-            echo Using current checkout. Switch to feature/ai-autoplay-spectator-camera for the mod.
+            echo Using current checkout. Switch to main for the current release.
         )
     )
 )
 
 if not exist "%SOURCE%\AutoAITakeover.inc" (
     echo ERROR: AI Takeover source is missing.
-    echo Get the feature/ai-autoplay-spectator-camera branch from GitHub first.
+    echo Download the latest main branch from GitHub first.
     goto :failed
 )
 
